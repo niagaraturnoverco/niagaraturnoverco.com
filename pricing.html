@@ -50,15 +50,15 @@
   /* NAV */
   nav { position: sticky; top: 0; z-index: 100; background: rgba(11,13,15,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
   .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--text); }
-  .nav-links { display: flex; gap: 2rem; align-items: center; }
-  .nav-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a.active { color: var(--accent); }
-  .nav-logo img {
-    width: 40px; height: 40px; object-fit: contain; display: block;
-    filter: brightness(0) invert(1);
-  }
+  .nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--serif); font-size: 1.15rem; color: #ffffff;
+  font-weight: 500; letter-spacing: 0.03em;
+  cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+}
+.nav-logo:hover { opacity: 0.9; }
+.nav-logo svg { flex-shrink: 0; transition: transform 0.2s ease; }
+.nav-logo:hover svg { transform: scale(1.04); }
 
   /* ALERT BAR */
   .alert-bar { background: rgba(200,169,110,0.1); border-bottom: 1px solid rgba(200,169,110,0.2); text-align: center; padding: 0.55rem 1rem; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.03em; }
