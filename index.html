@@ -1188,56 +1188,50 @@ footer { border-top: 1px solid var(--border); padding: 3rem 0; }
     <div class="reveal">
       <span class="section-tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        Prefer a form?
+        Request coverage
       </span>
-      <h2>Get a Fast Quote</h2>
-      <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.95rem; max-width: 480px;">Send your details and we'll reply within 30 minutes with exactly what level of coverage fits your setup.</p>
+      <h2>Tell Us About Your Listing.</h2>
+      <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.95rem; max-width: 480px;">Fill this in and we'll come back to you with exactly what level of coverage fits your setup — no pitch, no pressure.</p>
     </div>
 
-    <!-- Success message -->
     <div class="form-success" id="form-success">
       <div class="success-icon">✓</div>
       <h3>Got it — we'll be in touch.</h3>
-      <p>We'll review your listing details and reply within 30 minutes with a straight answer on coverage and pricing.</p>
+      <p>We'll review your details and reply with a straight answer on coverage and pricing. Available 24/7.</p>
     </div>
 
-    <!-- Global error -->
     <div class="form-global-error" id="form-global-error"></div>
 
     <form id="ntc-quote-form" class="quote-form-wrap reveal" novalidate>
-      <!-- Hidden fields for Formspree context -->
       <input type="hidden" name="_subject" value="New Quote Request — Niagara Turnover Co.">
       <input type="text" name="_gotcha" style="display:none">
 
       <div class="form-row">
         <div class="form-group">
           <label for="name">Your Name *</label>
-          <input type="text" id="name" name="name" placeholder="First and last name" required data-fs-field>
-          <span class="field-error" data-fs-error="name"></span>
+          <input type="text" id="name" name="name" placeholder="First and last name" required>
         </div>
         <div class="form-group">
           <label for="contact">Phone or Email *</label>
-          <input type="text" id="contact" name="contact" placeholder="How should we reach you?" required data-fs-field>
-          <span class="field-error" data-fs-error="contact"></span>
+          <input type="text" id="contact" name="contact" placeholder="Best way to reach you" required>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="bedrooms">Number of Bedrooms *</label>
-          <select id="bedrooms" name="bedrooms" required data-fs-field>
+          <label for="bedrooms">Bedrooms *</label>
+          <select id="bedrooms" name="bedrooms" required>
             <option value="" disabled selected>Select size</option>
             <option value="1">1 Bedroom</option>
             <option value="2">2 Bedrooms</option>
             <option value="3">3 Bedrooms</option>
             <option value="4+">4+ Bedrooms</option>
           </select>
-          <span class="field-error" data-fs-error="bedrooms"></span>
         </div>
         <div class="form-group">
-          <label for="frequency">Turnover Frequency</label>
+          <label for="frequency">How often are you turning over?</label>
           <select id="frequency" name="frequency">
-            <option value="" disabled selected>How often?</option>
+            <option value="" disabled selected>Turnover frequency</option>
             <option value="occasional">Occasional (1–3/month)</option>
             <option value="regular">Regular (weekly)</option>
             <option value="back-to-back">Back-to-back bookings</option>
@@ -1247,19 +1241,19 @@ footer { border-top: 1px solid var(--border); padding: 3rem 0; }
       </div>
 
       <div class="form-group">
-        <label for="listing">Airbnb Listing URL <span style="color:var(--subtle); font-weight:400; text-transform:none; letter-spacing:0;">(optional — helps us give you an accurate quote)</span></label>
+        <label for="listing">Airbnb Listing URL <span style="color:var(--subtle);font-weight:400;text-transform:none;letter-spacing:0;">(optional — speeds up your quote)</span></label>
         <input type="url" id="listing" name="listing_url" placeholder="https://airbnb.com/rooms/...">
       </div>
 
       <div class="form-group" style="margin-bottom: 1.5rem;">
-        <label for="message">Anything else we should know?</label>
-        <textarea id="message" name="message" placeholder="E.g. linen service needed, specific check-in window, number of units..."></textarea>
+        <label for="message">Anything we should know? <span style="color:var(--subtle);font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <textarea id="message" name="message" placeholder="Linen service needed, tight check-in windows, number of units, specific situation..."></textarea>
       </div>
 
-      <button type="submit" class="form-submit-btn" data-fs-submit-btn>
-        Send Quote Request →
+      <button type="submit" class="form-submit-btn">
+        Send My Details →
       </button>
-      <p style="font-size: 0.73rem; color: var(--subtle); text-align: center; margin-top: 0.75rem;">We reply within 30 minutes · No commitment · No contracts</p>
+      <p style="font-size: 0.73rem; color: var(--subtle); text-align: center; margin-top: 0.75rem;">Available 24/7 · No commitment · No contracts</p>
     </form>
   </div>
 </section>
