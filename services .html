@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Niagara Airbnb Turnover Coverage | Niagara Turnover Co.</title>
+<meta name="description" content="Full Airbnb turnover services for Niagara Region hosts. Standard turnovers, premium protection, full property management, and add-ons. Photo confirmation after every job.">
+<meta name="keywords" content="Airbnb turnover services Niagara, Airbnb cleaning services Niagara Falls, short term rental services Niagara, property turnover St Catharines">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google Analytics 4 — replace G-S01J0050B3 with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S01J0050B3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S01J0050B3');
+</script>
+<style>
+  :root {
+    --black: #0B0D0F;
+    --dark: #111418;
+    --panel: #181C22;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #F0EDE8;
+    --muted: #8A8A8A;
+    --subtle: #555;
+    --accent: #C8A96E;
+    --accent-light: #E2C998;
+    --accent-dim: rgba(200,169,110,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 6px;
+    --radius-lg: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--sans); background: var(--black); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1 { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1; font-weight: 400; }
+  h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.15; font-weight: 400; }
+  h3 { font-size: 1rem; font-weight: 500; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+  .section { padding: 5rem 0; }
+  .section-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(11,13,15,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--text); display: flex; align-items: center; gap: 0.65rem; }
+  .nav-logo img { width: 40px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: var(--black); font-size: 0.875rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: var(--radius); transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--accent-light); }
+
+  /* ALERT BAR */
+  .alert-bar { background: rgba(200,169,110,0.1); border-bottom: 1px solid rgba(200,169,110,0.2); text-align: center; padding: 0.55rem 1rem; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.03em; }
+
+  /* BUTTONS */
+  .btn-primary { background: var(--accent); color: var(--black); font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.75rem; border-radius: var(--radius); transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-secondary { border: 1px solid var(--border-strong); color: var(--text); font-size: 0.95rem; font-weight: 400; padding: 0.85rem 1.75rem; border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.04); }
+
+  /* STATS */
+  .stats-strip { border-bottom: 1px solid var(--border); padding: 2.25rem 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; }
+  .stat-item { padding: 0.5rem 1rem; border-right: 1px solid var(--border); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 2rem; color: var(--accent); line-height: 1; margin-bottom: 0.25rem; }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* SERVICE TIER BLOCKS */
+  .service-block { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .service-block:last-of-type { border-bottom: none; }
+  .service-block.alt { background: var(--dark); }
+  .service-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap; }
+  .service-header-left { flex: 1; min-width: 280px; }
+  .service-tier-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: block; }
+  .service-header-right { flex-shrink: 0; }
+  .service-cta-btn { display: inline-block; background: var(--panel); border: 1px solid var(--border-strong); color: var(--text); font-size: 0.875rem; font-weight: 500; padding: 0.75rem 1.5rem; border-radius: var(--radius); transition: background 0.2s; white-space: nowrap; }
+  .service-cta-btn:hover { background: rgba(255,255,255,0.06); }
+  .service-cta-btn.featured { background: var(--accent); color: var(--black); border-color: var(--accent); }
+  .service-cta-btn.featured:hover { background: var(--accent-light); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .feature-card { background: var(--black); padding: 1.5rem; transition: background 0.2s; }
+  .service-block.alt .feature-card { background: var(--panel); }
+  .feature-card:hover { background: rgba(200,169,110,0.04); }
+  .feature-icon { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .feature-card h3 { font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .feature-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* ADD-ONS */
+  .addons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  .addon-card { background: var(--dark); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; }
+  .addon-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .addon-name { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; }
+  .addon-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .testimonial-card { background: var(--dark); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; }
+  .stars { color: var(--accent); font-size: 0.8rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+  .testimonial-text { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+  .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(200,169,110,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: var(--accent); flex-shrink: 0; }
+  .author-name { font-size: 0.83rem; font-weight: 500; }
+  .author-detail { font-size: 0.75rem; color: var(--muted); }
+
+  /* FINAL CTA */
+  .final-cta { text-align: center; padding: 6rem 0; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  .final-cta::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.08) 0%, transparent 70%); pointer-events: none; }
+  .final-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 3rem 0; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+  .footer-brand p { font-size: 0.83rem; color: var(--muted); margin-top: 0.75rem; max-width: 280px; line-height: 1.7; }
+  .footer-col h4 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.5rem; }
+  .footer-col ul li a { font-size: 0.83rem; color: var(--muted); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--text); }
+  .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--subtle); }
+
+  /* STICKY MOBILE */
+  .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; padding: 0.75rem 1rem; background: rgba(11,13,15,0.95); border-top: 1px solid var(--border-strong); backdrop-filter: blur(12px); gap: 0.75rem; }
+  .sticky-cta a { flex: 1; text-align: center; padding: 0.75rem; border-radius: var(--radius); font-size: 0.875rem; font-weight: 600; }
+  .sticky-cta a.cta-call { background: var(--panel); border: 1px solid var(--border-strong); color: var(--text); }
+  .sticky-cta a.cta-text { background: var(--accent); color: var(--black); }
+
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .addons-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 80px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-header { flex-direction: column; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="alert-bar">
+  Taking new hosts now — Niagara Region &nbsp;·&nbsp; Limited spots &nbsp;·&nbsp; <a href="tel:+12892577725" style="color: var(--accent); font-weight: 600;">(289) 257-7725</a>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="NTClogo.png" alt="NTC">
+      <span>Niagara Turnover Co.</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#system">How It Works</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="index.html#areas">Areas</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+    <a href="sms:+12892577725" class="nav-cta">Text Your Listing →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding: 6rem 0 5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(200,169,110,0.05) 0%, transparent 70%); pointer-events: none;"></div>
+  <div class="container">
+    <span class="section-tag">Full service breakdown</span>
+    <h1>Every Service.<br><em style="color: var(--accent); font-style: italic;">One Goal.</em></h1>
+    <p style="font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-top: 1rem; line-height: 1.65;">Every guest walks into a perfect property. Every time. No exceptions. Here's how we make that happen at every level.</p>
+    <div style="display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap;">
+      <a href="sms:+12892577725" class="btn-primary">Text Your Listing</a>
+      <a href="tel:+12892577725" class="btn-secondary">Call (289) 257-7725</a>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.6rem;">Takes 30 seconds · No commitment · Available 24/7</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num" data-target="100" data-suffix="%">0%</div><div class="stat-label">On-Time Coverage</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="7">0</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="1" data-prefix="&lt;" data-suffix="hr">0hr</div><div class="stat-label">Emergency Response</div></div>
+      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Missed Turnovers</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIER 1 -->
+<div class="service-block">
+  <div class="container">
+    <div class="service-header">
+      <div class="service-header-left">
+        <span class="service-tier-label">Tier 01 · Standard Turnover</span>
+        <h2>The Reliable Baseline</h2>
+        <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.95rem; max-width: 460px; line-height: 1.65;">Full professional turnover with photo proof after every job. The foundation every active host needs — executed without fail.</p>
+      </div>
+      <div class="service-header-right">
+        <a href="sms:+12892577725" class="service-cta-btn">Text to Book</a>
+        <p style="font-size: 0.72rem; color: var(--subtle); margin-top: 0.5rem; text-align: center;">From $99+ per turnover</p>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧹</div>
+        <h3>Full property turnover</h3>
+        <p>Every room, bathroom, kitchen, and common area — cleaned and prepared to guest-ready standard. Guaranteed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Photo documentation</h3>
+        <p>Photos of every room sent directly to you after every job. You know it's done right before your guest arrives.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Job completion report</h3>
+        <p>Written record after every turnover — conditions noted, anything flagged, confirmation the property is guest-ready.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Same-day availability</h3>
+        <p>We work within your checkout-to-check-in window. No delays, no excuses, no scrambling on your end.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Backup crew on standby</h3>
+        <p>If anything threatens coverage, a backup crew is already on standby. No single point of failure.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Calendar sync</h3>
+        <p>Turnovers scheduled around your booking calendar. No coordination required from your side.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIER 2 -->
+<div class="service-block alt">
+  <div class="container">
+    <div class="service-header">
+      <div class="service-header-left">
+        <span class="service-tier-label">Tier 02 · Operational Coverage · Most Popular</span>
+        <h2>The Layer That Keeps Your Rating Untouchable</h2>
+        <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.95rem; max-width: 460px; line-height: 1.65;">Everything in Standard, plus the operational depth that separates a 4.8 from a 5.0. For hosts who can't leave anything to chance.</p>
+      </div>
+      <div class="service-header-right">
+        <a href="tel:+12892577725" class="service-cta-btn featured">Call (289) 257-7725</a>
+        <p style="font-size: 0.72rem; color: var(--subtle); margin-top: 0.5rem; text-align: center;">From $89+ per turnover · recurring</p>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>Everything in Standard</h3>
+        <p>Full turnover, photos, job report, same-day availability, backup crew — all included as the base of Operational.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧴</div>
+        <h3>Essentials restocking</h3>
+        <p>Toiletries, paper products, and guest essentials monitored and replenished before every arrival.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛏️</div>
+        <h3>Linen care &amp; presentation</h3>
+        <p>Linens pressed and presented to hotel standard. The detail that moves a review from 4 stars to 5.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Property condition report</h3>
+        <p>Damage, wear, or maintenance needs documented with photos and flagged to you immediately.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Pre-check-in inspection</h3>
+        <p>Final walk-through before every check-in. If anything is off, we fix it before your guest ever sees it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Property-specific checklist</h3>
+        <p>A checklist built around your unit — not a generic template. Every quirk of your property accounted for.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIER 3 -->
+<div class="service-block">
+  <div class="container">
+    <div class="service-header">
+      <div class="service-header-left">
+        <span class="service-tier-label">Tier 03 · Full System Management</span>
+        <h2>Completely Hands-Off. Actually Passive Income.</h2>
+        <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.95rem; max-width: 460px; line-height: 1.65;">We manage everything. Built for operators with multiple units, higher volume, or tighter standards who want operations handled at the system level.</p>
+      </div>
+      <div class="service-header-right">
+        <a href="sms:+12892577725" class="service-cta-btn">Request Custom Quote</a>
+        <p style="font-size: 0.72rem; color: var(--subtle); margin-top: 0.5rem; text-align: center;">Custom quoted · multi-unit pricing</p>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Everything in Operational</h3>
+        <p>Full turnover, photos, condition reports, restocking, linen care, and pre-check-in inspection — all included.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <h3>Multi-unit coordination</h3>
+        <p>Multiple properties managed as a single operation. Scheduling, coverage, and reporting across all units.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚨</div>
+        <h3>Emergency response</h3>
+        <p>Something breaks mid-stay? We respond fast. Property stays operational. Rating stays protected.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>Custom workflow support</h3>
+        <p>Your operation, your standards. We build workflows around how you run your properties, not the other way around.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Monthly performance report</h3>
+        <p>Full breakdown of turnovers completed, conditions logged, guest feedback trends, and next-month recommendations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>Preferred peak season access</h3>
+        <p>Priority coverage during Niagara's peak periods — grape harvest, holidays, summer weekends — when every turnover counts most.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD-ONS -->
+<section class="section" style="background: var(--dark); border-top: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-tag">Add-ons</span>
+    <h2>Available on Any Tier</h2>
+    <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.95rem;">Need something extra? Add it anytime. No package required.</p>
+    <div class="addons-grid">
+      <div class="addon-card">
+        <div class="addon-icon">🫧</div>
+        <div class="addon-name">Deep Clean</div>
+        <div class="addon-desc">Full detail between seasonal gaps or after heavier use. From $60.</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🧺</div>
+        <div class="addon-name">Laundry Service</div>
+        <div class="addon-desc">Wash, dry, fold, and turnover-ready linen setup. From $25.</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🛒</div>
+        <div class="addon-name">Supply Run</div>
+        <div class="addon-desc">We source and restock guest essentials before check-in. From $15 + supplies.</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🔍</div>
+        <div class="addon-name">Property Inspection</div>
+        <div class="addon-desc">Full documented inspection report with photos. Priced by property size.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <span class="section-tag">In their own words</span>
+    <h2>What Niagara Hosts Are Saying</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Very responsive, friendly, and professional. Exactly what you want from a turnover partner."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PK</div>
+          <div>
+            <div class="author-name">Peter Kistemaker</div>
+            <div class="author-detail">Verified Google Review · Niagara Region</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" style="border-color: rgba(200,169,110,0.2);">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Friendly, professional, and flexible. The cleaning was done to a high standard — their attention to detail gave me real confidence. What stood out most was the communication — clear, responsive, and always on top of what was needed. I'd highly recommend to any Airbnb host looking for a reliable, easy-to-work-with operator."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">GG</div>
+          <div>
+            <div class="author-name">Gabriella Guo</div>
+            <div class="author-detail">Verified Google Review · Airbnb Host</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"We manage multiple Airbnb listings and they've been extremely reliable across back-to-back bookings. Everything is consistently guest-ready, communication is clear, and our cleanliness ratings have stayed at 5★."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Arlia</div>
+            <div class="author-detail">Verified Google Review · Multi-unit Host</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <span style="font-size: 0.8rem; color: var(--subtle);">Verified by Google</span>
+      <span style="color: var(--border-strong);">·</span>
+      <a href="https://www.google.com/maps/place/Niagara+Turnover+Co/@43.105087,-79.113449,10z/data=!3m1!4b1!4m6!3m5!1s0xa63967db8394934d:0x10857b0d295acfba!8m2!3d43.105087!4d-79.113449!16s%2Fg%2F11z0yj8tsb" target="_blank" rel="noopener" style="font-size: 0.83rem; color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">View our Google reviews →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <span class="section-tag">Ready to get protected</span>
+    <h2>Let's Find the Right Tier for Your Properties.</h2>
+    <p style="color: var(--muted); font-size: 0.95rem; margin-top: 0.75rem; max-width: 400px; margin-left: auto; margin-right: auto;">Call or text. We'll tell you exactly what you need. No pitch, no pressure.</p>
+    <div class="final-ctas">
+      <a href="sms:+12892577725" class="btn-primary">Text Your Listing</a>
+      <a href="tel:+12892577725" class="btn-secondary">Call (289) 257-7725</a>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.75rem;">Takes 30 seconds · No commitment · Available 24/7</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="font-family: var(--serif); font-size: 1.15rem;">Niagara Turnover Co.</div>
+        <p>Airbnb turnover coverage system built and operated locally in Niagara. Focused on reliability, speed, and protecting host revenue.</p>
+        <p style="margin-top: 0.75rem; font-size: 0.83rem; color: var(--muted);">Built by a local operator managing real turnovers weekly.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#system">How It Works</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+12892577725">(289) 257-7725</a></li>
+          <li><a href="sms:+12892577725">Text Us Anytime</a></li>
+          <li><a href="https://www.google.com/maps/place/Niagara+Turnover+Co/@43.105087,-79.113449,10z/data=!3m1!4b1!4m6!3m5!1s0xa63967db8394934d:0x10857b0d295acfba!8m2!3d43.105087!4d-79.113449!16s%2Fg%2F11z0yj8tsb" target="_blank" rel="noopener" style="color: var(--accent);">Google Reviews →</a></li>
+          <li><a href="index.html#areas">Areas Covered</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Niagara Turnover Co. All rights reserved.</span>
+      <span>Niagara Falls · St. Catharines · NOTL · Welland · Thorold · Port Colborne · Fort Erie</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:+12892577725" class="cta-call">Call Now</a>
+  <a href="sms:+12892577725" class="cta-text">Text Your Listing</a>
+</div>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// Stat counters — fires fresh on every page load
+function animateCount(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
+  if (isNaN(target)) return;
+  const duration = 1400;
+  const startTime = performance.now();
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = prefix + Math.round(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const allStatNums = document.querySelectorAll('[data-target]');
+const statObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statObs.unobserve(e.target); } });
+}, { threshold: 0.4 });
+allStatNums.forEach(el => statObs.observe(el));
+</script>
+</body>
+</html>
