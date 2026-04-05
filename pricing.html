@@ -8,7 +8,14 @@
 <meta name="keywords" content="Airbnb cleaning price Niagara, turnover cost Niagara Falls, Airbnb cleaner rates St Catharines, short term rental cleaning pricing Niagara">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
+<!-- Google Analytics 4 — replace G-S01J0050B3 with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S01J0050B3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S01J0050B3');
+</script>
   :root {
     --black: #0B0D0F;
     --dark: #111418;
@@ -47,8 +54,10 @@
   .nav-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
   .nav-links a.active { color: var(--accent); }
-  .nav-cta { background: var(--accent); color: var(--black); font-size: 0.875rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: var(--radius); transition: background 0.2s; white-space: nowrap; }
-  .nav-cta:hover { background: var(--accent-light); }
+  .nav-logo img {
+    width: 40px; height: 40px; object-fit: contain; display: block;
+    filter: brightness(0) invert(1);
+  }
 
   /* ALERT BAR */
   .alert-bar { background: rgba(200,169,110,0.1); border-bottom: 1px solid rgba(200,169,110,0.2); text-align: center; padding: 0.55rem 1rem; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.03em; }
@@ -159,7 +168,10 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Niagara Turnover Co.</a>
+    <a href="index.html" style="display:flex;align-items:center;gap:0.65rem;font-family:var(--serif);font-size:1.15rem;color:var(--text);">
+      <img src="NTClogo.png" alt="NTC" style="width:40px;height:40px;object-fit:contain;filter:brightness(0) invert(1);">
+      <span>Niagara Turnover Co.</span>
+    </a>
     <div class="nav-links">
       <a href="index.html#system">How It Works</a>
       <a href="services.html">Services</a>
@@ -191,9 +203,9 @@
 <div class="stats-strip">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">On-Time Coverage</div></div>
-      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Cities Covered</div></div>
-      <div class="stat-item"><div class="stat-num">&lt;1hr</div><div class="stat-label">Emergency Response</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="100" data-suffix="%">0%</div><div class="stat-label">On-Time Coverage</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="7">0</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="1" data-prefix="&lt;" data-suffix="hr">0hr</div><div class="stat-label">Emergency Response</div></div>
       <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Missed Turnovers</div></div>
     </div>
   </div>
@@ -407,5 +419,49 @@
   <a href="sms:+12892577725" class="cta-text">Text Your Listing</a>
 </div>
 
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// Stat counters — fires fresh on every page load
+function animateCount(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
+  if (isNaN(target)) return;
+  const duration = 1400;
+  const startTime = performance.now();
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = prefix + Math.round(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const allStatNums = document.querySelectorAll('[data-target]');
+const statObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statObs.unobserve(e.target); } });
+}, { threshold: 0.4 });
+allStatNums.forEach(el => statObs.observe(el));
+
+// FAQ
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const answer = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open'); el.querySelector('.faq-a').classList.remove('open');
+  });
+  if (!isOpen) { item.classList.add('open'); answer.classList.add('open'); }
+}
+</script>
+</body>
+</html>
 </body>
 </html>
