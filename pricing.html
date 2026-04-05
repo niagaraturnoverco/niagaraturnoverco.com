@@ -69,7 +69,40 @@
   .btn-secondary { border: 1px solid var(--border-strong); color: var(--text); font-size: 0.95rem; font-weight: 400; padding: 0.85rem 1.75rem; border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; display: inline-block; }
   .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.04); }
 
-  /* STATS */
+  /* ── INSTANT QUOTE CALCULATOR ── */
+  .calc-wrap { background: var(--dark); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 3rem; }
+  .calc-header { background: var(--panel); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .calc-header-left h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.25rem; }
+  .calc-header-left p { font-size: 0.8rem; color: var(--muted); }
+  .calc-body { padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .calc-controls { display: flex; flex-direction: column; gap: 1.25rem; }
+  .calc-field label { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .calc-options { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .calc-opt { background: var(--panel); border: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; padding: 0.45rem 0.9rem; border-radius: var(--radius); cursor: pointer; transition: all 0.18s; font-family: var(--sans); user-select: none; }
+  .calc-opt:hover { border-color: rgba(200,169,110,0.35); color: var(--text); }
+  .calc-opt.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); font-weight: 500; }
+  .calc-toggle { display: flex; gap: 0.5rem; }
+  .calc-toggle .calc-opt { flex: 1; text-align: center; }
+  .calc-result { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .calc-result-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .calc-price { font-family: var(--serif); font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 0.35rem; transition: all 0.3s; }
+  .calc-price-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.5; }
+  .calc-tier-rec { background: var(--accent-dim); border: 1px solid rgba(200,169,110,0.2); border-radius: var(--radius); padding: 0.75rem 1rem; margin-bottom: 1.25rem; }
+  .calc-tier-rec-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
+  .calc-tier-rec-name { font-size: 0.875rem; font-weight: 500; }
+  .calc-tier-rec-why { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+  .calc-includes { list-style: none; margin-bottom: 1.5rem; }
+  .calc-includes li { font-size: 0.8rem; color: var(--muted); padding: 0.25rem 0; display: flex; gap: 0.5rem; align-items: flex-start; }
+  .calc-includes li::before { content: '✓'; color: var(--accent); font-size: 0.72rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .calc-cta { display: block; text-align: center; background: var(--accent); color: var(--black); font-size: 0.9rem; font-weight: 600; padding: 0.8rem; border-radius: var(--radius); transition: background 0.2s, transform 0.15s; text-decoration: none; }
+  .calc-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .calc-disclaimer { font-size: 0.72rem; color: var(--subtle); text-align: center; margin-top: 0.6rem; }
+  .calc-addons { border-top: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .calc-addons-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 0.25rem; }
+  .calc-addon-pill { background: var(--panel); border: 1px solid var(--border); color: var(--muted); font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 100px; cursor: pointer; transition: all 0.18s; user-select: none; }
+  .calc-addon-pill:hover { border-color: rgba(200,169,110,0.35); color: var(--text); }
+  .calc-addon-pill.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 680px) { .calc-body { grid-template-columns: 1fr; } .calc-header { flex-direction: column; align-items: flex-start; } }
   .stats-strip { border-bottom: 1px solid var(--border); padding: 2.25rem 0; }
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; }
   .stat-item { padding: 0.5rem 1rem; border-right: 1px solid var(--border); }
@@ -211,6 +244,98 @@
     </div>
   </div>
 </div>
+
+<!-- INSTANT QUOTE CALCULATOR -->
+<section class="section" id="quote">
+  <div class="container">
+    <span class="section-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Instant quote
+    </span>
+    <h2>Get Your Estimate in 10 Seconds</h2>
+    <p style="color: var(--muted); margin-top: 0.75rem; max-width: 500px; font-size: 0.95rem;">Select your property details below. We'll show you a price range and the right coverage level for your setup.</p>
+
+    <div class="calc-wrap">
+      <div class="calc-header">
+        <div class="calc-header-left">
+          <h3>Turnover Coverage Estimator</h3>
+          <p>Adjust the options — your estimate updates instantly</p>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--subtle);">Final pricing confirmed when you text us</div>
+      </div>
+
+      <div class="calc-body">
+        <!-- CONTROLS -->
+        <div class="calc-controls">
+          <div class="calc-field">
+            <label>Number of Bedrooms</label>
+            <div class="calc-options" id="beds">
+              <div class="calc-opt active" data-val="1">1 Bed</div>
+              <div class="calc-opt" data-val="2">2 Bed</div>
+              <div class="calc-opt" data-val="3">3 Bed</div>
+              <div class="calc-opt" data-val="4">4 Bed+</div>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label>Coverage Type</label>
+            <div class="calc-toggle" id="coverage">
+              <div class="calc-opt active" data-val="ondemand">On-Demand</div>
+              <div class="calc-opt" data-val="recurring">Recurring</div>
+              <div class="calc-opt" data-val="system">Full System</div>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label>Timing</label>
+            <div class="calc-options" id="timing">
+              <div class="calc-opt active" data-val="standard">Standard</div>
+              <div class="calc-opt" data-val="sameday">Same-Day</div>
+              <div class="calc-opt" data-val="emergency">Emergency</div>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label>Property Condition</label>
+            <div class="calc-options" id="condition">
+              <div class="calc-opt active" data-val="standard">Standard</div>
+              <div class="calc-opt" data-val="heavy">Heavier Use</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="calc-result">
+          <div>
+            <div class="calc-result-label">Estimated Range</div>
+            <div class="calc-price" id="calc-price">$85 – $105</div>
+            <div class="calc-price-note" id="calc-note">Per turnover · 1 bedroom · standard conditions</div>
+            <div class="calc-tier-rec" id="calc-tier">
+              <div class="calc-tier-rec-label">Recommended Tier</div>
+              <div class="calc-tier-rec-name" id="calc-tier-name">On-Demand Coverage</div>
+              <div class="calc-tier-rec-why" id="calc-tier-why">Best for occasional coverage with no commitment</div>
+            </div>
+            <ul class="calc-includes" id="calc-includes">
+              <li>Guest-ready turnover reset</li>
+              <li>Photo confirmation sent after every job</li>
+              <li>No commitment required</li>
+            </ul>
+          </div>
+          <div>
+            <a href="sms:+12892577725" class="calc-cta" id="calc-cta">Text Us for Exact Pricing →</a>
+            <p class="calc-disclaimer">Takes 30 seconds · No commitment · Available 24/7</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD-ONS -->
+      <div class="calc-addons">
+        <span class="calc-addons-label">Add-ons:</span>
+        <div class="calc-addon-pill" data-add="20" id="add-laundry">+ Laundry &amp; Linen ($20+)</div>
+        <div class="calc-addon-pill" data-add="60" id="add-deep">+ Deep Clean ($60+)</div>
+        <div class="calc-addon-pill" data-add="15" id="add-restock">+ Restocking ($15+)</div>
+        <div style="margin-left: auto; font-size: 0.75rem; color: var(--muted);" id="calc-addon-total"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- BASE RATES -->
 <section class="section">
@@ -461,6 +586,83 @@ function toggleFaq(btn) {
   });
   if (!isOpen) { item.classList.add('open'); answer.classList.add('open'); }
 }
+</script>
+<script>
+// ── INSTANT QUOTE CALCULATOR ──
+const BASE = { 1: [85,105], 2: [105,130], 3: [125,155], 4: [150,185] };
+const COVERAGE_MULT = { ondemand: 1, recurring: 0.9, system: null };
+const TIMING_ADD = { standard: 0, sameday: 25, emergency: 45 };
+const CONDITION_ADD = { standard: 0, heavy: 35 };
+
+const TIERS = {
+  ondemand: { name: 'On-Demand Coverage', why: 'Best for occasional coverage with no commitment', includes: ['Guest-ready turnover reset','Photo confirmation sent after every job','Same-day availability','No commitment required'] },
+  recurring: { name: 'Operational Coverage', why: 'Your most cost-effective option for regular turnovers', includes: ['Priority scheduling','Recurring turnover coverage','Laundry & linen reset','Property-specific checklist','Reduced host coordination'] },
+  system: { name: 'Full System Management', why: 'Quoted individually based on your operation', includes: ['Multi-unit coordination','Restocking & operational oversight','Custom workflow support','Monthly performance report','Peak season priority access'] }
+};
+
+let state = { beds: 1, coverage: 'ondemand', timing: 'standard', condition: 'standard', addons: 0 };
+
+function calcPrice() {
+  if (state.coverage === 'system') {
+    document.getElementById('calc-price').textContent = 'Custom';
+    document.getElementById('calc-note').textContent = 'Quoted based on your operation — text us for a fast answer';
+    document.getElementById('calc-cta').textContent = 'Request Custom Quote →';
+    return;
+  }
+  const [lo, hi] = BASE[state.beds];
+  const mult = COVERAGE_MULT[state.coverage];
+  const timingAdd = TIMING_ADD[state.timing];
+  const condAdd = CONDITION_ADD[state.condition];
+  const finalLo = Math.round((lo * mult) + timingAdd + condAdd + state.addons);
+  const finalHi = Math.round((hi * mult) + timingAdd + condAdd + state.addons);
+  document.getElementById('calc-price').textContent = `$${finalLo} – $${finalHi}`;
+  const bed = state.beds === 4 ? '4+ bedroom' : `${state.beds} bedroom`;
+  const cov = state.coverage === 'recurring' ? 'recurring' : 'on-demand';
+  const tim = state.timing === 'standard' ? '' : state.timing === 'sameday' ? ' · same-day' : ' · emergency';
+  const cond = state.condition === 'heavy' ? ' · heavier conditions' : '';
+  document.getElementById('calc-note').textContent = `Per turnover · ${bed}${tim}${cond} · ${cov}`;
+  document.getElementById('calc-cta').textContent = 'Text Us for Exact Pricing →';
+}
+
+function updateTier() {
+  const t = TIERS[state.coverage];
+  document.getElementById('calc-tier-name').textContent = t.name;
+  document.getElementById('calc-tier-why').textContent = t.why;
+  const ul = document.getElementById('calc-includes');
+  ul.innerHTML = t.includes.map(i => `<li>${i}</li>`).join('');
+}
+
+function bindGroup(id, key) {
+  document.getElementById(id).querySelectorAll('.calc-opt').forEach(opt => {
+    opt.addEventListener('click', function() {
+      document.getElementById(id).querySelectorAll('.calc-opt').forEach(o => o.classList.remove('active'));
+      this.classList.add('active');
+      state[key] = this.dataset.val;
+      if (key === 'beds') state.beds = parseInt(this.dataset.val);
+      calcPrice();
+      updateTier();
+    });
+  });
+}
+
+bindGroup('beds', 'beds');
+bindGroup('coverage', 'coverage');
+bindGroup('timing', 'timing');
+bindGroup('condition', 'condition');
+
+document.querySelectorAll('.calc-addon-pill').forEach(pill => {
+  pill.addEventListener('click', function() {
+    this.classList.toggle('active');
+    state.addons = 0;
+    let label = '';
+    document.querySelectorAll('.calc-addon-pill.active').forEach(p => {
+      state.addons += parseInt(p.dataset.add);
+      label += (label ? ' + ' : '') + '$' + p.dataset.add + '+';
+    });
+    document.getElementById('calc-addon-total').textContent = label ? 'Add-ons: +' + label : '';
+    calcPrice();
+  });
+});
 </script>
 </body>
 </html>
