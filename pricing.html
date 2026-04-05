@@ -1,523 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Niagara Turnover Co. Pricing — Airbnb turnover coverage starting from $85. Monthly plans from $299. Call (289) 257-7725."/>
-<meta name="theme-color" content="#060d1a"/>
-<title>Pricing — Niagara Turnover Co.</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | Niagara Airbnb Turnover Coverage | Niagara Turnover Co.</title>
+<meta name="description" content="Transparent Airbnb turnover pricing for Niagara Region hosts. On-Demand from $99+, Operational Coverage from $89+ per turnover, Full System Management custom quoted. No contracts.">
+<meta name="keywords" content="Airbnb cleaning price Niagara, turnover cost Niagara Falls, Airbnb cleaner rates St Catharines, short term rental cleaning pricing Niagara">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ink:#060d1a;--navy:#0a1628;--navy2:#0f1f38;
-  --blue:#2563eb;--blue2:#1a4fd8;--ice:#38bdf8;
-  --gold:#e2a74e;--gold2:#c8923b;
-  --white:#ffffff;--off:#dde6f5;--muted:#7a90b3;--muted2:#4d6380;
-  --green:#10b981;--border:rgba(255,255,255,.07);
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'Outfit',system-ui,sans-serif;
-  --r:10px;--rlg:18px;--rxl:28px;
-}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--ink);color:var(--off);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");background-size:160px;opacity:.5;mix-blend-mode:overlay}
-img{max-width:100%;display:block}a{color:inherit;text-decoration:none}ul{list-style:none}
-.wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 20px}
+  :root {
+    --black: #0B0D0F;
+    --dark: #111418;
+    --panel: #181C22;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #F0EDE8;
+    --muted: #8A8A8A;
+    --subtle: #555;
+    --accent: #C8A96E;
+    --accent-light: #E2C998;
+    --accent-dim: rgba(200,169,110,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 6px;
+    --radius-lg: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--sans); background: var(--black); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1 { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1; font-weight: 400; }
+  h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.15; font-weight: 400; }
+  h3 { font-size: 1rem; font-weight: 500; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+  .section { padding: 5rem 0; }
+  .section-sm { padding: 3.5rem 0; }
+  .section-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
 
-/* URGENCY BAR */
-.urgency{background:linear-gradient(90deg,#1a56db,#0ea5e9);text-align:center;padding:9px 16px;font-size:.8rem;font-weight:500;letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.1)}
-.urgency strong{font-weight:700}
-.pulse-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px;vertical-align:middle;animation:pulseRing 2s infinite}
-@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(16,185,129,.4)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(11,13,15,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: var(--black); font-size: 0.875rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: var(--radius); transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--accent-light); }
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:200;background:rgba(6,13,26,.92);backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.nav-logo img{height:32px;filter:invert(1);opacity:.9}
-.nav-brand{font-family:var(--sans);font-weight:700;font-size:.9rem;color:var(--white)}
-.nav-brand span{display:block;font-size:.58rem;font-weight:500;color:var(--ice);letter-spacing:.14em;text-transform:uppercase}
-.nav-links{display:none;gap:28px;align-items:center}
-.nav-links a{font-size:.84rem;color:var(--muted);transition:color .18s}
-.nav-links a:hover{color:var(--white)}
-.nav-phone{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:700;font-size:.88rem;color:var(--white);background:var(--blue);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:9px 16px;box-shadow:0 4px 14px rgba(37,99,235,.4);transition:all .2s;flex-shrink:0}
-.nav-phone:hover{background:var(--blue2);transform:translateY(-1px)}
-.nav-phone svg{width:14px;height:14px}
-@media(min-width:768px){.nav-links{display:flex}}
+  /* ALERT BAR */
+  .alert-bar { background: rgba(200,169,110,0.1); border-bottom: 1px solid rgba(200,169,110,0.2); text-align: center; padding: 0.55rem 1rem; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.03em; }
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:.9rem;letter-spacing:.02em;border-radius:var(--r);padding:14px 26px;transition:all .22s ease;white-space:nowrap;cursor:pointer}
-.btn-call{background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);color:var(--white);border:1px solid rgba(255,255,255,.1);box-shadow:0 6px 20px rgba(37,99,235,.4)}
-.btn-call:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,99,235,.55)}
-.btn-sms{background:rgba(255,255,255,.05);color:var(--ice);border:1px solid rgba(56,189,248,.25);backdrop-filter:blur(8px)}
-.btn-sms:hover{background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.5);transform:translateY(-2px)}
-.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 100%);color:var(--ink);font-weight:700;border:1px solid rgba(255,255,255,.15);box-shadow:0 6px 20px rgba(226,167,78,.35)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(226,167,78,.5)}
-.btn-lg{font-size:1rem;padding:17px 32px}
-.btn svg{flex-shrink:0;width:16px;height:16px}
+  /* BUTTONS */
+  .btn-primary { background: var(--accent); color: var(--black); font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.75rem; border-radius: var(--radius); transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-secondary { border: 1px solid var(--border-strong); color: var(--text); font-size: 0.95rem; font-weight: 400; padding: 0.85rem 1.75rem; border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.04); }
 
-/* PAGE HERO */
-.hero{position:relative;padding:90px 0 72px;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% -5%,rgba(37,99,235,.22) 0%,transparent 58%),linear-gradient(180deg,var(--navy) 0%,var(--ink) 100%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.03) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 75% 75% at 50% 40%,black 10%,transparent 75%)}
-.hero-inner{position:relative;z-index:2}
-.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-bottom:14px;display:block}
-h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.06;letter-spacing:-.01em;color:var(--white);margin-bottom:18px}
-.gold{color:var(--gold);font-style:italic}
-.hero-sub{font-size:1.05rem;color:var(--muted);max-width:560px;margin:0 auto 32px;line-height:1.75;font-weight:300}
-.hero-note{display:inline-block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:8px 20px;font-size:.82rem;color:var(--muted);letter-spacing:.03em;margin-top:8px}
+  /* STATS */
+  .stats-strip { border-bottom: 1px solid var(--border); padding: 2.25rem 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; }
+  .stat-item { padding: 0.5rem 1rem; border-right: 1px solid var(--border); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 2rem; color: var(--accent); line-height: 1; margin-bottom: 0.25rem; }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* STATS */
-.stats{background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
-.stats-inner{display:grid;grid-template-columns:repeat(2,1fr)}
-.stat{padding:24px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
-.stat:nth-child(even){border-right:none}
-.stat:nth-child(n+3){border-bottom:none}
-.stat-n{font-family:var(--serif);font-weight:900;font-size:2rem;line-height:1;background:linear-gradient(135deg,var(--white),var(--ice));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-l{font-size:.7rem;font-weight:500;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
-@media(min-width:600px){.stats-inner{grid-template-columns:repeat(4,1fr)}.stat{border-bottom:none}.stat:nth-child(even){border-right:1px solid rgba(255,255,255,.05)}.stat:last-child{border-right:none}}
+  /* BASE RATES */
+  .base-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 2.5rem; }
+  .base-card { background: var(--dark); padding: 1.75rem 1.5rem; text-align: center; transition: background 0.2s; }
+  .base-card:hover { background: var(--panel); }
+  .base-beds { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+  .base-price { font-family: var(--serif); font-size: 2rem; color: var(--accent); line-height: 1; margin-bottom: 0.25rem; }
+  .base-note { font-size: 0.75rem; color: var(--subtle); }
 
-/* SECTIONS */
-.sec{padding:80px 0}
-.bg-navy{background:var(--navy)}
-.bg-ink{background:var(--ink)}
-.bg-navy2{background:var(--navy2)}
-.sec-hd{margin-bottom:48px}
-.sec-hd.center{text-align:center}
-.sec-hd.center .sub{max-width:500px;margin:12px auto 0}
-.sec-hd .sub{margin-top:12px;max-width:520px}
-h2{font-family:var(--serif);font-weight:900;font-size:clamp(1.6rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.01em;color:var(--white);margin-top:8px}
-h3{font-family:var(--sans);font-weight:700;font-size:1rem;color:var(--white)}
-p.sub{font-size:1.05rem;color:var(--muted);line-height:1.75;font-weight:300}
-.ice{color:var(--ice)}
-.line{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+  /* TIERS */
+  .tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .tier-card { background: var(--dark); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 1.75rem; position: relative; transition: border-color 0.2s; }
+  .tier-card:hover { border-color: var(--border-strong); }
+  .tier-card.featured { border-color: var(--accent); background: linear-gradient(160deg, rgba(200,169,110,0.06) 0%, var(--dark) 50%); }
+  .tier-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--black); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.85rem; border-radius: 100px; white-space: nowrap; }
+  .tier-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .tier-title { font-family: var(--serif); font-size: 1.4rem; line-height: 1.2; margin-bottom: 0.75rem; }
+  .tier-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+  .tier-price-block { margin-bottom: 1.5rem; }
+  .tier-from { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .tier-amount { font-family: var(--serif); font-size: 2.5rem; color: var(--text); line-height: 1; }
+  .tier-unit { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+  .tier-qualifier { font-size: 0.72rem; color: var(--subtle); margin-top: 0.35rem; }
+  .tier-features { list-style: none; border-top: 1px solid var(--border); padding-top: 1.25rem; margin-bottom: 1.5rem; }
+  .tier-features li { font-size: 0.83rem; color: var(--muted); padding: 0.3rem 0; display: flex; align-items: flex-start; gap: 0.5rem; }
+  .tier-features li::before { content: '✓'; color: var(--accent); font-size: 0.75rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .tier-cta { display: block; text-align: center; background: var(--panel); border: 1px solid var(--border-strong); color: var(--text); font-size: 0.875rem; font-weight: 500; padding: 0.75rem; border-radius: var(--radius); transition: background 0.2s; }
+  .tier-cta:hover { background: rgba(255,255,255,0.06); }
+  .tier-cta.featured { background: var(--accent); color: var(--black); border-color: var(--accent); }
+  .tier-cta.featured:hover { background: var(--accent-light); }
 
-/* REALIZATION BOX */
-.realize-box{background:linear-gradient(135deg,rgba(37,99,235,.2) 0%,var(--navy2) 60%);border:1px solid rgba(37,99,235,.25);border-radius:var(--rxl);padding:48px 40px;text-align:center;position:relative;overflow:hidden}
-.realize-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(37,99,235,.2) 0%,transparent 60%);pointer-events:none}
-.realize-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.realize-box h2{margin-bottom:14px}
-.realize-box p{font-size:1rem;color:var(--muted);line-height:1.8}
+  /* ENHANCEMENTS */
+  .enhancements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 2.5rem; }
+  .enhancement-card { background: var(--dark); padding: 1.5rem; transition: background 0.2s; }
+  .enhancement-card:hover { background: var(--panel); }
+  .enhancement-name { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; }
+  .enhancement-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+  .enhancement-price { font-size: 0.75rem; color: var(--accent); font-weight: 500; }
 
-/* BASE RATES GRID */
-.base-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
-.base-card{background:var(--navy2);border:1px solid rgba(255,255,255,.07);border-radius:var(--rlg);padding:28px 24px;text-align:center;transition:border-color .2s,transform .2s}
-.base-card:hover{border-color:rgba(56,189,248,.25);transform:translateY(-3px)}
-.base-card span{display:block;font-size:.78rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
-.base-card strong{font-family:var(--serif);font-weight:900;font-size:2rem;color:var(--white)}
-.base-note{text-align:center;font-size:.82rem;color:var(--muted2);margin-top:18px}
-@media(min-width:560px){.base-grid{grid-template-columns:repeat(4,1fr)}}
+  /* TESTIMONIAL */
+  .testimonial-pull { background: var(--dark); border: 1px solid rgba(200,169,110,0.2); border-radius: var(--radius-lg); padding: 2rem; margin-top: 3rem; }
+  .pull-stars { color: var(--accent); font-size: 0.85rem; margin-bottom: 1rem; }
+  .pull-text { font-size: 1rem; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; font-family: var(--serif); }
+  .pull-author { font-size: 0.8rem; color: var(--muted); }
 
-/* COVERAGE FLOW */
-.coverage-flow{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 40px}
-.cov-step{padding:9px 16px;border-radius:var(--r);font-size:.84rem;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
-.cov-step.featured{color:var(--white);border-color:rgba(56,189,248,.3);background:rgba(37,99,235,.15)}
-.cov-arrow{color:var(--muted2);font-size:.9rem}
+  /* FINAL CTA */
+  .final-cta { text-align: center; padding: 6rem 0; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  .final-cta::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.08) 0%, transparent 70%); pointer-events: none; }
+  .final-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
 
-/* TIER CARDS */
-.tier-row{display:grid;gap:18px}
-.tier{background:var(--navy2);border:1px solid rgba(255,255,255,.07);border-radius:var(--rxl);padding:36px 30px;position:relative;overflow:hidden;transition:border-color .25s,transform .3s,box-shadow .3s}
-.tier::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent)}
-.tier:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 50px rgba(37,99,235,.1);border-color:rgba(37,99,235,.3)}
-.tier--star{border-color:rgba(37,99,235,.3);background:linear-gradient(145deg,rgba(37,99,235,.18) 0%,var(--navy2) 60%)}
-.tier-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:16px;box-shadow:0 4px 12px rgba(226,167,78,.3)}
-.tier-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:10px}
-.tier h3{font-size:1.3rem;margin-bottom:8px}
-.tier-tag{font-size:.84rem;color:var(--muted);margin-bottom:20px;line-height:1.6}
-.price-row{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
-.price-from{font-family:var(--serif);font-size:1rem;color:var(--muted);margin-bottom:2px}
-.price-num{font-family:var(--serif);font-weight:900;font-size:3.6rem;line-height:1;letter-spacing:-.03em;color:var(--white)}
-.tier--star .price-num{color:var(--gold)}
-.price-period{font-size:.8rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
-.price-note{font-size:.76rem;color:var(--muted2);margin-top:8px;line-height:1.55;margin-bottom:28px}
-.tier-feats{display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
-.tier-feat{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--off)}
-.tier-feat.dim{opacity:.35}
-.ck{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);display:flex;align-items:center;justify-content:center;color:var(--ice);font-size:.6rem}
-.tier-feat.dim .ck::before{content:'—'}
-.tier-feat:not(.dim) .ck::before{content:'✓'}
-.tier-note{font-size:.74rem;color:var(--muted2);text-align:center;margin-top:10px}
-@media(min-width:768px){.tier-row{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.tier-row{grid-template-columns:repeat(3,1fr)}}
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 3rem 0; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+  .footer-brand p { font-size: 0.83rem; color: var(--muted); margin-top: 0.75rem; max-width: 280px; line-height: 1.7; }
+  .footer-col h4 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.5rem; }
+  .footer-col ul li a { font-size: 0.83rem; color: var(--muted); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--text); }
+  .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--subtle); }
 
-/* ENHANCEMENTS */
-.enh-grid{display:grid;gap:14px;margin-top:40px}
-.enh-card{background:var(--navy2);border:1px solid rgba(255,255,255,.07);border-radius:var(--rlg);padding:26px 24px;transition:border-color .2s,transform .2s}
-.enh-card:hover{border-color:rgba(56,189,248,.2);transform:translateY(-3px)}
-.enh-card h4{font-family:var(--sans);font-weight:700;font-size:1rem;color:var(--white);margin-bottom:7px}
-.enh-card p{font-size:.84rem;color:var(--muted);line-height:1.65;margin-bottom:14px}
-.enh-price{font-size:.92rem;font-weight:600;color:var(--gold)}
-.enh-note{font-size:.72rem;color:var(--muted2);margin-top:4px}
-@media(min-width:560px){.enh-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:900px){.enh-grid{grid-template-columns:repeat(4,1fr)}}
+  /* STICKY MOBILE */
+  .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; padding: 0.75rem 1rem; background: rgba(11,13,15,0.95); border-top: 1px solid var(--border-strong); backdrop-filter: blur(12px); gap: 0.75rem; }
+  .sticky-cta a { flex: 1; text-align: center; padding: 0.75rem; border-radius: var(--radius); font-size: 0.875rem; font-weight: 600; }
+  .sticky-cta a.cta-call { background: var(--panel); border: 1px solid var(--border-strong); color: var(--text); }
+  .sticky-cta a.cta-text { background: var(--accent); color: var(--black); }
 
-/* QUOTE NUDGE */
-.quote-nudge{text-align:center;padding:0 0 64px}
-.quote-nudge p{font-size:.94rem;color:var(--muted)}
-.quote-nudge a{color:var(--gold);font-weight:600;transition:color .2s}
-.quote-nudge a:hover{color:var(--gold2)}
-
-/* TESTIMONIAL */
-.testi{background:linear-gradient(140deg,rgba(37,99,235,.2) 0%,var(--ink) 60%);border-top:1px solid rgba(37,99,235,.15);border-bottom:1px solid rgba(37,99,235,.15);padding:72px 0;text-align:center;position:relative;overflow:hidden}
-.testi::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% -5%,rgba(37,99,235,.2) 0%,transparent 60%);pointer-events:none}
-.testi-inner{position:relative;z-index:1}
-.testi-stars{color:var(--gold);font-size:.85rem;letter-spacing:4px;margin-bottom:24px}
-.testi-quote{font-family:var(--serif);font-weight:700;font-size:clamp(1.2rem,2.5vw,2rem);line-height:1.45;color:var(--white);max-width:700px;margin:0 auto 20px;font-style:italic}
-.testi-author{font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-
-/* CLOSING CTA */
-.close-cta{background:linear-gradient(140deg,rgba(37,99,235,.25) 0%,var(--ink) 65%);border-top:1px solid rgba(37,99,235,.2);padding:90px 0;text-align:center;position:relative;overflow:hidden}
-.close-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% -5%,rgba(37,99,235,.28) 0%,transparent 60%);pointer-events:none}
-.close-inner{position:relative;z-index:1}
-.close-cta h2{max-width:680px;margin:10px auto 16px}
-.close-cta .sub{max-width:440px;margin:0 auto 36px}
-.close-btns{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
-.close-num{font-family:var(--serif);font-weight:900;font-size:1.8rem;color:var(--white);margin-top:24px}
-.close-num a{color:var(--ice)}
-.close-note{font-size:.8rem;color:var(--muted);margin-top:10px}
-@media(min-width:520px){.close-btns{flex-direction:row;justify-content:center}}
-
-/* FOOTER */
-.footer{background:#04080f;border-top:1px solid rgba(255,255,255,.05);padding:52px 0 24px}
-.footer-grid{display:grid;gap:40px}
-.footer-brand-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.footer-brand-row img{height:28px;filter:invert(1);opacity:.75}
-.footer-brand-name{font-family:var(--sans);font-weight:700;font-size:.9rem;color:var(--white)}
-.footer-desc{font-size:.83rem;color:var(--muted2);line-height:1.7;max-width:250px}
-.footer-col h5{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:16px}
-.footer-col ul{display:flex;flex-direction:column;gap:10px}
-.footer-col ul a{font-size:.85rem;color:var(--muted);transition:color .18s}
-.footer-col ul a:hover{color:var(--white)}
-.footer-cta-btn{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:var(--white);font-family:var(--sans);font-weight:600;font-size:.85rem;padding:11px 18px;border-radius:var(--r);border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 14px rgba(37,99,235,.35);transition:all .2s}
-.footer-cta-btn:hover{background:var(--blue2);transform:translateY(-1px)}
-.footer-bottom{margin-top:40px;padding-top:18px;border-top:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;font-size:.75rem;color:var(--muted2)}
-@media(min-width:768px){.footer-grid{grid-template-columns:1.6fr 1fr 1fr}.footer-bottom{flex-direction:row;justify-content:space-between;text-align:left}}
-
-/* MOBILE STICKY */
-.sticky{position:fixed;bottom:0;left:0;right:0;z-index:500;display:flex;gap:10px;padding:11px 14px 14px;background:rgba(4,8,16,.94);backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.08);box-shadow:0 -8px 30px rgba(0,0,0,.5)}
-.sticky a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 10px;border-radius:var(--r);font-family:var(--sans);font-weight:700;font-size:.875rem;transition:opacity .2s}
-.sticky a:active{opacity:.75}
-.sticky-call{background:var(--blue);color:var(--white);box-shadow:0 4px 14px rgba(37,99,235,.45);border:1px solid rgba(255,255,255,.1)}
-.sticky-sms{background:rgba(255,255,255,.05);color:var(--ice);border:1px solid rgba(56,189,248,.22)}
-@media(min-width:768px){.sticky{display:none}}
-@media(max-width:767px){body{padding-bottom:76px}}
-
-/* REVEAL */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.rv.in{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .base-grid { grid-template-columns: repeat(2, 1fr); }
+    .tiers-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .enhancements-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 80px; }
+    .base-grid { grid-template-columns: repeat(2, 1fr); }
+    .enhancements-grid { grid-template-columns: 1fr; }
+  }
 </style>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S01J0050B3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-S01J0050B3');</script>
 </head>
 <body>
 
-<!-- URGENCY BAR -->
-<div class="urgency">
-  <span class="pulse-dot"></span>
-  <strong>Taking new hosts now</strong> — Niagara Region · Limited spots · <strong>(289) 257-7725</strong>
+<div class="alert-bar">
+  Taking new hosts now — Niagara Region &nbsp;·&nbsp; Limited spots &nbsp;·&nbsp; <a href="tel:+12892577725" style="color: var(--accent); font-weight: 600;">(289) 257-7725</a>
 </div>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <a href="index.html" class="nav-logo">
-      <picture><source srcset="NTClogo.webp" type="image/webp"/><img src="NTClogo.png" alt="NTC"/></picture>
-      <div class="nav-brand">Niagara Turnover Co.<span>Niagara Region</span></div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html#process">How It Works</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="index.html#areas">Areas</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-    </ul>
-    <a href="tel:+12892577725" class="nav-phone">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.19 22 2 13.81 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/></svg>
-      (289) 257-7725
-    </a>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Niagara Turnover Co.</a>
+    <div class="nav-links">
+      <a href="index.html#system">How It Works</a>
+      <a href="services.html">Services</a>
+      <a href="pricing.html" class="active">Pricing</a>
+      <a href="index.html#areas">Areas</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+    <a href="sms:+12892577725" class="nav-cta">Text Your Listing →</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="wrap hero-inner">
-    <span class="eyebrow">Flexible Coverage Pricing</span>
-    <h1>Coverage Built Around<br/><span class="gold">Your Level of Control</span></h1>
-    <p class="hero-sub">Clear starting points. Tailored to your property size, condition, and how hands-off you want to be.</p>
-    <div class="hero-note">Most single-unit hosts: $85–$150 per turnover · Monthly plans from $299+</div>
+<section style="padding: 6rem 0 5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(200,169,110,0.05) 0%, transparent 70%); pointer-events: none;"></div>
+  <div class="container">
+    <span class="section-tag">Coverage pricing</span>
+    <h1>Coverage Built Around Your Level of Control</h1>
+    <p style="font-size: 1.05rem; color: var(--muted); max-width: 540px; margin-top: 1rem; line-height: 1.65;">Clear starting points. Tailored to your property size, turnover frequency, and how hands-off you want to be.</p>
+    <p style="font-size: 0.83rem; color: var(--subtle); margin-top: 0.75rem;">Single-unit hosts typically start at $85–$150 per turnover · Monthly plans from $299+</p>
+    <div style="display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap;">
+      <a href="sms:+12892577725" class="btn-primary">Text Your Listing</a>
+      <a href="tel:+12892577725" class="btn-secondary">Call (289) 257-7725</a>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.6rem;">Takes 30 seconds · No commitment · Available 24/7</p>
   </div>
 </section>
 
 <!-- STATS -->
-<div class="stats">
-  <div class="wrap">
-    <div class="stats-inner">
-      <div class="stat rv"><div class="stat-n">10+</div><div class="stat-l">Hosts Served</div></div>
-      <div class="stat rv d1"><div class="stat-n">50+</div><div class="stat-l">Turnovers Completed</div></div>
-      <div class="stat rv d2"><div class="stat-n">100%</div><div class="stat-l">On-Time Coverage</div></div>
-      <div class="stat rv d3"><div class="stat-n">7</div><div class="stat-l">Cities Covered</div></div>
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">On-Time Coverage</div></div>
+      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat-item"><div class="stat-num">&lt;1hr</div><div class="stat-label">Emergency Response</div></div>
+      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Missed Turnovers</div></div>
     </div>
   </div>
 </div>
-<div class="line"></div>
-
-<!-- REALIZATION -->
-<section class="sec bg-navy">
-  <div class="wrap">
-    <div class="realize-box rv">
-      <div class="realize-inner">
-        <span class="eyebrow">What Most Hosts Don't Realize</span>
-        <h2>Bookings Don't Break the Business.<br/><span class="ice">Turnovers Do.</span></h2>
-        <p>One missed clean becomes one bad review. One bad review becomes lost ranking. Lost ranking becomes lost revenue. That's why serious hosts stop hiring random cleaners and start building reliable coverage systems.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="line"></div>
 
 <!-- BASE RATES -->
-<section class="sec bg-ink">
-  <div class="wrap">
-    <div class="sec-hd center rv">
-      <span class="eyebrow">Starting Rates</span>
-      <h2>Base Turnover Pricing</h2>
-      <p class="sub">Entry-point pricing for standard Airbnb turnovers. Final pricing depends on condition, laundry volume, timing, and whether extra services are needed.</p>
+<section class="section">
+  <div class="container">
+    <span class="section-tag">Starting rates</span>
+    <h2>Base Turnover Pricing</h2>
+    <p style="color: var(--muted); margin-top: 0.75rem; max-width: 520px; font-size: 0.95rem;">Entry-point pricing for standard Airbnb turnovers. Final pricing depends on condition, laundry volume, timing, and any add-ons needed.</p>
+    <div class="base-grid">
+      <div class="base-card">
+        <div class="base-beds">1 Bedroom</div>
+        <div class="base-price">$85</div>
+        <div class="base-note">starting from</div>
+      </div>
+      <div class="base-card">
+        <div class="base-beds">2 Bedroom</div>
+        <div class="base-price">$105</div>
+        <div class="base-note">starting from</div>
+      </div>
+      <div class="base-card">
+        <div class="base-beds">3 Bedroom</div>
+        <div class="base-price">$125</div>
+        <div class="base-note">starting from</div>
+      </div>
+      <div class="base-card">
+        <div class="base-beds">4 Bedroom+</div>
+        <div class="base-price">$150+</div>
+        <div class="base-note">starting from</div>
+      </div>
     </div>
-    <div class="base-grid rv">
-      <div class="base-card"><span>1 Bedroom</span><strong>From $85</strong></div>
-      <div class="base-card"><span>2 Bedroom</span><strong>From $105</strong></div>
-      <div class="base-card"><span>3 Bedroom</span><strong>From $125</strong></div>
-      <div class="base-card"><span>4 Bedroom</span><strong>From $150+</strong></div>
-    </div>
-    <p class="base-note">Starting rates only. Heavier conditions, deep resets, same-day timing, and enhancements are priced separately.</p>
+    <p style="font-size: 0.78rem; color: var(--subtle); margin-top: 1rem;">Starting rates only. Heavier conditions, deep resets, same-day timing, and enhancements are priced separately.</p>
   </div>
 </section>
-<div class="line"></div>
 
-<!-- COVERAGE TIERS -->
-<section class="sec bg-navy">
-  <div class="wrap">
-    <div class="sec-hd center rv">
-      <span class="eyebrow">Levels of Coverage</span>
-      <h2>Choose the Level That Matches<br/><span class="ice">Your Operation</span></h2>
-    </div>
-    <div class="coverage-flow rv">
-      <div class="cov-step">On-Demand Coverage</div>
-      <div class="cov-arrow">→</div>
-      <div class="cov-step featured">Operational Coverage</div>
-      <div class="cov-arrow">→</div>
-      <div class="cov-step">Full System Management</div>
-    </div>
-    <div class="tier-row">
+<!-- TIERS -->
+<section class="section" style="background: var(--dark); border-top: 1px solid var(--border);">
+  <div class="container">
+    <span class="section-tag">Coverage levels</span>
+    <h2>Choose the Level That Matches Your Operation</h2>
+    <p style="color: var(--muted); margin-top: 0.75rem; max-width: 500px; font-size: 0.95rem;">Not packages. Levels of operational control. Text us your listing and we'll tell you exactly which one fits.</p>
+    <div class="tiers-grid">
 
-      <!-- TIER 1 -->
-      <div class="tier rv">
+      <div class="tier-card">
         <div class="tier-label">Tier 01</div>
-        <h3>On-Demand Coverage</h3>
-        <p class="tier-tag">You handle the Airbnb. We step in when coverage is needed.</p>
-        <p class="price-from">From</p>
-        <div class="price-row"><span class="price-num">85</span></div>
-        <div class="price-period">per turnover</div>
-        <p class="price-note">Best for occasional coverage, same-day saves, or overflow support. Final pricing adjusted by unit size, condition, and timing.</p>
-        <div class="tier-feats">
-          <div class="tier-feat"><div class="ck"></div>Guest-ready turnover reset</div>
-          <div class="tier-feat"><div class="ck"></div>Photo confirmation after clean</div>
-          <div class="tier-feat"><div class="ck"></div>Same-day availability when possible</div>
-          <div class="tier-feat"><div class="ck"></div>Bathroom, kitchen, and bed reset</div>
-          <div class="tier-feat"><div class="ck"></div>No commitment required</div>
-          <div class="tier-feat dim"><div class="ck"></div>Priority scheduling</div>
-          <div class="tier-feat dim"><div class="ck"></div>Recurring monthly coverage</div>
+        <div class="tier-title">On-Demand Coverage</div>
+        <div class="tier-desc">You handle the Airbnb. We step in when coverage is needed — same-day, no gaps, no excuses.</div>
+        <div class="tier-price-block">
+          <div class="tier-from">Starting from</div>
+          <div class="tier-amount">$99<span style="font-size:1.2rem;">+</span></div>
+          <div class="tier-unit">per turnover</div>
+          <div class="tier-qualifier">depends on unit size &amp; condition</div>
         </div>
-        <a href="sms:+12892577725" class="btn btn-sms" style="width:100%;justify-content:center">Text Your Listing</a>
-        <p class="tier-note">Best for reactive or occasional needs</p>
+        <ul class="tier-features">
+          <li>Guest-ready turnover reset</li>
+          <li>Photo confirmation after every clean</li>
+          <li>Same-day availability</li>
+          <li>Bathroom, kitchen &amp; bed reset</li>
+          <li>No commitment required</li>
+        </ul>
+        <a href="sms:+12892577725" class="tier-cta">Text Your Listing</a>
+        <p style="font-size: 0.72rem; color: var(--subtle); text-align: center; margin-top: 0.5rem;">Best for reactive or occasional coverage</p>
       </div>
 
-      <!-- TIER 2 FEATURED -->
-      <div class="tier tier--star rv d1">
+      <div class="tier-card featured">
         <div class="tier-badge">Most Popular</div>
         <div class="tier-label">Tier 02</div>
-        <h3>Operational Coverage</h3>
-        <p class="tier-tag">Your turnovers are handled consistently — without you managing the moving parts.</p>
-        <p class="price-from">From</p>
-        <div class="price-row"><span class="price-num">299</span></div>
-        <div class="price-period">starting monthly</div>
-        <p class="price-note">Custom coverage built around listing count, turnover volume, and support level. Most active hosts choose this level.</p>
-        <div class="tier-feats">
-          <div class="tier-feat"><div class="ck"></div>Priority scheduling</div>
-          <div class="tier-feat"><div class="ck"></div>Recurring turnover coverage</div>
-          <div class="tier-feat"><div class="ck"></div>Laundry + linen reset</div>
-          <div class="tier-feat"><div class="ck"></div>Photo confirmation every clean</div>
-          <div class="tier-feat"><div class="ck"></div>Property-specific checklist</div>
-          <div class="tier-feat"><div class="ck"></div>Better pricing than one-off</div>
-          <div class="tier-feat"><div class="ck"></div>Reduced host coordination</div>
+        <div class="tier-title">Operational Coverage</div>
+        <div class="tier-desc">Your turnovers handled consistently — without you managing the moving parts every single week.</div>
+        <div class="tier-price-block">
+          <div class="tier-from">Starting from</div>
+          <div class="tier-amount">$89<span style="font-size:1.2rem;">+</span></div>
+          <div class="tier-unit">per turnover · recurring</div>
+          <div class="tier-qualifier">depends on frequency &amp; volume</div>
         </div>
-        <a href="tel:+12892577725" class="btn btn-gold" style="width:100%;justify-content:center">Call (289) 257-7725</a>
-        <p class="tier-note">Built for hosts who want consistent operations</p>
+        <ul class="tier-features">
+          <li>Priority scheduling</li>
+          <li>Recurring turnover coverage</li>
+          <li>Laundry &amp; linen reset</li>
+          <li>Photo confirmation every clean</li>
+          <li>Property-specific checklist</li>
+          <li>Reduced host coordination</li>
+        </ul>
+        <a href="tel:+12892577725" class="tier-cta featured">Call (289) 257-7725</a>
+        <p style="font-size: 0.72rem; color: var(--subtle); text-align: center; margin-top: 0.5rem;">Built for hosts who want consistent operations</p>
       </div>
 
-      <!-- TIER 3 -->
-      <div class="tier rv d2">
+      <div class="tier-card">
         <div class="tier-label">Tier 03</div>
-        <h3>Full System Management</h3>
-        <p class="tier-tag">Built for hosts who want operations handled at the system level.</p>
-        <p class="price-from">Custom</p>
-        <div class="price-row"><span class="price-num" style="font-size:2.8rem">Quote</span></div>
-        <div class="price-period">multi-unit pricing</div>
-        <p class="price-note">Tailored for operators with higher volume, multiple units, or tighter standards. Quoted after review of your operation.</p>
-        <div class="tier-feats">
-          <div class="tier-feat"><div class="ck"></div>Multi-unit coordination</div>
-          <div class="tier-feat"><div class="ck"></div>Restocking + operational oversight</div>
-          <div class="tier-feat"><div class="ck"></div>Custom workflow support</div>
-          <div class="tier-feat"><div class="ck"></div>Designed for scale-minded hosts</div>
-          <div class="tier-feat"><div class="ck"></div>Coverage built around your operation</div>
-          <div class="tier-feat"><div class="ck"></div>Preferred peak season access</div>
+        <div class="tier-title">Full System Management</div>
+        <div class="tier-desc">Operations handled at the system level. Built for hosts scaling to multiple units in Niagara.</div>
+        <div class="tier-price-block">
+          <div class="tier-from">Pricing</div>
+          <div class="tier-amount" style="font-size: 1.8rem;">Custom</div>
+          <div class="tier-unit">quoted per operation</div>
+          <div class="tier-qualifier">tailored to volume, units &amp; support level</div>
         </div>
-        <a href="sms:+12892577725" class="btn btn-sms" style="width:100%;justify-content:center">Request Custom Quote</a>
-        <p class="tier-note">Best for multi-unit and scale-focused setups</p>
+        <ul class="tier-features">
+          <li>Multi-unit coordination</li>
+          <li>Restocking &amp; operational oversight</li>
+          <li>Custom workflow support</li>
+          <li>Monthly performance report</li>
+          <li>Preferred peak season access</li>
+        </ul>
+        <a href="sms:+12892577725" class="tier-cta">Request Custom Quote</a>
+        <p style="font-size: 0.72rem; color: var(--subtle); text-align: center; margin-top: 0.5rem;">Best for multi-unit &amp; scale-focused hosts</p>
       </div>
 
     </div>
   </div>
 </section>
-<div class="line"></div>
 
 <!-- ENHANCEMENTS -->
-<section class="sec bg-ink">
-  <div class="wrap">
-    <div class="sec-hd rv">
-      <span class="eyebrow">Service Enhancements</span>
-      <h2>Add Extra Support<br/><span class="ice">Only When Needed</span></h2>
-      <p class="sub">Priced separately so you only pay for the extra workload when it actually applies.</p>
+<section class="section">
+  <div class="container">
+    <span class="section-tag">Add-ons</span>
+    <h2>Extra Support, Only When Needed</h2>
+    <p style="color: var(--muted); margin-top: 0.75rem; max-width: 480px; font-size: 0.95rem;">Priced separately so you only pay for extra workload when it actually applies.</p>
+    <div class="enhancements-grid">
+      <div class="enhancement-card">
+        <div class="enhancement-name">Deep Clean</div>
+        <div class="enhancement-desc">Seasonal resets, heavier use, or recovering a unit back to standard.</div>
+        <div class="enhancement-price">From $60 · added by condition</div>
+      </div>
+      <div class="enhancement-card">
+        <div class="enhancement-name">Laundry Service</div>
+        <div class="enhancement-desc">Wash, dry, fold, and turnover-ready linen setup handled for you.</div>
+        <div class="enhancement-price">From $25 · varies by linen volume</div>
+      </div>
+      <div class="enhancement-card">
+        <div class="enhancement-name">Restocking</div>
+        <div class="enhancement-desc">Paper goods, toiletries, coffee, and guest essentials replenished before check-in.</div>
+        <div class="enhancement-price">From $15 + supplies</div>
+      </div>
+      <div class="enhancement-card">
+        <div class="enhancement-name">Same-Day Rush</div>
+        <div class="enhancement-desc">Emergency coverage when timing is tight and a clean cannot wait.</div>
+        <div class="enhancement-price">From $30 · based on schedule urgency</div>
+      </div>
     </div>
-    <div class="enh-grid rv">
-      <div class="enh-card">
-        <h4>Deep Clean</h4>
-        <p>Best for seasonal resets, heavier use, or recovering a unit back to standard.</p>
-        <div class="enh-price">From $60</div>
-        <div class="enh-note">Added based on property condition</div>
-      </div>
-      <div class="enh-card">
-        <h4>Laundry Service</h4>
-        <p>Wash, dry, fold, and turnover-ready linen setup handled for you.</p>
-        <div class="enh-price">From $25</div>
-        <div class="enh-note">Varies by linen volume</div>
-      </div>
-      <div class="enh-card">
-        <h4>Restocking</h4>
-        <p>Paper goods, toiletries, coffee, and guest essentials replenished before check-in.</p>
-        <div class="enh-price">From $15 + supplies</div>
-        <div class="enh-note">Based on item count and supply cost</div>
-      </div>
-      <div class="enh-card">
-        <h4>Same-Day Rush</h4>
-        <p>Emergency coverage when timing gets tight and a clean cannot wait.</p>
-        <div class="enh-price">From $30</div>
-        <div class="enh-note">Based on schedule urgency</div>
-      </div>
+    <p style="font-size: 0.8rem; color: var(--subtle); margin-top: 1.25rem;">Not sure what your property needs? <a href="sms:+12892577725" style="color: var(--accent);">Text us your listing for a fast estimate →</a></p>
+  </div>
+</section>
+
+<!-- TESTIMONIAL PULL -->
+<section style="padding: 0 0 5rem; background: var(--black);">
+  <div class="container" style="max-width: 680px;">
+    <div class="testimonial-pull">
+      <div class="pull-stars">★★★★★</div>
+      <p class="pull-text">"Friendly, professional, and flexible. The cleaning was done to a high standard — their attention to detail gave me real confidence. What stood out most was the communication — clear, responsive, and always on top of what was needed. I'd highly recommend to any Airbnb host looking for a reliable, easy-to-work-with operator."</p>
+      <p class="pull-author">Gabriella Guo · Verified Google Review · Airbnb Host, Niagara Region</p>
     </div>
   </div>
 </section>
-<div class="line"></div>
 
-<!-- QUOTE NUDGE -->
-<div class="quote-nudge">
-  <div class="wrap">
-    <p>Not sure what your property needs? <a href="sms:+12892577725">Text us your listing for a fast estimate →</a></p>
-  </div>
-</div>
-
-<!-- TESTIMONIAL -->
-<div class="testi">
-  <div class="wrap testi-inner">
-    <div class="testi-stars">★★★★★</div>
-    <div class="testi-quote">"Friendly, professional, flexible, and willing to work with you. The attention to detail gave me confidence in using them for my Airbnb."</div>
-    <div class="testi-author">— Gabriella G. · Verified Airbnb Host · Port Colborne, ON</div>
-  </div>
-</div>
-
-<!-- CLOSING CTA -->
-<section class="close-cta">
-  <div class="wrap close-inner">
-    <span class="eyebrow">Send Your Listing</span>
-    <h2>We'll Tell You What Level<br/>of <span class="gold">Coverage You Actually Need.</span></h2>
-    <p class="sub">We'll look at your setup, your booking flow, and your stress points — then point you to the level that makes sense.</p>
-    <div class="close-btns">
-      <a href="sms:+12892577725" class="btn btn-gold btn-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        Text Your Listing
-      </a>
-      <a href="tel:+12892577725" class="btn btn-sms btn-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.19 22 2 13.81 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/></svg>
-        Call Now
-      </a>
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <span class="section-tag">One decision away</span>
+    <h2>We'll Tell You What Level of Coverage You Actually Need.</h2>
+    <p style="color: var(--muted); font-size: 0.95rem; margin-top: 0.75rem; max-width: 440px; margin-left: auto; margin-right: auto;">Text us your listing. We'll look at your setup and give you a straight answer — no pitch, no pressure.</p>
+    <div class="final-ctas">
+      <a href="sms:+12892577725" class="btn-primary">Text Your Listing</a>
+      <a href="tel:+12892577725" class="btn-secondary">Call (289) 257-7725</a>
     </div>
-    <div class="close-num"><a href="tel:+12892577725">(289) 257-7725</a></div>
-    <p class="close-note">Niagara Falls · St. Catharines · Niagara-on-the-Lake · Welland · Thorold · Port Colborne · Fort Erie</p>
+    <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.75rem;">Takes 30 seconds · No commitment · No contracts</p>
+    <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.35rem;">Available 24/7 · Niagara Falls · St. Catharines · NOTL · Welland · Thorold · Port Colborne · Fort Erie</p>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand-row">
-          <picture><source srcset="NTClogo.webp" type="image/webp"/><img src="NTClogo.png" alt="NTC"/></picture>
-          <span class="footer-brand-name">Niagara Turnover Co.</span>
-        </div>
-        <p class="footer-desc">Airbnb Turnover Coverage You Can Rely On. Protecting Niagara Region hosts one turnover at a time.</p>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="font-family: var(--serif); font-size: 1.15rem;">Niagara Turnover Co.</div>
+        <p>Airbnb turnover coverage system built and operated locally in Niagara. Focused on reliability, speed, and protecting host revenue.</p>
+        <p style="margin-top: 0.75rem; font-size: 0.83rem; color: var(--muted);">Built by a local operator managing real turnovers weekly.</p>
       </div>
       <div class="footer-col">
-        <h5>Navigate</h5>
+        <h4>Navigate</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#system">How It Works</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="index.html#areas">Areas</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contact</h5>
-        <a href="tel:+12892577725" class="footer-cta-btn">
-          <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.19 22 2 13.81 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/></svg>
-          (289) 257-7725
-        </a>
-        <ul style="margin-top:14px">
-          <li><a href="sms:+12892577725">💬 Text Us Anytime</a></li>
-          <li style="margin-top:6px"><a href="https://www.google.com/maps/place/Niagara+Turnover+Co/@43.104205,-79.7714342,9z/data=!3m1!4b1!4m6!3m5!1s0xa63967db8394934d:0x10857b0d295acfba!8m2!3d43.105087!4d-79.113449!16s%2Fg%2F11z0yj8tsb" target="_blank" rel="noopener" style="color:var(--gold)">⭐ Read Our Google Reviews</a></li>
-          <li style="margin-top:10px;font-size:.78rem;color:var(--muted2);line-height:1.7">Niagara Falls · St. Catharines<br/>Niagara-on-the-Lake · Welland<br/>Thorold · Port Colborne · Fort Erie</li>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+12892577725">(289) 257-7725</a></li>
+          <li><a href="sms:+12892577725">Text Us Anytime</a></li>
+          <li><a href="https://www.google.com/maps/place/Niagara+Turnover+Co/@43.105087,-79.113449,10z/data=!3m1!4b1!4m6!3m5!1s0xa63967db8394934d:0x10857b0d295acfba!8m2!3d43.105087!4d-79.113449!16s%2Fg%2F11z0yj8tsb" target="_blank" rel="noopener" style="color: var(--accent);">Google Reviews →</a></li>
+          <li><a href="index.html#areas">Areas Covered</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2025 Niagara Turnover Co. All rights reserved.</span>
-      <span>Built for Niagara Region Airbnb Hosts</span>
+      <span>Niagara Falls · St. Catharines · NOTL · Welland · Thorold · Port Colborne · Fort Erie</span>
     </div>
   </div>
 </footer>
 
-<!-- MOBILE STICKY -->
-<div class="sticky">
-  <a href="tel:+12892577725" class="sticky-call">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.19 22 2 13.81 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/></svg>
-    Call (289) 257-7725
-  </a>
-  <a href="sms:+12892577725" class="sticky-sms">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-    Text Us
-  </a>
+<div class="sticky-cta">
+  <a href="tel:+12892577725" class="cta-call">Call Now</a>
+  <a href="sms:+12892577725" class="cta-text">Text Your Listing</a>
 </div>
 
-<script>
-  const io = new IntersectionObserver(
-    e => e.forEach(r => { if(r.isIntersecting){r.target.classList.add('in');io.unobserve(r.target)} }),
-    {threshold:.1}
-  );
-  document.querySelectorAll('.rv').forEach(el => io.observe(el));
-</script>
 </body>
 </html>
