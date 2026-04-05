@@ -1444,7 +1444,7 @@ const errorBox = document.getElementById('form-global-error');
 if (form) {
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = form.querySelector('[data-fs-submit-btn]');
+    const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.textContent = 'Sending…';
     errorBox.style.display = 'none';
@@ -1457,7 +1457,7 @@ if (form) {
       errorBox.textContent = 'Please fill in all required fields.';
       errorBox.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Send Quote Request →';
+      btn.textContent = 'Send My Details →';
       return;
     }
 
@@ -1472,7 +1472,6 @@ if (form) {
       if (response.ok) {
         form.style.display = 'none';
         successBox.style.display = 'block';
-        // Track conversion in GA4
         if (typeof gtag !== 'undefined') {
           gtag('event', 'form_submit', { event_category: 'Quote', event_label: 'Formspree Quote Form' });
         }
@@ -1482,13 +1481,13 @@ if (form) {
         errorBox.textContent = msg;
         errorBox.style.display = 'block';
         btn.disabled = false;
-        btn.textContent = 'Send Quote Request →';
+        btn.textContent = 'Send My Details →';
       }
     } catch (err) {
       errorBox.textContent = 'Network error. Please text us directly at (289) 257-7725.';
       errorBox.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Send Quote Request →';
+      btn.textContent = 'Send My Details →';
     }
   });
 }
