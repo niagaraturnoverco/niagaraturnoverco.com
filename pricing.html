@@ -202,8 +202,18 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" style="display:flex;align-items:center;gap:0.65rem;font-family:var(--serif);font-size:1.15rem;color:var(--text);">
-      <img src="NTClogo.png" alt="NTC" style="width:40px;height:40px;object-fit:contain;filter:brightness(0) invert(1);">
+    <a href="index.html" class="nav-logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 2px 8px rgba(200,169,110,0.3));flex-shrink:0;">
+        <defs>
+          <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E5C98B"/>
+            <stop offset="55%" stop-color="#C8A96E"/>
+            <stop offset="100%" stop-color="#A88C4F"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="36" height="36" rx="4" stroke="url(#lg1)" stroke-width="1.5" fill="none"/>
+        <text x="20" y="27" font-family="Georgia,'Times New Roman',serif" font-size="16" font-weight="700" fill="url(#lg1)" text-anchor="middle" letter-spacing="1.5">NT</text>
+      </svg>
       <span>Niagara Turnover Co.</span>
     </a>
     <div class="nav-links">
