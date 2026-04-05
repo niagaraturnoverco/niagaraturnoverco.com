@@ -85,7 +85,13 @@ nav {
   transition: background 0.3s;
 }
 .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-.nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--text); }
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--serif); font-size: 1.15rem; color: var(--text);
+  transition: opacity 0.2s; cursor: pointer;
+}
+.nav-logo:hover { opacity: 0.82; }
+.nav-logo img { width: 32px; height: 32px; object-fit: contain; display: block; }
 .nav-links { display: flex; gap: 2rem; align-items: center; }
 .nav-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; position: relative; }
 .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--accent); transform: scaleX(0); transition: transform 0.2s; }
@@ -230,19 +236,6 @@ nav {
   letter-spacing: 0.06em; padding: 3px 8px; border-radius: 100px;
   white-space: nowrap;
 }
-.photo-frame-empty {
-  position: relative; overflow: hidden; border-radius: var(--radius);
-  border: 1px dashed rgba(255,255,255,0.12); aspect-ratio: 4/3;
-  background: var(--panel); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0.5rem;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.photo-frame-empty:hover { border-color: rgba(200,169,110,0.3); transform: scale(1.01); }
-.photo-frame-empty .empty-icon { color: var(--subtle); }
-.photo-frame-empty .empty-icon svg { width: 20px; height: 20px; stroke: var(--subtle); fill: none; stroke-width: 1.5; }
-.photo-frame-empty span { font-size: 0.7rem; color: var(--subtle); text-align: center; line-height: 1.4; }
-.photo-frame-empty code { font-size: 0.65rem; color: rgba(200,169,110,0.5); font-family: monospace; margin-top: 0.25rem; }
-
 /* Mock thumbnail photo */
 .mock-photo {
   width: 60px; height: 60px; border-radius: 4px; background: var(--panel);
@@ -276,8 +269,6 @@ nav {
 .mock-status::before { content: '●'; font-size: 0.5rem; animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 .mock-photos { display: flex; gap: 6px; margin-top: 0.75rem; }
-.mock-photo-old-removed { display: none; }
-
 /* ── SYSTEM FLOW ── */
 .system-flow { margin-top: 3rem; position: relative; }
 .flow-connector {
@@ -538,7 +529,10 @@ footer { border-top: 1px solid var(--border); padding: 3rem 0; }
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-logo">Niagara Turnover Co.</span>
+    <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+      <img src="NTClogo.png" alt="Niagara Turnover Co.">
+      <span>Niagara Turnover Co.</span>
+    </a>
     <div class="nav-links">
       <a href="#system">How It Works</a>
       <a href="#tiers">Pricing</a>
@@ -603,7 +597,7 @@ footer { border-top: 1px solid var(--border); padding: 3rem 0; }
         <div class="stat-label">Emergency Response</div>
       </div>
       <div class="stat-item reveal delay-3">
-        <div class="stat-num" data-target="0">0</div>
+        <div class="stat-num">0</div>
         <div class="stat-label">Missed Turnovers</div>
       </div>
     </div>
@@ -725,9 +719,6 @@ footer { border-top: 1px solid var(--border); padding: 3rem 0; }
             <div class="photo-badge">Completed · Ready</div>
           </div>
         </div>
-        <p style="font-size: 0.72rem; color: var(--subtle); margin-top: 0.75rem; text-align: center;">
-          → Add <code style="font-family:monospace; color:rgba(200,169,110,0.5); font-size:0.68rem;">img-bed.jpg · img-bathroom.jpg · img-kitchen.jpg · img-living.jpg</code> to your GitHub repo
-        </p>
       </div>
     </div>
   </div>
@@ -1066,6 +1057,17 @@ footer { border-top: 1px solid var(--border); padding: 3rem 0; }
       <span class="area-pill">Port Colborne</span>
       <span class="area-pill">Fort Erie</span>
     </div>
+    <div class="reveal" style="margin-top: 2.5rem; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border);">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186450.83!2d-79.113449!3d43.105087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa63967db8394934d%3A0x10857b0d295acfba!2sNiagara%20Turnover%20Co.!5e0!3m2!1sen!2sca!4v1680000000000!5m2!1sen!2sca"
+        width="100%" height="360" style="border:0; display:block; filter: grayscale(0.3) contrast(1.05);"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Niagara Turnover Co. service area">
+      </iframe>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--subtle); margin-top: 0.75rem; text-align: center;">
+      <a href="https://www.google.com/maps/place/Niagara+Turnover+Co/@43.105087,-79.113449,10z" target="_blank" rel="noopener" style="color: var(--accent);">View full map →</a>
+    </p>
   </div>
 </section>
 
