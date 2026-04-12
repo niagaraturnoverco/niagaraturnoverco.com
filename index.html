@@ -355,6 +355,21 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 .sticky-mobile .s-call{background:var(--panel2);border:1px solid var(--border-md);color:var(--text);}
 .sticky-mobile .s-text{background:var(--gold-grad);color:var(--black);}
 
+/* ── GUARANTEE BLOCK ── */
+.guarantee-block{background:var(--accent-dim);border:1px solid var(--border-gold);border-radius:var(--rl);padding:1.5rem 2rem;text-align:center;margin-bottom:2rem;}
+.guarantee-text{font-family:var(--serif);font-size:1.1rem;color:var(--text);margin-bottom:0.35rem;}
+.guarantee-sub{font-size:0.82rem;color:var(--accent);letter-spacing:0.02em;}
+
+/* ── CONVERSION LINE ── */
+.conversion-line{text-align:center;font-size:0.95rem;color:var(--muted);border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1rem;font-style:italic;}
+
+/* ── ALERT SCARCITY ── */
+.alert-scarcity{display:inline-flex;align-items:center;gap:0.45rem;font-weight:700;color:var(--accent-lt);}
+.alert-scarcity::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;}
+
+/* ── HERO QUOTE ── */
+.hero-quote{font-size:0.78rem;color:var(--subtle);font-style:italic;margin-top:0.85rem;max-width:460px;line-height:1.65;padding-left:0.85rem;border-left:2px solid var(--border-gold);}
+
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:3rem;}
@@ -389,7 +404,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 
 <!-- ALERT BAR -->
 <div class="alert-bar">
-  Cleaner cancelled? Same-day coverage available across Niagara &nbsp;·&nbsp; <a href="tel:+12892577725">(289) 257-7725</a>
+  <span class="alert-scarcity">Limited availability for new listings</span> &nbsp;·&nbsp; Same-day coverage across Niagara &nbsp;·&nbsp; <a href="tel:+12892577725">(289) 257-7725</a>
 </div>
 
 <!-- NAV -->
@@ -449,16 +464,17 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
           <em>Turnovers That Don't Fail.</em>
         </h1>
         <p class="hero-sub reveal d2">Same-day coverage, emergency backup when your cleaner cancels, and photo confirmation after every single job. Built for Niagara hosts who can't afford a missed check-in.</p>
-        <p class="hero-micro reveal d2">Registered Ontario business &nbsp;·&nbsp; 0 missed turnovers &nbsp;·&nbsp; 7 cities covered</p>
+        <p class="hero-micro reveal d2">Registered Ontario business &nbsp;·&nbsp; Zero missed turnovers &nbsp;·&nbsp; 7 cities covered</p>
         <div class="hero-ctas reveal d3">
           <a href="sms:+12892577725" class="btn-primary">Text Your Listing</a>
           <a href="tel:+12892577725" class="btn-secondary">Call (289) 257-7725</a>
         </div>
         <div class="hero-trust reveal d4">
-          <div class="trust-item">Takes 30 seconds</div>
-          <div class="trust-item">No commitment</div>
+          <div class="trust-item">★ 5.0 on Google</div>
+          <div class="trust-item">Zero missed turnovers</div>
           <div class="trust-item">Available 24/7</div>
         </div>
+        <div class="hero-quote reveal d4">"Extremely reliable across back-to-back bookings. Cleanliness ratings stayed at 5★." — Arlia, Multi-unit Host · Verified Google Review</div>
       </div>
       <!-- RIGHT — PROOF CARD -->
       <div class="reveal-right d2">
@@ -506,9 +522,9 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 <div class="stats-row">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat reveal"><div class="stat-num" data-target="100" data-suffix="%">0%</div><div class="stat-label">On-Time Coverage</div></div>
-      <div class="stat reveal d1"><div class="stat-num" data-target="7">0</div><div class="stat-label">Cities Covered</div></div>
-      <div class="stat reveal d2"><div class="stat-num" data-target="1" data-prefix="&lt;" data-suffix="hr">—</div><div class="stat-label">Emergency Response</div></div>
+      <div class="stat reveal"><div class="stat-num">100%</div><div class="stat-label">On-Time Coverage</div></div>
+      <div class="stat reveal d1"><div class="stat-num">7</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat reveal d2"><div class="stat-num">&lt;1hr</div><div class="stat-label">Emergency Response</div></div>
       <div class="stat reveal d3"><div class="stat-num">0</div><div class="stat-label">Missed Turnovers</div></div>
     </div>
   </div>
@@ -556,6 +572,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <p>3 hours between checkout and check-in. No room for error. Most cleaning services weren't built for this pressure.</p>
       </div>
     </div>
+    <p class="conversion-line reveal">One missed turnover costs more than this service.</p>
   </div>
 </section>
 
@@ -738,7 +755,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
           <li>Your property is outside Niagara Region</li>
           <li>You want to manage every cleaning detail yourself</li>
         </ul>
-        <p style="font-size:0.8rem;color:var(--subtle);margin-top:1rem;">Not sure? Text us your listing — we'll tell you what level of coverage, if any, makes sense.</p>
+        <p style="font-size:0.8rem;color:var(--subtle);margin-top:1rem;">Text us your listing — we'll tell you what level of coverage makes sense for your setup.</p>
       </div>
     </div>
   </div>
@@ -752,7 +769,11 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
     <div class="reveal">
       <div class="tag">Coverage levels</div>
       <h2>Three Levels. One Is Right for Your Setup.</h2>
-      <p style="color:var(--muted);margin-top:0.75rem;max-width:480px;font-size:0.95rem;">Text us your listing and we'll tell you exactly which level fits — no pitch, no pressure.</p>
+      <p style="color:var(--muted);margin-top:0.75rem;max-width:480px;font-size:0.95rem;">Text us your listing and we'll tell you exactly which level fits your setup.</p>
+    </div>
+    <div class="guarantee-block reveal">
+      <div class="guarantee-text">If your unit isn't guest-ready by check-in, we fix it at no charge.</div>
+      <div class="guarantee-sub">That's the standard. Every turnover. No exceptions.</div>
     </div>
     <div class="tiers-grid">
       <div class="tier reveal d1">
@@ -767,7 +788,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
           <li>Guest-ready turnover reset</li>
           <li>Photo confirmation every job</li>
           <li>Same-day availability</li>
-          <li>No commitment required</li>
+          <li>Pay per turnover</li>
         </ul>
         <a href="sms:+12892577725" class="tier-cta tier-cta-secondary">Text Your Listing</a>
       </div>
@@ -808,7 +829,8 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <a href="sms:+12892577725" class="tier-cta tier-cta-secondary">Request Quote</a>
       </div>
     </div>
-    <p style="text-align:center;font-size:0.8rem;color:var(--subtle);margin-top:1.5rem;">
+    <p class="conversion-line reveal"><strong>Start with one turnover. No contract.</strong> If it's not right, you stop.</p>
+    <p style="text-align:center;font-size:0.8rem;color:var(--subtle);margin-top:0.75rem;">
       <a href="pricing.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">See full pricing breakdown with add-ons →</a>
     </p>
   </div>
@@ -904,7 +926,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Do I need to sign a contract?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">No contracts. On-Demand Coverage works turnover-by-turnover. Operational Coverage is month-to-month. We earn your business by showing up reliably — not by locking you in.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">No contracts. On-Demand Coverage works turnover-by-turnover. Operational Coverage is month-to-month. We earn your business by showing up reliably — every single time.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">What does a turnover actually include?<span class="faq-icon">+</span></button>
@@ -934,7 +956,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
     <div class="reveal">
       <div class="tag">Request coverage</div>
       <h2>Tell Us About Your Listing.</h2>
-      <p style="color:var(--muted);margin-top:0.75rem;font-size:0.95rem;max-width:460px;">Fill this in and we'll come back with exactly what level of coverage fits your setup — no pitch, no pressure.</p>
+      <p style="color:var(--muted);margin-top:0.75rem;font-size:0.95rem;max-width:460px;">Fill this in and we'll come back with exactly what level of coverage fits your setup.</p>
     </div>
     <div class="form-success" id="form-success">
       <div class="success-icon">✓</div>
@@ -986,7 +1008,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <textarea id="message" name="message" placeholder="Linen service, tight check-in windows, number of units, specific situation..."></textarea>
       </div>
       <button type="submit" class="form-submit">Send My Details →</button>
-      <p style="font-size:0.72rem;color:var(--subtle);text-align:center;margin-top:0.6rem;">Available 24/7 · No commitment · No contracts</p>
+      <p style="font-size:0.72rem;color:var(--subtle);text-align:center;margin-top:0.6rem;">Available 24/7 · Response within the hour</p>
     </form>
   </div>
 </section>
@@ -1027,7 +1049,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
       <a href="sms:+12892577725" class="btn-primary">Text Your Listing</a>
       <a href="tel:+12892577725" class="btn-secondary">Call (289) 257-7725</a>
     </div>
-    <p style="font-size:0.75rem;color:var(--subtle);margin-top:1rem;" class="reveal">Takes 30 seconds · No commitment · Available 24/7</p>
+    <p style="font-size:0.75rem;color:var(--subtle);margin-top:1rem;" class="reveal">Takes 30 seconds · Available 24/7 · Limited spots for new listings</p>
   </div>
 </section>
 
@@ -1040,7 +1062,8 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
       <div>
         <div class="footer-brand-name">Niagara Turnover Co.</div>
         <p class="footer-brand-desc">Airbnb turnover coverage system built and operated locally in Niagara. Focused on reliability, speed, and protecting host revenue.</p>
-        <p style="font-size:0.72rem;color:var(--subtle);margin-top:0.75rem;">Registered Ontario business · Operating locally in Niagara</p>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.75rem;font-weight:500;">Andrae — Founder, Niagara Turnover Co.</p>
+        <p style="font-size:0.72rem;color:var(--subtle);margin-top:0.35rem;">Registered Ontario Business · Operating locally in Niagara</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Navigate</div>
@@ -1071,7 +1094,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Niagara Turnover Co. All rights reserved.</span>
+      <span>© 2025–2026 Niagara Turnover Co. All rights reserved.</span>
       <span>Niagara Falls · St. Catharines · NOTL · Welland · Thorold · Port Colborne · Fort Erie</span>
     </div>
   </div>
@@ -1098,27 +1121,6 @@ const revObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 revEls.forEach(el => revObs.observe(el));
-
-// ── STAT COUNTERS ──
-function animateCount(el) {
-  const target = parseInt(el.dataset.target);
-  const suffix = el.dataset.suffix || '';
-  const prefix = el.dataset.prefix || '';
-  if (isNaN(target)) return;
-  const start = performance.now();
-  const dur = 1600;
-  const update = (now) => {
-    const p = Math.min((now - start) / dur, 1);
-    const e = 1 - Math.pow(1 - p, 3);
-    el.textContent = prefix + Math.round(e * target) + suffix;
-    if (p < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-}
-const statObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statObs.unobserve(e.target); } });
-}, { threshold: 0.5 });
-document.querySelectorAll('[data-target]').forEach(el => statObs.observe(el));
 
 // ── FAQ ──
 function toggleFaq(btn) {
