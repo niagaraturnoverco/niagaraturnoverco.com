@@ -14,7 +14,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S01J0050B3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S01J0050B3');</script>
 
-<!-- Local Business Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,15 +63,12 @@ a{color:inherit;text-decoration:none;}
 button{font-family:var(--sans);cursor:pointer;}
 p{margin-bottom:1rem;}
 
-/* ── LAYOUT ── */
 .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
 .section{padding:88px 0;}
 .section-sm{padding:56px 0;}
 
-/* ── PROGRESS ── */
 #progress{position:fixed;top:0;left:0;height:2px;background:var(--gold-grad);z-index:300;width:0;transition:width 0.08s linear;}
 
-/* ── ALERT BAR ── */
 .alert-bar{
   background:linear-gradient(90deg,rgba(200,169,110,0.08),rgba(200,169,110,0.14),rgba(200,169,110,0.08));
   border-bottom:1px solid var(--border-gold);
@@ -84,7 +80,6 @@ p{margin-bottom:1rem;}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(1.3);}}
 .alert-bar a{color:var(--gold-lt);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
 
-/* ── NAV ── */
 nav{
   position:sticky;top:0;z-index:200;
   background:rgba(9,9,11,0.92);backdrop-filter:blur(16px);
@@ -125,14 +120,12 @@ nav{
 .mobile-menu a:last-child{border-bottom:none;}
 .mobile-menu a:hover,.mobile-menu a.mob-gold{color:var(--gold);}
 
-/* Logo animation */
 @keyframes traceBorder{from{stroke-dashoffset:144;}to{stroke-dashoffset:0;}}
 @keyframes fadeInNT{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
 .logo-rect{stroke-dasharray:144;stroke-dashoffset:144;animation:traceBorder 0.9s cubic-bezier(0.4,0,0.2,1) 0.2s forwards;}
 .logo-text{opacity:0;animation:fadeInNT 0.5s ease 1.0s forwards;}
 @media(prefers-reduced-motion:reduce){.logo-rect{animation:none;stroke-dashoffset:0;}.logo-text{animation:none;opacity:1;}}
 
-/* ── BUTTONS ── */
 .btn-primary{
   display:inline-flex;align-items:center;gap:0.5rem;
   background:var(--gold-grad);color:var(--bg);
@@ -150,7 +143,6 @@ nav{
 }
 .btn-secondary:hover{border-color:rgba(200,169,110,0.4);background:var(--gold-dim);transform:translateY(-1px);}
 
-/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-left{opacity:0;transform:translateX(-24px);transition:opacity 0.65s ease,transform 0.65s ease;}
@@ -159,16 +151,12 @@ nav{
 .reveal-right.visible{opacity:1;transform:translateX(0);}
 .d1{transition-delay:0.08s;}.d2{transition-delay:0.16s;}.d3{transition-delay:0.24s;}.d4{transition-delay:0.32s;}
 
-/* ── EYEBROW ── */
 .eyebrow{
   font-family:var(--mono);font-size:0.68rem;font-weight:400;
   letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);
   margin-bottom:1rem;display:block;
 }
 
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
 #hero{
   padding:88px 0 72px;
   position:relative;overflow:hidden;
@@ -224,7 +212,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .trust-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
 .trust-item.urgent{color:var(--gold);}
 
-/* Hero right — proof card */
 .proof-card{
   background:var(--bg3);border:1px solid var(--border-md);border-radius:var(--rl);
   overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);
@@ -265,10 +252,12 @@ h1 em{font-style:italic;color:var(--gold);}
   color:var(--green);font-size:0.58rem;font-weight:600;
   padding:0.2rem 0.5rem;border-radius:100px;letter-spacing:0.04em;
 }
+/* Proof photo images — fill container, maintain crop */
+.proof-photo img,.proof-photo-full img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;border-radius:inherit;
+}
 
-/* ══════════════════════════════════════
-   FUNNEL BRIDGE (Critical new section)
-══════════════════════════════════════ */
 #funnel-bridge{
   background:var(--bg2);
   border-bottom:1px solid var(--border);
@@ -278,9 +267,7 @@ h1 em{font-style:italic;color:var(--gold);}
   display:flex;align-items:center;justify-content:space-between;
   gap:2rem;padding:28px 0;flex-wrap:wrap;
 }
-.funnel-bridge-left{
-  flex:1;
-}
+.funnel-bridge-left{flex:1;}
 .funnel-bridge-label{
   font-family:var(--mono);font-size:10px;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--dim);margin-bottom:6px;
@@ -295,9 +282,6 @@ h1 em{font-style:italic;color:var(--gold);}
 }
 .funnel-bridge-note{font-size:11px;color:var(--dim);font-family:var(--mono);}
 
-/* ══════════════════════════════════════
-   STATS
-══════════════════════════════════════ */
 .stats-row{border-bottom:1px solid var(--border);}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;}
 .stat{padding:28px 16px;border-right:1px solid var(--border);}
@@ -308,9 +292,6 @@ h1 em{font-style:italic;color:var(--gold);}
 }
 .stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;}
 
-/* ══════════════════════════════════════
-   PRE-SELL (New section)
-══════════════════════════════════════ */
 #presell{
   background:var(--bg2);
   border-bottom:1px solid var(--border);
@@ -343,35 +324,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .presell-item-text span{font-size:12px;color:var(--muted);line-height:1.5;}
 .presell-cta{margin-top:8px;text-align:center;}
 
-/* ══════════════════════════════════════
-   PROBLEM CHAIN
-══════════════════════════════════════ */
-.problem-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;
-  margin-top:3rem;
-}
-.problem-card{
-  background:var(--bg3);padding:28px 22px;
-  transition:background 0.2s;
-}
-.problem-card:hover{background:var(--bg4);}
-.problem-num{
-  font-family:var(--serif);font-size:2.5rem;line-height:1;
-  color:rgba(200,169,110,0.15);margin-bottom:10px;
-}
-.problem-card h3{font-size:0.95rem;font-weight:600;margin-bottom:6px;}
-.problem-card p{font-size:0.84rem;color:var(--muted);line-height:1.65;margin:0;}
-.damage-line{
-  text-align:center;margin-top:28px;
-  font-size:0.95rem;color:var(--muted);font-style:italic;
-}
-.damage-line strong{color:var(--text);}
-
-/* ══════════════════════════════════════
-   PROOF SECTION
-══════════════════════════════════════ */
 #proof{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .proof-content{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .proof-full-card{
@@ -410,9 +362,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .proof-point h3{font-size:0.9rem;margin-bottom:4px;}
 .proof-point p{font-size:0.82rem;color:var(--muted);line-height:1.6;margin:0;}
 
-/* ══════════════════════════════════════
-   SYSTEM HOW IT WORKS
-══════════════════════════════════════ */
 #system{border-top:1px solid var(--border);}
 .system-steps{
   display:flex;flex-direction:column;gap:0;
@@ -439,9 +388,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .step-body p{font-size:0.83rem;color:var(--muted);line-height:1.6;margin:0;}
 .step-badge{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);opacity:0.7;}
 
-/* ══════════════════════════════════════
-   COMPARISON
-══════════════════════════════════════ */
 #comparison{background:var(--bg2);border-top:1px solid var(--border);}
 .comparison-wrap{
   margin-top:3rem;border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;
@@ -459,9 +405,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .comparison-table td.no::before{content:'— ';}
 .comparison-table td.yes{color:var(--text);font-weight:500;border-left:1px solid var(--border-gold);}
 
-/* ══════════════════════════════════════
-   FIT CHECK
-══════════════════════════════════════ */
 #fit{border-top:1px solid var(--border);}
 .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem;}
 .fit-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rl);padding:1.75rem;}
@@ -475,9 +418,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .fit-card.good .fit-list li::before{content:'✓';position:absolute;left:0;color:var(--green);font-size:0.72rem;}
 .fit-card.bad .fit-list li::before{content:'✗';position:absolute;left:0;color:#f87171;font-size:0.72rem;}
 
-/* ══════════════════════════════════════
-   TIERS TEASER
-══════════════════════════════════════ */
 #tiers-teaser{background:var(--bg2);border-top:1px solid var(--border);}
 .guarantee-block{
   background:var(--gold-dim);border:1px solid var(--border-gold);
@@ -521,9 +461,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .conversion-line{text-align:center;margin-top:24px;font-size:0.95rem;color:var(--muted);font-style:italic;}
 .conversion-line strong{color:var(--text);}
 
-/* ══════════════════════════════════════
-   TESTIMONIALS
-══════════════════════════════════════ */
 #testimonials{border-top:1px solid var(--border);}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
 .testimonial{
@@ -548,9 +485,6 @@ h1 em{font-style:italic;color:var(--gold);}
 }
 .testimonial-verified span{font-size:0.75rem;color:var(--dim);}
 
-/* ══════════════════════════════════════
-   AREAS
-══════════════════════════════════════ */
 #areas{background:var(--bg2);border-top:1px solid var(--border);}
 .areas-grid{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;}
 .area-pill{
@@ -559,9 +493,6 @@ h1 em{font-style:italic;color:var(--gold);}
 }
 .area-pill:hover{border-color:var(--border-gold);color:var(--gold);background:var(--gold-dim);transform:translateY(-1px);}
 
-/* ══════════════════════════════════════
-   FAQ
-══════════════════════════════════════ */
 #faq{border-top:1px solid var(--border);}
 .faq-list{margin-top:2.5rem;border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;max-width:700px;margin-left:auto;margin-right:auto;}
 .faq-item{border-bottom:1px solid var(--border);}
@@ -580,12 +511,8 @@ h1 em{font-style:italic;color:var(--gold);}
 .faq-item.open .faq-icon{transform:rotate(45deg);}
 .faq-item.open .faq-q{color:var(--gold);}
 
-/* ══════════════════════════════════════
-   FORM / QUOTE SECTION
-══════════════════════════════════════ */
 #quote{background:var(--bg2);border-top:1px solid var(--border);}
 .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.quote-left{}
 .quote-left .lead{font-size:1.05rem;color:var(--muted);line-height:1.7;margin-top:1rem;}
 .quote-sms-box{
   margin-top:2rem;background:var(--bg3);border:1px solid var(--border-md);
@@ -596,7 +523,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .sms-preview .hi{color:var(--gold);}
 .sms-resp{margin-top:10px;font-size:11px;color:var(--muted);font-family:var(--mono);}
 .sms-speed{color:var(--gold);font-size:12px;font-family:var(--mono);margin-top:6px;}
-.quote-right{}
 .form-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;display:block;}
 .quote-form{display:flex;flex-direction:column;gap:1rem;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
@@ -635,9 +561,6 @@ h1 em{font-style:italic;color:var(--gold);}
   border-radius:var(--r);padding:0.75rem 1rem;font-size:0.83rem;color:#f87171;margin-top:0.5rem;
 }
 
-/* ══════════════════════════════════════
-   FINAL CTA
-══════════════════════════════════════ */
 #final-cta{
   text-align:center;padding:100px 0;position:relative;overflow:hidden;
   border-top:1px solid var(--border);
@@ -655,9 +578,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .final-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;}
 .final-post{font-size:0.75rem;color:var(--dim);margin-top:1rem;}
 
-/* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
 footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
 .footer-brand-name{font-family:var(--serif);font-size:1.1rem;margin-bottom:0.6rem;}
@@ -674,7 +594,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   font-size:0.73rem;color:var(--dim);
 }
 
-/* Sticky mobile */
 .sticky-mobile{
   display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
   padding:0.75rem 1rem;background:rgba(9,9,11,0.95);
@@ -684,12 +603,10 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 .sticky-mobile .s-call{background:var(--bg4);border:1px solid var(--border-md);color:var(--text);}
 .sticky-mobile .s-text{background:var(--gold-grad);color:var(--bg);}
 
-/* ── RESPONSIVE ── */
 @media(max-width:980px){
   .hero-grid{grid-template-columns:1fr;gap:3rem;}
   .presell-inner{grid-template-columns:1fr;}
   .proof-content{grid-template-columns:1fr;gap:2.5rem;}
-  .problem-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto;}
   .tiers-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto;}
   .testimonials-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto;}
   .fit-grid{grid-template-columns:1fr;}
@@ -716,7 +633,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 
 <div id="progress"></div>
 
-<!-- ALERT BAR -->
 <div class="alert-bar">
   <span class="alert-dot"></span>
   <strong>3 hosts requested coverage today</strong>&nbsp;·&nbsp;
@@ -724,7 +640,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   <a href="tel:+12892577725">(289) 257-7725</a>
 </div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
@@ -747,7 +662,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#system" onclick="closeMenu()">How It Works</a>
   <a href="pricing.html" onclick="closeMenu()">Pricing & Estimator</a>
@@ -758,7 +672,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   <a href="tel:+12892577725" onclick="closeMenu()">Call (289) 257-7725</a>
 </div>
 
-<!-- ① HERO -->
 <section id="hero">
   <div class="container">
     <div class="hero-grid">
@@ -772,7 +685,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
           <div class="trust-item urgent"><span class="trust-dot"></span>3 hosts requested coverage today</div>
           <div class="trust-item urgent"><span class="trust-dot"></span>Limited spots for new listings</div>
           <div class="trust-item"><span class="trust-dot"></span>4.9 Google Rating</div>
-
           <div class="trust-item"><span class="trust-dot"></span>Registered Ontario Business</div>
         </div>
 
@@ -782,10 +694,14 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
 
         <p style="font-size:12px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;" class="reveal d3">Next availability window is filling right now.</p>
         <p style="font-size:14px;color:var(--text);margin-bottom:12px;" class="reveal d3">If we can cover your next turnover, do you want it handled without you worrying about it?</p>
+
+        <!-- FIX 1: Removed duplicate btn-secondary "See If We Can Cover Your Turnover →" from hero-ctas.
+             Single-action CTA eliminates decision paralysis. Both buttons previously sent SMS —
+             only the primary is needed. -->
         <div class="hero-ctas reveal d3">
           <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20have%20an%20Airbnb%20in%20Niagara.%0A%0AHere%27s%20my%20listing%3A%20%5Blink%5D%0A%0ACan%20you%20confirm%20availability%20for%20this%20turnover%20and%20let%20me%20know%20next%20steps%3F" class="btn-primary">Check Availability →</a>
-          <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20have%20an%20Airbnb%20in%20Niagara.%0A%0AHere%27s%20my%20listing%3A%20%5Blink%5D%0A%0ACan%20you%20confirm%20availability%3F" class="btn-secondary">See If We Can Cover Your Turnover →</a>
         </div>
+
         <p style="margin-top:10px;font-size:11px;color:var(--dim);font-family:var(--mono);" class="reveal d3">Most hosts only reach out after their cleaner cancels. By then, timing is already tight.</p>
         <p class="hero-authority reveal d3">Trusted by Niagara hosts managing multiple listings</p>
         <p class="hero-speed reveal d3">⚡ Average response: under 15 minutes</p>
@@ -793,7 +709,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <p style="font-size:12px;color:var(--dim);margin-top:10px;" class="reveal d3">We work best with hosts managing 2+ listings or operating consistently booked units.</p>
       </div>
 
-      <!-- Proof card right -->
       <div class="reveal-right d2">
         <div class="proof-card">
           <div class="proof-card-header">
@@ -810,31 +725,19 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
             <p class="proof-msg">✅ Turnover complete at your Niagara Falls listing. Unit is guest-ready. Photos below.</p>
             <div class="proof-photos">
               <div class="proof-photo">
-                <div class="proof-photo-placeholder">
-                  <span class="proof-photo-icon">🛏</span>
-                  <span>Bedroom</span>
-                </div>
+                <img src="img-bed.jpg" alt="Bedroom — guest-ready after turnover" loading="lazy">
                 <div class="proof-photo-badge">Ready</div>
               </div>
               <div class="proof-photo">
-                <div class="proof-photo-placeholder">
-                  <span class="proof-photo-icon">🚿</span>
-                  <span>Bathroom</span>
-                </div>
+                <img src="img-bathroom.jpg" alt="Bathroom — guest-ready after turnover" loading="lazy">
                 <div class="proof-photo-badge">Ready</div>
               </div>
               <div class="proof-photo">
-                <div class="proof-photo-placeholder">
-                  <span class="proof-photo-icon">🍳</span>
-                  <span>Kitchen</span>
-                </div>
+                <img src="img-kitchen.jpg" alt="Kitchen — guest-ready after turnover" loading="lazy">
                 <div class="proof-photo-badge">Ready</div>
               </div>
               <div class="proof-photo">
-                <div class="proof-photo-placeholder">
-                  <span class="proof-photo-icon">🛋</span>
-                  <span>Living area</span>
-                </div>
+                <img src="img-living.jpg" alt="Living area — guest-ready after turnover" loading="lazy">
                 <div class="proof-photo-badge">Ready</div>
               </div>
             </div>
@@ -845,7 +748,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ② FUNNEL BRIDGE — Push to estimator -->
 <section id="funnel-bridge">
   <div class="container">
     <div class="funnel-bridge-inner">
@@ -861,7 +763,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ③ STATS -->
 <div class="stats-row">
   <div class="container">
     <div class="stats-grid">
@@ -873,7 +774,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </div>
 
-<!-- ④ PRE-SELL -->
 <section id="presell">
   <div class="container">
     <div class="presell-inner">
@@ -920,14 +820,13 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
           </div>
         </div>
         <div class="presell-cta">
-          <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20have%20an%20Airbnb%20in%20Niagara.%0A%0AHere%27s%20my%20listing%3A%20%5Blink%5D%0A%0ACan%20you%20confirm%20availability%3F" class="btn-primary">Check If Your Listing Qualifies →</a>
+          <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20have%20an%20Airbnb%20in%20Niagara.%0A%0AHere%27s%20my%20listing%3A%20%5Blink%5D%0A%0ACan%20you%20confirm%20availability%20for%20this%20turnover%20and%20let%20me%20know%20next%20steps%3F" class="btn-primary">Check If Your Listing Qualifies →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ⑤ PROOF -->
 <section class="section" id="proof">
   <div class="container">
     <div class="proof-content">
@@ -935,23 +834,19 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <div class="proof-full-card">
           <div class="proof-photos-full">
             <div class="proof-photo-full">
-              <span class="proof-photo-icon" style="font-size:1.5rem;opacity:0.15;">🛏</span>
-              <span class="proof-photo-lbl">Bedroom</span>
+              <img src="img-bed.jpg" alt="Bedroom — turnover complete" loading="lazy">
               <div class="badge">Completed · Ready</div>
             </div>
             <div class="proof-photo-full">
-              <span class="proof-photo-icon" style="font-size:1.5rem;opacity:0.15;">🚿</span>
-              <span class="proof-photo-lbl">Bathroom</span>
+              <img src="img-bathroom.jpg" alt="Bathroom — turnover complete" loading="lazy">
               <div class="badge">Completed · Ready</div>
             </div>
             <div class="proof-photo-full">
-              <span class="proof-photo-icon" style="font-size:1.5rem;opacity:0.15;">🍳</span>
-              <span class="proof-photo-lbl">Kitchen</span>
+              <img src="img-kitchen.jpg" alt="Kitchen — turnover complete" loading="lazy">
               <div class="badge">Completed · Ready</div>
             </div>
             <div class="proof-photo-full">
-              <span class="proof-photo-icon" style="font-size:1.5rem;opacity:0.15;">🛋</span>
-              <span class="proof-photo-lbl">Living area</span>
+              <img src="img-living.jpg" alt="Living area — turnover complete" loading="lazy">
               <div class="badge">Completed · Ready</div>
             </div>
           </div>
@@ -993,7 +888,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑥ HOW IT WORKS -->
 <section class="section" id="system">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 3rem;">
@@ -1038,7 +932,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑦ COMPARISON -->
 <section class="section" id="comparison">
   <div class="container">
     <div class="reveal">
@@ -1068,7 +961,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑧ FIT CHECK -->
 <section class="section" id="fit">
   <div class="container">
     <div class="reveal">
@@ -1102,7 +994,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑨ TIERS TEASER -->
 <section class="section" id="tiers-teaser">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:520px;margin:0 auto 2rem;">
@@ -1171,7 +1062,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑩ TESTIMONIALS -->
 <section class="section" id="testimonials">
   <div class="container">
     <div class="reveal">
@@ -1212,7 +1102,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑪ AREAS -->
 <section class="section-sm" id="areas">
   <div class="container">
     <div class="reveal">
@@ -1232,7 +1121,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑫ FAQ -->
 <section class="section" id="faq">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto;">
@@ -1268,7 +1156,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑬ QUOTE / FORM SECTION -->
 <section class="section" id="quote">
   <div class="container">
     <div class="quote-grid">
@@ -1276,7 +1163,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <span class="eyebrow">Get your exact price</span>
         <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;margin-bottom:0;">Text your Airbnb listing. We'll reply with an exact price and availability window.</h2>
         <p class="lead" style="color:var(--gold);font-size:13px;margin-top:10px;font-family:var(--mono);letter-spacing:0.04em;">Limited spots for new listings this week</p>
-    <p style="margin-top:8px;font-size:12px;color:var(--dim);font-family:var(--mono);">Most availability gets filled 24–48 hours in advance</p>
+        <p style="margin-top:8px;font-size:12px;color:var(--dim);font-family:var(--mono);">Most availability gets filled 24–48 hours in advance</p>
         <p style="color:var(--muted);font-size:0.95rem;margin-top:0;line-height:1.7;">No sales calls. No estimate ranges to decode. Send your listing link — we'll confirm the exact price and availability for your first turnover.</p>
 
         <div class="quote-sms-box">
@@ -1355,7 +1242,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- ⑭ FINAL CTA -->
 <section id="final-cta">
   <div class="container" style="position:relative;z-index:1;">
     <span class="eyebrow reveal" style="display:block;text-align:center;">One decision away</span>
@@ -1371,7 +1257,6 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -1396,7 +1281,7 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
         <div class="footer-col-title">Contact</div>
         <ul>
           <li><a href="tel:+12892577725">(289) 257-7725</a></li>
-          <li><a href="sms:+12892577725" style="color:var(--gold);">Text Us Anytime</a></li>
+          <li><a href="sms:+12892577725?body=Can%20you%20confirm%20availability%20for%20this%20turnover%20and%20let%20me%20know%20next%20steps%3F" style="color:var(--gold);">Text Us Anytime</a></li>
           <li><a href="https://www.google.com/maps/place/Niagara+Turnover+Co/@43.105087,-79.113449,10z/data=!3m1!4b1!4m6!3m5!1s0xa63967db8394934d:0x10857b0d295acfba!8m2!3d43.105087!4d-79.113449!16s%2Fg%2F11z0yj8tsb" target="_blank" rel="noopener" style="color:var(--gold);">Google Reviews →</a></li>
         </ul>
         <div class="footer-col-title" style="margin-top:1.25rem;">Coverage Areas</div>
@@ -1416,39 +1301,34 @@ footer{border-top:1px solid var(--border);padding:3.5rem 0 2rem;}
   </div>
 </footer>
 
-<!-- POSITIONING STRIKE -->
 <div style="text-align:center;padding:28px 24px 0;border-top:1px solid var(--border);">
   <p style="font-size:14px;color:var(--text);">You're not booking a cleaner.<br>You're securing a system that makes missed turnovers impossible.</p>
 </div>
 
-<!-- STICKY MOBILE -->
+<!-- FIX 2: Changed sticky mobile CTA text from "Text Your Listing" to "Check Availability →" -->
 <div class="sticky-mobile">
   <a href="tel:+12892577725" class="s-call">Call Now</a>
-  <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20have%20an%20Airbnb%20in%20Niagara.%0A%0AHere%27s%20my%20listing%3A%20%5Blink%5D%0A%0ACan%20you%20confirm%20availability%20for%20this%20turnover%20and%20let%20me%20know%20next%20steps%3F" class="s-text">Text Your Listing</a>
+  <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20have%20an%20Airbnb%20in%20Niagara.%0A%0AHere%27s%20my%20listing%3A%20%5Blink%5D%0A%0ACan%20you%20confirm%20availability%20for%20this%20turnover%20and%20let%20me%20know%20next%20steps%3F" class="s-text">Check Availability →</a>
 </div>
 
 <script>
-// ── Progress bar
 const bar = document.getElementById('progress');
 window.addEventListener('scroll', () => {
   bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
 }, { passive: true });
 
-// ── Reveal on scroll
 const revEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const revObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 revEls.forEach(el => revObs.observe(el));
 
-// ── FAQ
 function toggleFaq(btn) {
   const item = btn.parentElement, answer = item.querySelector('.faq-a'), isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-a').classList.remove('open'); });
   if (!isOpen) { item.classList.add('open'); answer.classList.add('open'); }
 }
 
-// ── Form submit → Formspree
 const form = document.getElementById('quote-form');
 const successBox = document.getElementById('form-success');
 const errorBox = document.getElementById('form-error');
@@ -1491,7 +1371,6 @@ if (form) {
   });
 }
 
-// ── Mobile menu
 function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
   document.getElementById('hamburger').classList.toggle('open');
