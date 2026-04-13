@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /confirmation.html
+Disallow: /confirmation
 
 Sitemap: https://niagaraturnoverco.com/sitemap.xml
