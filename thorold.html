@@ -233,22 +233,157 @@ td.yes{color:var(--text);font-weight:500;border-left:1px solid var(--border-gold
   border-radius:var(--r);padding:1.25rem;text-align:center;font-size:.88rem;color:var(--green);}
 .form-error{display:none;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);
   border-radius:var(--r);padding:.65rem 1rem;font-size:.82rem;color:var(--red);margin-top:.5rem;}
+/* ═══════════════════════════════
+   COMPREHENSIVE MOBILE STYLES
+═══════════════════════════════ */
 @media(max-width:900px){
-  .price-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;gap:1.5rem;}
-  .footer-bottom{flex-direction:column;gap:.4rem;text-align:center;}
+  /* Grids → single column */
+  .price-grid,
+  .footer-grid,
+  .proof-content,
+  .proof-photos-full,
+  .fit-grid{
+    grid-template-columns:1fr!important;
+  }
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .stat:nth-child(2){border-right:none;}
   .form-row{grid-template-columns:1fr;}
   .step{grid-template-columns:44px 1fr;}
   .step-tag{display:none;}
+  .footer-grid{gap:1.5rem;}
+  .footer-bottom{flex-direction:column;gap:.4rem;text-align:center;}
 }
+
 @media(max-width:660px){
+  /* Nav */
   .nav-links{display:none;}
   .hamburger{display:flex;}
   .mob-menu{display:flex;}
   .sticky-mob{display:flex;}
   body{padding-bottom:70px;}
+
+  /* Container padding */
+  .container{padding:0 1rem;}
+  .section{padding:56px 0;}
+  .section-sm{padding:36px 0;}
+
+  /* Hero grid: 2-col → stacked */
+  [style*="grid-template-columns:1fr 400px"],
+  [style*="grid-template-columns:1fr 420px"]{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:2rem!important;
+  }
+
+  /* Two-column divs used in NJC, presell, proof, positioning */
+  [style*="grid-template-columns:1fr 1fr"]{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:2rem!important;
+  }
+  [style*="grid-template-columns:2fr 1fr 1fr"]{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:1.5rem!important;
+  }
+
+  /* 3-col grids → 1 col */
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:repeat(3, 1fr)"]{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:.75rem!important;
+  }
+
+  /* 4-col stats → 2x2 */
+  [style*="grid-template-columns:repeat(4,1fr)"]{
+    grid-template-columns:1fr 1fr!important;
+  }
+
+  /* CTA band */
   .cta-band-inner{flex-direction:column;gap:1rem;}
+  .cta-band-right{width:100%;}
+  .cta-band-right a.btn{width:100%;justify-content:center;}
+
+  /* Buttons: full-width on mobile */
+  .btn,.btn-outline{
+    width:100%;
+    justify-content:center;
+    padding:.85rem 1.25rem;
+    font-size:.9rem;
+  }
+  .hero-ctas{flex-direction:column;}
+
+  /* Proof card */
+  .proof-photos{grid-template-columns:1fr 1fr!important;}
+  .proof-photos-full{grid-template-columns:1fr 1fr!important;}
+
+  /* Article pages */
+  .article-wrap{padding:0 1rem;}
+  .article-title{font-size:1.8rem!important;}
+
+  /* Trust row */
+  .trust-row{gap:12px;padding:14px 0;}
+
+  /* Form */
+  .form-row{grid-template-columns:1fr!important;}
+  .form-wrap{padding:1.25rem;}
+  .fg input,.fg select,.fg textarea{font-size:16px;}/* prevent iOS zoom */
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr!important;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}
+
+  /* Scarcity bar */
+  [style*="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:20px 0"]{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:.75rem!important;
+  }
+
+  /* Step list */
+  .step-list{margin-left:0;margin-right:0;}
+  .step{padding:1rem 1.25rem;gap:1rem;}
+
+  /* Pricing cards border radius fix when stacked */
+  .price-card{border-radius:var(--rl)!important;}
+
+  /* Max-width overrides for mobile */
+  [style*="max-width:520px"],[style*="max-width:480px"],
+  [style*="max-width:400px"],[style*="max-width:380px"],
+  [style*="max-width:460px"],[style*="max-width:640px"],
+  [style*="max-width:720px"],[style*="max-width:760px"]{
+    max-width:100%!important;
+  }
+
+  /* Article body */
+  .article-body h2{font-size:1.3rem!important;}
+  .callout{padding:1rem 1.25rem;}
+
+  /* Internal link block */
+  [style*="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center"]{
+    gap:.75rem!important;
+  }
+
+  /* Fix tight two-column grids used in NJC right panel */
+  [style*="grid-template-columns:1fr 1fr;gap:0.5rem"]{
+    grid-template-columns:1fr!important;
+  }
+  [style*="grid-template-columns:1fr 1fr;gap:.5rem"]{
+    grid-template-columns:1fr!important;
+  }
 }
+
+@media(max-width:400px){
+  h1{font-size:1.9rem!important;}
+  h2{font-size:1.4rem!important;}
+  .btn{font-size:.85rem;padding:.8rem 1rem;}
+  .proof-photos{grid-template-columns:1fr!important;}
+  .proof-photos-full{grid-template-columns:1fr!important;}
+}
+
 </style>
 </head>
 <body>
@@ -266,13 +401,13 @@ td.yes{color:var(--text);font-weight:500;border-left:1px solid var(--border-gold
     <span class="nav-brand">Niagara Turnover Co.</span>
   </a>
   <div class="nav-links"><a href="#system">How It Works</a><a href="pricing.html">Pricing</a><a href="#areas">Areas</a><a href="#faq">FAQ</a></div>
-  <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20want%20to%20check%20availability%20for%20my%20Airbnb%20in%20Niagara.%0A%0AListing%3A%20%5Bpaste%20link%5D%0A%0APlease%20confirm%20if%20you%20can%20cover%20this%20turnover." class="nav-cta">Reserve Your Turnover Slot →</a>
+  <a href="https://buy.stripe.com/14A14n9Z0dWTb4c86SfIs00" class="nav-cta" onclick="if(typeof gtag!=='undefined')gtag('event','deposit_click',{event_category:'Conversion',event_label:'Nav'});">Reserve Your Turnover Slot →</a>
   <div class="hamburger" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></div>
 </div>
 </nav>
 <div class="mob-menu" id="mob">
   <a href="#system" onclick="closeMob()">How It Works</a><a href="pricing.html" onclick="closeMob()">Pricing</a><a href="#areas" onclick="closeMob()">Areas</a><a href="#faq" onclick="closeMob()">FAQ</a>
-  <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20want%20to%20check%20availability%20for%20my%20Airbnb%20in%20Niagara.%0A%0AListing%3A%20%5Bpaste%20link%5D%0A%0APlease%20confirm%20if%20you%20can%20cover%20this%20turnover." class="gold" onclick="closeMob()">Reserve Your Turnover Slot →</a>
+  <a href="https://buy.stripe.com/14A14n9Z0dWTb4c86SfIs00" class="gold" onclick="if(typeof gtag!=='undefined')gtag('event','deposit_click',{event_category:'Conversion',event_label:'Nav'});" onclick="closeMob()">Reserve Your Turnover Slot →</a>
   <a href="tel:+12892577725" onclick="closeMob()">Call (289) 257-7725</a>
 </div>
 <section style="padding:80px 0 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
@@ -303,7 +438,9 @@ td.yes{color:var(--text);font-weight:500;border-left:1px solid var(--border-gold
   </div>
 
   <div style="margin-top:1.5rem;" class="reveal d3">
-    <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20want%20to%20check%20availability%20for%20my%20Airbnb%20in%20Niagara.%0A%0AListing%3A%20%5Bpaste%20link%5D%0A%0APlease%20confirm%20if%20you%20can%20cover%20this%20turnover." class="btn">Reserve Your Turnover Slot →</a>
+    <a href="https://buy.stripe.com/14A14n9Z0dWTb4c86SfIs00" class="btn" onclick="if(typeof gtag!=='undefined')gtag('event','deposit_click',{event_category:'Conversion',event_label:'City Page'});">Reserve Your Turnover Slot →</a>
+    <p style="margin-top:.5rem;font-size:.72rem;color:var(--gold);font-family:var(--mono);">$25 deposit · Availability confirmed first · Applied to your turnover</p>
+    <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20want%20to%20check%20availability%20for%20my%20Airbnb%20in%20Niagara.%0A%0AListing%3A%20%5Bpaste%20link%5D%0A%0APlease%20confirm%20if%20you%20can%20cover%20this%20turnover." style="display:inline-block;margin-top:.4rem;font-size:.72rem;color:var(--muted);font-family:var(--mono);text-decoration:underline;text-underline-offset:2px;">Or text your listing first →</a>
     <p style="margin-top:.65rem;font-size:.72rem;color:var(--dim);font-family:var(--mono);">Takes 30 seconds · Confirmation in ~15 minutes</p>
   </div>
 </div>
@@ -362,7 +499,7 @@ td.yes{color:var(--text);font-weight:500;border-left:1px solid var(--border-gold
   <h2 class="reveal" style="margin-bottom:.75rem;">Covering Thorold. Daily.</h2>
   <p class="reveal" style="color:var(--muted);font-size:.95rem;max-width:400px;margin:0 auto 1.75rem;">Text your listing — exact price and availability confirmed in 15 minutes.</p>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal">
-    <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20want%20to%20check%20availability%20for%20my%20Airbnb%20in%20Niagara.%0A%0AListing%3A%20%5Bpaste%20link%5D%0A%0APlease%20confirm%20if%20you%20can%20cover%20this%20turnover." class="btn">Reserve Your Turnover Slot →</a>
+    <a href="https://buy.stripe.com/14A14n9Z0dWTb4c86SfIs00" class="btn" onclick="if(typeof gtag!=='undefined')gtag('event','deposit_click',{event_category:'Conversion',event_label:'City Page'});">Reserve Your Turnover Slot →</a>
     <a href="tel:+12892577725" class="btn-outline">Call (289) 257-7725</a>
   </div>
   <p class="reveal" style="font-size:.75rem;color:var(--dim);margin-top:.9rem;font-family:var(--mono);">No commitment · Confirmation in ~15 minutes · Available 24/7</p>
@@ -427,7 +564,7 @@ td.yes{color:var(--text);font-weight:500;border-left:1px solid var(--border-gold
 </footer>
 <div class="sticky-mob">
   <a href="tel:+12892577725" class="s-call">Call Now</a>
-  <a href="sms:+12892577725?body=Hi%20%E2%80%94%20I%20want%20to%20check%20availability%20for%20my%20Airbnb%20in%20Niagara.%0A%0AListing%3A%20%5Bpaste%20link%5D%0A%0APlease%20confirm%20if%20you%20can%20cover%20this%20turnover." class="s-main">Reserve Your Turnover Slot →</a>
+  <a href="https://buy.stripe.com/14A14n9Z0dWTb4c86SfIs00" class="s-main" onclick="if(typeof gtag!=='undefined')gtag('event','deposit_click',{event_category:'Conversion',event_label:'Sticky'});">Reserve Your Turnover Slot →</a>
 </div><script>
 const bar=document.getElementById('prog');
 if(bar)window.addEventListener('scroll',()=>{
