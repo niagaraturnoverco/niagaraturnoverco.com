@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
   <url>
     <loc>https://niagaraturnoverco.com/</loc>
     <lastmod>2026-04-13</lastmod>
@@ -9,78 +8,81 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Core service pages -->
   <url>
-    <loc>https://niagaraturnoverco.com/pricing.html</loc>
+    <loc>https://niagaraturnoverco.com/pricing</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://niagaraturnoverco.com/services.html</loc>
+    <loc>https://niagaraturnoverco.com/services</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- City pages -->
   <url>
-    <loc>https://niagaraturnoverco.com/niagara-falls.html</loc>
+    <loc>https://niagaraturnoverco.com/niagara-falls</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://niagaraturnoverco.com/st-catharines.html</loc>
+    <loc>https://niagaraturnoverco.com/st-catharines</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://niagaraturnoverco.com/niagara-on-the-lake.html</loc>
+    <loc>https://niagaraturnoverco.com/niagara-on-the-lake</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://niagaraturnoverco.com/welland.html</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://niagaraturnoverco.com/thorold.html</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://niagaraturnoverco.com/port-colborne.html</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://niagaraturnoverco.com/fort-erie.html</loc>
+    <loc>https://niagaraturnoverco.com/welland</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog / Guides -->
   <url>
-    <loc>https://niagaraturnoverco.com/airbnb-turnover-niagara-falls.html</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://niagaraturnoverco.com/airbnb-cleaner-cancelled-niagara.html</loc>
+    <loc>https://niagaraturnoverco.com/thorold</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- confirmation.html excluded: noindex transaction page -->
+  <url>
+    <loc>https://niagaraturnoverco.com/port-colborne</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://niagaraturnoverco.com/fort-erie</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://niagaraturnoverco.com/airbnb-turnover-niagara-falls</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://niagaraturnoverco.com/airbnb-cleaner-cancelled-niagara</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
