@@ -1188,10 +1188,11 @@ const Index = () => {
             <div className="flex flex-col gap-5">
               {testimonials.slice(1).map((t) => (
                 <div key={t.name} className="premium-card p-5 flex gap-4">
-                  <img
-                    src={t.photo}
+                  <Picture
+                    image={t.photo}
                     alt={`Property serviced — ${t.name}`}
-                    width={1024} height={768} loading="lazy"
+                    sizes="96px"
+                    loading="lazy"
                     className="h-24 w-24 rounded-lg object-cover shrink-0"
                   />
                   <div className="flex flex-col">
