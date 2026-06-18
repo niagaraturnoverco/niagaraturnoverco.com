@@ -1403,6 +1403,19 @@ const Index = () => {
               <p className="text-sm text-muted-foreground mt-3">
                 Niagara Falls · St. Catharines · NOTL · Welland · Thorold · Port Colborne · Fort Erie
               </p>
+              <div className="mt-4 rounded-xl overflow-hidden border border-border/60 shadow-sm">
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d743653.7075230969!2d-80.23667350560684!3d43.2745274344831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa63967db8394934d%3A0x10857b0d295acfba!2sNiagara%20Turnover%20Co!5e0!3m2!1sen!2sca!4v1781796676061!5m2!1sen!2sca"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Niagara Turnover Co. service area map"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="border-t border-border/60">
