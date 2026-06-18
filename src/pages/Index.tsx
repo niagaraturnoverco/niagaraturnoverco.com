@@ -535,7 +535,7 @@ const Index = () => {
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary</div>
-                      <div className="font-serif text-xl mt-1">Client On-Boarding</div>
+                      <div className="font-serif text-xl mt-1">Set Up Your Property</div>
                       <div className="text-sm text-muted-foreground mt-1">New clients, new properties, recurring accounts, operators, managers.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition" />
