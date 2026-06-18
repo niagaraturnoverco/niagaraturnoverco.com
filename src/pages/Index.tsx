@@ -425,7 +425,7 @@ const Index = () => {
       label: "Modern living",
     },
     {
-      src: luxuryBedroomSuite.url,
+      src: luxuryExtra03.url,
       alt: "Warm bedroom suite with styled bedding prepared for short-term rental guests",
       label: "Bedrooms",
     },
@@ -435,12 +435,12 @@ const Index = () => {
       label: "Bathrooms",
     },
     {
-      src: luxuryVacantKitchen.url,
-      alt: "Vacant apartment kitchen with clean lines and listing-ready presentation",
+      src: luxuryExtra11.url,
+      alt: "Vacant apartment interior with clean lines and listing-ready presentation",
       label: "Vacant apartments",
     },
     {
-      src: luxuryIndustrialLoft.url,
+      src: luxuryExtra01.url,
       alt: "Industrial loft interior that feels suited to premium Niagara short-term rentals",
       label: "Lofts & cottages",
     },
