@@ -119,10 +119,10 @@ const SecondaryCTA = ({
     href={ONBOARDING_URL}
     {...ext}
     onClick={() => track("cta_onboarding", { source })}
-    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-semibold transition active:scale-[0.98] ${
+    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-semibold transition active:scale-[0.98] focus-gold ${
       onPaper
-        ? "border border-[hsl(var(--ink))] bg-transparent text-[hsl(var(--ink))] hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))]"
-        : "border border-primary/40 bg-primary/5 text-foreground hover:bg-primary/10"
+        ? "border-2 border-[hsl(var(--ink))] bg-transparent text-[hsl(var(--ink))] hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))]"
+        : "border-2 border-primary/60 bg-primary/10 text-foreground hover:bg-primary/[0.15]"
     } ${className}`}
   >
     {children}
