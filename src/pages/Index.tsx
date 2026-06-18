@@ -905,9 +905,19 @@ const Index = () => {
                   </span>
                 </div>
 
+                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4">
+                  <p className="text-sm ink leading-snug">
+                    If one missed turnover can cost <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span>, confirming coverage early is the cheaper move.
+                  </p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
-                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
+                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Confirm Coverage</PrimaryCTA>
+                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] ink-muted">
+                  <span className="inline-flex items-center gap-1"><Star className="h-3 w-3 text-[hsl(var(--gold-deep))] fill-[hsl(var(--gold-deep))]" /> ★★★★★ Verified Niagara reviews</span>
+                  <span className="inline-flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-[hsl(var(--gold-deep))]" /> Coverage confirmed first</span>
+                  <span className="inline-flex items-center gap-1"><Camera className="h-3 w-3 text-[hsl(var(--gold-deep))]" /> Photo proof available</span>
                 </div>
                 <p className="text-xs ink-muted mt-3">This calculator is an estimate, not a quote.</p>
               </div>
