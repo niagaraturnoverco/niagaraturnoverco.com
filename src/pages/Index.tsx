@@ -782,7 +782,7 @@ const Index = () => {
               {/* Same-day callout */}
               <div className="rounded-[var(--radius)] border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent p-7">
                 <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--ink))] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--paper))]">
-                  <AlertTriangle className="h-3 w-3" /> Urgent
+                  <Zap className="h-3 w-3" /> Urgent · Fast Dispatch
                 </div>
                 <h3 className="font-serif text-2xl mt-4 ink">Same-Day / Emergency</h3>
                 <ul className="mt-5 space-y-4 text-sm">
