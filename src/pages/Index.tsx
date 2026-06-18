@@ -951,7 +951,7 @@ const Index = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-7 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)] transition active:scale-[0.98]">
-                Book Coverage Now <ArrowRight className="h-4 w-4" />
+                Request Client Scheduling <ArrowRight className="h-4 w-4" />
               </a>
               <a href={PHONE_TEL} onClick={() => track("final_call")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-[hsl(var(--ink))] px-7 text-sm font-semibold ink hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))] transition">
