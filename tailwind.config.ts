@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["'DM Serif Display'", "Georgia", "serif"],
-        sans: ["'DM Sans'", "system-ui", "sans-serif"],
+        serif: ["'Instrument Serif'", "Georgia", "serif"],
+        sans: ["'Work Sans'", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gradient-gold": "var(--gradient-gold)",
