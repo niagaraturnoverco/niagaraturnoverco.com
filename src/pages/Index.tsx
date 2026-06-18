@@ -153,6 +153,7 @@ const Initials = ({ name }: { name: string }) => {
 const Index = () => {
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
+  const [bedrooms, setBedrooms] = useState<number>(2);
   const [quiz, setQuiz] = useState<{
     urgent: boolean | null;
     laundry: boolean | null;
@@ -160,14 +161,19 @@ const Index = () => {
     recurring: boolean | null;
   }>({ urgent: null, laundry: null, vacant: null, recurring: null });
 
+  // NTC starting price by bedroom count — mirrors pricing table
+  const ntcPriceByBedroom: Record<number, number> = { 1: 199, 2: 269, 3: 329, 4: 399, 5: 499 };
+
   const calc = useMemo(() => {
     const cancellation = rate * nights;
     const rebooking = rate * 2 * 0.5;
-    const review = 600;
+    // Scaled review/reputation risk: ~4 future nights of lost bookings, defensible math
+    const review = Math.round(rate * 4);
     const coord = 150;
     const total = cancellation + rebooking + review + coord;
-    return { cancellation, rebooking, review, coord, total };
-  }, [rate, nights]);
+    const ntcPrice = ntcPriceByBedroom[Math.min(5, Math.max(1, bedrooms))] ?? 329;
+    return { cancellation, rebooking, review, coord, total, ntcPrice };
+  }, [rate, nights, bedrooms]);
 
   const quizResult = useMemo<string | null>(() => {
     const { urgent, laundry, vacant, recurring } = quiz;
@@ -179,11 +185,13 @@ const Index = () => {
     return "Property Readiness / Listing Prep";
   }, [quiz]);
 
+
   const risks = [
     ["01", "Guest checks in before the unit is ready", "Refunds, one-star reviews, and listing penalties land within hours."],
     ["02", "Listing photos or showings happen too soon", "The property sells or rents itself short — and you only see it later."],
-    ["03", "Vendor follow-up becomes your job", "Time you should spend on revenue gets spent chasing cleaners."],
+    ["03", "The cleaner confirms — then cancels the morning of check-in", "By the time you find out, you have hours, not days, to recover the booking."],
   ];
+
 
   const services = [
     {
@@ -240,34 +248,41 @@ const Index = () => {
     { icon: Home, label: "Homeowners" },
   ];
 
+  // NOTE: Testimonial copy below is placeholder crisis→outcome wording shaped to
+  // counter the "why not just a cheaper cleaner" objection. Replace with real
+  // verbatim or lightly paraphrased client quotes when available.
   const testimonials = [
     {
-      name: "Peter Kistemaker",
-      quote: "Very responsive, friendly, and professional. Exactly what you want from a turnover partner.",
-      meta: "Verified Google Review · Niagara Region",
+      name: "Niagara Falls Host",
+      quote: "My turnover cleaner cancelled three hours before a 4pm check-in on a long weekend. I called NTC at 1pm. Coverage was confirmed by 1:45 and the property was guest-ready by 3:30. Guest left a 5-star review. Worth every dollar.",
+      meta: "Placeholder · STR host, Niagara Falls",
       photo: property1,
     },
     {
-      name: "Gabriella Guo",
-      quote: "Friendly, professional, and flexible. The cleaning was done to a high standard — their attention to detail gave me real confidence.",
-      meta: "Verified Google Review · Airbnb Host",
+      name: "NOTL Property Manager",
+      quote: "We manage six STR units across NOTL and St. Catharines. Before NTC we lost roughly one weekend per month to coordination gaps. First quarter on recurring coverage: zero missed turnovers. The price difference paid for itself in protected bookings.",
+      meta: "Placeholder · Property manager, NOTL",
       photo: property2,
     },
     {
-      name: "Niagara Client",
-      quote: "Everything consistently guest-ready. Communication was clear and responsive.",
-      meta: "Host / property support",
+      name: "St. Catharines Host",
+      quote: "The cleaner I found on Marketplace did a 'fine' job but left issues my guest flagged in the review. NTC's first turnover came back with photo proof of every room. I stopped second-guessing.",
+      meta: "Placeholder · STR host, St. Catharines",
       photo: property3,
     },
   ];
 
+
   const faqs = [
+    { q: "What makes NTC different from finding a cleaner myself on Facebook or Marketplace?", a: "You're not just paying for a cleaner. You're paying for dispatch, coordination, quality control, and photo confirmation. If the assigned cleaner cancels, we route a backup. If something is missed, we flag it before your guest does. A Marketplace booking gives you one person and a hope. NTC gives you a system." },
+    { q: "What happens if I'm not happy with the result?", a: "Flag it within 24 hours and we resolve it — typically by returning to fix the issue at no additional cost. Coverage means we own the outcome, not just the shift. Photo proof and a written report are available so issues are resolved on evidence, not opinion." },
     { q: "How fast can you confirm availability?", a: "Urgent and same-day requests are reviewed within hours during operating windows. Standard requests are reviewed within 24 hours. Coverage is confirmed before scheduling." },
     { q: "Do I pay before you confirm coverage?", a: "No. Scope, timing, price, and deposit / payment terms are confirmed first. High-risk or same-day jobs may require full payment upfront once coverage is confirmed." },
     { q: "Are you only for Airbnb hosts?", a: "No. We work with STR hosts, property managers, realtors, investors, operators, and homeowners across the Niagara Region." },
     { q: "Are you the cheapest option?", a: "No. NTC is built for properties where timing, reliability, and presentation matter. We are a premium local operator, not a bargain cleaner." },
     { q: "Do you offer property management or co-hosting?", a: "We focus on turnover coverage and property readiness. For recurring operator relationships we offer priority dispatch and account setup through our Client On-Boarding path." },
   ];
+
 
   const beforeAfterGallery = [
     {
@@ -456,7 +471,7 @@ const Index = () => {
                 Need this handled <span className="gold-text">today?</span>
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-xl">
-                Same-day and under-24-hour requests are reviewed first. Coverage is confirmed before scheduling. Rush fee applies under 24 hours.
+                Same-day and under-24-hour requests are reviewed first. Coverage is confirmed in hours when slots are available — rush scheduling is prioritised.
               </p>
             </div>
             <div className="lg:col-span-5 flex flex-col sm:flex-row gap-3 lg:justify-end">
@@ -511,124 +526,23 @@ const Index = () => {
               </div>
             ))}
           </div>
-        </section>
-
-        {/* INTAKE */}
-        <section id="intake" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-12">
-          <div className="grid gap-8 lg:grid-cols-2 items-start">
-            <div>
-              <SectionLabel>Submit Request</SectionLabel>
-              <h2 className="font-serif text-3xl sm:text-4xl mt-4">
-                Submit the request. We route it to the right coverage path.
-              </h2>
-              <p className="text-muted-foreground mt-3">
-                Tell us who you are, what property is at risk, and when it needs to be ready.
-              </p>
-              <div className="mt-6 space-y-3">
-                {[
-                  ["01", "Identify", "Who you are, the property, the deadline."],
-                  ["02", "Route", "We assign the right coverage and dispatch."],
-                  ["03", "Confirm", "Scope, price, timing confirmed before scheduling."],
-                ].map(([n, t, d]) => (
-                  <div key={n} className="flex gap-4 rounded-xl border border-border bg-card p-4">
-                    <div className="font-serif text-2xl gold-text w-10">{n}</div>
-                    <div>
-                      <div className="font-semibold">{t}</div>
-                      <div className="text-sm text-muted-foreground">{d}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="premium-card p-6 sm:p-8 relative overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
-              <div className="flex items-center justify-between gap-3">
-                <Logo />
-                <div className="flex flex-col items-end gap-1.5">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-success">
-                    <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-                    Active intake
-                  </span>
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground flex items-center gap-1">
-                    <MapPin className="h-3 w-3" /> Niagara Region
-                  </span>
-                </div>
-              </div>
-
-              {/* Which form? decision card */}
-              <div className="mt-6 rounded-xl border border-border bg-secondary/30 p-4">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium">Which form should I use?</div>
-                <ul className="mt-3 space-y-2 text-xs">
-                  {[
-                    ["Turnover, reset, move-out, or same-day clean", "Client Scheduling"],
-                    ["Recurring properties or new account setup", "Client On-Boarding"],
-                    ["Realtor / investor / PM exploring support", "Client On-Boarding"],
-                    ["Urgent property issue right now", "Scheduling + Call"],
-                  ].map(([sit, form]) => (
-                    <li key={sit} className="flex justify-between gap-3 border-b border-border/60 pb-1.5 last:border-0 last:pb-0">
-                      <span className="text-muted-foreground">{sit}</span>
-                      <span className="font-medium text-foreground shrink-0">{form}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-4 space-y-3">
-                <a href={SCHEDULING_URL} {...ext} onClick={() => track("intake_scheduling")}
-                  className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary relative overflow-hidden">
-                  <div className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
-                    <Clock className="h-3 w-3" /> Same-day available
-                  </div>
-                  <div className="flex items-center justify-between gap-3 mt-5">
-                    <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary · Need service now</div>
-                      <div className="font-serif text-xl mt-1">Request Client Scheduling</div>
-                      <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
-                    </div>
-                    <ArrowRight className="h-5 w-5 text-primary shrink-0 group-hover:translate-x-1 transition" />
-                  </div>
-                </a>
-
-                <a href={ONBOARDING_URL} {...ext} onClick={() => track("intake_onboarding")}
-                  className="group block rounded-xl border border-border bg-secondary/50 p-5 transition hover:border-primary/40">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary · Managing properties</div>
-                      <div className="font-serif text-xl mt-1">Client On-Boarding</div>
-                      <div className="text-sm text-muted-foreground mt-1">New clients, new properties, recurring accounts, operators, managers.</div>
-                    </div>
-                    <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition" />
-                  </div>
-                </a>
-              </div>
-
-              {/* Before you submit trust box */}
-              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/[0.05] p-4">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium flex items-center gap-1.5">
-                  <ShieldCheck className="h-3 w-3" /> Before you submit
-                </div>
-                <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
-                  {[
-                    "No payment before coverage is confirmed",
-                    "Final price depends on scope and timing",
-                    "Same-day requests are reviewed first",
-                    "We confirm next steps before scheduling",
-                  ].map((t) => (
-                    <li key={t} className="flex gap-2">
-                      <Check className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" strokeWidth={3} />
-                      <span className="text-foreground/85">{t}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <p className="font-serif text-xl sm:text-2xl max-w-2xl">
+              We route coverage <span className="gold-text">before any of this becomes your problem.</span>
+            </p>
+            <a
+              href="#readiness-quiz"
+              onClick={() => track("risk_to_quiz")}
+              className="inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+            >
+              Find your path <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
+
         </section>
 
-
-        {/* READINESS QUIZ — guide the user to the right path */}
-        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        {/* READINESS QUIZ — moved ABOVE intake so it drives the routing decision */}
+        <section id="readiness-quiz" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
               <SectionLabel>Property Readiness Score</SectionLabel>
@@ -636,7 +550,7 @@ const Index = () => {
                 Four questions. <span className="gold-text">One clear path.</span>
               </h2>
               <p className="text-muted-foreground mt-3 max-w-md">
-                Answer below and we'll point you to the right coverage path before you submit.
+                Answer below and we'll point you to the right coverage path before you submit a form.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
@@ -649,8 +563,8 @@ const Index = () => {
                 {([
                   { key: "urgent", q: "Is there a guest check-in within 24 hours?", a: "Yes — urgent", b: "No" },
                   { key: "laundry", q: "Is laundry / linen reset needed?", a: "Yes", b: "No" },
-                  { key: "vacant", q: "Is the property currently…", a: "Vacant", b: "Occupied" },
-                  { key: "recurring", q: "Is this a one-time or recurring property?", a: "Recurring", b: "One-time" },
+                  { key: "vacant", q: "Is the property between guests right now?", a: "Yes", b: "No, guests still in" },
+                  { key: "recurring", q: "How often do you need this?", a: "Monthly recurring", b: "Once" },
                 ] as const).map(({ key, q, a, b }) => (
                   <div key={key}>
                     <div className="text-sm font-medium">{q}</div>
@@ -685,20 +599,112 @@ const Index = () => {
                     <div className="font-serif text-xl mt-1">
                       Your property needs: <span className="gold-text">{quizResult}</span>
                     </div>
-                    <a
-                      href={SCHEDULING_URL}
-                      {...ext}
-                      onClick={() => track("quiz_to_scheduling", { result: quizResult })}
-                      className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-                    >
-                      Submit Client Scheduling <ArrowRight className="h-4 w-4" />
-                    </a>
+                    <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                      <a
+                        href={quiz.recurring ? ONBOARDING_URL : SCHEDULING_URL}
+                        {...ext}
+                        onClick={() => track("quiz_to_form", { result: quizResult, recurring: quiz.recurring })}
+                        className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                      >
+                        {quiz.recurring ? "Start Client On-Boarding" : "Request Client Scheduling"} <ArrowRight className="h-4 w-4" />
+                      </a>
+                      <a
+                        href="#intake"
+                        className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 text-sm font-semibold focus-gold"
+                      >
+                        See both paths
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>
             </div>
           </div>
         </section>
+
+        {/* INTAKE — two qualifying-question cards (replaces decision-table routing) */}
+        <section id="intake" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16">
+          <div className="max-w-3xl">
+            <SectionLabel>Submit Request</SectionLabel>
+            <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+              One question per path. <span className="gold-text">Pick the one that's true.</span>
+            </h2>
+            <p className="text-muted-foreground mt-3">
+              No payment before coverage is confirmed. Final price depends on scope and timing.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            {/* Card 1 — Scheduling (need service now) */}
+            <a
+              href={SCHEDULING_URL}
+              {...ext}
+              onClick={() => track("intake_card_scheduling")}
+              className="group premium-card p-7 sm:p-8 relative overflow-hidden flex flex-col gap-5 hover:border-primary/60 transition"
+            >
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
+              <div className="relative flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                  <Clock className="h-3 w-3" /> Same-day available
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-primary">Path A</span>
+              </div>
+              <div className="relative">
+                <h3 className="font-serif text-2xl sm:text-3xl leading-tight">
+                  Do you need a property cleaned in the <span className="gold-text">next 7 days?</span>
+                </h3>
+                <p className="text-sm text-muted-foreground mt-3">
+                  Turnovers, backup coverage, resets, listing prep, same-day requests. One property, one date, one path.
+                </p>
+              </div>
+              <div className="relative mt-auto flex items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-5 py-3 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
+                  Yes — Request Client Scheduling <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+            </a>
+
+            {/* Card 2 — Onboarding (recurring / multi-property) */}
+            <a
+              href={ONBOARDING_URL}
+              {...ext}
+              onClick={() => track("intake_card_onboarding")}
+              className="group premium-card p-7 sm:p-8 relative overflow-hidden flex flex-col gap-5 hover:border-primary/60 transition"
+            >
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+              <div className="relative flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                  <Building2 className="h-3 w-3" /> Operator path
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Path B</span>
+              </div>
+              <div className="relative">
+                <h3 className="font-serif text-2xl sm:text-3xl leading-tight">
+                  Are you setting up <span className="gold-text">recurring coverage</span> for one or more properties?
+                </h3>
+                <p className="text-sm text-muted-foreground mt-3">
+                  New clients, property managers, realtors, investors. Priority dispatch and account setup.
+                </p>
+              </div>
+              <div className="relative mt-auto flex items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 py-3 text-sm font-semibold">
+                  Yes — Client On-Boarding <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-primary/30 bg-primary/[0.05] p-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-foreground/85">
+            <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> No payment before coverage is confirmed</span>
+            <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> Final price depends on scope and timing</span>
+            <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> Same-day requests are reviewed first</span>
+            <span className="inline-flex items-center gap-1.5 ml-auto">
+              <Phone className="h-3.5 w-3.5 text-primary" />
+              <span>Urgent? <a href={PHONE_TEL} className="font-semibold text-primary hover:underline">Call {PHONE}</a></span>
+            </span>
+          </div>
+        </section>
+
 
         {/* CALCULATOR — paper surface */}
         <section className="section-paper">
@@ -717,7 +723,7 @@ const Index = () => {
               </div>
 
               <div className="paper-card p-6 sm:p-8 lg:col-span-3 shadow-elegant">
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-3">
                   <div>
                     <label className="text-xs uppercase tracking-wider ink-muted">Nightly rate ($)</label>
                     <Input
@@ -734,13 +740,27 @@ const Index = () => {
                       className="h-12 mt-1.5 paper-input"
                     />
                   </div>
+                  <div>
+                    <label className="text-xs uppercase tracking-wider ink-muted">Bedrooms</label>
+                    <select
+                      value={bedrooms}
+                      onChange={(e) => setBedrooms(Number(e.target.value) || 2)}
+                      className="h-12 mt-1.5 paper-input w-full rounded-md border border-input bg-background px-3 text-sm"
+                    >
+                      <option value={1}>1 Bedroom</option>
+                      <option value={2}>2 Bedroom</option>
+                      <option value={3}>3 Bedroom</option>
+                      <option value={4}>4 Bedroom</option>
+                      <option value={5}>5+ Bedroom</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="mt-6 space-y-2 text-sm">
                   {[
                     { k: "Cancellation loss", v: calc.cancellation, Icon: AlertOctagon },
                     { k: "Rebooking delay", v: calc.rebooking, Icon: Calculator },
-                    { k: "Review / reputation risk", v: calc.review, Icon: TrendingUp },
+                    { k: "Review / reputation risk (≈4 future nights)", v: calc.review, Icon: TrendingUp },
                     { k: "Coordination time", v: calc.coord, Icon: Clock },
                   ].map(({ k, v, Icon }) => (
                     <div key={k} className="flex justify-between items-center border-b hairline py-2.5">
@@ -760,11 +780,15 @@ const Index = () => {
                   </span>
                 </div>
 
-                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4">
+                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4 space-y-2">
                   <p className="text-sm ink leading-snug">
-                    If one missed turnover can cost <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span>, confirming coverage early is the cheaper move.
+                    NTC turnover for a {bedrooms}{bedrooms >= 5 ? "+" : ""}-bedroom property starts at <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.ntcPrice}</span> — cheaper than the <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span> risk above.
+                  </p>
+                  <p className="text-xs ink-muted">
+                    You break even after roughly {Math.max(1, Math.ceil(calc.ntcPrice / Math.max(1, rate)))} protected night{Math.max(1, Math.ceil(calc.ntcPrice / Math.max(1, rate))) === 1 ? "" : "s"} of bookings.
                   </p>
                 </div>
+
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
                   <PrimaryCTA source="calculator" className="w-full sm:w-auto">Confirm Coverage</PrimaryCTA>
                   <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
@@ -820,23 +844,38 @@ const Index = () => {
             </div>
 
             {/* Supporting cards */}
-            {services.slice(1).map((s) => (
-              <div key={s.title} className="premium-card p-6 flex flex-col">
-                <div className="icon-badge">
-                  <s.icon className="h-7 w-7" />
+            {services.slice(1).map((s, idx) => {
+              const isListing = idx === 0;
+              const cta = isListing
+                ? { label: "Request listing prep", href: `${SCHEDULING_URL}?utm_source=service_listing`, target: SCHEDULING_URL, event: "service_listing_cta" }
+                : { label: "Set up recurring coverage", href: `${ONBOARDING_URL}?utm_source=service_recurring`, target: ONBOARDING_URL, event: "service_recurring_cta" };
+              return (
+                <div key={s.title} className="premium-card p-6 flex flex-col">
+                  <div className="icon-badge">
+                    <s.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="font-serif text-xl mt-5">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
+                  <ul className="mt-4 space-y-2 text-sm flex-1">
+                    {s.points.map((p) => (
+                      <li key={p} className="flex gap-2">
+                        <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={cta.href}
+                    {...ext}
+                    onClick={() => track(cta.event)}
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+                  >
+                    {cta.label} <ArrowRight className="h-4 w-4" />
+                  </a>
                 </div>
-                <h3 className="font-serif text-xl mt-5">{s.title}</h3>
-                <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
-                <ul className="mt-4 space-y-2 text-sm flex-1">
-                  {s.points.map((p) => (
-                    <li key={p} className="flex gap-2">
-                      <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
+
           </div>
         </section>
 
@@ -1354,12 +1393,12 @@ const Index = () => {
           <a
             href={SCHEDULING_URL}
             {...ext}
-            onClick={() => track("mobile_bar_schedule")}
-            className="col-span-2 inline-flex min-h-[48px] flex-col items-center justify-center gap-0 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
+            onClick={() => track("mobile_bar_quote")}
+            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
           >
-            <span className="inline-flex items-center gap-1">Urgent <ArrowRight className="h-3.5 w-3.5" /></span>
-            <span className="text-[10px] font-normal opacity-75">Schedule</span>
+            Get a Quote <ArrowRight className="h-3.5 w-3.5" />
           </a>
+
         </div>
       </div>
     </div>
