@@ -280,13 +280,14 @@ const Index = () => {
           <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,hsl(43_65%_58%/0.18),transparent_60%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-14 sm:py-20">
             <div className="flex flex-col items-start gap-6 max-w-3xl">
-              <SectionLabel>Niagara Property Readiness</SectionLabel>
+              <SectionLabel>Niagara Region Property Readiness</SectionLabel>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
+                <span className="sr-only">Niagara Region property turnover and short-term rental cleaning. </span>
                 When a property is not ready,{" "}
                 <span className="gold-text">everything downstream</span> gets expensive.
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
-                Niagara Turnover Co. handles emergency turnover coverage, listing prep, move-out resets, and recurring property readiness support for hosts, property managers, realtors, and operators.
+                Niagara Turnover Co. delivers emergency turnover coverage, Airbnb &amp; short-term rental cleaning, listing prep, move-out resets, and recurring property readiness across the Niagara Region — Niagara Falls, St. Catharines, Niagara-on-the-Lake (NOTL), Welland, Thorold, Port Colborne and Fort Erie.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <PrimaryCTA source="hero" className="w-full sm:w-auto">
