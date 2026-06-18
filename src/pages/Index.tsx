@@ -1629,6 +1629,15 @@ const Index = () => {
                   />
                 </div>
               </div>
+              <a
+                href="https://www.google.com/maps?q=Niagara+Turnover+Co/@43.276421,-79.5773256,10z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                onClick={() => track("open_in_google_maps")}
+              >
+                <MapPin className="h-3.5 w-3.5" /> Open in Google Maps
+              </a>
             </div>
           </div>
           <div className="border-t border-border/60">
