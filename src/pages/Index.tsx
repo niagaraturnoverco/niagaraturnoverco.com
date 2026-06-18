@@ -14,8 +14,11 @@ import {
   Clock,
   MapPin,
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
+  Check,
   AlertTriangle,
+  AlertOctagon,
   Sparkles,
   Building2,
   Home,
@@ -24,6 +27,14 @@ import {
   Mail,
   MessageSquare,
   Quote,
+  ClipboardList,
+  Route,
+  BadgeCheck,
+  HelpCircle,
+  Calculator,
+  TrendingUp,
+  Zap,
+  Camera,
 } from "lucide-react";
 
 import heroTurnover from "@/assets/hero-turnover.jpg";
