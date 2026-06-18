@@ -312,9 +312,15 @@ const Index = () => {
             <a href="#pricing" className="hover:text-foreground">Pricing</a>
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
-          <PrimaryCTA source="nav" className="hidden sm:inline-flex !min-h-[42px] !px-4 text-xs">
+          <a
+            href={SCHEDULING_URL}
+            {...ext}
+            onClick={() => track("cta_scheduling", { source: "nav" })}
+            className="hidden sm:inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+          >
             Book Coverage
-          </PrimaryCTA>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
         </div>
       </header>
 
