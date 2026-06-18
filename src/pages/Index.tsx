@@ -676,15 +676,15 @@ const Index = () => {
             {/* Supporting cards */}
             {services.slice(1).map((s) => (
               <div key={s.title} className="premium-card p-6 flex flex-col">
-                <div className="h-11 w-11 rounded-lg bg-gradient-gold-soft border border-primary/30 flex items-center justify-center">
-                  <s.icon className="h-5 w-5 text-primary" />
+                <div className="icon-badge">
+                  <s.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-serif text-xl mt-4">{s.title}</h3>
+                <h3 className="font-serif text-xl mt-5">{s.title}</h3>
                 <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
                 <ul className="mt-4 space-y-2 text-sm flex-1">
                   {s.points.map((p) => (
                     <li key={p} className="flex gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
                       {p}
                     </li>
                   ))}
