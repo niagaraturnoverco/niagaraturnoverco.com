@@ -184,6 +184,12 @@ const Index = () => {
   const [nights, setNights] = useState<number>(2);
   const [coverageInput, setCoverageInput] = useState<string>("");
   const [coverageResult, setCoverageResult] = useState<CoverageResult>(null);
+  const [quiz, setQuiz] = useState<{
+    urgent: boolean | null;
+    laundry: boolean | null;
+    vacant: boolean | null;
+    recurring: boolean | null;
+  }>({ urgent: null, laundry: null, vacant: null, recurring: null });
 
   const calc = useMemo(() => {
     const cancellation = rate * nights;
@@ -193,6 +199,16 @@ const Index = () => {
     const total = cancellation + rebooking + review + coord;
     return { cancellation, rebooking, review, coord, total };
   }, [rate, nights]);
+
+  const quizResult = useMemo<string | null>(() => {
+    const { urgent, laundry, vacant, recurring } = quiz;
+    if (urgent === null || laundry === null || vacant === null || recurring === null) return null;
+    if (urgent) return "Emergency Turnover Coverage";
+    if (recurring) return "Recurring Turnover Support";
+    if (!vacant) return "Heavy Reset / Deep Clean";
+    if (laundry) return "Turnover with Laundry Reset";
+    return "Property Readiness / Listing Prep";
+  }, [quiz]);
 
   const risks = [
     ["01", "Guest checks in before the unit is ready", "Refunds, one-star reviews, and listing penalties land within hours."],
@@ -372,24 +388,42 @@ const Index = () => {
                 <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full sm:w-auto">
-                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Request Client Scheduling</PrimaryCTA>
+                <div className="grid gap-3 sm:grid-cols-5 w-full max-w-xl">
                   <a
-                    href="#intake"
-                    onClick={() => track("hero_setup_link")}
-                    className="text-sm font-medium text-muted-foreground hover:text-primary underline-offset-4 hover:underline focus-gold rounded-sm"
+                    href={SCHEDULING_URL}
+                    {...ext}
+                    onClick={() => track("hero_path_scheduling")}
+                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
                   >
-                    Or set up your property first →
+                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Need service now?</div>
+                    <div className="font-serif text-xl mt-1.5 leading-snug">Request Client Scheduling</div>
+                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Turnovers, emergency coverage, resets, same-day requests.</div>
+                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
+                  </a>
+                  <a
+                    href={ONBOARDING_URL}
+                    {...ext}
+                    onClick={() => track("hero_path_onboarding")}
+                    className="group sm:col-span-2 relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[110px]"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Managing properties?</div>
+                    <div className="font-serif text-lg mt-1.5 leading-snug">Client On-Boarding</div>
+                    <div className="text-xs text-muted-foreground mt-1.5">Recurring or multi-property setup.</div>
+                    <ArrowUpRight className="absolute top-5 right-5 h-4 w-4 text-primary group-hover:translate-x-0.5 transition" />
                   </a>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 max-w-xl">
                   <span className="gold-pill">
-                    <Clock className="h-3 w-3" />
-                    Response under 24h
+                    <ShieldCheck className="h-3 w-3" />
+                    Coverage confirmed first
                   </span>
                   <span className="gold-pill">
-                    <ShieldCheck className="h-3 w-3" />
-                    No payment before coverage is confirmed
+                    <Star className="h-3 w-3 fill-primary" />
+                    ★★★★★ Verified Niagara reviews
+                  </span>
+                  <span className="gold-pill">
+                    <Camera className="h-3 w-3" />
+                    Photo proof available
                   </span>
                 </div>
 
@@ -442,7 +476,42 @@ const Index = () => {
           </div>
         </section>
 
+        {/* EMERGENCY — same-day priority block */}
+        <section className="border-y border-primary/30 bg-gradient-to-b from-primary/[0.08] to-background">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 grid gap-6 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                <Zap className="h-3 w-3" /> Same-Day · Priority
+              </div>
+              <h2 className="font-serif text-2xl sm:text-3xl mt-3">
+                Need this handled <span className="gold-text">today?</span>
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-xl">
+                Same-day and under-24-hour requests are reviewed first. Coverage is confirmed before scheduling. Rush fee applies under 24 hours.
+              </p>
+            </div>
+            <div className="lg:col-span-5 flex flex-col sm:flex-row gap-3 lg:justify-end">
+              <a
+                href={SCHEDULING_URL}
+                {...ext}
+                onClick={() => track("emergency_same_day")}
+                className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold cta-attention"
+              >
+                Request Same-Day Coverage <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href={PHONE_TEL}
+                onClick={() => track("emergency_call")}
+                className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 text-sm font-semibold focus-gold"
+              >
+                <Phone className="h-4 w-4" /> Call {PHONE}
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* RISK — zigzag list */}
+
 
         <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
@@ -518,7 +587,25 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="mt-6 space-y-3">
+              {/* Which form? decision card */}
+              <div className="mt-6 rounded-xl border border-border bg-secondary/30 p-4">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium">Which form should I use?</div>
+                <ul className="mt-3 space-y-2 text-xs">
+                  {[
+                    ["Turnover, reset, move-out, or same-day clean", "Client Scheduling"],
+                    ["Recurring properties or new account setup", "Client On-Boarding"],
+                    ["Realtor / investor / PM exploring support", "Client On-Boarding"],
+                    ["Urgent property issue right now", "Scheduling + Call"],
+                  ].map(([sit, form]) => (
+                    <li key={sit} className="flex justify-between gap-3 border-b border-border/60 pb-1.5 last:border-0 last:pb-0">
+                      <span className="text-muted-foreground">{sit}</span>
+                      <span className="font-medium text-foreground shrink-0">{form}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-4 space-y-3">
                 <a href={SCHEDULING_URL} {...ext} onClick={() => track("intake_scheduling")}
                   className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary relative overflow-hidden">
                   <div className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
@@ -526,7 +613,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-between gap-3 mt-5">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary</div>
+                      <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary · Need service now</div>
                       <div className="font-serif text-xl mt-1">Request Client Scheduling</div>
                       <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
                     </div>
@@ -538,13 +625,33 @@ const Index = () => {
                   className="group block rounded-xl border border-border bg-secondary/50 p-5 transition hover:border-primary/40">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary</div>
-                      <div className="font-serif text-xl mt-1">Set Up Your Property</div>
+                      <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary · Managing properties</div>
+                      <div className="font-serif text-xl mt-1">Client On-Boarding</div>
                       <div className="text-sm text-muted-foreground mt-1">New clients, new properties, recurring accounts, operators, managers.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition" />
                   </div>
                 </a>
+              </div>
+
+              {/* Before you submit trust box */}
+              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/[0.05] p-4">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium flex items-center gap-1.5">
+                  <ShieldCheck className="h-3 w-3" /> Before you submit
+                </div>
+                <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
+                  {[
+                    "No payment before coverage is confirmed",
+                    "Final price depends on scope and timing",
+                    "Same-day requests are reviewed first",
+                    "We confirm next steps before scheduling",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-2">
+                      <Check className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                      <span className="text-foreground/85">{t}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -665,6 +772,79 @@ const Index = () => {
           </div>
         </section>
 
+        {/* READINESS QUIZ — guide the user to the right path */}
+        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-5">
+              <SectionLabel>Property Readiness Score</SectionLabel>
+              <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                Four questions. <span className="gold-text">One clear path.</span>
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-md">
+                Answer below and we'll point you to the right coverage path before you submit.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
+                <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 text-primary fill-primary" /> Verified Niagara reviews</span>
+              </div>
+            </div>
+            <div className="lg:col-span-7 premium-card p-6 sm:p-8 relative overflow-hidden">
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+              <div className="relative space-y-5">
+                {([
+                  { key: "urgent", q: "Is there a guest check-in within 24 hours?", a: "Yes — urgent", b: "No" },
+                  { key: "laundry", q: "Is laundry / linen reset needed?", a: "Yes", b: "No" },
+                  { key: "vacant", q: "Is the property currently…", a: "Vacant", b: "Occupied" },
+                  { key: "recurring", q: "Is this a one-time or recurring property?", a: "Recurring", b: "One-time" },
+                ] as const).map(({ key, q, a, b }) => (
+                  <div key={key}>
+                    <div className="text-sm font-medium">{q}</div>
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      {[
+                        { label: a, val: true },
+                        { label: b, val: false },
+                      ].map(({ label, val }) => {
+                        const active = quiz[key] === val;
+                        return (
+                          <button
+                            key={label}
+                            type="button"
+                            onClick={() => setQuiz((p) => ({ ...p, [key]: val }))}
+                            className={`min-h-[46px] rounded-xl border px-3 text-sm font-medium transition active:scale-[0.98] focus-gold ${
+                              active
+                                ? "border-primary bg-gradient-gold text-primary-foreground shadow-gold"
+                                : "border-border bg-background/60 text-foreground hover:border-primary/40 hover:bg-primary/[0.05]"
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+
+                {quizResult && (
+                  <div className="rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 animate-fade-in">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium">Recommended path</div>
+                    <div className="font-serif text-xl mt-1">
+                      Your property needs: <span className="gold-text">{quizResult}</span>
+                    </div>
+                    <a
+                      href={SCHEDULING_URL}
+                      {...ext}
+                      onClick={() => track("quiz_to_scheduling", { result: quizResult })}
+                      className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                    >
+                      Submit Client Scheduling <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CALCULATOR — paper surface */}
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
@@ -725,9 +905,19 @@ const Index = () => {
                   </span>
                 </div>
 
+                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4">
+                  <p className="text-sm ink leading-snug">
+                    If one missed turnover can cost <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span>, confirming coverage early is the cheaper move.
+                  </p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
-                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
+                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Confirm Coverage</PrimaryCTA>
+                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] ink-muted">
+                  <span className="inline-flex items-center gap-1"><Star className="h-3 w-3 text-[hsl(var(--gold-deep))] fill-[hsl(var(--gold-deep))]" /> ★★★★★ Verified Niagara reviews</span>
+                  <span className="inline-flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-[hsl(var(--gold-deep))]" /> Coverage confirmed first</span>
+                  <span className="inline-flex items-center gap-1"><Camera className="h-3 w-3 text-[hsl(var(--gold-deep))]" /> Photo proof available</span>
                 </div>
                 <p className="text-xs ink-muted mt-3">This calculator is an estimate, not a quote.</p>
               </div>
@@ -905,12 +1095,20 @@ const Index = () => {
                 </div>
                 <div className="mt-5 divide-y hairline">
                   {pricing.map((p) => (
-                    <div key={p.size} className="flex justify-between items-center py-3.5">
-                      <span className="ink inline-flex items-center gap-2.5">
+                    <div key={p.size} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3">
+                      <span className="ink inline-flex items-center gap-2.5 min-w-[120px]">
                         <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
                         {p.size}
                       </span>
-                      <span className="font-serif text-xl text-[hsl(var(--gold-deep))]">{p.price}</span>
+                      <span className="font-serif text-xl text-[hsl(var(--gold-deep))] ml-auto sm:ml-0">{p.price}</span>
+                      <a
+                        href={SCHEDULING_URL}
+                        {...ext}
+                        onClick={() => track("pricing_row_check", { size: p.size })}
+                        className="inline-flex min-h-[46px] items-center gap-1.5 rounded-lg border border-[hsl(var(--ink))] bg-[hsl(var(--ink))] px-3.5 text-xs font-semibold text-[hsl(var(--paper))] transition hover:bg-[hsl(0_0%_15%)] focus-gold w-full sm:w-auto justify-center"
+                      >
+                        Check availability <ArrowRight className="h-3.5 w-3.5" />
+                      </a>
                     </div>
                   ))}
                 </div>
@@ -1136,6 +1334,57 @@ const Index = () => {
           </div>
         </section>
 
+        {/* OPERATOR MODE — for multi-property clients */}
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <div className="premium-card p-8 sm:p-12 relative overflow-hidden">
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+            <div className="absolute inset-x-8 bottom-6 h-px gold-rule opacity-60" />
+            <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                  <Building2 className="h-3 w-3" /> Operator Mode
+                </div>
+                <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                  For operators managing <span className="gold-text">more than one property.</span>
+                </h2>
+                <p className="text-muted-foreground mt-4 max-w-xl">
+                  Recurring coverage is not discounted cleaning. It is priority scheduling, readiness tracking, repeatable standards, and faster dispatch across active properties.
+                </p>
+                <ul className="mt-5 grid sm:grid-cols-2 gap-2.5 max-w-xl text-sm">
+                  {[
+                    "Priority dispatch across portfolio",
+                    "Readiness tracking per property",
+                    "Repeatable, documented standards",
+                    "Single point of coordination",
+                  ].map((p) => (
+                    <li key={p} className="flex gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="lg:col-span-5 flex flex-col gap-3">
+                <a
+                  href={ONBOARDING_URL}
+                  {...ext}
+                  onClick={() => track("operator_onboarding")}
+                  className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                >
+                  Start Client On-Boarding <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={PHONE_TEL}
+                  onClick={() => track("operator_call")}
+                  className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
+                >
+                  <Phone className="h-4 w-4" /> Talk to coverage lead
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FINAL CTA — full-bleed gold band */}
         <section className="gold-band relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(hsl(var(--ink))_1px,transparent_1px)] [background-size:18px_18px]" />
@@ -1149,6 +1398,11 @@ const Index = () => {
             <p className="mt-5 text-base sm:text-lg ink max-w-xl mx-auto opacity-80">
               Submit the request. We'll route the right coverage path and confirm before anything is scheduled.
             </p>
+            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs ink opacity-80">
+              <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-[hsl(var(--ink))]" /> ★★★★★ Verified Niagara reviews</span>
+              <span className="inline-flex items-center gap-1.5"><Camera className="h-3.5 w-3.5" /> Photo proof available</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Coverage confirmed first</span>
+            </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-7 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)] transition active:scale-[0.98]">
@@ -1246,9 +1500,10 @@ const Index = () => {
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("mobile_bar_schedule")}
-            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-3 text-sm font-semibold focus-gold"
+            className="col-span-2 inline-flex min-h-[48px] flex-col items-center justify-center gap-0 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
           >
-            Book <ArrowRight className="h-4 w-4" />
+            <span className="inline-flex items-center gap-1">Urgent <ArrowRight className="h-3.5 w-3.5" /></span>
+            <span className="text-[10px] font-normal opacity-75">Schedule</span>
           </a>
         </div>
       </div>
