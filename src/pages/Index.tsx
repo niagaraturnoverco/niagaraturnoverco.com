@@ -35,6 +35,8 @@ import {
   TrendingUp,
   Zap,
   Camera,
+  Search,
+  XCircle,
 } from "lucide-react";
 
 import heroTurnover from "@/assets/hero-turnover.jpg";
@@ -149,9 +151,39 @@ const Initials = ({ name }: { name: string }) => {
   );
 };
 
+const COVERED_AREAS = [
+  { name: "Niagara Falls", aliases: ["niagara falls"] },
+  { name: "St. Catharines", aliases: ["st catharines", "st. catharines", "saint catharines", "stcatharines"] },
+  { name: "Niagara-on-the-Lake", aliases: ["niagara-on-the-lake", "niagara on the lake", "notl"] },
+  { name: "Welland", aliases: ["welland"] },
+  { name: "Thorold", aliases: ["thorold"] },
+  { name: "Port Colborne", aliases: ["port colborne", "portcolborne"] },
+  { name: "Fort Erie", aliases: ["fort erie", "forterie"] },
+];
+
+type CoverageResult =
+  | { status: "covered"; area: string }
+  | { status: "uncovered"; input: string }
+  | null;
+
+const checkCoverage = (raw: string): CoverageResult => {
+  const cleaned = raw.trim().toLowerCase().replace(/[,.]/g, " ").replace(/\s+/g, " ");
+  if (cleaned.length < 2) return null;
+  for (const area of COVERED_AREAS) {
+    for (const alias of area.aliases) {
+      if (cleaned.includes(alias)) {
+        return { status: "covered", area: area.name };
+      }
+    }
+  }
+  return { status: "uncovered", input: raw.trim() };
+};
+
 const Index = () => {
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
+  const [coverageInput, setCoverageInput] = useState<string>("");
+  const [coverageResult, setCoverageResult] = useState<CoverageResult>(null);
 
   const calc = useMemo(() => {
     const cancellation = rate * nights;
@@ -318,7 +350,7 @@ const Index = () => {
             onClick={() => track("cta_scheduling", { source: "nav" })}
             className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
           >
-            Book Coverage
+            Request Scheduling
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
@@ -341,7 +373,7 @@ const Index = () => {
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full sm:w-auto">
-                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Book Turnover Coverage</PrimaryCTA>
+                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Request Client Scheduling</PrimaryCTA>
                   <a
                     href="#intake"
                     onClick={() => track("hero_setup_link")}
@@ -356,12 +388,8 @@ const Index = () => {
                     Response under 24h
                   </span>
                   <span className="gold-pill">
-                    <Sparkles className="h-3 w-3" />
-                    Free to start
-                  </span>
-                  <span className="gold-pill">
                     <ShieldCheck className="h-3 w-3" />
-                    Coverage confirmed first
+                    No payment before coverage is confirmed
                   </span>
                 </div>
 
@@ -411,60 +439,6 @@ const Index = () => {
                 <div className="hidden lg:block absolute -bottom-4 -right-4 h-12 w-12 rounded-full bg-gradient-gold opacity-40 blur-xl" />
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* GALLERY TEASER — links to dedicated page */}
-        <section className="section-paper">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <SectionLabel onPaper>Before & After</SectionLabel>
-                <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
-                  The impact should be <span className="text-[hsl(var(--gold-deep))]">obvious in seconds.</span>
-                </h2>
-              </div>
-              <p className="lg:col-span-5 text-sm sm:text-base ink-muted max-w-xl lg:ml-auto">
-                See real room resets that show the difference between unfinished and guest-ready.
-              </p>
-            </div>
-
-            <a
-              href="/gallery"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 block paper-card group overflow-hidden shadow-elegant"
-            >
-              <div className="grid md:grid-cols-2 items-center">
-                <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden relative">
-                  <img
-                    src={beforeAfterGallery[0].image}
-                    alt={beforeAfterGallery[0].alt}
-                    width={1080}
-                    height={810}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-[hsl(var(--ink))]/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))] opacity-0 group-hover:opacity-100 transition duration-300">
-                    <Camera className="h-3 w-3" /> View proof
-                  </div>
-                </div>
-                <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
-                  <h3 className="font-serif text-2xl ink">View the full gallery</h3>
-                  <p className="text-sm leading-relaxed ink-muted max-w-md">
-                    Bedrooms, lounges, amenity corners, and detail refreshes — each one documented before and after turnover coverage.
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--gold-deep))] mt-1">
-                    Open gallery
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 transition group-hover:translate-x-0.5">
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </a>
           </div>
         </section>
 
@@ -553,7 +527,7 @@ const Index = () => {
                   <div className="flex items-center justify-between gap-3 mt-5">
                     <div>
                       <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary</div>
-                      <div className="font-serif text-xl mt-1">Book Turnover Coverage</div>
+                      <div className="font-serif text-xl mt-1">Request Client Scheduling</div>
                       <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-primary shrink-0 group-hover:translate-x-1 transition" />
@@ -572,6 +546,121 @@ const Index = () => {
                   </div>
                 </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* COVERAGE CHECKER — confirm service area before booking */}
+        <section id="coverage" className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-5">
+              <SectionLabel>Coverage Checker</SectionLabel>
+              <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                Confirm your property is in our <span className="gold-text">Niagara service area.</span>
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-md">
+                Enter your city or full property address. We'll confirm in seconds whether you're inside our active turnover coverage map.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {COVERED_AREAS.map((a) => (
+                  <span key={a.name} className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/[0.05] px-3 py-1.5 text-xs text-muted-foreground">
+                    <MapPin className="h-3 w-3 text-primary" />
+                    {a.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 premium-card p-6 sm:p-8 relative overflow-hidden">
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const result = checkCoverage(coverageInput);
+                  setCoverageResult(result);
+                  if (result) {
+                    track("coverage_check", { status: result.status });
+                  }
+                }}
+                className="relative"
+              >
+                <label htmlFor="coverage-input" className="text-xs uppercase tracking-[0.16em] text-primary font-medium">
+                  Property city or address
+                </label>
+                <div className="mt-2 flex flex-col sm:flex-row gap-3">
+                  <div className="relative flex-1">
+                    <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-primary pointer-events-none" />
+                    <Input
+                      id="coverage-input"
+                      type="text"
+                      maxLength={200}
+                      autoComplete="address-level2"
+                      placeholder="e.g. Niagara Falls or 123 Main St, NOTL"
+                      value={coverageInput}
+                      onChange={(e) => {
+                        setCoverageInput(e.target.value);
+                        if (coverageResult) setCoverageResult(null);
+                      }}
+                      className="h-12 pl-10 bg-background/60 border-primary/30 focus-visible:ring-primary focus-visible:ring-2"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                  >
+                    <Search className="h-4 w-4" />
+                    Check Coverage
+                  </button>
+                </div>
+
+                {coverageResult?.status === "covered" && (
+                  <div className="mt-5 rounded-xl border border-success/40 bg-success/10 p-5 animate-fade-in">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-success shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <div className="font-semibold text-success">You're in our coverage area</div>
+                        <p className="text-sm text-foreground/90 mt-1">
+                          <span className="font-medium">{coverageResult.area}</span> is part of our active Niagara turnover map. Submit a Client Scheduling request and we'll route the right coverage path.
+                        </p>
+                        <a
+                          href={SCHEDULING_URL}
+                          {...ext}
+                          onClick={() => track("coverage_to_scheduling", { area: coverageResult.area })}
+                          className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                        >
+                          Request Client Scheduling
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {coverageResult?.status === "uncovered" && (
+                  <div className="mt-5 rounded-xl border border-border bg-secondary/40 p-5 animate-fade-in">
+                    <div className="flex items-start gap-3">
+                      <XCircle className="h-6 w-6 text-muted-foreground shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <div className="font-semibold">We didn't recognize that location</div>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          We couldn't match <span className="text-foreground font-medium">"{coverageResult.input}"</span> to one of our seven Niagara service areas. If you're nearby or unsure, call us — we may still be able to route coverage.
+                        </p>
+                        <a
+                          href={PHONE_TEL}
+                          onClick={() => track("coverage_call_fallback")}
+                          className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 text-sm font-semibold transition hover:bg-primary/[0.15] focus-gold"
+                        >
+                          <Phone className="h-4 w-4" /> Call {PHONE}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-[11px] text-muted-foreground mt-4">
+                  Coverage check is an instant guide — final scope and timing are confirmed before scheduling.
+                </p>
+              </form>
             </div>
           </div>
         </section>
@@ -637,7 +726,7 @@ const Index = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Book Turnover Coverage</PrimaryCTA>
+                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
                   <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
                 </div>
                 <p className="text-xs ink-muted mt-3">This calculator is an estimate, not a quote.</p>
@@ -703,6 +792,60 @@ const Index = () => {
                 </ul>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* GALLERY TEASER — proof of work, after services */}
+        <section className="section-paper">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-7">
+                <SectionLabel onPaper>Before & After</SectionLabel>
+                <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
+                  The impact should be <span className="text-[hsl(var(--gold-deep))]">obvious in seconds.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-sm sm:text-base ink-muted max-w-xl lg:ml-auto">
+                See real room resets that show the difference between unfinished and guest-ready.
+              </p>
+            </div>
+
+            <a
+              href="/gallery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 block paper-card group overflow-hidden shadow-elegant"
+            >
+              <div className="grid md:grid-cols-2 items-center">
+                <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden relative">
+                  <img
+                    src={beforeAfterGallery[0].image}
+                    alt={beforeAfterGallery[0].alt}
+                    width={1080}
+                    height={810}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-[hsl(var(--ink))]/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))] opacity-0 group-hover:opacity-100 transition duration-300">
+                    <Camera className="h-3 w-3" /> View proof
+                  </div>
+                </div>
+                <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
+                  <h3 className="font-serif text-2xl ink">View the full gallery</h3>
+                  <p className="text-sm leading-relaxed ink-muted max-w-md">
+                    Bedrooms, lounges, amenity corners, and detail refreshes — each one documented before and after turnover coverage.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--gold-deep))] mt-1">
+                    Open gallery
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 transition group-hover:translate-x-0.5">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </a>
           </div>
         </section>
 
@@ -833,7 +976,7 @@ const Index = () => {
                 Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                <PrimaryCTA source="pricing">Book Turnover Coverage</PrimaryCTA>
+                <PrimaryCTA source="pricing">Request Client Scheduling</PrimaryCTA>
                 <SecondaryCTA source="pricing" onPaper>Set Up Your Property</SecondaryCTA>
               </div>
             </div>
@@ -1009,7 +1152,7 @@ const Index = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-7 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)] transition active:scale-[0.98]">
-                Book Coverage Now <ArrowRight className="h-4 w-4" />
+                Request Client Scheduling <ArrowRight className="h-4 w-4" />
               </a>
               <a href={PHONE_TEL} onClick={() => track("final_call")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-[hsl(var(--ink))] px-7 text-sm font-semibold ink hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))] transition">
