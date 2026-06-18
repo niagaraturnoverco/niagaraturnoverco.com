@@ -47,19 +47,6 @@ const ext = {
   rel: "noopener noreferrer" as const,
 };
 
-const COVERED = [
-  "niagara falls",
-  "st. catharines",
-  "st catharines",
-  "saint catharines",
-  "niagara-on-the-lake",
-  "niagara on the lake",
-  "notl",
-  "welland",
-  "thorold",
-  "port colborne",
-  "fort erie",
-];
 
 const Logo = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center gap-2.5 ${className}`}>
@@ -125,16 +112,6 @@ const SecondaryCTA = ({
 );
 
 const Index = () => {
-  const [coverageInput, setCoverageInput] = useState("");
-  const [coverageResult, setCoverageResult] = useState<null | boolean>(null);
-
-  const checkCoverage = () => {
-    const v = coverageInput.trim().toLowerCase();
-    if (!v) return;
-    const ok = COVERED.some((c) => v.includes(c));
-    setCoverageResult(ok);
-    track("coverage_check", { input: v, covered: ok });
-  };
 
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
@@ -456,70 +433,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* COVERAGE CHECKER */}
-        <section className="mx-auto max-w-7xl px-4 py-12">
-          <div className="premium-card p-6 sm:p-10">
-            <div className="grid gap-8 lg:grid-cols-2 items-center">
-              <div>
-                <SectionLabel>Coverage Check</SectionLabel>
-                <h2 className="font-serif text-3xl sm:text-4xl mt-4">
-                  We cover Niagara. <span className="gold-text">Confirm yours in 10 seconds.</span>
-                </h2>
-                <p className="text-sm text-muted-foreground mt-3">
-                  Niagara Falls · St. Catharines · Niagara-on-the-Lake · Welland · Thorold · Port Colborne · Fort Erie.
-                </p>
-              </div>
-              <div>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Input
-                    value={coverageInput}
-                    onChange={(e) => setCoverageInput(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && checkCoverage()}
-                    placeholder="City or address (e.g. Niagara Falls)"
-                    className="h-12 bg-input border-border"
-                  />
-                  <Button
-                    onClick={checkCoverage}
-                    className="h-12 bg-gradient-gold text-primary-foreground hover:brightness-110 font-semibold"
-                  >
-                    Check
-                  </Button>
-                </div>
-                {coverageResult === true && (
-                  <div className="mt-4 rounded-xl border border-success/40 bg-success/10 p-4 flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                    <div className="text-sm">
-                      <div className="font-semibold text-success">You're in our coverage area.</div>
-                      <a
-                        href={SCHEDULING_URL}
-                        {...ext}
-                        onClick={() => track("coverage_cta_scheduling")}
-                        className="underline underline-offset-2 mt-1 inline-block"
-                      >
-                        Request Client Scheduling →
-                      </a>
-                    </div>
-                  </div>
-                )}
-                {coverageResult === false && (
-                  <div className="mt-4 rounded-xl border border-destructive/40 bg-destructive/10 p-4 flex items-start gap-3">
-                    <AlertTriangle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
-                    <div className="text-sm">
-                      <div className="font-semibold">Coverage not confirmed.</div>
-                      <div className="text-muted-foreground">
-                        Call or text{" "}
-                        <a href={PHONE_TEL} className="underline">{PHONE}</a> — we may still be able to help.
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <p className="text-xs text-muted-foreground mt-3">
-                  Directional only. Final coverage is confirmed after scheduling request review.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* CALCULATOR */}
         <section className="mx-auto max-w-7xl px-4 py-12">
