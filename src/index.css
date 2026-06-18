@@ -109,6 +109,12 @@
   }
 
   input, textarea, select { font-size: 16px; } /* avoid iOS zoom */
+
+  /* Gold focus ring — premium accessibility */
+  .focus-gold:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(43 65% 58%);
+  }
   }
 
   /* Subtle fine grid — premium "blueprint" texture for dark sections */
