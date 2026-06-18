@@ -356,12 +356,8 @@ const Index = () => {
                     Response under 24h
                   </span>
                   <span className="gold-pill">
-                    <Sparkles className="h-3 w-3" />
-                    Free to start
-                  </span>
-                  <span className="gold-pill">
                     <ShieldCheck className="h-3 w-3" />
-                    Coverage confirmed first
+                    No payment before coverage is confirmed
                   </span>
                 </div>
 
