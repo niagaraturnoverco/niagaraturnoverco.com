@@ -241,6 +241,41 @@ const Index = () => {
     { q: "Do you offer property management or co-hosting?", a: "We focus on turnover coverage and property readiness. For recurring operator relationships we offer priority dispatch and account setup through our Client On-Boarding path." },
   ];
 
+  const beforeAfterGallery = [
+    {
+      title: "Bedroom reset",
+      impact: "From visibly unfinished to crisp, guest-ready presentation.",
+      image: beforeAfterBedroomBlue.url,
+      alt: "Before and after comparison of a short-term rental bedroom reset with straightened bedding and styled pillows",
+      featured: true,
+    },
+    {
+      title: "Full bed remake",
+      impact: "A cleaner visual finish that reads ready at a glance.",
+      image: beforeAfterBedroomRose.url,
+      alt: "Before and after comparison of a pink bedroom with wrinkled bedding transformed into a neatly made bed",
+    },
+    {
+      title: "Living room styling",
+      impact: "Soft furnishings and layout details make the space feel intentional.",
+      image: beforeAfterLounge.url,
+      alt: "Before and after comparison of a lounge area with added throws and cushions for a more polished guest setup",
+    },
+    {
+      title: "Amenity corner",
+      impact: "An overlooked area becomes a usable, welcoming moment.",
+      image: beforeAfterHallway.url,
+      alt: "Before and after comparison of a hallway nook transformed into a styled seating area",
+    },
+    {
+      title: "Detail refresh",
+      impact: "Even secondary rooms look maintained, not forgotten.",
+      image: beforeAfterPiano.url,
+      alt: "Before and after comparison of a piano area with added styling and decor for a finished look",
+    },
+  ];
+
+
   return (
     <div className="min-h-screen">
       {/* Alert bar */}
