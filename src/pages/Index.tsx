@@ -316,7 +316,7 @@ const Index = () => {
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("cta_scheduling", { source: "nav" })}
-            className="hidden sm:inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+            className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
           >
             Book Coverage
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -857,7 +857,7 @@ const Index = () => {
           <div className="mt-10 flex flex-wrap gap-x-2 gap-y-3 border-t border-border/60 pt-8">
             {audience.map((a) => (
               <span key={a.label}
-                className="gold-underline inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-border bg-card/50 text-sm hover:border-primary/40 hover:bg-primary/[0.06] active:scale-[0.97] active:bg-primary/10 transition cursor-default">
+                className="gold-underline inline-flex min-h-[46px] items-center gap-2.5 px-4 py-3 rounded-full border border-border bg-card/50 text-sm hover:border-primary/40 hover:bg-primary/[0.06] active:scale-[0.97] active:bg-primary/10 transition cursor-default">
                 <a.icon className="h-4 w-4 text-primary" />
                 {a.label}
               </span>
