@@ -14,8 +14,11 @@ import {
   Clock,
   MapPin,
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
+  Check,
   AlertTriangle,
+  AlertOctagon,
   Sparkles,
   Building2,
   Home,
@@ -24,6 +27,14 @@ import {
   Mail,
   MessageSquare,
   Quote,
+  ClipboardList,
+  Route,
+  BadgeCheck,
+  HelpCircle,
+  Calculator,
+  TrendingUp,
+  Zap,
+  Camera,
 } from "lucide-react";
 
 import heroTurnover from "@/assets/hero-turnover.jpg";
@@ -301,9 +312,15 @@ const Index = () => {
             <a href="#pricing" className="hover:text-foreground">Pricing</a>
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
-          <PrimaryCTA source="nav" className="hidden sm:inline-flex !min-h-[42px] !px-4 text-xs">
+          <a
+            href={SCHEDULING_URL}
+            {...ext}
+            onClick={() => track("cta_scheduling", { source: "nav" })}
+            className="hidden sm:inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+          >
             Book Coverage
-          </PrimaryCTA>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
         </div>
       </header>
 
@@ -333,12 +350,19 @@ const Index = () => {
                     Or set up your property first →
                   </a>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground max-w-xl">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success">
+                <div className="flex flex-wrap items-center gap-2 max-w-xl">
+                  <span className="gold-pill">
                     <Clock className="h-3 w-3" />
-                    Response in under 24h
+                    Response under 24h
                   </span>
-                  <span className="text-muted-foreground/80">· Free to start — pay only after your first turnover.</span>
+                  <span className="gold-pill">
+                    <Sparkles className="h-3 w-3" />
+                    Free to start
+                  </span>
+                  <span className="gold-pill">
+                    <ShieldCheck className="h-3 w-3" />
+                    Coverage confirmed first
+                  </span>
                 </div>
 
                 {/* Trust strip */}
@@ -422,6 +446,9 @@ const Index = () => {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-[hsl(var(--ink))]/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))] opacity-0 group-hover:opacity-100 transition duration-300">
+                    <Camera className="h-3 w-3" /> View proof
+                  </div>
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
@@ -587,14 +614,17 @@ const Index = () => {
 
                 <div className="mt-6 space-y-2 text-sm">
                   {[
-                    ["Cancellation loss", calc.cancellation],
-                    ["Rebooking delay", calc.rebooking],
-                    ["Review / reputation risk", calc.review],
-                    ["Coordination time", calc.coord],
-                  ].map(([k, v]) => (
-                    <div key={k as string} className="flex justify-between border-b hairline py-2">
-                      <span className="ink-muted">{k}</span>
-                      <span className="font-medium ink">${(v as number).toLocaleString()}</span>
+                    { k: "Cancellation loss", v: calc.cancellation, Icon: AlertOctagon },
+                    { k: "Rebooking delay", v: calc.rebooking, Icon: Calculator },
+                    { k: "Review / reputation risk", v: calc.review, Icon: TrendingUp },
+                    { k: "Coordination time", v: calc.coord, Icon: Clock },
+                  ].map(({ k, v, Icon }) => (
+                    <div key={k} className="flex justify-between items-center border-b hairline py-2.5">
+                      <span className="ink-muted inline-flex items-center gap-2.5">
+                        <Icon className="h-4 w-4 text-[hsl(var(--gold-deep))]" />
+                        {k}
+                      </span>
+                      <span className="font-medium ink">${v.toLocaleString()}</span>
                     </div>
                   ))}
                 </div>
@@ -629,10 +659,13 @@ const Index = () => {
             <div className="premium-card p-7 lg:row-span-2 relative overflow-hidden flex flex-col">
               <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative">
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
-                  <AlertTriangle className="h-3 w-3" /> Most requested
+                <div className="icon-badge icon-badge-lg shadow-gold">
+                  <AlertTriangle className="h-8 w-8" />
                 </div>
-                <h3 className="font-serif text-3xl mt-5">Emergency Turnover Coverage</h3>
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary mt-5">
+                  <Zap className="h-3 w-3" /> Most requested
+                </div>
+                <h3 className="font-serif text-3xl mt-4">Emergency Turnover Coverage</h3>
                 <p className="text-muted-foreground mt-3">Backup cleaner failed. Guest checks in tonight. We route fast and confirm coverage before you commit.</p>
                 <ul className="mt-6 space-y-3">
                   {services[0].points.map((p) => (
@@ -655,15 +688,15 @@ const Index = () => {
             {/* Supporting cards */}
             {services.slice(1).map((s) => (
               <div key={s.title} className="premium-card p-6 flex flex-col">
-                <div className="h-11 w-11 rounded-lg bg-gradient-gold-soft border border-primary/30 flex items-center justify-center">
-                  <s.icon className="h-5 w-5 text-primary" />
+                <div className="icon-badge">
+                  <s.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-serif text-xl mt-4">{s.title}</h3>
+                <h3 className="font-serif text-xl mt-5">{s.title}</h3>
                 <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
                 <ul className="mt-4 space-y-2 text-sm flex-1">
                   {s.points.map((p) => (
                     <li key={p} className="flex gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
                       {p}
                     </li>
                   ))}
@@ -683,21 +716,22 @@ const Index = () => {
           </div>
 
           <div className="mt-12 relative">
-            {/* connector line */}
-            <div className="hidden lg:block absolute top-7 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            {/* animated connector line */}
+            <div className="hidden lg:block stepper-line" />
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                ["01", "Submit the property request", "Tell us the property, the deadline, and the risk."],
-                ["02", "We confirm the right path", "Emergency, readiness, or recurring — routed in hours."],
-                ["03", "Price and availability are confirmed", "Scope and timing locked before anything is scheduled."],
-                ["04", "The property gets handled", "Turnover completed, optional photo proof on request."],
-              ].map(([n, t, d]) => (
+                { n: "01", t: "Submit the property request", d: "Tell us the property, the deadline, and the risk.", Icon: ClipboardList },
+                { n: "02", t: "We confirm the right path", d: "Emergency, readiness, or recurring — routed in hours.", Icon: Route },
+                { n: "03", t: "Price and availability are confirmed", d: "Scope and timing locked before anything is scheduled.", Icon: ShieldCheck },
+                { n: "04", t: "The property gets handled", d: "Turnover completed, optional photo proof on request.", Icon: BadgeCheck },
+              ].map(({ n, t, d, Icon }) => (
                 <div key={n} className="relative">
                   <div className="relative z-10 mx-auto h-14 w-14 rounded-full bg-background border border-primary/40 flex items-center justify-center shadow-gold">
-                    <span className="font-serif text-lg gold-text">{n}</span>
+                    <Icon className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-center mt-5">
-                    <div className="font-serif text-lg">{t}</div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] gold-text font-medium">Step {n}</div>
+                    <div className="font-serif text-lg mt-1">{t}</div>
                     <p className="text-sm text-muted-foreground mt-2">{d}</p>
                   </div>
                 </div>
@@ -728,8 +762,11 @@ const Index = () => {
                 </div>
                 <div className="mt-5 divide-y hairline">
                   {pricing.map((p) => (
-                    <div key={p.size} className="flex justify-between items-baseline py-3.5">
-                      <span className="ink">{p.size}</span>
+                    <div key={p.size} className="flex justify-between items-center py-3.5">
+                      <span className="ink inline-flex items-center gap-2.5">
+                        <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
+                        {p.size}
+                      </span>
                       <span className="font-serif text-xl text-[hsl(var(--gold-deep))]">{p.price}</span>
                     </div>
                   ))}
@@ -740,8 +777,11 @@ const Index = () => {
                 <h4 className="font-serif text-lg mt-6 ink">Common Add-ons</h4>
                 <div className="mt-3 grid sm:grid-cols-2 gap-x-8">
                   {addons.map(([k, v]) => (
-                    <div key={k} className="flex justify-between items-baseline py-2 text-sm border-b hairline">
-                      <span className="ink-muted">{k}</span>
+                    <div key={k} className="flex justify-between items-center py-2 text-sm border-b hairline">
+                      <span className="ink-muted inline-flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-[hsl(var(--gold-deep))]/70" strokeWidth={3} />
+                        {k}
+                      </span>
                       <span className="font-medium ink">{v}</span>
                     </div>
                   ))}
@@ -751,7 +791,7 @@ const Index = () => {
               {/* Same-day callout */}
               <div className="rounded-[var(--radius)] border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent p-7">
                 <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--ink))] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--paper))]">
-                  <AlertTriangle className="h-3 w-3" /> Urgent
+                  <Zap className="h-3 w-3" /> Urgent · Fast Dispatch
                 </div>
                 <h3 className="font-serif text-2xl mt-4 ink">Same-Day / Emergency</h3>
                 <ul className="mt-5 space-y-4 text-sm">
@@ -817,7 +857,7 @@ const Index = () => {
           <div className="mt-10 flex flex-wrap gap-x-2 gap-y-3 border-t border-border/60 pt-8">
             {audience.map((a) => (
               <span key={a.label}
-                className="gold-underline inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-border bg-card/50 text-sm hover:border-primary/40 transition cursor-default">
+                className="gold-underline inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-border bg-card/50 text-sm hover:border-primary/40 hover:bg-primary/[0.06] active:scale-[0.97] active:bg-primary/10 transition cursor-default">
                 <a.icon className="h-4 w-4 text-primary" />
                 {a.label}
               </span>
@@ -858,10 +898,14 @@ const Index = () => {
                 <p className="font-serif text-xl sm:text-2xl mt-4 leading-snug flex-1">
                   "{testimonials[0].quote}"
                 </p>
-                <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border/60">
+                <div className="mt-5 h-px gold-rule" />
+                <div className="mt-5 flex items-center gap-3 pt-3">
                   <Initials name={testimonials[0].name} />
                   <div>
-                    <div className="font-semibold">{testimonials[0].name}</div>
+                    <div className="font-semibold inline-flex items-center gap-1.5">
+                      {testimonials[0].name}
+                      <BadgeCheck className="h-4 w-4 text-primary" />
+                    </div>
                     <div className="text-xs text-muted-foreground mt-0.5">{testimonials[0].meta}</div>
                   </div>
                   <div className="ml-auto flex gap-0.5">
@@ -890,10 +934,14 @@ const Index = () => {
                       ))}
                     </div>
                     <p className="text-sm mt-2 leading-relaxed flex-1">"{t.quote}"</p>
-                    <div className="mt-3 pt-3 border-t border-border/60 flex items-center gap-2">
+                    <div className="mt-3 h-px gold-rule" />
+                    <div className="mt-3 pt-1 flex items-center gap-2">
                       <Initials name={t.name} />
                       <div>
-                        <div className="font-semibold text-sm">{t.name}</div>
+                        <div className="font-semibold text-sm inline-flex items-center gap-1">
+                          {t.name}
+                          <BadgeCheck className="h-3.5 w-3.5 text-primary" />
+                        </div>
                         <div className="text-[11px] text-muted-foreground">{t.meta}</div>
                       </div>
                     </div>
@@ -929,8 +977,11 @@ const Index = () => {
                     value={`item-${i}`}
                     className="border border-border rounded-xl bg-card px-5 data-[state=open]:border-primary/40 data-[state=open]:border-l-2 data-[state=open]:border-l-primary transition-colors"
                   >
-                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5 text-base">
-                      {f.q}
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5 text-base gap-3">
+                      <span className="inline-flex items-start gap-3 flex-1">
+                        <HelpCircle className="h-4 w-4 text-primary shrink-0 mt-1" />
+                        <span>{f.q}</span>
+                      </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground pb-5 text-sm leading-relaxed">
                       {f.a}
