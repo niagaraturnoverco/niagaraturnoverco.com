@@ -1330,7 +1330,7 @@ const Index = () => {
                 What clients say about <span className="gold-text">working with NTC.</span>
               </h2>
             </div>
-            <a href="https://maps.app.goo.gl/TQEue1ed1Q6jfzN26" {...ext}
+            <a href="https://maps.app.goo.gl/aRPa6J2ohxtrKjmz5" {...ext}
               onClick={() => track("google_reviews")}
               className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
               View Google Reviews <ArrowRight className="h-4 w-4" />
@@ -1619,7 +1619,7 @@ const Index = () => {
               <div className="mt-4 rounded-xl overflow-hidden border border-border/60 shadow-sm">
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d743653.7075230969!2d-80.23667350560684!3d43.2745274344831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa63967db8394934d%3A0x10857b0d295acfba!2sNiagara%20Turnover%20Co!5e0!3m2!1sen!2sca!4v1781796676061!5m2!1sen!2sca"
+                    src="https://www.google.com/maps?q=Niagara+Turnover+Co/@43.276421,-79.5773256,10z&output=embed"
                     className="absolute inset-0 w-full h-full"
                     style={{ border: 0 }}
                     allowFullScreen
