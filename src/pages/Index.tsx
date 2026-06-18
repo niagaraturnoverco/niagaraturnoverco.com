@@ -892,10 +892,14 @@ const Index = () => {
                 <p className="font-serif text-xl sm:text-2xl mt-4 leading-snug flex-1">
                   "{testimonials[0].quote}"
                 </p>
-                <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border/60">
+                <div className="mt-5 h-px gold-rule" />
+                <div className="mt-5 flex items-center gap-3 pt-3">
                   <Initials name={testimonials[0].name} />
                   <div>
-                    <div className="font-semibold">{testimonials[0].name}</div>
+                    <div className="font-semibold inline-flex items-center gap-1.5">
+                      {testimonials[0].name}
+                      <BadgeCheck className="h-4 w-4 text-primary" />
+                    </div>
                     <div className="text-xs text-muted-foreground mt-0.5">{testimonials[0].meta}</div>
                   </div>
                   <div className="ml-auto flex gap-0.5">
