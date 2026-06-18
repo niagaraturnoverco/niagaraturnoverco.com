@@ -97,7 +97,7 @@ const PrimaryCTA = ({
     href={SCHEDULING_URL}
     {...ext}
     onClick={() => track("cta_scheduling", { source })}
-    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold transition hover:brightness-110 active:scale-[0.98] ${className}`}
+    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.98] focus-gold ${className}`}
   >
     {children}
     <ArrowRight className="h-4 w-4" />
@@ -119,10 +119,10 @@ const SecondaryCTA = ({
     href={ONBOARDING_URL}
     {...ext}
     onClick={() => track("cta_onboarding", { source })}
-    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-semibold transition active:scale-[0.98] ${
+    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-semibold transition active:scale-[0.98] focus-gold ${
       onPaper
-        ? "border border-[hsl(var(--ink))] bg-transparent text-[hsl(var(--ink))] hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))]"
-        : "border border-primary/40 bg-primary/5 text-foreground hover:bg-primary/10"
+        ? "border-2 border-[hsl(var(--ink))] bg-transparent text-[hsl(var(--ink))] hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))]"
+        : "border-2 border-primary/60 bg-primary/10 text-foreground hover:bg-primary/[0.15]"
     } ${className}`}
   >
     {children}
@@ -1031,7 +1031,7 @@ const Index = () => {
           <a
             href={PHONE_TEL}
             onClick={() => track("mobile_bar_call")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/5 px-4 text-sm font-semibold"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-4 text-sm font-semibold focus-gold"
           >
             <Phone className="h-4 w-4" /> Call
           </a>
@@ -1039,7 +1039,7 @@ const Index = () => {
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("mobile_bar_schedule")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold"
           >
             Schedule <ArrowRight className="h-4 w-4" />
           </a>
