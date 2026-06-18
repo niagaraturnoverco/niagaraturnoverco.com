@@ -341,7 +341,7 @@ const Index = () => {
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full sm:w-auto">
-                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Book Turnover Coverage</PrimaryCTA>
+                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Request Client Scheduling</PrimaryCTA>
                   <a
                     href="#intake"
                     onClick={() => track("hero_setup_link")}
@@ -495,7 +495,7 @@ const Index = () => {
                   <div className="flex items-center justify-between gap-3 mt-5">
                     <div>
                       <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary</div>
-                      <div className="font-serif text-xl mt-1">Book Turnover Coverage</div>
+                      <div className="font-serif text-xl mt-1">Request Client Scheduling</div>
                       <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-primary shrink-0 group-hover:translate-x-1 transition" />
@@ -579,7 +579,7 @@ const Index = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Book Turnover Coverage</PrimaryCTA>
+                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
                   <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
                 </div>
                 <p className="text-xs ink-muted mt-3">This calculator is an estimate, not a quote.</p>
@@ -775,7 +775,7 @@ const Index = () => {
                 Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                <PrimaryCTA source="pricing">Book Turnover Coverage</PrimaryCTA>
+                <PrimaryCTA source="pricing">Request Client Scheduling</PrimaryCTA>
                 <SecondaryCTA source="pricing" onPaper>Set Up Your Property</SecondaryCTA>
               </div>
             </div>
