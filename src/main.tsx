@@ -8,5 +8,9 @@ import "@fontsource/work-sans/500.css";
 import "@fontsource/work-sans/600.css";
 import "@fontsource/work-sans/700.css";
 import "./index.css";
+import { installTapTargetAudit } from "./lib/a11y/tapTargetAudit";
+
+installTapTargetAudit();
 
 createRoot(document.getElementById("root")!).render(<App />);
+
