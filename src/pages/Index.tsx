@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -41,12 +41,27 @@ import heroTurnover from "@/assets/hero-turnover.jpg";
 import property1 from "@/assets/luxury-home-exterior.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
+import property4 from "@/assets/property-4.jpg";
+import property5 from "@/assets/property-5.jpg";
+import property6 from "@/assets/property-6.jpg";
+import property7 from "@/assets/property-7.jpg";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
 import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
 import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
 import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
 import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
 import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+
+const HERO_IMAGES = [
+  { src: heroTurnover, alt: "Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light" },
+  { src: property1, alt: "Luxury stone estate home exterior at golden hour in the Niagara Region" },
+  { src: property4, alt: "Modern lake house with waterfront views and glass architecture in Niagara" },
+  { src: property5, alt: "Elegant Victorian heritage home with fall foliage in Niagara-on-the-Lake" },
+  { src: property6, alt: "Sleek contemporary townhouse with modern landscaping in St. Catharines" },
+  { src: property7, alt: "Wine country estate with vineyard views and outdoor patio in Niagara" },
+];
+
+const TESTIMONIAL_IMAGES = [property1, property2, property3, property4, property5, property6, property7];
 
 
 const SCHEDULING_URL =
@@ -161,6 +176,15 @@ const Index = () => {
     recurring: boolean | null;
   }>({ urgent: null, laundry: null, vacant: null, recurring: null });
 
+  // Hero image rotator — cycles every 5 seconds
+  const [heroIndex, setHeroIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((i) => (i + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   // NTC starting price by bedroom count — mirrors pricing table
   const ntcPriceByBedroom: Record<number, number> = { 1: 199, 2: 269, 3: 329, 4: 399, 5: 499 };
 
@@ -256,19 +280,19 @@ const Index = () => {
       name: "Niagara Falls Host",
       quote: "My turnover cleaner cancelled three hours before a 4pm check-in on a long weekend. I called NTC at 1pm. Coverage was confirmed by 1:45 and the property was guest-ready by 3:30. Guest left a 5-star review. Worth every dollar.",
       meta: "Placeholder · STR host, Niagara Falls",
-      photo: property1,
+      photo: TESTIMONIAL_IMAGES[0],
     },
     {
       name: "NOTL Property Manager",
       quote: "We manage six STR units across NOTL and St. Catharines. Before NTC we lost roughly one weekend per month to coordination gaps. First quarter on recurring coverage: zero missed turnovers. The price difference paid for itself in protected bookings.",
       meta: "Placeholder · Property manager, NOTL",
-      photo: property2,
+      photo: TESTIMONIAL_IMAGES[3],
     },
     {
       name: "St. Catharines Host",
       quote: "The cleaner I found on Marketplace did a 'fine' job but left issues my guest flagged in the review. NTC's first turnover came back with photo proof of every room. I stopped second-guessing.",
       meta: "Placeholder · STR host, St. Catharines",
-      photo: property3,
+      photo: TESTIMONIAL_IMAGES[5],
     },
   ];
 
@@ -429,13 +453,19 @@ const Index = () => {
               {/* Hero photo composition */}
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
-                  <img
-                    src={heroTurnover}
-                    alt="Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light"
-                    width={1080}
-                    height={1350}
-                    className="h-full w-full object-cover"
-                  />
+                  {HERO_IMAGES.map((img, i) => (
+                    <img
+                      key={img.src}
+                      src={img.src}
+                      alt={img.alt}
+                      width={1080}
+                      height={1350}
+                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                        i === heroIndex ? "opacity-100" : "opacity-0"
+                      }`}
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
 
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/0 to-background/0" />
 
