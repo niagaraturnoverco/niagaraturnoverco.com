@@ -1042,6 +1042,7 @@ const Index = () => {
                     width={1080}
                     height={810}
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
@@ -1503,7 +1504,7 @@ const Index = () => {
                 <img
                   src={partnerSherkston}
                   alt="Private cottage at Sherkston Shores resort on Lake Erie"
-                  width={1280} height={800} loading="lazy"
+                  width={1280} height={800} loading="lazy" decoding="async"
                   className="h-full w-full object-cover"
                 />
               </div>
