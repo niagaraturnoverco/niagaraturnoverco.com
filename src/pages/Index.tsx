@@ -388,24 +388,42 @@ const Index = () => {
                 <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full sm:w-auto">
-                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Request Client Scheduling</PrimaryCTA>
+                <div className="grid gap-3 sm:grid-cols-5 w-full max-w-xl">
                   <a
-                    href="#intake"
-                    onClick={() => track("hero_setup_link")}
-                    className="text-sm font-medium text-muted-foreground hover:text-primary underline-offset-4 hover:underline focus-gold rounded-sm"
+                    href={SCHEDULING_URL}
+                    {...ext}
+                    onClick={() => track("hero_path_scheduling")}
+                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
                   >
-                    Or set up your property first →
+                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Need service now?</div>
+                    <div className="font-serif text-xl mt-1.5 leading-snug">Request Client Scheduling</div>
+                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Turnovers, emergency coverage, resets, same-day requests.</div>
+                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
+                  </a>
+                  <a
+                    href={ONBOARDING_URL}
+                    {...ext}
+                    onClick={() => track("hero_path_onboarding")}
+                    className="group sm:col-span-2 relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[110px]"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Managing properties?</div>
+                    <div className="font-serif text-lg mt-1.5 leading-snug">Client On-Boarding</div>
+                    <div className="text-xs text-muted-foreground mt-1.5">Recurring or multi-property setup.</div>
+                    <ArrowUpRight className="absolute top-5 right-5 h-4 w-4 text-primary group-hover:translate-x-0.5 transition" />
                   </a>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 max-w-xl">
                   <span className="gold-pill">
-                    <Clock className="h-3 w-3" />
-                    Response under 24h
+                    <ShieldCheck className="h-3 w-3" />
+                    Coverage confirmed first
                   </span>
                   <span className="gold-pill">
-                    <ShieldCheck className="h-3 w-3" />
-                    No payment before coverage is confirmed
+                    <Star className="h-3 w-3 fill-primary" />
+                    ★★★★★ Verified Niagara reviews
+                  </span>
+                  <span className="gold-pill">
+                    <Camera className="h-3 w-3" />
+                    Photo proof available
                   </span>
                 </div>
 
