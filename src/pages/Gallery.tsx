@@ -66,6 +66,15 @@ const Logo = () => (
 );
 
 export default function Gallery() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -83,7 +92,7 @@ export default function Gallery() {
       </header>
 
       <main className="section-paper">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:py-20">
           <div className="flex items-center gap-2 mb-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(36_55%_40%/0.35)] bg-[hsl(43_65%_58%/0.10)] px-3 py-1 text-xs uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">
               <Sparkles className="h-3 w-3" />
@@ -97,7 +106,69 @@ export default function Gallery() {
             These real room resets show the difference between a property that feels unfinished and one that reads clean, cared for, and ready the moment a guest walks in.
           </p>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
+          {/* Mobile: swipeable carousel */}
+          <div className="mt-8 lg:hidden">
+            <Carousel
+              setApi={setApi}
+              opts={{ align: "start", loop: true }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-3">
+                {beforeAfterGallery.map((item, index) => (
+                  <CarouselItem key={item.title} className="pl-3 basis-[88%] sm:basis-[70%]">
+                    <figure className="paper-card overflow-hidden shadow-elegant h-full">
+                      <div className="aspect-[4/3] overflow-hidden bg-[hsl(36_25%_92%)]">
+                        <img
+                          src={item.image}
+                          alt={item.alt}
+                          width={900}
+                          height={675}
+                          loading={index === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          {...(index === 0 ? { fetchpriority: "high" as const } : {})}
+                          sizes="(max-width: 640px) 88vw, 70vw"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                      <figcaption className="p-4">
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">Before → After</div>
+                        <h3 className="mt-1.5 font-serif text-lg ink">{item.title}</h3>
+                        <p className="mt-1.5 text-sm leading-relaxed ink-muted">{item.impact}</p>
+                      </figcaption>
+                    </figure>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <div className="mt-5 flex items-center justify-between gap-4">
+                <div className="flex gap-1.5" aria-hidden="true">
+                  {beforeAfterGallery.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => api?.scrollTo(i)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        i === current
+                          ? "w-6 bg-[hsl(var(--gold-deep))]"
+                          : "w-1.5 bg-[hsl(36_25%_75%)]"
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs ink-muted tabular-nums">
+                    {current + 1} / {beforeAfterGallery.length}
+                  </span>
+                  <CarouselPrevious className="static translate-y-0 h-9 w-9" />
+                  <CarouselNext className="static translate-y-0 h-9 w-9" />
+                </div>
+              </div>
+            </Carousel>
+            <p className="mt-3 text-center text-xs ink-muted">Swipe to compare →</p>
+          </div>
+
+          {/* Desktop: bento grid */}
+          <div className="mt-10 hidden gap-4 lg:grid lg:grid-cols-12 lg:grid-rows-[auto_auto]">
             {beforeAfterGallery.map((item, index) => {
               const featured = index === 0;
               return (
@@ -114,7 +185,10 @@ export default function Gallery() {
                       alt={item.alt}
                       width={featured ? 1080 : 800}
                       height={featured ? 810 : 500}
-                      loading="lazy"
+                      loading={featured ? "eager" : "lazy"}
+                      decoding="async"
+                      {...(featured ? { fetchpriority: "high" as const } : {})}
+                      sizes={featured ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 42vw, 100vw"}
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                     />
                   </div>
