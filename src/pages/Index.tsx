@@ -453,13 +453,19 @@ const Index = () => {
               {/* Hero photo composition */}
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
-                  <img
-                    src={heroTurnover}
-                    alt="Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light"
-                    width={1080}
-                    height={1350}
-                    className="h-full w-full object-cover"
-                  />
+                  {HERO_IMAGES.map((img, i) => (
+                    <img
+                      key={img.src}
+                      src={img.src}
+                      alt={img.alt}
+                      width={1080}
+                      height={1350}
+                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                        i === heroIndex ? "opacity-100" : "opacity-0"
+                      }`}
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
 
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/0 to-background/0" />
 
