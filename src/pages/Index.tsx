@@ -46,11 +46,9 @@ import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
 import luxuryLivingBright from "@/assets/luxury-living-bright.jpg.asset.json";
 import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
 import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
-import luxuryBedroomSuite from "@/assets/luxury-bedroom-suite.jpg.asset.json";
 import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
 import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
 import luxuryBathSuite from "@/assets/luxury-bath-suite.jpg.asset.json";
-import luxuryIndustrialLoft from "@/assets/luxury-industrial-loft.jpg.asset.json";
 import luxuryExtra01 from "@/assets/luxury-extra-01.webp.asset.json";
 import luxuryExtra02 from "@/assets/luxury-extra-02.webp.asset.json";
 import luxuryExtra03 from "@/assets/luxury-extra-03.webp.asset.json";
@@ -89,48 +87,32 @@ import luxuryExtra35 from "@/assets/luxury-extra-35.webp.asset.json";
 import luxuryExtra36 from "@/assets/luxury-extra-36.webp.asset.json";
 import luxuryExtra37 from "@/assets/luxury-extra-37.webp.asset.json";
 
-// Luxury property visuals — each unique, no duplicates across hero or testimonial sets
-// 6 unique sources from the original premium WebP set + 37 unique sources from the latest batch = 43 unique images
+// Each WebP is referenced exactly once across the page.
+// Reserved for standalone slots (services, readiness grid, inline section images, final CTA):
+//   L1 loftStair, L2 livingBright, L3 vacantKitchen, L4 vacantApartment, L5 tropicalKitchen,
+//   L6 bathSuite, E01, E03, E11, E13, E16, E25 — 12 standalone images
+// HERO carousel below uses 23 unique extras; TESTIMONIAL_IMAGES below uses 8 unique extras.
+// 12 + 23 + 8 = 43 unique WebPs, no duplicates anywhere.
 const HERO_IMAGES = [
-  { src: luxuryLoftStair.url, alt: "Luxury loft kitchen and stair detail prepared for a premium guest arrival in Niagara" },
-  { src: luxuryLivingBright.url, alt: "Bright vaulted living room reset to listing-ready condition for short-term rental guests" },
-  { src: luxuryVacantKitchen.url, alt: "Vacant modern apartment kitchen presented in clean, showing-ready condition" },
-  { src: luxuryBathSuite.url, alt: "Modern bathroom with freestanding tub prepared to a polished readiness standard" },
-  { src: luxuryVacantApartment.url, alt: "Bright vacant apartment interior prepared for turnover, staging, or a showing" },
-  { src: luxuryTropicalKitchen.url, alt: "High-end kitchen and dining space with natural light presented to premium hospitality standards" },
-  { src: luxuryExtra01.url, alt: "Open-concept industrial loft with brick column and dining area reset for guest arrival" },
   { src: luxuryExtra02.url, alt: "Contemporary lounge area styled for a polished short-term rental presentation" },
-  { src: luxuryExtra03.url, alt: "Sunlit principal bedroom prepared to listing-ready standards" },
-  { src: luxuryExtra04.url, alt: "Designer living space restaged for a premium guest arrival in Niagara" },
   { src: luxuryExtra05.url, alt: "Bright modern interior detail presented at operator-grade readiness" },
   { src: luxuryExtra06.url, alt: "Warm contemporary living room reset for short-term rental turnover" },
-  { src: luxuryExtra07.url, alt: "Refined interior corner styled for guest-ready presentation" },
   { src: luxuryExtra08.url, alt: "Considered furniture vignette prepared to a high-presentation standard" },
   { src: luxuryExtra09.url, alt: "Polished interior space ready for a premium check-in moment" },
-  { src: luxuryExtra10.url, alt: "Light-filled room reset to a listing-ready finish" },
-  { src: luxuryExtra11.url, alt: "Crisp interior detail presented at a property-readiness standard" },
   { src: luxuryExtra12.url, alt: "Premium bedroom and styling detail prepared for guest arrival" },
-  { src: luxuryExtra13.url, alt: "Designer interior reset to a turnover-ready standard" },
   { src: luxuryExtra14.url, alt: "Calm, neutral living area prepared for a premium short-term rental check-in" },
-  { src: luxuryExtra15.url, alt: "Modern home interior styled for a polished guest arrival" },
-  { src: luxuryExtra16.url, alt: "Contemporary residence detail prepared to listing-ready condition" },
   { src: luxuryExtra17.url, alt: "Bright open living space refreshed for guest readiness" },
   { src: luxuryExtra18.url, alt: "Curated interior space presented at hospitality-grade standards" },
   { src: luxuryExtra19.url, alt: "Sophisticated living detail reset for a premium turnover" },
-  { src: luxuryExtra20.url, alt: "Tailored interior moment styled for short-term rental presentation" },
   { src: luxuryExtra21.url, alt: "Refined home detail prepared for a guest-ready arrival" },
   { src: luxuryExtra22.url, alt: "Warm, considered interior reset to operator-grade readiness" },
   { src: luxuryExtra23.url, alt: "Modern interior corner styled for a polished check-in moment" },
-  { src: luxuryExtra24.url, alt: "Bright designer room reset for a premium short-term rental" },
-  { src: luxuryExtra25.url, alt: "Sun-lit kitchen and living detail prepared to listing standards" },
   { src: luxuryExtra26.url, alt: "Contemporary lounge styled for a polished guest experience" },
   { src: luxuryExtra27.url, alt: "Elegant interior vignette presented at premium readiness" },
-  { src: luxuryExtra28.url, alt: "Neutral, calm bedroom prepared for guest arrival" },
   { src: luxuryExtra29.url, alt: "Tasteful living area reset to a turnover-ready finish" },
   { src: luxuryExtra30.url, alt: "Bright modern interior detail at hospitality-grade standard" },
   { src: luxuryExtra31.url, alt: "Considered home interior styled for a premium check-in" },
   { src: luxuryExtra32.url, alt: "Refined property interior reset for short-term rental readiness" },
-  { src: luxuryExtra33.url, alt: "Designer residence detail prepared for guest arrival" },
   { src: luxuryExtra34.url, alt: "Warm, light-filled space reset to listing-ready condition" },
   { src: luxuryExtra35.url, alt: "Contemporary interior styled to a polished hospitality standard" },
   { src: luxuryExtra36.url, alt: "Modern home moment prepared for a premium turnover" },
@@ -138,17 +120,16 @@ const HERO_IMAGES = [
 ];
 
 const TESTIMONIAL_IMAGES = [
-  luxuryExtra14.url,
-  luxuryExtra17.url,
-  luxuryExtra19.url,
-  luxuryExtra22.url,
-  luxuryExtra26.url,
-  luxuryExtra29.url,
-  luxuryExtra31.url,
-  luxuryExtra34.url,
-  luxuryExtra36.url,
-  luxuryExtra37.url,
+  luxuryExtra04.url,
+  luxuryExtra07.url,
+  luxuryExtra10.url,
+  luxuryExtra15.url,
+  luxuryExtra20.url,
+  luxuryExtra24.url,
+  luxuryExtra28.url,
+  luxuryExtra33.url,
 ];
+
 
 
 
@@ -444,7 +425,7 @@ const Index = () => {
       label: "Modern living",
     },
     {
-      src: luxuryBedroomSuite.url,
+      src: luxuryExtra03.url,
       alt: "Warm bedroom suite with styled bedding prepared for short-term rental guests",
       label: "Bedrooms",
     },
@@ -454,12 +435,12 @@ const Index = () => {
       label: "Bathrooms",
     },
     {
-      src: luxuryVacantKitchen.url,
-      alt: "Vacant apartment kitchen with clean lines and listing-ready presentation",
+      src: luxuryExtra11.url,
+      alt: "Vacant apartment interior with clean lines and listing-ready presentation",
       label: "Vacant apartments",
     },
     {
-      src: luxuryIndustrialLoft.url,
+      src: luxuryExtra01.url,
       alt: "Industrial loft interior that feels suited to premium Niagara short-term rentals",
       label: "Lofts & cottages",
     },
@@ -1241,7 +1222,7 @@ const Index = () => {
               <div className="rounded-[var(--radius)] overflow-hidden border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={luxuryVacantKitchen.url}
+                    src={luxuryExtra25.url}
                     alt="Listing-ready kitchen visual supporting premium emergency and pricing support"
                     loading="lazy"
                     decoding="async"
@@ -1302,7 +1283,7 @@ const Index = () => {
                 </div>
                 <div className="relative min-h-[280px] lg:col-span-5">
                   <img
-                    src={luxuryLoftStair.url}
+                    src={luxuryExtra13.url}
                     alt="Luxury loft imagery supporting recurring operator coverage"
                     loading="lazy"
                     decoding="async"
@@ -1524,7 +1505,7 @@ const Index = () => {
               </div>
               <div className="relative min-h-[320px] lg:col-span-5">
                 <img
-                  src={luxuryIndustrialLoft.url}
+                  src={luxuryExtra16.url}
                   alt="Luxury industrial loft environment supporting multi-property operator coverage"
                   loading="lazy"
                   decoding="async"
