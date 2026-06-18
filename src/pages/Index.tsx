@@ -184,6 +184,12 @@ const Index = () => {
   const [nights, setNights] = useState<number>(2);
   const [coverageInput, setCoverageInput] = useState<string>("");
   const [coverageResult, setCoverageResult] = useState<CoverageResult>(null);
+  const [quiz, setQuiz] = useState<{
+    urgent: boolean | null;
+    laundry: boolean | null;
+    vacant: boolean | null;
+    recurring: boolean | null;
+  }>({ urgent: null, laundry: null, vacant: null, recurring: null });
 
   const calc = useMemo(() => {
     const cancellation = rate * nights;
@@ -193,6 +199,16 @@ const Index = () => {
     const total = cancellation + rebooking + review + coord;
     return { cancellation, rebooking, review, coord, total };
   }, [rate, nights]);
+
+  const quizResult = useMemo<string | null>(() => {
+    const { urgent, laundry, vacant, recurring } = quiz;
+    if (urgent === null || laundry === null || vacant === null || recurring === null) return null;
+    if (urgent) return "Emergency Turnover Coverage";
+    if (recurring) return "Recurring Turnover Support";
+    if (!vacant) return "Heavy Reset / Deep Clean";
+    if (laundry) return "Turnover with Laundry Reset";
+    return "Property Readiness / Listing Prep";
+  }, [quiz]);
 
   const risks = [
     ["01", "Guest checks in before the unit is ready", "Refunds, one-star reviews, and listing penalties land within hours."],
