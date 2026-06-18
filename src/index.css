@@ -78,7 +78,9 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: 'Work Sans', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.005em;
     background-image:
       radial-gradient(1200px 600px at 50% -10%, hsl(43 65% 58% / 0.10), transparent 60%),
       linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 6%));
@@ -88,9 +90,22 @@
     body { background-attachment: scroll; }
   }
 
-  h1, h2, h3, .font-serif {
-    font-family: 'DM Serif Display', Georgia, serif;
-    letter-spacing: -0.01em;
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+
+  h1 { letter-spacing: -0.03em; }
+
+  /* Editorial small-caps eyebrow utility */
+  .eyebrow {
+    font-family: 'Work Sans', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
   }
 
   input, textarea, select { font-size: 16px; } /* avoid iOS zoom */
@@ -186,7 +201,7 @@
 
   /* Numerals — oversized outline gold for stepper */
   .numeral-outline {
-    font-family: 'DM Serif Display', Georgia, serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     -webkit-text-stroke: 1px hsl(43 65% 58% / 0.55);
     color: transparent;
     letter-spacing: -0.02em;
