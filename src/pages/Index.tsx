@@ -1500,9 +1500,10 @@ const Index = () => {
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("mobile_bar_schedule")}
-            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-3 text-sm font-semibold focus-gold"
+            className="col-span-2 inline-flex min-h-[48px] flex-col items-center justify-center gap-0 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
           >
-            Book <ArrowRight className="h-4 w-4" />
+            <span className="inline-flex items-center gap-1">Urgent <ArrowRight className="h-3.5 w-3.5" /></span>
+            <span className="text-[10px] font-normal opacity-75">Schedule</span>
           </a>
         </div>
       </div>
