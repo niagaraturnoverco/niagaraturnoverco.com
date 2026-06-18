@@ -1330,7 +1330,7 @@ const Index = () => {
                 What clients say about <span className="gold-text">working with NTC.</span>
               </h2>
             </div>
-            <a href="https://maps.app.goo.gl/aRPa6J2ohxtrKjmz5" {...ext}
+            <a href="https://share.google/WBUHcz3lrMXVDrdqf" {...ext}
               onClick={() => track("google_reviews")}
               className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
               View Google Reviews <ArrowRight className="h-4 w-4" />
