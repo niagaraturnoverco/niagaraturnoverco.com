@@ -316,9 +316,9 @@ const Index = () => {
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
               <div className="lg:col-span-7 flex flex-col items-start gap-6">
                 <SectionLabel>Niagara Region Property Readiness</SectionLabel>
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-[64px] leading-[1.04]">
+                <h1 className="font-serif text-5xl sm:text-6xl lg:text-[88px] leading-[0.98]">
                   <span className="sr-only">Niagara Region property turnover and short-term rental cleaning. </span>
-                  Properties that are <span className="gold-text">ready</span> by the time guests arrive.
+                  Properties that are <span className="gold-text italic">ready</span> by the time guests arrive.
                 </h1>
                 <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
