@@ -1040,21 +1040,21 @@ const Index = () => {
 
       {/* STICKY MOBILE BAR */}
       <div className="fixed bottom-0 inset-x-0 z-50 md:hidden safe-bottom border-t border-border/80 bg-background/95 backdrop-blur">
-        <div className="grid grid-cols-2 gap-2 p-2.5">
+        <div className="grid grid-cols-5 gap-2 p-2.5">
           <a
             href={PHONE_TEL}
             onClick={() => track("mobile_bar_call")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-4 text-sm font-semibold focus-gold"
+            className="col-span-3 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold cta-attention"
           >
-            <Phone className="h-4 w-4" /> Call
+            <Phone className="h-4 w-4" /> Call Now
           </a>
           <a
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("mobile_bar_schedule")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold"
+            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-3 text-sm font-semibold focus-gold"
           >
-            Book Now <ArrowRight className="h-4 w-4" />
+            Book <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </div>
