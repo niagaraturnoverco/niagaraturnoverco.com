@@ -115,7 +115,16 @@
     outline: none;
     box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(43 65% 58%);
   }
+
+  /* Subtle attention ring for primary CTAs */
+  @keyframes cta-breathe {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(43 70% 55% / 0.35); }
+    50% { box-shadow: 0 0 0 6px hsl(43 70% 55% / 0.0); }
   }
+  .cta-attention {
+    animation: cta-breathe 2.5s ease-in-out infinite;
+  }
+}
 
   /* Subtle fine grid — premium "blueprint" texture for dark sections */
   .ntc-fine-grid {

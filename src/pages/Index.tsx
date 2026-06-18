@@ -302,7 +302,7 @@ const Index = () => {
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
           <PrimaryCTA source="nav" className="hidden sm:inline-flex !min-h-[42px] !px-4 text-xs">
-            Schedule Service
+            Book Coverage
           </PrimaryCTA>
         </div>
       </header>
@@ -324,8 +324,15 @@ const Index = () => {
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                  <PrimaryCTA source="hero" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
-                  <SecondaryCTA source="hero" className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
+                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Book Turnover Coverage</PrimaryCTA>
+                  <SecondaryCTA source="hero" className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground max-w-xl">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success">
+                    <Clock className="h-3 w-3" />
+                    Response in under 24h
+                  </span>
+                  <span className="text-muted-foreground/70">· No payment before coverage is confirmed.</span>
                 </div>
                 <p className="text-xs text-muted-foreground max-w-xl">
                   No payment before coverage is confirmed. Scope, timing, price, and deposit / payment terms are confirmed before scheduling.
@@ -509,11 +516,14 @@ const Index = () => {
 
               <div className="mt-6 space-y-3">
                 <a href={SCHEDULING_URL} {...ext} onClick={() => track("intake_scheduling")}
-                  className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary">
-                  <div className="flex items-center justify-between gap-3">
+                  className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary relative overflow-hidden">
+                  <div className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
+                    <Clock className="h-3 w-3" /> Same-day available
+                  </div>
+                  <div className="flex items-center justify-between gap-3 mt-5">
                     <div>
                       <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary</div>
-                      <div className="font-serif text-xl mt-1">Client Scheduling</div>
+                      <div className="font-serif text-xl mt-1">Book Turnover Coverage</div>
                       <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-primary shrink-0 group-hover:translate-x-1 transition" />
@@ -525,7 +535,7 @@ const Index = () => {
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary</div>
-                      <div className="font-serif text-xl mt-1">Client On-Boarding</div>
+                      <div className="font-serif text-xl mt-1">Set Up Your Property</div>
                       <div className="text-sm text-muted-foreground mt-1">New clients, new properties, recurring accounts, operators, managers.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition" />
@@ -594,8 +604,8 @@ const Index = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
-                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
+                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Book Turnover Coverage</PrimaryCTA>
+                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
                 </div>
                 <p className="text-xs ink-muted mt-3">This calculator is an estimate, not a quote.</p>
               </div>
@@ -633,7 +643,7 @@ const Index = () => {
               <div className="relative mt-8 flex items-end justify-between">
                 <a href={SCHEDULING_URL} {...ext} onClick={() => track("service_emergency")}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
-                  Request emergency coverage <ArrowRight className="h-4 w-4" />
+                  Get Emergency Coverage <ArrowRight className="h-4 w-4" />
                 </a>
                 <div className="font-serif text-5xl gold-text opacity-30 leading-none">24h</div>
               </div>
@@ -780,8 +790,8 @@ const Index = () => {
                 Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                <PrimaryCTA source="pricing">Request Client Scheduling</PrimaryCTA>
-                <SecondaryCTA source="pricing" onPaper>Client On-Boarding</SecondaryCTA>
+                <PrimaryCTA source="pricing">Book Turnover Coverage</PrimaryCTA>
+                <SecondaryCTA source="pricing" onPaper>Set Up Your Property</SecondaryCTA>
               </div>
             </div>
           </div>
@@ -945,7 +955,7 @@ const Index = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-7 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)] transition active:scale-[0.98]">
-                Client Scheduling <ArrowRight className="h-4 w-4" />
+                Book Coverage Now <ArrowRight className="h-4 w-4" />
               </a>
               <a href={PHONE_TEL} onClick={() => track("final_call")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-[hsl(var(--ink))] px-7 text-sm font-semibold ink hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))] transition">
@@ -1041,7 +1051,7 @@ const Index = () => {
             onClick={() => track("mobile_bar_schedule")}
             className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold"
           >
-            Schedule <ArrowRight className="h-4 w-4" />
+            Book Now <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </div>
