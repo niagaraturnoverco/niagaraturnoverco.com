@@ -344,12 +344,19 @@ const Index = () => {
                     Or set up your property first →
                   </a>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground max-w-xl">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success">
+                <div className="flex flex-wrap items-center gap-2 max-w-xl">
+                  <span className="gold-pill">
                     <Clock className="h-3 w-3" />
-                    Response in under 24h
+                    Response under 24h
                   </span>
-                  <span className="text-muted-foreground/80">· Free to start — pay only after your first turnover.</span>
+                  <span className="gold-pill">
+                    <Sparkles className="h-3 w-3" />
+                    Free to start
+                  </span>
+                  <span className="gold-pill">
+                    <ShieldCheck className="h-3 w-3" />
+                    Coverage confirmed first
+                  </span>
                 </div>
 
                 {/* Trust strip */}
