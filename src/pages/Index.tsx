@@ -31,6 +31,12 @@ import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
+import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
+import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
+import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
+import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
+import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+
 
 const SCHEDULING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagam8AZIIRd6Xqew/form";
@@ -235,6 +241,41 @@ const Index = () => {
     { q: "Do you offer property management or co-hosting?", a: "We focus on turnover coverage and property readiness. For recurring operator relationships we offer priority dispatch and account setup through our Client On-Boarding path." },
   ];
 
+  const beforeAfterGallery = [
+    {
+      title: "Bedroom reset",
+      impact: "From visibly unfinished to crisp, guest-ready presentation.",
+      image: beforeAfterBedroomBlue.url,
+      alt: "Before and after comparison of a short-term rental bedroom reset with straightened bedding and styled pillows",
+      featured: true,
+    },
+    {
+      title: "Full bed remake",
+      impact: "A cleaner visual finish that reads ready at a glance.",
+      image: beforeAfterBedroomRose.url,
+      alt: "Before and after comparison of a pink bedroom with wrinkled bedding transformed into a neatly made bed",
+    },
+    {
+      title: "Living room styling",
+      impact: "Soft furnishings and layout details make the space feel intentional.",
+      image: beforeAfterLounge.url,
+      alt: "Before and after comparison of a lounge area with added throws and cushions for a more polished guest setup",
+    },
+    {
+      title: "Amenity corner",
+      impact: "An overlooked area becomes a usable, welcoming moment.",
+      image: beforeAfterHallway.url,
+      alt: "Before and after comparison of a hallway nook transformed into a styled seating area",
+    },
+    {
+      title: "Detail refresh",
+      impact: "Even secondary rooms look maintained, not forgotten.",
+      image: beforeAfterPiano.url,
+      alt: "Before and after comparison of a piano area with added styling and decor for a finished look",
+    },
+  ];
+
+
   return (
     <div className="min-h-screen">
       {/* Alert bar */}
@@ -313,9 +354,9 @@ const Index = () => {
                     alt="Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light"
                     width={1080}
                     height={1350}
-                    fetchPriority="high"
                     className="h-full w-full object-cover"
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/0 to-background/0" />
 
                   {/* Floating status chip */}
@@ -339,7 +380,62 @@ const Index = () => {
           </div>
         </section>
 
+        {/* BEFORE / AFTER GALLERY */}
+        <section className="section-paper">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-7">
+                <SectionLabel onPaper>Before & After</SectionLabel>
+                <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
+                  The impact should be <span className="text-[hsl(var(--gold-deep))]">obvious in seconds.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-sm sm:text-base ink-muted max-w-xl lg:ml-auto">
+                These real room resets show the difference between a property that feels unfinished and one that reads clean, cared for, and ready the moment a guest walks in.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
+              {beforeAfterGallery.map((item, index) => {
+                const featured = index === 0;
+
+                return (
+                  <figure
+                    key={item.title}
+                    className={featured
+                      ? "paper-card group overflow-hidden shadow-elegant lg:col-span-7 lg:row-span-2"
+                      : "paper-card group overflow-hidden shadow-elegant lg:col-span-5"
+                    }
+                  >
+                    <div className={featured ? "aspect-[4/3] overflow-hidden" : "aspect-[16/10] overflow-hidden"}>
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        width={featured ? 1080 : 800}
+                        height={featured ? 810 : 500}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <figcaption className="flex items-start justify-between gap-4 p-5 sm:p-6">
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">Before → After</div>
+                        <h3 className="mt-2 font-serif text-xl ink">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed ink-muted max-w-[44ch]">{item.impact}</p>
+                      </div>
+                      <div className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 text-[hsl(var(--gold-deep))]">
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* RISK — zigzag list */}
+
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>The Real Risk</SectionLabel>
