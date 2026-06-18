@@ -189,8 +189,9 @@ const Index = () => {
   const risks = [
     ["01", "Guest checks in before the unit is ready", "Refunds, one-star reviews, and listing penalties land within hours."],
     ["02", "Listing photos or showings happen too soon", "The property sells or rents itself short — and you only see it later."],
-    ["03", "Vendor follow-up becomes your job", "Time you should spend on revenue gets spent chasing cleaners."],
+    ["03", "The cleaner confirms — then cancels the morning of check-in", "By the time you find out, you have hours, not days, to recover the booking."],
   ];
+
 
   const services = [
     {
