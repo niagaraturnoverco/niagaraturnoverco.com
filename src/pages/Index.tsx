@@ -302,7 +302,7 @@ const Index = () => {
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
           <PrimaryCTA source="nav" className="hidden sm:inline-flex !min-h-[42px] !px-4 text-xs">
-            Schedule Service
+            Book Coverage
           </PrimaryCTA>
         </div>
       </header>
