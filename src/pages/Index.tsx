@@ -433,7 +433,7 @@ const Index = () => {
 
         {/* RISK — zigzag list */}
 
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>The Real Risk</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
@@ -465,7 +465,7 @@ const Index = () => {
         </section>
 
         {/* INTAKE */}
-        <section id="intake" className="mx-auto max-w-7xl px-4 py-12">
+        <section id="intake" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-12">
           <div className="grid gap-8 lg:grid-cols-2 items-start">
             <div>
               <SectionLabel>Submit Request</SectionLabel>
@@ -604,7 +604,7 @@ const Index = () => {
         </section>
 
         {/* SERVICES — bento (1 large + 2 small) */}
-        <section id="services" className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section id="services" className="ntc-fine-grid ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>Services</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
@@ -661,7 +661,7 @@ const Index = () => {
         </section>
 
         {/* HOW IT WORKS — horizontal stepper */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>How It Works</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
