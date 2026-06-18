@@ -455,16 +455,16 @@ const Index = () => {
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
                   {HERO_IMAGES.map((img, i) => (
-                    <img
-                      key={img.src}
-                      src={img.src}
+                    <Picture
+                      key={img.src.img.src}
+                      image={img.src}
                       alt={img.alt}
-                      width={1080}
-                      height={1350}
+                      sizes="(min-width: 1024px) 40vw, 100vw"
                       className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
                         i === heroIndex ? "opacity-100" : "opacity-0"
                       }`}
                       loading={i === 0 ? "eager" : "lazy"}
+                      fetchPriority={i === 0 ? "high" : "auto"}
                     />
                   ))}
 
