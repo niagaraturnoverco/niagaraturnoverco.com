@@ -1,20 +1,36 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, MapPin, Phone, Calendar, ShieldCheck, Clock } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  MapPin,
+  Phone,
+  Clock,
+  ShieldCheck,
+  Star,
+  Camera,
+  Check,
+  CheckCircle2,
+  HelpCircle,
+  Sparkles,
+  Zap,
+} from "lucide-react";
 
 const SCHEDULING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagam8AZIIRd6Xqew/form";
 const ONBOARDING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
+const PHONE = "(289) 257-7725";
 const PHONE_TEL = "tel:+12892577725";
 const SITE = "https://niagara-turnover-flow.lovable.app";
+
+const ext = { target: "_blank" as const, rel: "noopener noreferrer" as const };
 
 type CityFaq = { q: string; a: string };
 type City = {
@@ -211,6 +227,31 @@ const CITIES: City[] = [
 
 export const CITY_SLUGS = CITIES.map((c) => c.slug);
 
+const PRICING: { size: string; price: string }[] = [
+  { size: "1 Bedroom", price: "$199" },
+  { size: "2 Bedroom", price: "$269" },
+  { size: "3 Bedroom", price: "$329" },
+  { size: "4 Bedroom", price: "$399" },
+  { size: "5+ Bedroom", price: "$499+" },
+];
+
+const CityLogo = () => (
+  <div className="flex items-center gap-2.5">
+    <div className="relative h-10 w-10 shrink-0">
+      <div className="absolute inset-0 rounded-lg bg-gradient-gold shadow-gold" />
+      <div className="absolute inset-[1px] rounded-[7px] flex items-center justify-center bg-background">
+        <span className="font-serif text-base gold-text">NT</span>
+      </div>
+    </div>
+    <div className="leading-tight">
+      <div className="font-serif text-base">Niagara Turnover Co.</div>
+      <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+        Property Readiness
+      </div>
+    </div>
+  </div>
+);
+
 const CityLanding = () => {
   const { city } = useParams<{ city: string }>();
   const data = CITIES.find((c) => c.slug === city);
@@ -273,93 +314,298 @@ const CityLanding = () => {
         <script type="application/ld+json">{JSON.stringify(serviceLd)}</script>
       </Helmet>
 
-      <header className="border-b border-border/50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="font-serif text-lg">
-            Niagara Turnover Co.
-          </Link>
-          <Button asChild size="sm" variant="outline">
-            <a href={PHONE_TEL}>
-              <Phone className="h-4 w-4 mr-2" /> Call
+      {/* Alert bar — matches main site */}
+      <div className="bg-gradient-gold text-primary-foreground text-xs sm:text-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center">
+          <ShieldCheck className="h-3.5 w-3.5 shrink-0" />
+          <span className="font-medium">
+            Coverage is confirmed before scheduling. Urgent:{" "}
+            <a href={PHONE_TEL} className="underline underline-offset-2 font-semibold">
+              {PHONE}
             </a>
-          </Button>
+          </span>
+        </div>
+      </div>
+
+      {/* Sticky nav — matches main site */}
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
+          <Link to="/" className="flex items-center"><CityLogo /></Link>
+          <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
+            <Link to="/#intake" className="hover:text-foreground">Submit Request</Link>
+            <Link to="/#services" className="hover:text-foreground">Services</Link>
+            <Link to="/#pricing" className="hover:text-foreground">Pricing</Link>
+            <Link to="/#faq" className="hover:text-foreground">FAQ</Link>
+          </nav>
+          <a
+            href={SCHEDULING_URL}
+            {...ext}
+            className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+          >
+            Request Scheduling <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12 max-w-4xl">
-        <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground mb-6">
-          <Link to="/" className="hover:underline">Home</Link>
-          <span className="mx-2">/</span>
-          <span>Service Area</span>
-          <span className="mx-2">/</span>
-          <span className="text-foreground">{data.name}</span>
-        </nav>
+      <main>
+        {/* HERO */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 ntc-grid-bg opacity-30" />
+          <div className="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,hsl(43_65%_58%/0.18),transparent_60%)]" />
+          <div className="relative mx-auto max-w-5xl px-4 py-14 sm:py-20">
+            <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-foreground">Home</Link>
+              <span className="mx-2">/</span>
+              <span>Service Area</span>
+              <span className="mx-2">/</span>
+              <span className="text-foreground">{data.name}</span>
+            </nav>
 
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-          <MapPin className="h-4 w-4" />
-          <span>{data.region}</span>
-        </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-primary">
+              <MapPin className="h-3 w-3" /> {data.region}
+            </div>
 
-        <h1 className="font-serif text-4xl md:text-5xl mb-4">
-          {data.name} Airbnb & STR Turnover Cleaning
-        </h1>
-        <p className="text-lg text-muted-foreground mb-8">{data.blurb}</p>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-5 leading-[1.02]">
+              <span className="gold-text italic">{data.name}</span> Airbnb & STR<br />turnover cleaning.
+            </h1>
+            <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-2xl">{data.blurb}</p>
 
-        <div className="flex flex-wrap gap-3 mb-12">
-          <Button asChild size="lg">
-            <a href={SCHEDULING_URL} target="_blank" rel="noopener noreferrer">
-              <Calendar className="h-4 w-4 mr-2" /> Client Scheduling <ArrowRight className="h-4 w-4 ml-2" />
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
-              <ShieldCheck className="h-4 w-4 mr-2" /> Client On-Boarding
-            </a>
-          </Button>
-        </div>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href={SCHEDULING_URL}
+                {...ext}
+                className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold cta-attention"
+              >
+                Request Client Scheduling <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href={ONBOARDING_URL}
+                {...ext}
+                className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
+              >
+                Client On-Boarding
+              </a>
+            </div>
 
-        <section className="mb-12">
-          <h2 className="font-serif text-2xl mb-4">What we cover in {data.shortName ?? data.name}</h2>
-          <ul className="space-y-2 text-muted-foreground">
+            <div className="mt-5 flex flex-wrap items-center gap-2">
+              <span className="gold-pill"><ShieldCheck className="h-3 w-3" /> Coverage confirmed first</span>
+              <span className="gold-pill"><Star className="h-3 w-3 fill-primary" /> ★★★★★ Verified Niagara reviews</span>
+              <span className="gold-pill"><Camera className="h-3 w-3" /> Photo proof available</span>
+            </div>
+          </div>
+        </section>
+
+        {/* COVERAGE / HIGHLIGHTS */}
+        <section className="ntc-gold-halo mx-auto max-w-5xl px-4 py-14 sm:py-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-primary">
+            <Sparkles className="h-3 w-3" /> What we cover
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+            What turnover looks like in <span className="gold-text">{data.shortName ?? data.name}.</span>
+          </h2>
+
+          <ul className="mt-8 grid gap-3 sm:grid-cols-3">
             {data.highlights.map((h) => (
-              <li key={h} className="flex gap-2">
-                <Clock className="h-5 w-5 shrink-0 text-primary mt-0.5" />
-                <span>{h}</span>
+              <li key={h} className="premium-card p-5 flex gap-3">
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-primary mt-0.5" />
+                <span className="text-sm">{h}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Neighborhoods served: {data.neighborhoods.join(" · ")}
+
+          <p className="text-sm text-muted-foreground mt-6">
+            Neighborhoods served: <span className="text-foreground">{data.neighborhoods.join(" · ")}</span>
           </p>
         </section>
 
-        <section className="mb-12">
-          <h2 className="font-serif text-2xl mb-4">{data.name} turnover FAQs</h2>
-          <Accordion type="single" collapsible className="w-full">
+        {/* PRICING REFERENCE — paper surface, matches main site */}
+        <section className="section-paper">
+          <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(36_55%_40%/0.35)] bg-[hsl(43_65%_58%/0.10)] px-3 py-1 text-xs uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">
+              <Sparkles className="h-3 w-3" /> {data.shortName ?? data.name} Pricing
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl mt-4 ink">
+              Simple starting points. <span className="text-[hsl(var(--gold-deep))]">Final price confirmed after scope.</span>
+            </h2>
+            <p className="ink-muted mt-3 max-w-2xl">
+              Pricing depends on size, condition, laundry, access, timing, and urgency. Same starting rates apply across the Niagara Region.
+            </p>
+
+            <div className="paper-card p-7 mt-8 shadow-elegant">
+              <div className="divide-y hairline">
+                {PRICING.map((p) => (
+                  <div key={p.size} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3">
+                    <span className="ink inline-flex items-center gap-2.5 min-w-[120px]">
+                      <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
+                      {p.size}
+                    </span>
+                    <span className="font-serif text-xl text-[hsl(var(--gold-deep))] ml-auto sm:ml-0">{p.price}</span>
+                    <a
+                      href={`${SCHEDULING_URL}?utm_source=city_${data.slug}&size=${encodeURIComponent(p.size)}`}
+                      {...ext}
+                      className="inline-flex min-h-[42px] items-center gap-1.5 rounded-lg border border-[hsl(var(--ink))] bg-[hsl(var(--ink))] px-3.5 text-xs font-semibold text-[hsl(var(--paper))] transition hover:bg-[hsl(0_0%_15%)] focus-gold w-full sm:w-auto justify-center"
+                    >
+                      Check availability <ArrowRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs ink-muted mt-5">
+                Same-day under 24h: <span className="font-semibold text-[hsl(var(--gold-deep))]">+50% rush fee</span>. Heavy reset / deep clean from $299. See the main site for the full breakdown.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* PREMIUM CTA CARD — matches main intake card style */}
+        <section className="ntc-gold-halo mx-auto max-w-5xl px-4 py-14 sm:py-16">
+          <div className="premium-card p-7 sm:p-10 relative overflow-hidden">
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
+            <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                  <Zap className="h-3 w-3" /> {data.shortName ?? data.name} · Same-day available
+                </span>
+                <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                  Coverage for {data.name} properties — <span className="gold-text">confirmed before scheduling.</span>
+                </h2>
+                <p className="text-muted-foreground mt-3 max-w-xl">
+                  No payment before coverage is confirmed. Same-day requests are reviewed first. Recurring operators get priority dispatch through On-Boarding.
+                </p>
+                <ul className="mt-5 grid sm:grid-cols-2 gap-2.5 max-w-xl text-sm">
+                  {[
+                    "No payment before coverage is confirmed",
+                    "Same-day requests reviewed first",
+                    "Photo proof available on request",
+                    "Priority dispatch for recurring operators",
+                  ].map((p) => (
+                    <li key={p} className="flex gap-2">
+                      <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="lg:col-span-5 flex flex-col gap-3">
+                <a
+                  href={`${SCHEDULING_URL}?utm_source=city_${data.slug}`}
+                  {...ext}
+                  className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold cta-attention"
+                >
+                  Request Client Scheduling <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={`${ONBOARDING_URL}?utm_source=city_${data.slug}`}
+                  {...ext}
+                  className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
+                >
+                  Client On-Boarding
+                </a>
+                <a
+                  href={PHONE_TEL}
+                  className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border border-border bg-card/60 px-6 text-sm font-semibold hover:border-primary/40"
+                >
+                  <Phone className="h-4 w-4" /> Call {PHONE}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ — matches main site styling */}
+        <section className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-primary">
+            <HelpCircle className="h-3 w-3" /> {data.shortName ?? data.name} FAQ
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+            {data.name} turnover <span className="gold-text">questions.</span>
+          </h2>
+
+          <Accordion type="single" collapsible className="mt-8 space-y-3">
             {data.faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger className="text-left">{f.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border border-border rounded-xl bg-card px-5 data-[state=open]:border-primary/40 data-[state=open]:border-l-2 data-[state=open]:border-l-primary transition-colors"
+              >
+                <AccordionTrigger className="text-left font-medium hover:no-underline py-5 text-base gap-3">
+                  <span className="inline-flex items-start gap-3 flex-1">
+                    <HelpCircle className="h-4 w-4 text-primary shrink-0 mt-1" />
+                    <span>{f.q}</span>
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5 text-sm leading-relaxed">
+                  {f.a}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </section>
 
-        <section className="mb-12">
-          <h2 className="font-serif text-2xl mb-4">Other Niagara Region coverage</h2>
-          <div className="flex flex-wrap gap-2">
+        {/* OTHER CITIES */}
+        <section className="mx-auto max-w-5xl px-4 py-14 sm:py-16 border-t border-border/60">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-primary">
+            <MapPin className="h-3 w-3" /> Other Niagara Coverage
+          </div>
+          <h2 className="font-serif text-2xl sm:text-3xl mt-4">
+            Also covering the <span className="gold-text">rest of the region.</span>
+          </h2>
+          <div className="mt-6 flex flex-wrap gap-2">
             {CITIES.filter((c) => c.slug !== data.slug).map((c) => (
               <Link
                 key={c.slug}
                 to={`/service-area/${c.slug}`}
-                className="text-sm px-3 py-2 rounded-md border border-border hover:border-primary transition-colors"
+                className="gold-underline inline-flex min-h-[42px] items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 text-sm hover:border-primary/40 hover:bg-primary/[0.06] transition"
               >
                 {c.name}
               </Link>
             ))}
           </div>
         </section>
+
+        {/* FOOTER */}
+        <footer className="border-t border-border/60 pb-28 md:pb-12 mt-8">
+          <div className="mx-auto max-w-7xl px-4 py-10 grid gap-6 md:grid-cols-3 text-sm">
+            <div>
+              <CityLogo />
+              <p className="text-xs text-muted-foreground/80 mt-4 flex items-center gap-1.5">
+                <ShieldCheck className="h-3 w-3 text-primary" /> Coverage confirmed before scheduling
+              </p>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.18em] text-primary">Contact</div>
+              <ul className="mt-3 space-y-2">
+                <li><a href={PHONE_TEL} className="flex items-center gap-2 hover:text-primary"><Phone className="h-4 w-4" /> {PHONE}</a></li>
+              </ul>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.18em] text-primary">Coverage</div>
+              <p className="text-muted-foreground mt-3">
+                Niagara Falls · St. Catharines · NOTL · Welland · Thorold · Port Colborne · Fort Erie
+              </p>
+            </div>
+          </div>
+        </footer>
       </main>
+
+      {/* STICKY MOBILE BAR — matches main site */}
+      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden safe-bottom border-t border-border/80 bg-background/95 backdrop-blur">
+        <div className="grid grid-cols-5 gap-2 p-2.5">
+          <a
+            href={PHONE_TEL}
+            className="col-span-3 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold cta-attention"
+          >
+            <Phone className="h-4 w-4" /> Call Now
+          </a>
+          <a
+            href={`${SCHEDULING_URL}?utm_source=city_${data.slug}_mobile`}
+            {...ext}
+            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
+          >
+            Get a Quote <ArrowRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
