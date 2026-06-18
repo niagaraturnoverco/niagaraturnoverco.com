@@ -723,7 +723,7 @@ const Index = () => {
               </div>
 
               <div className="paper-card p-6 sm:p-8 lg:col-span-3 shadow-elegant">
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-3">
                   <div>
                     <label className="text-xs uppercase tracking-wider ink-muted">Nightly rate ($)</label>
                     <Input
@@ -740,13 +740,27 @@ const Index = () => {
                       className="h-12 mt-1.5 paper-input"
                     />
                   </div>
+                  <div>
+                    <label className="text-xs uppercase tracking-wider ink-muted">Bedrooms</label>
+                    <select
+                      value={bedrooms}
+                      onChange={(e) => setBedrooms(Number(e.target.value) || 2)}
+                      className="h-12 mt-1.5 paper-input w-full rounded-md border border-input bg-background px-3 text-sm"
+                    >
+                      <option value={1}>1 Bedroom</option>
+                      <option value={2}>2 Bedroom</option>
+                      <option value={3}>3 Bedroom</option>
+                      <option value={4}>4 Bedroom</option>
+                      <option value={5}>5+ Bedroom</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="mt-6 space-y-2 text-sm">
                   {[
                     { k: "Cancellation loss", v: calc.cancellation, Icon: AlertOctagon },
                     { k: "Rebooking delay", v: calc.rebooking, Icon: Calculator },
-                    { k: "Review / reputation risk", v: calc.review, Icon: TrendingUp },
+                    { k: "Review / reputation risk (≈4 future nights)", v: calc.review, Icon: TrendingUp },
                     { k: "Coordination time", v: calc.coord, Icon: Clock },
                   ].map(({ k, v, Icon }) => (
                     <div key={k} className="flex justify-between items-center border-b hairline py-2.5">
@@ -766,11 +780,15 @@ const Index = () => {
                   </span>
                 </div>
 
-                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4">
+                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4 space-y-2">
                   <p className="text-sm ink leading-snug">
-                    If one missed turnover can cost <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span>, confirming coverage early is the cheaper move.
+                    NTC turnover for a {bedrooms}{bedrooms >= 5 ? "+" : ""}-bedroom property starts at <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.ntcPrice}</span> — cheaper than the <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span> risk above.
+                  </p>
+                  <p className="text-xs ink-muted">
+                    You break even after roughly {Math.max(1, Math.ceil(calc.ntcPrice / Math.max(1, rate)))} protected night{Math.max(1, Math.ceil(calc.ntcPrice / Math.max(1, rate))) === 1 ? "" : "s"} of bookings.
                   </p>
                 </div>
+
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
                   <PrimaryCTA source="calculator" className="w-full sm:w-auto">Confirm Coverage</PrimaryCTA>
                   <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
