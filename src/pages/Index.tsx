@@ -753,8 +753,11 @@ const Index = () => {
                 </div>
                 <div className="mt-5 divide-y hairline">
                   {pricing.map((p) => (
-                    <div key={p.size} className="flex justify-between items-baseline py-3.5">
-                      <span className="ink">{p.size}</span>
+                    <div key={p.size} className="flex justify-between items-center py-3.5">
+                      <span className="ink inline-flex items-center gap-2.5">
+                        <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
+                        {p.size}
+                      </span>
                       <span className="font-serif text-xl text-[hsl(var(--gold-deep))]">{p.price}</span>
                     </div>
                   ))}
@@ -765,8 +768,11 @@ const Index = () => {
                 <h4 className="font-serif text-lg mt-6 ink">Common Add-ons</h4>
                 <div className="mt-3 grid sm:grid-cols-2 gap-x-8">
                   {addons.map(([k, v]) => (
-                    <div key={k} className="flex justify-between items-baseline py-2 text-sm border-b hairline">
-                      <span className="ink-muted">{k}</span>
+                    <div key={k} className="flex justify-between items-center py-2 text-sm border-b hairline">
+                      <span className="ink-muted inline-flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-[hsl(var(--gold-deep))]/70" strokeWidth={3} />
+                        {k}
+                      </span>
                       <span className="font-medium ink">{v}</span>
                     </div>
                   ))}
