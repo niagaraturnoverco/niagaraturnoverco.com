@@ -1052,7 +1052,7 @@ const Index = () => {
               <div className="lg:col-span-7">
                 <SectionLabel onPaper>Readiness Standard</SectionLabel>
                 <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
-                  Luxury visuals that signal <span className="text-[hsl(var(--gold-deep))]">trust, readiness, and booking confidence.</span>
+                  Trust, Readiness, and <span className="text-[hsl(var(--gold-deep))]">Booking confidence.</span>
                 </h2>
               </div>
               <div className="lg:col-span-5 lg:ml-auto">
