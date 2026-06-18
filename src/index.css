@@ -80,8 +80,6 @@
   @media (max-width: 768px) {
     body { background-attachment: scroll; }
   }
-  body { /* spacer */
-  }
 
   h1, h2, h3, .font-serif {
     font-family: 'DM Serif Display', Georgia, serif;
