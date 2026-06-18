@@ -414,60 +414,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* GALLERY TEASER — links to dedicated page */}
-        <section className="section-paper">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <SectionLabel onPaper>Before & After</SectionLabel>
-                <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
-                  The impact should be <span className="text-[hsl(var(--gold-deep))]">obvious in seconds.</span>
-                </h2>
-              </div>
-              <p className="lg:col-span-5 text-sm sm:text-base ink-muted max-w-xl lg:ml-auto">
-                See real room resets that show the difference between unfinished and guest-ready.
-              </p>
-            </div>
-
-            <a
-              href="/gallery"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 block paper-card group overflow-hidden shadow-elegant"
-            >
-              <div className="grid md:grid-cols-2 items-center">
-                <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden relative">
-                  <img
-                    src={beforeAfterGallery[0].image}
-                    alt={beforeAfterGallery[0].alt}
-                    width={1080}
-                    height={810}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-[hsl(var(--ink))]/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))] opacity-0 group-hover:opacity-100 transition duration-300">
-                    <Camera className="h-3 w-3" /> View proof
-                  </div>
-                </div>
-                <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
-                  <h3 className="font-serif text-2xl ink">View the full gallery</h3>
-                  <p className="text-sm leading-relaxed ink-muted max-w-md">
-                    Bedrooms, lounges, amenity corners, and detail refreshes — each one documented before and after turnover coverage.
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--gold-deep))] mt-1">
-                    Open gallery
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 transition group-hover:translate-x-0.5">
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </section>
-
         {/* RISK — zigzag list */}
 
         <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
