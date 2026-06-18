@@ -131,4 +131,64 @@
   }
 
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+  /* Warm paper surface: flips the page palette to ivory + ink + gold */
+  .section-paper {
+    background:
+      radial-gradient(900px 400px at 80% -10%, hsl(43 65% 58% / 0.10), transparent 60%),
+      linear-gradient(180deg, hsl(var(--paper)), hsl(var(--paper-2)));
+    color: hsl(var(--ink));
+  }
+  .section-paper .ink { color: hsl(var(--ink)); }
+  .section-paper .ink-muted { color: hsl(var(--ink-muted)); }
+  .section-paper .hairline { border-color: hsl(36 25% 80%); }
+  .section-paper .paper-card {
+    background: hsl(0 0% 100% / 0.65);
+    border: 1px solid hsl(36 25% 82%);
+    border-radius: var(--radius);
+    backdrop-filter: blur(6px);
+  }
+  .section-paper .paper-input {
+    background: hsl(0 0% 100%);
+    border: 1px solid hsl(36 25% 80%);
+    color: hsl(var(--ink));
+  }
+
+  /* Gold band — full-bleed warm gradient with ink text */
+  .gold-band {
+    background:
+      radial-gradient(600px 240px at 20% 20%, hsl(45 90% 75% / 0.5), transparent 60%),
+      linear-gradient(135deg, hsl(43 80% 62%), hsl(36 70% 50%));
+    color: hsl(var(--ink));
+  }
+
+  /* Thin gold rule used as section separator */
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(43 65% 58% / 0.6), transparent);
+  }
+
+  /* Underline-on-hover for audience pills */
+  .gold-underline {
+    position: relative;
+  }
+  .gold-underline::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 1px;
+    background: hsl(43 65% 58%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease;
+  }
+  .gold-underline:hover::after { transform: scaleX(1); }
+
+  /* Numerals — oversized outline gold for stepper */
+  .numeral-outline {
+    font-family: 'DM Serif Display', Georgia, serif;
+    -webkit-text-stroke: 1px hsl(43 65% 58% / 0.55);
+    color: transparent;
+    letter-spacing: -0.02em;
+  }
 }
