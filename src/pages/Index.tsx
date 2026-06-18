@@ -1151,10 +1151,11 @@ const Index = () => {
             {/* Featured */}
             <div className="lg:col-span-2 premium-card overflow-hidden flex flex-col md:flex-row">
               <div className="md:w-5/12 relative">
-                <img
-                  src={testimonials[0].photo}
+                <Picture
+                  image={testimonials[0].photo}
                   alt={`Property serviced by Niagara Turnover Co. — ${testimonials[0].name}`}
-                  width={1024} height={768} loading="lazy"
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  loading="lazy"
                   className="h-56 md:h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 md:bg-gradient-to-r md:from-transparent md:to-card/80" />
