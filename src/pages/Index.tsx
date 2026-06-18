@@ -471,7 +471,7 @@ const Index = () => {
                 Need this handled <span className="gold-text">today?</span>
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-xl">
-                Same-day and under-24-hour requests are reviewed first. Coverage is confirmed before scheduling. Rush fee applies under 24 hours.
+                Same-day and under-24-hour requests are reviewed first. Coverage is confirmed in hours when slots are available — rush scheduling is prioritised.
               </p>
             </div>
             <div className="lg:col-span-5 flex flex-col sm:flex-row gap-3 lg:justify-end">
