@@ -407,25 +407,25 @@ const Index = () => {
                 </p>
                 <div className="grid gap-3 sm:grid-cols-5 w-full max-w-xl">
                   <a
-                    href={SCHEDULING_URL}
-                    {...ext}
-                    onClick={() => track("hero_path_scheduling")}
-                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
-                  >
-                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Need service now?</div>
-                    <div className="font-serif text-xl mt-1.5 leading-snug">Request Client Scheduling</div>
-                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Turnovers, emergency coverage, resets, same-day requests.</div>
-                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
-                  </a>
-                  <a
                     href={ONBOARDING_URL}
                     {...ext}
                     onClick={() => track("hero_path_onboarding")}
+                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Managing properties?</div>
+                    <div className="font-serif text-xl mt-1.5 leading-snug">Start Client On-Boarding</div>
+                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Recurring coverage, multi-property setup, priority dispatch.</div>
+                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
+                  </a>
+                  <a
+                    href={SCHEDULING_URL}
+                    {...ext}
+                    onClick={() => track("hero_path_scheduling")}
                     className="group sm:col-span-2 relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[110px]"
                   >
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Managing properties?</div>
-                    <div className="font-serif text-lg mt-1.5 leading-snug">Client On-Boarding</div>
-                    <div className="text-xs text-muted-foreground mt-1.5">Recurring or multi-property setup.</div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Need service now?</div>
+                    <div className="font-serif text-lg mt-1.5 leading-snug">Request Scheduling</div>
+                    <div className="text-xs text-muted-foreground mt-1.5">Same-day, emergency, one-off turnover.</div>
                     <ArrowUpRight className="absolute top-5 right-5 h-4 w-4 text-primary group-hover:translate-x-0.5 transition" />
                   </a>
                 </div>
