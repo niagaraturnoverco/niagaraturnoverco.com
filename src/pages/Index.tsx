@@ -1334,6 +1334,57 @@ const Index = () => {
           </div>
         </section>
 
+        {/* OPERATOR MODE — for multi-property clients */}
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <div className="premium-card p-8 sm:p-12 relative overflow-hidden">
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+            <div className="absolute inset-x-8 bottom-6 h-px gold-rule opacity-60" />
+            <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                  <Building2 className="h-3 w-3" /> Operator Mode
+                </div>
+                <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                  For operators managing <span className="gold-text">more than one property.</span>
+                </h2>
+                <p className="text-muted-foreground mt-4 max-w-xl">
+                  Recurring coverage is not discounted cleaning. It is priority scheduling, readiness tracking, repeatable standards, and faster dispatch across active properties.
+                </p>
+                <ul className="mt-5 grid sm:grid-cols-2 gap-2.5 max-w-xl text-sm">
+                  {[
+                    "Priority dispatch across portfolio",
+                    "Readiness tracking per property",
+                    "Repeatable, documented standards",
+                    "Single point of coordination",
+                  ].map((p) => (
+                    <li key={p} className="flex gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="lg:col-span-5 flex flex-col gap-3">
+                <a
+                  href={ONBOARDING_URL}
+                  {...ext}
+                  onClick={() => track("operator_onboarding")}
+                  className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                >
+                  Start Client On-Boarding <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={PHONE_TEL}
+                  onClick={() => track("operator_call")}
+                  className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
+                >
+                  <Phone className="h-4 w-4" /> Talk to coverage lead
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FINAL CTA — full-bleed gold band */}
         <section className="gold-band relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(hsl(var(--ink))_1px,transparent_1px)] [background-size:18px_18px]" />
@@ -1347,6 +1398,11 @@ const Index = () => {
             <p className="mt-5 text-base sm:text-lg ink max-w-xl mx-auto opacity-80">
               Submit the request. We'll route the right coverage path and confirm before anything is scheduled.
             </p>
+            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs ink opacity-80">
+              <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-[hsl(var(--ink))]" /> ★★★★★ Verified Niagara reviews</span>
+              <span className="inline-flex items-center gap-1.5"><Camera className="h-3.5 w-3.5" /> Photo proof available</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Coverage confirmed first</span>
+            </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-7 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)] transition active:scale-[0.98]">
