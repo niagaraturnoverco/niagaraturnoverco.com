@@ -1,51 +1,29 @@
-# Premium conversion plan
+# Swap in optimized WebP/AVIF images to fix LCP
 
-## Outcome
-Rework the homepage into a more premium, trust-heavy experience that uses the uploaded photos as live visual assets and drives users toward Client On-Boarding as the primary conversion action.
+The four heaviest images on the site (totaling ~7.7 MB) are the bottleneck for LCP on mobile. I can't re-encode them in the sandbox (no image-tooling credentials), so the fastest path is: **you upload optimized versions, I swap the pointers**.
 
-## What I’ll change
-1. **Replace current homepage imagery with curated uploaded photos**
-   - Use the new uploaded interiors/exteriors as live assets across the homepage.
-   - Assign stronger visual roles: hero, supporting editorial grid, trust/gallery moments, and premium service backdrops.
-   - Keep alt text and lazy-loading strategy tight so performance stays strong.
+## What to upload
 
-2. **Refocus the page hierarchy around premium onboarding conversion**
-   - Make Client On-Boarding the dominant CTA throughout the homepage.
-   - Keep Scheduling available as the secondary action for urgent/smaller jobs.
-   - Adjust copy emphasis so the site speaks more to recurring clients, operators, and multi-property accounts.
+Please drop these into chat (drag into the composer, or use the + button). One file per slot, any of these is fine: `.webp`, `.avif`, or a much smaller `.jpg`.
 
-3. **Upgrade the homepage art direction**
-   - Shift the page from “premium local operator” to a more polished hospitality/property-readiness editorial look.
-   - Lean into the current serif + clean sans pairing, but tune spacing, section rhythm, image framing, and contrast for a more high-end feel.
-   - Use the best uploaded imagery to create a more cohesive first impression with better emotional pull.
+| Slot | Current file | Current size | Target |
+|---|---|---|---|
+| Hero (LCP) | `premium-spa-bath.jpg` | 2.80 MB | ≤ 150 KB, 1600w |
+| Gallery | `premium-villa-pool.jpg` | 2.39 MB | ≤ 200 KB, 1600w |
+| Gallery | `premium-lobby-stair.jpg` | 1.72 MB | ≤ 200 KB, 1600w |
+| Gallery | `premium-sunset-pool.jpg` | 0.78 MB | ≤ 120 KB, 1200w |
 
-4. **Refresh the full homepage sections**
-   - **Hero:** stronger image-led composition, clearer primary onboarding CTA, tighter supporting proof.
-   - **Services:** recast cards/visuals to better match premium property readiness.
-   - **Social proof / trust sections:** strengthen luxury/performance cues with better imagery pairing.
-   - **Gallery / before-after context:** keep proof-oriented sections, but integrate them into the upgraded premium story.
-   - **Footer:** ensure the location/contact area still supports conversion and feels consistent with the new visual system.
+Recommended encoder: [Squoosh](https://squoosh.app) → WebP quality 75, or AVIF quality 50. Keep the original filenames if possible (just change the extension) so I can map them 1:1.
 
-5. **Use proper asset flow for uploaded images**
-   - Convert selected uploaded photos into project assets through the CDN asset flow instead of copying binaries into the repo.
-   - Wire those asset pointers into the homepage cleanly so the visuals are production-ready.
+## What I'll do once the files arrive
 
-## Technical details
-- Reuse the existing homepage route in `src/pages/Index.tsx` rather than creating a separate page.
-- Preserve the current responsive image strategy where it still makes sense, but adapt it to the uploaded assets workflow.
-- Keep changes focused on the homepage and its visual/conversion structure only.
-- Avoid backend changes, business-logic expansion, or unrelated route changes.
+1. Upload each optimized image to the Lovable CDN via `lovable-assets create`.
+2. Rewrite the matching `.asset.json` pointers in `src/assets/` (e.g. `luxury-bath-suite.jpg.asset.json` → new asset_id + WebP URL).
+3. Update `<link rel="preload">` in `index.html` to point at the new hero URL and add `type="image/webp"` (or AVIF).
+4. Update the hero `<img>` tag to use a `<picture>` with AVIF/WebP `<source>` + JPG fallback if you send multiple formats.
+5. Re-run the Lighthouse mobile audit and report the new LCP/Performance score.
 
-## Files likely involved
-- `src/pages/Index.tsx`
-- Possibly `src/components/Picture.tsx` if asset usage needs a small adaptation
-- `src/assets/*` for CDN asset pointers
-- `src/index.css` only if the premium conversion pass needs token-level polish
+## Notes
 
-## Notes from current codebase
-- The homepage already contains a large all-in-one premium marketing layout.
-- It already uses optimized image imports and some asset pointers.
-- The best approach is a focused refit of that existing page rather than a rebuild from scratch.
-
-## After approval
-I’ll implement the homepage refit, wire in the selected uploaded images as real assets, and keep the page optimized for a premium onboarding-first conversion path.
+- No code changes happen until you upload. If you'd rather I generate replacement images with the built-in image generator instead of re-encoding the existing photos, say the word and I'll go that route (different visuals, but guaranteed small).
+- This change is presentation-only — no business logic touched.
