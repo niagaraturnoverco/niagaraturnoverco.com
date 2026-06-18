@@ -354,9 +354,9 @@ const Index = () => {
                     alt="Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light"
                     width={1080}
                     height={1350}
-                    fetchPriority="high"
                     className="h-full w-full object-cover"
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/0 to-background/0" />
 
                   {/* Floating status chip */}
