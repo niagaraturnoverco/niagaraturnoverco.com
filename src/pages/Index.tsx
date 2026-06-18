@@ -274,12 +274,15 @@ const Index = () => {
 
 
   const faqs = [
+    { q: "What makes NTC different from finding a cleaner myself on Facebook or Marketplace?", a: "You're not just paying for a cleaner. You're paying for dispatch, coordination, quality control, and photo confirmation. If the assigned cleaner cancels, we route a backup. If something is missed, we flag it before your guest does. A Marketplace booking gives you one person and a hope. NTC gives you a system." },
+    { q: "What happens if I'm not happy with the result?", a: "Flag it within 24 hours and we resolve it — typically by returning to fix the issue at no additional cost. Coverage means we own the outcome, not just the shift. Photo proof and a written report are available so issues are resolved on evidence, not opinion." },
     { q: "How fast can you confirm availability?", a: "Urgent and same-day requests are reviewed within hours during operating windows. Standard requests are reviewed within 24 hours. Coverage is confirmed before scheduling." },
     { q: "Do I pay before you confirm coverage?", a: "No. Scope, timing, price, and deposit / payment terms are confirmed first. High-risk or same-day jobs may require full payment upfront once coverage is confirmed." },
     { q: "Are you only for Airbnb hosts?", a: "No. We work with STR hosts, property managers, realtors, investors, operators, and homeowners across the Niagara Region." },
     { q: "Are you the cheapest option?", a: "No. NTC is built for properties where timing, reliability, and presentation matter. We are a premium local operator, not a bargain cleaner." },
     { q: "Do you offer property management or co-hosting?", a: "We focus on turnover coverage and property readiness. For recurring operator relationships we offer priority dispatch and account setup through our Client On-Boarding path." },
   ];
+
 
   const beforeAfterGallery = [
     {
