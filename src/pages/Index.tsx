@@ -772,6 +772,79 @@ const Index = () => {
           </div>
         </section>
 
+        {/* READINESS QUIZ — guide the user to the right path */}
+        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-5">
+              <SectionLabel>Property Readiness Score</SectionLabel>
+              <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                Four questions. <span className="gold-text">One clear path.</span>
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-md">
+                Answer below and we'll point you to the right coverage path before you submit.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
+                <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 text-primary fill-primary" /> Verified Niagara reviews</span>
+              </div>
+            </div>
+            <div className="lg:col-span-7 premium-card p-6 sm:p-8 relative overflow-hidden">
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+              <div className="relative space-y-5">
+                {([
+                  { key: "urgent", q: "Is there a guest check-in within 24 hours?", a: "Yes — urgent", b: "No" },
+                  { key: "laundry", q: "Is laundry / linen reset needed?", a: "Yes", b: "No" },
+                  { key: "vacant", q: "Is the property currently…", a: "Vacant", b: "Occupied" },
+                  { key: "recurring", q: "Is this a one-time or recurring property?", a: "Recurring", b: "One-time" },
+                ] as const).map(({ key, q, a, b }) => (
+                  <div key={key}>
+                    <div className="text-sm font-medium">{q}</div>
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      {[
+                        { label: a, val: true },
+                        { label: b, val: false },
+                      ].map(({ label, val }) => {
+                        const active = quiz[key] === val;
+                        return (
+                          <button
+                            key={label}
+                            type="button"
+                            onClick={() => setQuiz((p) => ({ ...p, [key]: val }))}
+                            className={`min-h-[46px] rounded-xl border px-3 text-sm font-medium transition active:scale-[0.98] focus-gold ${
+                              active
+                                ? "border-primary bg-gradient-gold text-primary-foreground shadow-gold"
+                                : "border-border bg-background/60 text-foreground hover:border-primary/40 hover:bg-primary/[0.05]"
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+
+                {quizResult && (
+                  <div className="rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 animate-fade-in">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium">Recommended path</div>
+                    <div className="font-serif text-xl mt-1">
+                      Your property needs: <span className="gold-text">{quizResult}</span>
+                    </div>
+                    <a
+                      href={SCHEDULING_URL}
+                      {...ext}
+                      onClick={() => track("quiz_to_scheduling", { result: quizResult })}
+                      className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                    >
+                      Submit Client Scheduling <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CALCULATOR — paper surface */}
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
