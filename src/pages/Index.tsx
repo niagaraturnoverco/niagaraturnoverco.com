@@ -51,6 +51,18 @@ import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.js
 import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
 import luxuryBathSuite from "@/assets/luxury-bath-suite.jpg.asset.json";
 import luxuryIndustrialLoft from "@/assets/luxury-industrial-loft.jpg.asset.json";
+import luxuryExtra01 from "@/assets/luxury-extra-01.webp.asset.json";
+import luxuryExtra02 from "@/assets/luxury-extra-02.webp.asset.json";
+import luxuryExtra03 from "@/assets/luxury-extra-03.webp.asset.json";
+import luxuryExtra04 from "@/assets/luxury-extra-04.webp.asset.json";
+import luxuryExtra05 from "@/assets/luxury-extra-05.webp.asset.json";
+import luxuryExtra06 from "@/assets/luxury-extra-06.webp.asset.json";
+import luxuryExtra07 from "@/assets/luxury-extra-07.webp.asset.json";
+import luxuryExtra08 from "@/assets/luxury-extra-08.webp.asset.json";
+import luxuryExtra09 from "@/assets/luxury-extra-09.webp.asset.json";
+import luxuryExtra10 from "@/assets/luxury-extra-10.webp.asset.json";
+import luxuryExtra11 from "@/assets/luxury-extra-11.webp.asset.json";
+import luxuryExtra12 from "@/assets/luxury-extra-12.webp.asset.json";
 
 // Luxury property visuals — realistic, listing-ready interiors that support trust and readiness
 const HERO_IMAGES = [
@@ -62,6 +74,18 @@ const HERO_IMAGES = [
   { src: luxuryIndustrialLoft.url, alt: "Industrial loft living and dining space reset for operator-grade guest readiness" },
   { src: luxuryVacantApartment.url, alt: "Bright vacant apartment interior prepared for turnover, staging, or a showing" },
   { src: luxuryTropicalKitchen.url, alt: "High-end kitchen and dining space with natural light presented to premium hospitality standards" },
+  { src: luxuryExtra01.url, alt: "Open-concept industrial loft with brick column and dining area reset for guest arrival" },
+  { src: luxuryExtra02.url, alt: "Contemporary lounge area styled for a polished short-term rental presentation" },
+  { src: luxuryExtra03.url, alt: "Sunlit principal bedroom prepared to listing-ready standards" },
+  { src: luxuryExtra04.url, alt: "Designer living space restaged for a premium guest arrival in Niagara" },
+  { src: luxuryExtra05.url, alt: "Bright modern interior detail presented at operator-grade readiness" },
+  { src: luxuryExtra06.url, alt: "Warm contemporary living room reset for short-term rental turnover" },
+  { src: luxuryExtra07.url, alt: "Refined interior corner styled for guest-ready presentation" },
+  { src: luxuryExtra08.url, alt: "Considered furniture vignette prepared to a high-presentation standard" },
+  { src: luxuryExtra09.url, alt: "Polished interior space ready for a premium check-in moment" },
+  { src: luxuryExtra10.url, alt: "Light-filled room reset to a listing-ready finish" },
+  { src: luxuryExtra11.url, alt: "Crisp interior detail presented at a property-readiness standard" },
+  { src: luxuryExtra12.url, alt: "Premium bedroom and styling detail prepared for guest arrival" },
 ];
 
 const TESTIMONIAL_IMAGES = [
@@ -71,7 +95,12 @@ const TESTIMONIAL_IMAGES = [
   luxuryBedroomSuite.url,
   luxuryBathSuite.url,
   luxuryIndustrialLoft.url,
+  luxuryExtra02.url,
+  luxuryExtra04.url,
+  luxuryExtra06.url,
+  luxuryExtra09.url,
 ];
+
 
 
 const SCHEDULING_URL =
