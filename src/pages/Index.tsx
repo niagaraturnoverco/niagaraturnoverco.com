@@ -463,16 +463,18 @@ const Index = () => {
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
                   {HERO_IMAGES.map((img, i) => (
-                    <Picture
-                      key={img.src.img.src}
-                      image={img.src}
+                    <img
+                      key={img.src}
+                      src={img.src}
                       alt={img.alt}
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
                         i === heroIndex ? "opacity-100" : "opacity-0"
                       }`}
                       loading={i === 0 ? "eager" : "lazy"}
-                      fetchPriority={i === 0 ? "high" : "auto"}
+                      decoding="async"
+                      // @ts-expect-error fetchpriority is valid HTML
+                      fetchpriority={i === 0 ? "high" : "auto"}
                     />
                   ))}
 
@@ -1159,11 +1161,12 @@ const Index = () => {
             {/* Featured */}
             <div className="lg:col-span-2 premium-card overflow-hidden flex flex-col md:flex-row">
               <div className="md:w-5/12 relative">
-                <Picture
-                  image={testimonials[0].photo}
+                <img
+                  src={testimonials[0].photo}
                   alt={`Property serviced by Niagara Turnover Co. — ${testimonials[0].name}`}
                   sizes="(min-width: 768px) 40vw, 100vw"
                   loading="lazy"
+                  decoding="async"
                   className="h-56 md:h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 md:bg-gradient-to-r md:from-transparent md:to-card/80" />
@@ -1196,11 +1199,12 @@ const Index = () => {
             <div className="flex flex-col gap-5">
               {testimonials.slice(1).map((t) => (
                 <div key={t.name} className="premium-card p-5 flex gap-4">
-                  <Picture
-                    image={t.photo}
+                  <img
+                    src={t.photo}
                     alt={`Property serviced — ${t.name}`}
                     sizes="96px"
                     loading="lazy"
+                    decoding="async"
                     className="h-24 w-24 rounded-lg object-cover shrink-0"
                   />
                   <div className="flex flex-col">
