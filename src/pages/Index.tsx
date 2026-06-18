@@ -35,6 +35,8 @@ import {
   TrendingUp,
   Zap,
   Camera,
+  Search,
+  XCircle,
 } from "lucide-react";
 
 import heroTurnover from "@/assets/hero-turnover.jpg";
