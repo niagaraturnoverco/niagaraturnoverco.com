@@ -63,15 +63,39 @@ import luxuryExtra09 from "@/assets/luxury-extra-09.webp.asset.json";
 import luxuryExtra10 from "@/assets/luxury-extra-10.webp.asset.json";
 import luxuryExtra11 from "@/assets/luxury-extra-11.webp.asset.json";
 import luxuryExtra12 from "@/assets/luxury-extra-12.webp.asset.json";
+import luxuryExtra13 from "@/assets/luxury-extra-13.webp.asset.json";
+import luxuryExtra14 from "@/assets/luxury-extra-14.webp.asset.json";
+import luxuryExtra15 from "@/assets/luxury-extra-15.webp.asset.json";
+import luxuryExtra16 from "@/assets/luxury-extra-16.webp.asset.json";
+import luxuryExtra17 from "@/assets/luxury-extra-17.webp.asset.json";
+import luxuryExtra18 from "@/assets/luxury-extra-18.webp.asset.json";
+import luxuryExtra19 from "@/assets/luxury-extra-19.webp.asset.json";
+import luxuryExtra20 from "@/assets/luxury-extra-20.webp.asset.json";
+import luxuryExtra21 from "@/assets/luxury-extra-21.webp.asset.json";
+import luxuryExtra22 from "@/assets/luxury-extra-22.webp.asset.json";
+import luxuryExtra23 from "@/assets/luxury-extra-23.webp.asset.json";
+import luxuryExtra24 from "@/assets/luxury-extra-24.webp.asset.json";
+import luxuryExtra25 from "@/assets/luxury-extra-25.webp.asset.json";
+import luxuryExtra26 from "@/assets/luxury-extra-26.webp.asset.json";
+import luxuryExtra27 from "@/assets/luxury-extra-27.webp.asset.json";
+import luxuryExtra28 from "@/assets/luxury-extra-28.webp.asset.json";
+import luxuryExtra29 from "@/assets/luxury-extra-29.webp.asset.json";
+import luxuryExtra30 from "@/assets/luxury-extra-30.webp.asset.json";
+import luxuryExtra31 from "@/assets/luxury-extra-31.webp.asset.json";
+import luxuryExtra32 from "@/assets/luxury-extra-32.webp.asset.json";
+import luxuryExtra33 from "@/assets/luxury-extra-33.webp.asset.json";
+import luxuryExtra34 from "@/assets/luxury-extra-34.webp.asset.json";
+import luxuryExtra35 from "@/assets/luxury-extra-35.webp.asset.json";
+import luxuryExtra36 from "@/assets/luxury-extra-36.webp.asset.json";
+import luxuryExtra37 from "@/assets/luxury-extra-37.webp.asset.json";
 
-// Luxury property visuals — realistic, listing-ready interiors that support trust and readiness
+// Luxury property visuals — each unique, no duplicates across hero or testimonial sets
+// 6 unique sources from the original premium WebP set + 37 unique sources from the latest batch = 43 unique images
 const HERO_IMAGES = [
   { src: luxuryLoftStair.url, alt: "Luxury loft kitchen and stair detail prepared for a premium guest arrival in Niagara" },
   { src: luxuryLivingBright.url, alt: "Bright vaulted living room reset to listing-ready condition for short-term rental guests" },
   { src: luxuryVacantKitchen.url, alt: "Vacant modern apartment kitchen presented in clean, showing-ready condition" },
-  { src: luxuryBedroomSuite.url, alt: "Warm luxury bedroom suite styled and ready for guest check-in" },
   { src: luxuryBathSuite.url, alt: "Modern bathroom with freestanding tub prepared to a polished readiness standard" },
-  { src: luxuryIndustrialLoft.url, alt: "Industrial loft living and dining space reset for operator-grade guest readiness" },
   { src: luxuryVacantApartment.url, alt: "Bright vacant apartment interior prepared for turnover, staging, or a showing" },
   { src: luxuryTropicalKitchen.url, alt: "High-end kitchen and dining space with natural light presented to premium hospitality standards" },
   { src: luxuryExtra01.url, alt: "Open-concept industrial loft with brick column and dining area reset for guest arrival" },
@@ -86,20 +110,46 @@ const HERO_IMAGES = [
   { src: luxuryExtra10.url, alt: "Light-filled room reset to a listing-ready finish" },
   { src: luxuryExtra11.url, alt: "Crisp interior detail presented at a property-readiness standard" },
   { src: luxuryExtra12.url, alt: "Premium bedroom and styling detail prepared for guest arrival" },
+  { src: luxuryExtra13.url, alt: "Designer interior reset to a turnover-ready standard" },
+  { src: luxuryExtra14.url, alt: "Calm, neutral living area prepared for a premium short-term rental check-in" },
+  { src: luxuryExtra15.url, alt: "Modern home interior styled for a polished guest arrival" },
+  { src: luxuryExtra16.url, alt: "Contemporary residence detail prepared to listing-ready condition" },
+  { src: luxuryExtra17.url, alt: "Bright open living space refreshed for guest readiness" },
+  { src: luxuryExtra18.url, alt: "Curated interior space presented at hospitality-grade standards" },
+  { src: luxuryExtra19.url, alt: "Sophisticated living detail reset for a premium turnover" },
+  { src: luxuryExtra20.url, alt: "Tailored interior moment styled for short-term rental presentation" },
+  { src: luxuryExtra21.url, alt: "Refined home detail prepared for a guest-ready arrival" },
+  { src: luxuryExtra22.url, alt: "Warm, considered interior reset to operator-grade readiness" },
+  { src: luxuryExtra23.url, alt: "Modern interior corner styled for a polished check-in moment" },
+  { src: luxuryExtra24.url, alt: "Bright designer room reset for a premium short-term rental" },
+  { src: luxuryExtra25.url, alt: "Sun-lit kitchen and living detail prepared to listing standards" },
+  { src: luxuryExtra26.url, alt: "Contemporary lounge styled for a polished guest experience" },
+  { src: luxuryExtra27.url, alt: "Elegant interior vignette presented at premium readiness" },
+  { src: luxuryExtra28.url, alt: "Neutral, calm bedroom prepared for guest arrival" },
+  { src: luxuryExtra29.url, alt: "Tasteful living area reset to a turnover-ready finish" },
+  { src: luxuryExtra30.url, alt: "Bright modern interior detail at hospitality-grade standard" },
+  { src: luxuryExtra31.url, alt: "Considered home interior styled for a premium check-in" },
+  { src: luxuryExtra32.url, alt: "Refined property interior reset for short-term rental readiness" },
+  { src: luxuryExtra33.url, alt: "Designer residence detail prepared for guest arrival" },
+  { src: luxuryExtra34.url, alt: "Warm, light-filled space reset to listing-ready condition" },
+  { src: luxuryExtra35.url, alt: "Contemporary interior styled to a polished hospitality standard" },
+  { src: luxuryExtra36.url, alt: "Modern home moment prepared for a premium turnover" },
+  { src: luxuryExtra37.url, alt: "Refined interior detail reset for a guest-ready presentation" },
 ];
 
 const TESTIMONIAL_IMAGES = [
-  luxuryLivingBright.url,
-  luxuryLoftStair.url,
-  luxuryVacantKitchen.url,
-  luxuryBedroomSuite.url,
-  luxuryBathSuite.url,
-  luxuryIndustrialLoft.url,
-  luxuryExtra02.url,
-  luxuryExtra04.url,
-  luxuryExtra06.url,
-  luxuryExtra09.url,
+  luxuryExtra14.url,
+  luxuryExtra17.url,
+  luxuryExtra19.url,
+  luxuryExtra22.url,
+  luxuryExtra26.url,
+  luxuryExtra29.url,
+  luxuryExtra31.url,
+  luxuryExtra34.url,
+  luxuryExtra36.url,
+  luxuryExtra37.url,
 ];
+
 
 
 
