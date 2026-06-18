@@ -151,9 +151,39 @@ const Initials = ({ name }: { name: string }) => {
   );
 };
 
+const COVERED_AREAS = [
+  { name: "Niagara Falls", aliases: ["niagara falls"] },
+  { name: "St. Catharines", aliases: ["st catharines", "st. catharines", "saint catharines", "stcatharines"] },
+  { name: "Niagara-on-the-Lake", aliases: ["niagara-on-the-lake", "niagara on the lake", "notl"] },
+  { name: "Welland", aliases: ["welland"] },
+  { name: "Thorold", aliases: ["thorold"] },
+  { name: "Port Colborne", aliases: ["port colborne", "portcolborne"] },
+  { name: "Fort Erie", aliases: ["fort erie", "forterie"] },
+];
+
+type CoverageResult =
+  | { status: "covered"; area: string }
+  | { status: "uncovered"; input: string }
+  | null;
+
+const checkCoverage = (raw: string): CoverageResult => {
+  const cleaned = raw.trim().toLowerCase().replace(/[,.]/g, " ").replace(/\s+/g, " ");
+  if (cleaned.length < 2) return null;
+  for (const area of COVERED_AREAS) {
+    for (const alias of area.aliases) {
+      if (cleaned.includes(alias)) {
+        return { status: "covered", area: area.name };
+      }
+    }
+  }
+  return { status: "uncovered", input: raw.trim() };
+};
+
 const Index = () => {
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
+  const [coverageInput, setCoverageInput] = useState<string>("");
+  const [coverageResult, setCoverageResult] = useState<CoverageResult>(null);
 
   const calc = useMemo(() => {
     const cancellation = rate * nights;
