@@ -476,7 +476,42 @@ const Index = () => {
           </div>
         </section>
 
+        {/* EMERGENCY — same-day priority block */}
+        <section className="border-y border-primary/30 bg-gradient-to-b from-primary/[0.08] to-background">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 grid gap-6 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+                <Zap className="h-3 w-3" /> Same-Day · Priority
+              </div>
+              <h2 className="font-serif text-2xl sm:text-3xl mt-3">
+                Need this handled <span className="gold-text">today?</span>
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-xl">
+                Same-day and under-24-hour requests are reviewed first. Coverage is confirmed before scheduling. Rush fee applies under 24 hours.
+              </p>
+            </div>
+            <div className="lg:col-span-5 flex flex-col sm:flex-row gap-3 lg:justify-end">
+              <a
+                href={SCHEDULING_URL}
+                {...ext}
+                onClick={() => track("emergency_same_day")}
+                className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold cta-attention"
+              >
+                Request Same-Day Coverage <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href={PHONE_TEL}
+                onClick={() => track("emergency_call")}
+                className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 text-sm font-semibold focus-gold"
+              >
+                <Phone className="h-4 w-4" /> Call {PHONE}
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* RISK — zigzag list */}
+
 
         <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
