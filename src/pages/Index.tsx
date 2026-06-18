@@ -153,8 +153,6 @@ const Initials = ({ name }: { name: string }) => {
 const Index = () => {
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
-  const [coverageInput, setCoverageInput] = useState<string>("");
-  const [coverageResult, setCoverageResult] = useState<CoverageResult>(null);
   const [quiz, setQuiz] = useState<{
     urgent: boolean | null;
     laundry: boolean | null;
