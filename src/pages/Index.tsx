@@ -41,12 +41,27 @@ import heroTurnover from "@/assets/hero-turnover.jpg";
 import property1 from "@/assets/luxury-home-exterior.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
+import property4 from "@/assets/property-4.jpg";
+import property5 from "@/assets/property-5.jpg";
+import property6 from "@/assets/property-6.jpg";
+import property7 from "@/assets/property-7.jpg";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
 import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
 import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
 import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
 import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
 import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+
+const HERO_IMAGES = [
+  { src: heroTurnover, alt: "Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light" },
+  { src: property1, alt: "Luxury stone estate home exterior at golden hour in the Niagara Region" },
+  { src: property4, alt: "Modern lake house with waterfront views and glass architecture in Niagara" },
+  { src: property5, alt: "Elegant Victorian heritage home with fall foliage in Niagara-on-the-Lake" },
+  { src: property6, alt: "Sleek contemporary townhouse with modern landscaping in St. Catharines" },
+  { src: property7, alt: "Wine country estate with vineyard views and outdoor patio in Niagara" },
+];
+
+const TESTIMONIAL_IMAGES = [property1, property2, property3, property4, property5, property6, property7];
 
 
 const SCHEDULING_URL =
