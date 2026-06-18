@@ -77,6 +77,9 @@
       linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 6%));
     background-attachment: fixed;
   }
+  @media (max-width: 768px) {
+    body { background-attachment: scroll; }
+  }
 
   h1, h2, h3, .font-serif {
     font-family: 'DM Serif Display', Georgia, serif;
