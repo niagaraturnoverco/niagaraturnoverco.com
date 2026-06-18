@@ -1031,7 +1031,7 @@ const Index = () => {
           <a
             href={PHONE_TEL}
             onClick={() => track("mobile_bar_call")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/5 px-4 text-sm font-semibold"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-4 text-sm font-semibold focus-gold"
           >
             <Phone className="h-4 w-4" /> Call
           </a>
@@ -1039,7 +1039,7 @@ const Index = () => {
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("mobile_bar_schedule")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold"
           >
             Schedule <ArrowRight className="h-4 w-4" />
           </a>
