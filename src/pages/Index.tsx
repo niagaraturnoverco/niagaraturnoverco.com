@@ -176,6 +176,15 @@ const Index = () => {
     recurring: boolean | null;
   }>({ urgent: null, laundry: null, vacant: null, recurring: null });
 
+  // Hero image rotator — cycles every 5 seconds
+  const [heroIndex, setHeroIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((i) => (i + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   // NTC starting price by bedroom count — mirrors pricing table
   const ntcPriceByBedroom: Record<number, number> = { 1: 199, 2: 269, 3: 329, 4: 399, 5: 499 };
 
