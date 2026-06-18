@@ -1052,7 +1052,7 @@ const Index = () => {
               <div className="lg:col-span-7">
                 <SectionLabel onPaper>Readiness Standard</SectionLabel>
                 <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
-                  Luxury visuals that signal <span className="text-[hsl(var(--gold-deep))]">trust, readiness, and booking confidence.</span>
+                  Trust, Readiness, and <span className="text-[hsl(var(--gold-deep))]">Booking confidence.</span>
                 </h2>
               </div>
               <div className="lg:col-span-5 lg:ml-auto">
@@ -1111,7 +1111,7 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">REAL ROOM RESETS</div>
                   <h3 className="font-serif text-2xl ink">View the full gallery</h3>
                   <p className="text-sm leading-relaxed ink-muted max-w-md">
                     Bedrooms, lounges, amenity corners, and detail refreshes — each one documented before and after turnover coverage.
