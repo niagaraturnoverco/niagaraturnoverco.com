@@ -153,6 +153,7 @@ const Initials = ({ name }: { name: string }) => {
 const Index = () => {
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
+  const [bedrooms, setBedrooms] = useState<number>(2);
   const [quiz, setQuiz] = useState<{
     urgent: boolean | null;
     laundry: boolean | null;
@@ -160,14 +161,19 @@ const Index = () => {
     recurring: boolean | null;
   }>({ urgent: null, laundry: null, vacant: null, recurring: null });
 
+  // NTC starting price by bedroom count — mirrors pricing table
+  const ntcPriceByBedroom: Record<number, number> = { 1: 199, 2: 269, 3: 329, 4: 399, 5: 499 };
+
   const calc = useMemo(() => {
     const cancellation = rate * nights;
     const rebooking = rate * 2 * 0.5;
-    const review = 600;
+    // Scaled review/reputation risk: ~4 future nights of lost bookings, defensible math
+    const review = Math.round(rate * 4);
     const coord = 150;
     const total = cancellation + rebooking + review + coord;
-    return { cancellation, rebooking, review, coord, total };
-  }, [rate, nights]);
+    const ntcPrice = ntcPriceByBedroom[Math.min(5, Math.max(1, bedrooms))] ?? 329;
+    return { cancellation, rebooking, review, coord, total, ntcPrice };
+  }, [rate, nights, bedrooms]);
 
   const quizResult = useMemo<string | null>(() => {
     const { urgent, laundry, vacant, recurring } = quiz;
@@ -178,6 +184,7 @@ const Index = () => {
     if (laundry) return "Turnover with Laundry Reset";
     return "Property Readiness / Listing Prep";
   }, [quiz]);
+
 
   const risks = [
     ["01", "Guest checks in before the unit is ready", "Refunds, one-star reviews, and listing penalties land within hours."],
