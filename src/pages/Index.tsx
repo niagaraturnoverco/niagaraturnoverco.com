@@ -37,39 +37,40 @@ import {
   Camera,
 } from "lucide-react";
 
-import property2 from "@/assets/property-2.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
-import property3 from "@/assets/property-3.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
 import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
 import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
 import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
 import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
 import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
-import premiumKitchenLiving from "@/assets/premium-kitchen-living.jpg.asset.json";
-import premiumVillaPool from "@/assets/premium-villa-pool.jpg.asset.json";
-import premiumLivingWarm from "@/assets/premium-living-warm.jpg.asset.json";
-import premiumLobbyStair from "@/assets/premium-lobby-stair.jpg.asset.json";
-import premiumSpaBath from "@/assets/premium-spa-bath.jpg.asset.json";
-import premiumSunsetPool from "@/assets/premium-sunset-pool.jpg.asset.json";
-import { Picture } from "@/components/Picture";
+import luxuryLivingBright from "@/assets/luxury-living-bright.jpg.asset.json";
+import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
+import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
+import luxuryBedroomSuite from "@/assets/luxury-bedroom-suite.jpg.asset.json";
+import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
+import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
+import luxuryBathSuite from "@/assets/luxury-bath-suite.jpg.asset.json";
+import luxuryIndustrialLoft from "@/assets/luxury-industrial-loft.jpg.asset.json";
 
-// Premium hero rotator — luxury hospitality + estate imagery for operator-grade trust
+// Luxury property visuals — realistic, listing-ready interiors that support trust and readiness
 const HERO_IMAGES = [
-  { src: premiumKitchenLiving.url, alt: "Open-concept luxury kitchen and living room reset to guest-ready presentation in the Niagara Region" },
-  { src: premiumVillaPool.url, alt: "Modern white villa with poolside lounge prepared between guest stays" },
-  { src: premiumLivingWarm.url, alt: "Warmly lit premium living room turned over for evening guest arrival" },
-  { src: premiumLobbyStair.url, alt: "Marble lobby and staircase of an upscale rental property reset for arrival" },
-  { src: premiumSpaBath.url, alt: "Spa-style bathroom reset with fresh linens and styled details" },
-  { src: premiumSunsetPool.url, alt: "Premium estate at sunset with poolside readiness for guest check-in" },
+  { src: luxuryLoftStair.url, alt: "Luxury loft kitchen and stair detail prepared for a premium guest arrival in Niagara" },
+  { src: luxuryLivingBright.url, alt: "Bright vaulted living room reset to listing-ready condition for short-term rental guests" },
+  { src: luxuryVacantKitchen.url, alt: "Vacant modern apartment kitchen presented in clean, showing-ready condition" },
+  { src: luxuryBedroomSuite.url, alt: "Warm luxury bedroom suite styled and ready for guest check-in" },
+  { src: luxuryBathSuite.url, alt: "Modern bathroom with freestanding tub prepared to a polished readiness standard" },
+  { src: luxuryIndustrialLoft.url, alt: "Industrial loft living and dining space reset for operator-grade guest readiness" },
+  { src: luxuryVacantApartment.url, alt: "Bright vacant apartment interior prepared for turnover, staging, or a showing" },
+  { src: luxuryTropicalKitchen.url, alt: "High-end kitchen and dining space with natural light presented to premium hospitality standards" },
 ];
 
 const TESTIMONIAL_IMAGES = [
-  premiumKitchenLiving.url,
-  premiumVillaPool.url,
-  premiumLivingWarm.url,
-  premiumLobbyStair.url,
-  premiumSpaBath.url,
-  premiumSunsetPool.url,
+  luxuryLivingBright.url,
+  luxuryLoftStair.url,
+  luxuryVacantKitchen.url,
+  luxuryBedroomSuite.url,
+  luxuryBathSuite.url,
+  luxuryIndustrialLoft.url,
 ];
 
 
@@ -233,18 +234,24 @@ const Index = () => {
       desc: "Backup cleaner failed. Guest checks in tonight. We route fast.",
       points: ["Same-day & last-minute requests", "Backup cleaner coverage", "Rush dispatch under 24h"],
       featured: true,
+      image: luxuryVacantApartment.url,
+      alt: "Vacant premium apartment interior ready for a same-day turnover response",
     },
     {
       icon: Sparkles,
       title: "Property Readiness / Listing Prep",
       desc: "Camera-ready, showing-ready, guest-ready.",
       points: ["Listing prep for realtors", "Move-in / move-out resets", "Heavy reset & deep clean"],
+      image: luxuryVacantKitchen.url,
+      alt: "Modern vacant kitchen prepared to a listing-ready standard",
     },
     {
       icon: ShieldCheck,
       title: "Recurring Turnover Support",
       desc: "Ongoing readiness for hosts, managers, and operators.",
       points: ["Priority scheduling", "Account & property setup", "Readiness tracking"],
+      image: luxuryLoftStair.url,
+      alt: "Luxury loft interior reflecting recurring multi-property readiness standards",
     },
   ];
 
@@ -350,6 +357,37 @@ const Index = () => {
       alt: "Before and after comparison of a piano area with added styling and decor for a finished look",
     },
   ];
+
+  const readinessVisuals = [
+    {
+      src: luxuryLivingBright.url,
+      alt: "Bright luxury living room with vaulted ceiling prepared for guest arrival",
+      label: "Modern living",
+    },
+    {
+      src: luxuryBedroomSuite.url,
+      alt: "Warm bedroom suite with styled bedding prepared for short-term rental guests",
+      label: "Bedrooms",
+    },
+    {
+      src: luxuryBathSuite.url,
+      alt: "High-end bathroom detail supporting premium property-readiness standards",
+      label: "Bathrooms",
+    },
+    {
+      src: luxuryVacantKitchen.url,
+      alt: "Vacant apartment kitchen with clean lines and listing-ready presentation",
+      label: "Vacant apartments",
+    },
+    {
+      src: luxuryIndustrialLoft.url,
+      alt: "Industrial loft interior that feels suited to premium Niagara short-term rentals",
+      label: "Lofts & cottages",
+    },
+  ];
+
+  const REPRESENTATIVE_VISUAL_NOTE =
+    "Representative readiness visuals. Actual property results depend on scope and condition.";
 
 
   return (
@@ -478,7 +516,8 @@ const Index = () => {
                     />
                   ))}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/0 to-background/0" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-background/10" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/25 to-transparent" />
 
                   {/* Floating status chip */}
                   <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-background/85 backdrop-blur border border-primary/40 px-3 py-1.5 text-xs">
@@ -486,14 +525,20 @@ const Index = () => {
                     <span className="uppercase tracking-[0.16em] text-primary font-medium">Guest-Ready</span>
                   </div>
 
-                  {/* Floating timestamp card */}
-                  <div className="absolute bottom-4 right-4 glass rounded-xl px-4 py-3 text-xs">
-                    <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
-                    <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
+                  <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-primary/25 bg-background/50 p-4 backdrop-blur">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
+                        <div className="font-serif text-lg mt-1">Modern kitchens, clean bedrooms, vacant apartments, cottage-style spaces.</div>
+                      </div>
+                      <div className="hidden sm:block glass rounded-xl px-4 py-3 text-xs shrink-0">
+                        <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
+                        <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Decorative gold mark */}
                 <div className="hidden lg:block absolute -top-4 -left-4 h-20 w-20 rounded-full border border-primary/30" />
                 <div className="hidden lg:block absolute -bottom-4 -right-4 h-12 w-12 rounded-full bg-gradient-gold opacity-40 blur-xl" />
               </div>
@@ -854,19 +899,28 @@ const Index = () => {
             </h2>
           </div>
           <div className="mt-10 grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
-            {/* Featured */}
-            <div className="premium-card p-7 lg:row-span-2 relative overflow-hidden flex flex-col">
+            <div className="premium-card lg:row-span-2 relative overflow-hidden flex flex-col min-h-[560px]">
+              <img
+                src={services[0].image}
+                alt={services[0].alt}
+                sizes="(min-width: 1024px) 34vw, 100vw"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/15" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
               <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
-              <div className="relative">
+              <div className="relative p-7 flex h-full flex-col justify-end">
                 <div className="icon-badge icon-badge-lg shadow-gold">
                   <AlertTriangle className="h-8 w-8" />
                 </div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary mt-5">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary mt-5">
                   <Zap className="h-3 w-3" /> Most requested
                 </div>
-                <h3 className="font-serif text-3xl mt-4">Emergency Turnover Coverage</h3>
-                <p className="text-muted-foreground mt-3">Backup cleaner failed. Guest checks in tonight. We route fast and confirm coverage before you commit.</p>
-                <ul className="mt-6 space-y-3">
+                <h3 className="font-serif text-3xl mt-4">{services[0].title}</h3>
+                <p className="text-muted-foreground mt-3 max-w-md">Backup cleaner failed. Guest checks in tonight. We route fast and confirm coverage before you commit.</p>
+                <ul className="mt-6 space-y-3 max-w-md">
                   {services[0].points.map((p) => (
                     <li key={p} className="flex gap-2.5">
                       <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
@@ -874,49 +928,60 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className="relative mt-8 flex items-end justify-between">
-                <a href={SCHEDULING_URL} {...ext} onClick={() => track("service_emergency")}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
-                  Get Emergency Coverage <ArrowRight className="h-4 w-4" />
-                </a>
-                <div className="font-serif text-5xl gold-text opacity-30 leading-none">24h</div>
+                <div className="relative mt-8 flex items-end justify-between">
+                  <a href={SCHEDULING_URL} {...ext} onClick={() => track("service_emergency")}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
+                    Get Emergency Coverage <ArrowRight className="h-4 w-4" />
+                  </a>
+                  <div className="font-serif text-5xl gold-text opacity-30 leading-none">24h</div>
+                </div>
               </div>
             </div>
 
-            {/* Supporting cards */}
             {services.slice(1).map((s, idx) => {
               const isListing = idx === 0;
               const cta = isListing
-                ? { label: "Request listing prep", href: `${SCHEDULING_URL}?utm_source=service_listing`, target: SCHEDULING_URL, event: "service_listing_cta" }
-                : { label: "Set up recurring coverage", href: `${ONBOARDING_URL}?utm_source=service_recurring`, target: ONBOARDING_URL, event: "service_recurring_cta" };
+                ? { label: "Request listing prep", href: `${SCHEDULING_URL}?utm_source=service_listing`, event: "service_listing_cta" }
+                : { label: "Set up recurring coverage", href: `${ONBOARDING_URL}?utm_source=service_recurring`, event: "service_recurring_cta" };
               return (
-                <div key={s.title} className="premium-card p-6 flex flex-col">
-                  <div className="icon-badge">
-                    <s.icon className="h-7 w-7" />
+                <div key={s.title} className="premium-card overflow-hidden flex flex-col">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={s.image}
+                      alt={s.alt}
+                      sizes="(min-width: 1024px) 22vw, 100vw"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                    <div className="absolute left-4 top-4 icon-badge">
+                      <s.icon className="h-7 w-7" />
+                    </div>
                   </div>
-                  <h3 className="font-serif text-xl mt-5">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
-                  <ul className="mt-4 space-y-2 text-sm flex-1">
-                    {s.points.map((p) => (
-                      <li key={p} className="flex gap-2">
-                        <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={cta.href}
-                    {...ext}
-                    onClick={() => track(cta.event)}
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
-                  >
-                    {cta.label} <ArrowRight className="h-4 w-4" />
-                  </a>
+                  <div className="p-6 flex flex-1 flex-col">
+                    <h3 className="font-serif text-xl">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
+                    <ul className="mt-4 space-y-2 text-sm flex-1">
+                      {s.points.map((p) => (
+                        <li key={p} className="flex gap-2">
+                          <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={cta.href}
+                      {...ext}
+                      onClick={() => track(cta.event)}
+                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+                    >
+                      {cta.label} <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               );
             })}
-
           </div>
         </section>
 
@@ -925,14 +990,42 @@ const Index = () => {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-7">
-                <SectionLabel onPaper>Before & After</SectionLabel>
+                <SectionLabel onPaper>Readiness Standard</SectionLabel>
                 <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
-                  The impact should be <span className="text-[hsl(var(--gold-deep))]">obvious in seconds.</span>
+                  Luxury visuals that signal <span className="text-[hsl(var(--gold-deep))]">trust, readiness, and booking confidence.</span>
                 </h2>
               </div>
-              <p className="lg:col-span-5 text-sm sm:text-base ink-muted max-w-xl lg:ml-auto">
-                See real room resets that show the difference between unfinished and guest-ready.
-              </p>
+              <div className="lg:col-span-5 lg:ml-auto">
+                <p className="text-sm sm:text-base ink-muted max-w-xl">
+                  Modern interiors, clean bedrooms, listing-ready kitchens, vacant apartments, lofts, and polished bathrooms — selected to support conversion without pulling attention away from the CTA path.
+                </p>
+                <p className="mt-3 text-xs uppercase tracking-[0.16em] text-[hsl(var(--gold-deep))]">
+                  {REPRESENTATIVE_VISUAL_NOTE}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+              {readinessVisuals.map((visual, idx) => (
+                <div
+                  key={visual.src}
+                  className={`group relative overflow-hidden rounded-xl border hairline shadow-elegant ${idx === 0 ? "lg:col-span-5 lg:row-span-2 min-h-[420px]" : "lg:col-span-7 min-h-[200px]"}`}
+                >
+                  <img
+                    src={visual.src}
+                    alt={visual.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))]/88 via-[hsl(var(--ink))]/20 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--paper))]/20 bg-[hsl(var(--ink))]/40 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))]">
+                      <Camera className="h-3 w-3" /> {visual.label}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <a
@@ -1065,52 +1158,78 @@ const Index = () => {
               </div>
 
               {/* Same-day callout */}
-              <div className="rounded-[var(--radius)] border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent p-7">
-                <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--ink))] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--paper))]">
-                  <Zap className="h-3 w-3" /> Urgent · Fast Dispatch
+              <div className="rounded-[var(--radius)] overflow-hidden border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={luxuryVacantKitchen.url}
+                    alt="Listing-ready kitchen visual supporting premium emergency and pricing support"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--paper))] via-[hsl(var(--paper))]/20 to-transparent" />
                 </div>
-                <h3 className="font-serif text-2xl mt-4 ink">Same-Day / Emergency</h3>
-                <ul className="mt-5 space-y-4 text-sm">
-                  <li className="flex gap-3">
-                    <Clock className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
-                    <span className="ink">Less than 24 hours notice: <span className="font-semibold text-[hsl(var(--gold-deep))]">+50% rush fee</span></span>
-                  </li>
-                  <li className="flex gap-3">
-                    <AlertTriangle className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
-                    <span className="ink">High-risk or same-day jobs may require full payment upfront</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <ShieldCheck className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
-                    <span className="ink">Coverage is confirmed before scheduling</span>
-                  </li>
-                </ul>
-                <a href={PHONE_TEL} onClick={() => track("pricing_call")}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--ink))] hover:text-[hsl(var(--gold-deep))]">
-                  <Phone className="h-4 w-4" /> Call {PHONE}
-                </a>
+                <div className="p-7">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--ink))] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--paper))]">
+                    <Zap className="h-3 w-3" /> Urgent · Fast Dispatch
+                  </div>
+                  <h3 className="font-serif text-2xl mt-4 ink">Same-Day / Emergency</h3>
+                  <ul className="mt-5 space-y-4 text-sm">
+                    <li className="flex gap-3">
+                      <Clock className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
+                      <span className="ink">Less than 24 hours notice: <span className="font-semibold text-[hsl(var(--gold-deep))]">+50% rush fee</span></span>
+                    </li>
+                    <li className="flex gap-3">
+                      <AlertTriangle className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
+                      <span className="ink">High-risk or same-day jobs may require full payment upfront</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <ShieldCheck className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
+                      <span className="ink">Coverage is confirmed before scheduling</span>
+                    </li>
+                  </ul>
+                  <a href={PHONE_TEL} onClick={() => track("pricing_call")}
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--ink))] hover:text-[hsl(var(--gold-deep))]">
+                    <Phone className="h-4 w-4" /> Call {PHONE}
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Recurring — full-width band */}
-            <div className="mt-6 paper-card p-7">
-              <div className="flex flex-wrap items-baseline justify-between gap-3">
-                <h3 className="font-serif text-2xl ink">Recurring Coverage</h3>
-                <span className="text-xs uppercase tracking-[0.18em] ink-muted">For hosts & operators</span>
-              </div>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {recurring.map((r) => (
-                  <div key={r.name} className="rounded-xl border hairline bg-white/60 p-4">
-                    <div className="text-xs uppercase tracking-[0.14em] ink-muted">{r.name}</div>
-                    <div className="font-serif text-xl text-[hsl(var(--gold-deep))] mt-2">{r.price}</div>
+            <div className="mt-6 paper-card overflow-hidden">
+              <div className="grid gap-0 lg:grid-cols-12">
+                <div className="p-7 lg:col-span-7">
+                  <div className="flex flex-wrap items-baseline justify-between gap-3">
+                    <h3 className="font-serif text-2xl ink">Recurring Coverage</h3>
+                    <span className="text-xs uppercase tracking-[0.18em] ink-muted">For hosts & operators</span>
                   </div>
-                ))}
-              </div>
-              <p className="text-xs ink-muted mt-5 max-w-3xl">
-                Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                <PrimaryCTA source="pricing">Request Client Scheduling</PrimaryCTA>
-                <SecondaryCTA source="pricing" onPaper>Set Up Your Property</SecondaryCTA>
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {recurring.map((r) => (
+                      <div key={r.name} className="rounded-xl border hairline bg-white/60 p-4">
+                        <div className="text-xs uppercase tracking-[0.14em] ink-muted">{r.name}</div>
+                        <div className="font-serif text-xl text-[hsl(var(--gold-deep))] mt-2">{r.price}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs ink-muted mt-5 max-w-3xl">
+                    Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 mt-5">
+                    <PrimaryCTA source="pricing">Request Client Scheduling</PrimaryCTA>
+                    <SecondaryCTA source="pricing" onPaper>Set Up Your Property</SecondaryCTA>
+                  </div>
+                </div>
+                <div className="relative min-h-[280px] lg:col-span-5">
+                  <img
+                    src={luxuryLoftStair.url}
+                    alt="Luxury loft imagery supporting recurring operator coverage"
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[hsl(var(--ink))]/15 to-[hsl(var(--paper))]" />
+                </div>
               </div>
             </div>
           </div>
@@ -1275,11 +1394,11 @@ const Index = () => {
 
         {/* OPERATOR MODE — for multi-property clients */}
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <div className="premium-card p-8 sm:p-12 relative overflow-hidden">
+          <div className="premium-card relative overflow-hidden">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
             <div className="absolute inset-x-8 bottom-6 h-px gold-rule opacity-60" />
-            <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
-              <div className="lg:col-span-7">
+            <div className="relative grid gap-0 lg:grid-cols-12 lg:items-stretch">
+              <div className="p-8 sm:p-12 lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
                   <Building2 className="h-3 w-3" /> Operator Mode
                 </div>
@@ -1288,6 +1407,9 @@ const Index = () => {
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-xl">
                   Recurring coverage is not discounted cleaning. It is priority scheduling, readiness tracking, repeatable standards, and faster dispatch across active properties.
+                </p>
+                <p className="mt-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                  {REPRESENTATIVE_VISUAL_NOTE}
                 </p>
                 <ul className="mt-5 grid sm:grid-cols-2 gap-2.5 max-w-xl text-sm">
                   {[
@@ -1302,53 +1424,71 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-7 flex flex-col sm:flex-row gap-3 max-w-xl">
+                  <a
+                    href={ONBOARDING_URL}
+                    {...ext}
+                    onClick={() => track("operator_onboarding")}
+                    className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                  >
+                    Start Client On-Boarding <ArrowRight className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={PHONE_TEL}
+                    onClick={() => track("operator_call")}
+                    className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
+                  >
+                    <Phone className="h-4 w-4" /> Talk to coverage lead
+                  </a>
+                </div>
               </div>
-              <div className="lg:col-span-5 flex flex-col gap-3">
-                <a
-                  href={ONBOARDING_URL}
-                  {...ext}
-                  onClick={() => track("operator_onboarding")}
-                  className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-                >
-                  Start Client On-Boarding <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href={PHONE_TEL}
-                  onClick={() => track("operator_call")}
-                  className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
-                >
-                  <Phone className="h-4 w-4" /> Talk to coverage lead
-                </a>
+              <div className="relative min-h-[320px] lg:col-span-5">
+                <img
+                  src={luxuryIndustrialLoft.url}
+                  alt="Luxury industrial loft environment supporting multi-property operator coverage"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/15 to-transparent" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* FINAL CTA — full-bleed gold band */}
-        <section className="gold-band relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(hsl(var(--ink))_1px,transparent_1px)] [background-size:18px_18px]" />
+        {/* FINAL CTA — full-bleed luxury image */}
+        <section className="relative overflow-hidden">
+          <img
+            src={luxuryTropicalKitchen.url}
+            alt="Luxury kitchen and dining environment supporting final client conversion call to action"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-background/35" />
           <div className="relative mx-auto max-w-5xl px-4 py-20 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--ink))] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--paper))]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur">
               <ShieldCheck className="h-3 w-3" /> Coverage confirmed before scheduling
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-6 max-w-3xl mx-auto leading-[1.05] ink">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-6 max-w-3xl mx-auto leading-[1.05]">
               Don't wait until the property becomes the problem.
             </h2>
-            <p className="mt-5 text-base sm:text-lg ink max-w-xl mx-auto opacity-80">
+            <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
               Submit the request. We'll route the right coverage path and confirm before anything is scheduled.
             </p>
-            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs ink opacity-80">
-              <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-[hsl(var(--ink))]" /> ★★★★★ Verified Niagara reviews</span>
-              <span className="inline-flex items-center gap-1.5"><Camera className="h-3.5 w-3.5" /> Photo proof available</span>
-              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Coverage confirmed first</span>
+            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs text-foreground/85">
+              <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-primary text-primary" /> ★★★★★ Verified Niagara reviews</span>
+              <span className="inline-flex items-center gap-1.5"><Camera className="h-3.5 w-3.5 text-primary" /> Photo proof available</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
-                className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-7 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)] transition active:scale-[0.98]">
+                className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-7 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 hover:brightness-110 transition active:scale-[0.98]">
                 Request Client Scheduling <ArrowRight className="h-4 w-4" />
               </a>
               <a href={PHONE_TEL} onClick={() => track("final_call")}
-                className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-[hsl(var(--ink))] px-7 text-sm font-semibold ink hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))] transition">
+                className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-background/40 px-7 text-sm font-semibold hover:bg-primary/10 transition">
                 <Phone className="h-4 w-4" /> Call {PHONE}
               </a>
             </div>
