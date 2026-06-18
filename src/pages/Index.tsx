@@ -280,19 +280,19 @@ const Index = () => {
       name: "Niagara Falls Host",
       quote: "My turnover cleaner cancelled three hours before a 4pm check-in on a long weekend. I called NTC at 1pm. Coverage was confirmed by 1:45 and the property was guest-ready by 3:30. Guest left a 5-star review. Worth every dollar.",
       meta: "Placeholder · STR host, Niagara Falls",
-      photo: property1,
+      photo: TESTIMONIAL_IMAGES[0],
     },
     {
       name: "NOTL Property Manager",
       quote: "We manage six STR units across NOTL and St. Catharines. Before NTC we lost roughly one weekend per month to coordination gaps. First quarter on recurring coverage: zero missed turnovers. The price difference paid for itself in protected bookings.",
       meta: "Placeholder · Property manager, NOTL",
-      photo: property2,
+      photo: TESTIMONIAL_IMAGES[3],
     },
     {
       name: "St. Catharines Host",
       quote: "The cleaner I found on Marketplace did a 'fine' job but left issues my guest flagged in the review. NTC's first turnover came back with photo proof of every room. I stopped second-guessing.",
       meta: "Placeholder · STR host, St. Catharines",
-      photo: property3,
+      photo: TESTIMONIAL_IMAGES[5],
     },
   ];
 
