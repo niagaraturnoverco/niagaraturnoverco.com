@@ -971,8 +971,11 @@ const Index = () => {
                     value={`item-${i}`}
                     className="border border-border rounded-xl bg-card px-5 data-[state=open]:border-primary/40 data-[state=open]:border-l-2 data-[state=open]:border-l-primary transition-colors"
                   >
-                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5 text-base">
-                      {f.q}
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5 text-base gap-3">
+                      <span className="inline-flex items-start gap-3 flex-1">
+                        <HelpCircle className="h-4 w-4 text-primary shrink-0 mt-1" />
+                        <span>{f.q}</span>
+                      </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground pb-5 text-sm leading-relaxed">
                       {f.a}
