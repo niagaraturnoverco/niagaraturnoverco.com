@@ -49,6 +49,7 @@ import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
 import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
 import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
 import luxuryBathSuite from "@/assets/luxury-bathroom-suite.jpg.asset.json";
+import luxuryKitchenBailey from "@/assets/luxury-kitchen-bailey.webp.asset.json";
 import luxuryExtra01 from "@/assets/luxury-extra-01.webp.asset.json";
 import luxuryExtra02 from "@/assets/luxury-extra-02.webp.asset.json";
 import luxuryExtra03 from "@/assets/luxury-extra-03.webp.asset.json";
@@ -430,8 +431,8 @@ const Index = () => {
       label: "NIAGARA FALLS",
     },
     {
-      src: luxuryBathSuite.url,
-      alt: "High-end bathroom detail supporting premium property-readiness standards",
+      src: luxuryKitchenBailey.url,
+      alt: "Bright modern kitchen with island, brass pendants, and dining area prepared for guests",
       label: "KITCHENS",
     },
     {
