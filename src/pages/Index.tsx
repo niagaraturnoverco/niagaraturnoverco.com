@@ -31,6 +31,12 @@ import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
+import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
+import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
+import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
+import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
+import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+
 
 const SCHEDULING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagam8AZIIRd6Xqew/form";
