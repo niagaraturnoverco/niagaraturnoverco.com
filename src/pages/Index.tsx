@@ -323,20 +323,23 @@ const Index = () => {
                 <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full sm:w-auto">
                   <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Book Turnover Coverage</PrimaryCTA>
-                  <SecondaryCTA source="hero" className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
+                  <a
+                    href="#intake"
+                    onClick={() => track("hero_setup_link")}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary underline-offset-4 hover:underline focus-gold rounded-sm"
+                  >
+                    Or set up your property first →
+                  </a>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground max-w-xl">
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground max-w-xl">
                   <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success">
                     <Clock className="h-3 w-3" />
                     Response in under 24h
                   </span>
-                  <span className="text-muted-foreground/70">· No payment before coverage is confirmed.</span>
+                  <span className="text-muted-foreground/80">· Free to start — pay only after your first turnover.</span>
                 </div>
-                <p className="text-xs text-muted-foreground max-w-xl">
-                  No payment before coverage is confirmed. Scope, timing, price, and deposit / payment terms are confirmed before scheduling.
-                </p>
 
                 {/* Trust strip */}
                 <div className="mt-2 grid grid-cols-3 gap-px rounded-xl border border-primary/25 bg-primary/[0.04] overflow-hidden w-full max-w-xl">
@@ -1037,21 +1040,21 @@ const Index = () => {
 
       {/* STICKY MOBILE BAR */}
       <div className="fixed bottom-0 inset-x-0 z-50 md:hidden safe-bottom border-t border-border/80 bg-background/95 backdrop-blur">
-        <div className="grid grid-cols-2 gap-2 p-2.5">
+        <div className="grid grid-cols-5 gap-2 p-2.5">
           <a
             href={PHONE_TEL}
             onClick={() => track("mobile_bar_call")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-4 text-sm font-semibold focus-gold"
+            className="col-span-3 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold cta-attention"
           >
-            <Phone className="h-4 w-4" /> Call
+            <Phone className="h-4 w-4" /> Call Now
           </a>
           <a
             href={SCHEDULING_URL}
             {...ext}
             onClick={() => track("mobile_bar_schedule")}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold"
+            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-3 text-sm font-semibold focus-gold"
           >
-            Book Now <ArrowRight className="h-4 w-4" />
+            Book <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </div>
