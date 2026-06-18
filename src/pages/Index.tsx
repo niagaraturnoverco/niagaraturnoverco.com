@@ -349,26 +349,23 @@ const Index = () => {
     { icon: Home, label: "Homeowners" },
   ];
 
-  // NOTE: Testimonial copy below is placeholder crisis→outcome wording shaped to
-  // counter the "why not just a cheaper cleaner" objection. Replace with real
-  // verbatim or lightly paraphrased client quotes when available.
   const testimonials = [
     {
-      name: "Niagara Falls Host",
-      quote: "My turnover cleaner cancelled three hours before a 4pm check-in on a long weekend. I called NTC at 1pm. Coverage was confirmed by 1:45 and the property was guest-ready by 3:30. Guest left a 5-star review. Worth every dollar.",
-      meta: "Placeholder · STR host, Niagara Falls",
+      name: "Gabriella Guo",
+      quote: "Niagara Turnover Co. has been a great cleaning company to work with. The owner reached out to me through Airbnb, and I'm very glad I decided to give their service a try. They are friendly, professional, and flexible.",
+      meta: "8 reviews · 6 photos · 12 weeks ago",
       photo: TESTIMONIAL_IMAGES[0],
     },
     {
-      name: "NOTL Property Manager",
-      quote: "We manage six STR units across NOTL and St. Catharines. Before NTC we lost roughly one weekend per month to coordination gaps. First quarter on recurring coverage: zero missed turnovers. The price difference paid for itself in protected bookings.",
-      meta: "Placeholder · Property manager, NOTL",
+      name: "Pedzi Nyamb",
+      quote: "Very professional company and does the job well. I am very happy with them. I recommend this company 100%.",
+      meta: "7 reviews · 9 weeks ago",
       photo: TESTIMONIAL_IMAGES[3],
     },
     {
-      name: "St. Catharines Host",
-      quote: "The cleaner I found on Marketplace did a 'fine' job but left issues my guest flagged in the review. NTC's first turnover came back with photo proof of every room. I stopped second-guessing.",
-      meta: "Placeholder · STR host, St. Catharines",
+      name: "Peter Kistemaker",
+      quote: "Very responsive, friendly and professional.",
+      meta: "4 reviews · 12 weeks ago",
       photo: TESTIMONIAL_IMAGES[5],
     },
   ];
