@@ -37,20 +37,21 @@ import {
   Camera,
 } from "lucide-react";
 
-import heroTurnover from "@/assets/hero-turnover.jpg";
-import property1 from "@/assets/luxury-home-exterior.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
-import property4 from "@/assets/property-4.jpg";
-import property5 from "@/assets/property-5.jpg";
-import property6 from "@/assets/property-6.jpg";
-import property7 from "@/assets/property-7.jpg";
+import heroTurnover from "@/assets/hero-turnover.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property1 from "@/assets/luxury-home-exterior.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property2 from "@/assets/property-2.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
+import property3 from "@/assets/property-3.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
+import property4 from "@/assets/property-4.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property5 from "@/assets/property-5.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property6 from "@/assets/property-6.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property7 from "@/assets/property-7.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
 import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
 import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
 import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
 import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
 import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+import { Picture } from "@/components/Picture";
 
 const HERO_IMAGES = [
   { src: heroTurnover, alt: "Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light" },
@@ -454,16 +455,16 @@ const Index = () => {
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
                   {HERO_IMAGES.map((img, i) => (
-                    <img
-                      key={img.src}
-                      src={img.src}
+                    <Picture
+                      key={img.src.img.src}
+                      image={img.src}
                       alt={img.alt}
-                      width={1080}
-                      height={1350}
+                      sizes="(min-width: 1024px) 40vw, 100vw"
                       className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
                         i === heroIndex ? "opacity-100" : "opacity-0"
                       }`}
                       loading={i === 0 ? "eager" : "lazy"}
+                      fetchPriority={i === 0 ? "high" : "auto"}
                     />
                   ))}
 
@@ -1150,10 +1151,11 @@ const Index = () => {
             {/* Featured */}
             <div className="lg:col-span-2 premium-card overflow-hidden flex flex-col md:flex-row">
               <div className="md:w-5/12 relative">
-                <img
-                  src={testimonials[0].photo}
+                <Picture
+                  image={testimonials[0].photo}
                   alt={`Property serviced by Niagara Turnover Co. — ${testimonials[0].name}`}
-                  width={1024} height={768} loading="lazy"
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  loading="lazy"
                   className="h-56 md:h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 md:bg-gradient-to-r md:from-transparent md:to-card/80" />
@@ -1186,10 +1188,11 @@ const Index = () => {
             <div className="flex flex-col gap-5">
               {testimonials.slice(1).map((t) => (
                 <div key={t.name} className="premium-card p-5 flex gap-4">
-                  <img
-                    src={t.photo}
+                  <Picture
+                    image={t.photo}
                     alt={`Property serviced — ${t.name}`}
-                    width={1024} height={768} loading="lazy"
+                    sizes="96px"
+                    loading="lazy"
                     className="h-24 w-24 rounded-lg object-cover shrink-0"
                   />
                   <div className="flex flex-col">
