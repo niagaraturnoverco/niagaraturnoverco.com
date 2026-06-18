@@ -37,32 +37,40 @@ import {
   Camera,
 } from "lucide-react";
 
-import heroTurnover from "@/assets/hero-turnover.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
-import property1 from "@/assets/luxury-home-exterior.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
 import property2 from "@/assets/property-2.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
 import property3 from "@/assets/property-3.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
-import property4 from "@/assets/property-4.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
-import property5 from "@/assets/property-5.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
-import property6 from "@/assets/property-6.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
-import property7 from "@/assets/property-7.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
 import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
 import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
 import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
 import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
 import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+import premiumKitchenLiving from "@/assets/premium-kitchen-living.jpg.asset.json";
+import premiumVillaPool from "@/assets/premium-villa-pool.jpg.asset.json";
+import premiumLivingWarm from "@/assets/premium-living-warm.jpg.asset.json";
+import premiumLobbyStair from "@/assets/premium-lobby-stair.jpg.asset.json";
+import premiumSpaBath from "@/assets/premium-spa-bath.jpg.asset.json";
+import premiumSunsetPool from "@/assets/premium-sunset-pool.jpg.asset.json";
 import { Picture } from "@/components/Picture";
 
+// Premium hero rotator — luxury hospitality + estate imagery for operator-grade trust
 const HERO_IMAGES = [
-  { src: heroTurnover, alt: "Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light" },
-  { src: property1, alt: "Luxury stone estate home exterior at golden hour in the Niagara Region" },
-  { src: property4, alt: "Modern lake house with waterfront views and glass architecture in Niagara" },
-  { src: property5, alt: "Elegant Victorian heritage home with fall foliage in Niagara-on-the-Lake" },
-  { src: property6, alt: "Sleek contemporary townhouse with modern landscaping in St. Catharines" },
-  { src: property7, alt: "Wine country estate with vineyard views and outdoor patio in Niagara" },
+  { src: premiumKitchenLiving.url, alt: "Open-concept luxury kitchen and living room reset to guest-ready presentation in the Niagara Region" },
+  { src: premiumVillaPool.url, alt: "Modern white villa with poolside lounge prepared between guest stays" },
+  { src: premiumLivingWarm.url, alt: "Warmly lit premium living room turned over for evening guest arrival" },
+  { src: premiumLobbyStair.url, alt: "Marble lobby and staircase of an upscale rental property reset for arrival" },
+  { src: premiumSpaBath.url, alt: "Spa-style bathroom reset with fresh linens and styled details" },
+  { src: premiumSunsetPool.url, alt: "Premium estate at sunset with poolside readiness for guest check-in" },
 ];
 
-const TESTIMONIAL_IMAGES = [property1, property2, property3, property4, property5, property6, property7];
+const TESTIMONIAL_IMAGES = [
+  premiumKitchenLiving.url,
+  premiumVillaPool.url,
+  premiumLivingWarm.url,
+  premiumLobbyStair.url,
+  premiumSpaBath.url,
+  premiumSunsetPool.url,
+];
 
 
 const SCHEDULING_URL =
@@ -370,12 +378,12 @@ const Index = () => {
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
           <a
-            href={SCHEDULING_URL}
+            href={ONBOARDING_URL}
             {...ext}
-            onClick={() => track("cta_scheduling", { source: "nav" })}
+            onClick={() => track("cta_onboarding", { source: "nav" })}
             className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
           >
-            Request Scheduling
+            Start On-Boarding
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
@@ -399,25 +407,25 @@ const Index = () => {
                 </p>
                 <div className="grid gap-3 sm:grid-cols-5 w-full max-w-xl">
                   <a
-                    href={SCHEDULING_URL}
-                    {...ext}
-                    onClick={() => track("hero_path_scheduling")}
-                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
-                  >
-                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Need service now?</div>
-                    <div className="font-serif text-xl mt-1.5 leading-snug">Request Client Scheduling</div>
-                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Turnovers, emergency coverage, resets, same-day requests.</div>
-                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
-                  </a>
-                  <a
                     href={ONBOARDING_URL}
                     {...ext}
                     onClick={() => track("hero_path_onboarding")}
+                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Managing properties?</div>
+                    <div className="font-serif text-xl mt-1.5 leading-snug">Start Client On-Boarding</div>
+                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Recurring coverage, multi-property setup, priority dispatch.</div>
+                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
+                  </a>
+                  <a
+                    href={SCHEDULING_URL}
+                    {...ext}
+                    onClick={() => track("hero_path_scheduling")}
                     className="group sm:col-span-2 relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[110px]"
                   >
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Managing properties?</div>
-                    <div className="font-serif text-lg mt-1.5 leading-snug">Client On-Boarding</div>
-                    <div className="text-xs text-muted-foreground mt-1.5">Recurring or multi-property setup.</div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Need service now?</div>
+                    <div className="font-serif text-lg mt-1.5 leading-snug">Request Scheduling</div>
+                    <div className="text-xs text-muted-foreground mt-1.5">Same-day, emergency, one-off turnover.</div>
                     <ArrowUpRight className="absolute top-5 right-5 h-4 w-4 text-primary group-hover:translate-x-0.5 transition" />
                   </a>
                 </div>
@@ -455,16 +463,18 @@ const Index = () => {
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
                   {HERO_IMAGES.map((img, i) => (
-                    <Picture
-                      key={img.src.img.src}
-                      image={img.src}
+                    <img
+                      key={img.src}
+                      src={img.src}
                       alt={img.alt}
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
                         i === heroIndex ? "opacity-100" : "opacity-0"
                       }`}
                       loading={i === 0 ? "eager" : "lazy"}
-                      fetchPriority={i === 0 ? "high" : "auto"}
+                      decoding="async"
+                      // @ts-expect-error fetchpriority is valid HTML
+                      fetchpriority={i === 0 ? "high" : "auto"}
                     />
                   ))}
 
@@ -1151,11 +1161,12 @@ const Index = () => {
             {/* Featured */}
             <div className="lg:col-span-2 premium-card overflow-hidden flex flex-col md:flex-row">
               <div className="md:w-5/12 relative">
-                <Picture
-                  image={testimonials[0].photo}
+                <img
+                  src={testimonials[0].photo}
                   alt={`Property serviced by Niagara Turnover Co. — ${testimonials[0].name}`}
                   sizes="(min-width: 768px) 40vw, 100vw"
                   loading="lazy"
+                  decoding="async"
                   className="h-56 md:h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 md:bg-gradient-to-r md:from-transparent md:to-card/80" />
@@ -1188,11 +1199,12 @@ const Index = () => {
             <div className="flex flex-col gap-5">
               {testimonials.slice(1).map((t) => (
                 <div key={t.name} className="premium-card p-5 flex gap-4">
-                  <Picture
-                    image={t.photo}
+                  <img
+                    src={t.photo}
                     alt={`Property serviced — ${t.name}`}
                     sizes="96px"
                     loading="lazy"
+                    decoding="async"
                     className="h-24 w-24 rounded-lg object-cover shrink-0"
                   />
                   <div className="flex flex-col">
