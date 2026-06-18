@@ -1095,12 +1095,20 @@ const Index = () => {
                 </div>
                 <div className="mt-5 divide-y hairline">
                   {pricing.map((p) => (
-                    <div key={p.size} className="flex justify-between items-center py-3.5">
-                      <span className="ink inline-flex items-center gap-2.5">
+                    <div key={p.size} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3">
+                      <span className="ink inline-flex items-center gap-2.5 min-w-[120px]">
                         <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
                         {p.size}
                       </span>
-                      <span className="font-serif text-xl text-[hsl(var(--gold-deep))]">{p.price}</span>
+                      <span className="font-serif text-xl text-[hsl(var(--gold-deep))] ml-auto sm:ml-0">{p.price}</span>
+                      <a
+                        href={SCHEDULING_URL}
+                        {...ext}
+                        onClick={() => track("pricing_row_check", { size: p.size })}
+                        className="inline-flex min-h-[46px] items-center gap-1.5 rounded-lg border border-[hsl(var(--ink))] bg-[hsl(var(--ink))] px-3.5 text-xs font-semibold text-[hsl(var(--paper))] transition hover:bg-[hsl(0_0%_15%)] focus-gold w-full sm:w-auto justify-center"
+                      >
+                        Check availability <ArrowRight className="h-3.5 w-3.5" />
+                      </a>
                     </div>
                   ))}
                 </div>
