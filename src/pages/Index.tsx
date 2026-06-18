@@ -550,6 +550,121 @@ const Index = () => {
           </div>
         </section>
 
+        {/* COVERAGE CHECKER — confirm service area before booking */}
+        <section id="coverage" className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-5">
+              <SectionLabel>Coverage Checker</SectionLabel>
+              <h2 className="font-serif text-3xl sm:text-4xl mt-4">
+                Confirm your property is in our <span className="gold-text">Niagara service area.</span>
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-md">
+                Enter your city or full property address. We'll confirm in seconds whether you're inside our active turnover coverage map.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {COVERED_AREAS.map((a) => (
+                  <span key={a.name} className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/[0.05] px-3 py-1.5 text-xs text-muted-foreground">
+                    <MapPin className="h-3 w-3 text-primary" />
+                    {a.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 premium-card p-6 sm:p-8 relative overflow-hidden">
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const result = checkCoverage(coverageInput);
+                  setCoverageResult(result);
+                  if (result) {
+                    track("coverage_check", { status: result.status });
+                  }
+                }}
+                className="relative"
+              >
+                <label htmlFor="coverage-input" className="text-xs uppercase tracking-[0.16em] text-primary font-medium">
+                  Property city or address
+                </label>
+                <div className="mt-2 flex flex-col sm:flex-row gap-3">
+                  <div className="relative flex-1">
+                    <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-primary pointer-events-none" />
+                    <Input
+                      id="coverage-input"
+                      type="text"
+                      maxLength={200}
+                      autoComplete="address-level2"
+                      placeholder="e.g. Niagara Falls or 123 Main St, NOTL"
+                      value={coverageInput}
+                      onChange={(e) => {
+                        setCoverageInput(e.target.value);
+                        if (coverageResult) setCoverageResult(null);
+                      }}
+                      className="h-12 pl-10 bg-background/60 border-primary/30 focus-visible:ring-primary focus-visible:ring-2"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                  >
+                    <Search className="h-4 w-4" />
+                    Check Coverage
+                  </button>
+                </div>
+
+                {coverageResult?.status === "covered" && (
+                  <div className="mt-5 rounded-xl border border-success/40 bg-success/10 p-5 animate-fade-in">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-success shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <div className="font-semibold text-success">You're in our coverage area</div>
+                        <p className="text-sm text-foreground/90 mt-1">
+                          <span className="font-medium">{coverageResult.area}</span> is part of our active Niagara turnover map. Submit a Client Scheduling request and we'll route the right coverage path.
+                        </p>
+                        <a
+                          href={SCHEDULING_URL}
+                          {...ext}
+                          onClick={() => track("coverage_to_scheduling", { area: coverageResult.area })}
+                          className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+                        >
+                          Request Client Scheduling
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {coverageResult?.status === "uncovered" && (
+                  <div className="mt-5 rounded-xl border border-border bg-secondary/40 p-5 animate-fade-in">
+                    <div className="flex items-start gap-3">
+                      <XCircle className="h-6 w-6 text-muted-foreground shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <div className="font-semibold">We didn't recognize that location</div>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          We couldn't match <span className="text-foreground font-medium">"{coverageResult.input}"</span> to one of our seven Niagara service areas. If you're nearby or unsure, call us — we may still be able to route coverage.
+                        </p>
+                        <a
+                          href={PHONE_TEL}
+                          onClick={() => track("coverage_call_fallback")}
+                          className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 text-sm font-semibold transition hover:bg-primary/[0.15] focus-gold"
+                        >
+                          <Phone className="h-4 w-4" /> Call {PHONE}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-[11px] text-muted-foreground mt-4">
+                  Coverage check is an instant guide — final scope and timing are confirmed before scheduling.
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+
         {/* CALCULATOR — paper surface */}
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
