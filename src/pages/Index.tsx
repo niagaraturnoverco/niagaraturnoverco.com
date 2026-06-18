@@ -37,20 +37,21 @@ import {
   Camera,
 } from "lucide-react";
 
-import heroTurnover from "@/assets/hero-turnover.jpg";
-import property1 from "@/assets/luxury-home-exterior.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
-import property4 from "@/assets/property-4.jpg";
-import property5 from "@/assets/property-5.jpg";
-import property6 from "@/assets/property-6.jpg";
-import property7 from "@/assets/property-7.jpg";
+import heroTurnover from "@/assets/hero-turnover.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property1 from "@/assets/luxury-home-exterior.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property2 from "@/assets/property-2.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
+import property3 from "@/assets/property-3.jpg?w=320;640;1024&format=avif;webp;jpg&as=picture";
+import property4 from "@/assets/property-4.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property5 from "@/assets/property-5.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property6 from "@/assets/property-6.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
+import property7 from "@/assets/property-7.jpg?w=480;768;1080;1600&format=avif;webp;jpg&as=picture";
 import partnerSherkston from "@/assets/partner-sherkston.jpg";
 import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
 import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
 import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
 import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
 import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
+import { Picture } from "@/components/Picture";
 
 const HERO_IMAGES = [
   { src: heroTurnover, alt: "Freshly turned-over short-term rental bedroom in the Niagara Region with crisp linens and warm morning light" },
