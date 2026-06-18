@@ -707,21 +707,22 @@ const Index = () => {
           </div>
 
           <div className="mt-12 relative">
-            {/* connector line */}
-            <div className="hidden lg:block absolute top-7 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            {/* animated connector line */}
+            <div className="hidden lg:block stepper-line" />
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                ["01", "Submit the property request", "Tell us the property, the deadline, and the risk."],
-                ["02", "We confirm the right path", "Emergency, readiness, or recurring — routed in hours."],
-                ["03", "Price and availability are confirmed", "Scope and timing locked before anything is scheduled."],
-                ["04", "The property gets handled", "Turnover completed, optional photo proof on request."],
-              ].map(([n, t, d]) => (
+                { n: "01", t: "Submit the property request", d: "Tell us the property, the deadline, and the risk.", Icon: ClipboardList },
+                { n: "02", t: "We confirm the right path", d: "Emergency, readiness, or recurring — routed in hours.", Icon: Route },
+                { n: "03", t: "Price and availability are confirmed", d: "Scope and timing locked before anything is scheduled.", Icon: ShieldCheck },
+                { n: "04", t: "The property gets handled", d: "Turnover completed, optional photo proof on request.", Icon: BadgeCheck },
+              ].map(({ n, t, d, Icon }) => (
                 <div key={n} className="relative">
                   <div className="relative z-10 mx-auto h-14 w-14 rounded-full bg-background border border-primary/40 flex items-center justify-center shadow-gold">
-                    <span className="font-serif text-lg gold-text">{n}</span>
+                    <Icon className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-center mt-5">
-                    <div className="font-serif text-lg">{t}</div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] gold-text font-medium">Step {n}</div>
+                    <div className="font-serif text-lg mt-1">{t}</div>
                     <p className="text-sm text-muted-foreground mt-2">{d}</p>
                   </div>
                 </div>
