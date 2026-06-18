@@ -427,12 +427,12 @@ const Index = () => {
     {
       src: luxuryExtra03.url,
       alt: "Warm bedroom suite with styled bedding prepared for short-term rental guests",
-      label: "Bedrooms",
+      label: "NIAGARA FALLS",
     },
     {
       src: luxuryBathSuite.url,
       alt: "High-end bathroom detail supporting premium property-readiness standards",
-      label: "Bathrooms",
+      label: "KITCHENS",
     },
     {
       src: luxuryExtra11.url,
