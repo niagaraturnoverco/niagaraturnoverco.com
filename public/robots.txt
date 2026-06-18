@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://niagara-turnover-flow.lovable.app/sitemap.xml
