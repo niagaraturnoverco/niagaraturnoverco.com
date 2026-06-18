@@ -928,10 +928,14 @@ const Index = () => {
                       ))}
                     </div>
                     <p className="text-sm mt-2 leading-relaxed flex-1">"{t.quote}"</p>
-                    <div className="mt-3 pt-3 border-t border-border/60 flex items-center gap-2">
+                    <div className="mt-3 h-px gold-rule" />
+                    <div className="mt-3 pt-1 flex items-center gap-2">
                       <Initials name={t.name} />
                       <div>
-                        <div className="font-semibold text-sm">{t.name}</div>
+                        <div className="font-semibold text-sm inline-flex items-center gap-1">
+                          {t.name}
+                          <BadgeCheck className="h-3.5 w-3.5 text-primary" />
+                        </div>
                         <div className="text-[11px] text-muted-foreground">{t.meta}</div>
                       </div>
                     </div>
