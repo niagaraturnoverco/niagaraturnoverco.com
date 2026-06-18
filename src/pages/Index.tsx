@@ -605,14 +605,17 @@ const Index = () => {
 
                 <div className="mt-6 space-y-2 text-sm">
                   {[
-                    ["Cancellation loss", calc.cancellation],
-                    ["Rebooking delay", calc.rebooking],
-                    ["Review / reputation risk", calc.review],
-                    ["Coordination time", calc.coord],
-                  ].map(([k, v]) => (
-                    <div key={k as string} className="flex justify-between border-b hairline py-2">
-                      <span className="ink-muted">{k}</span>
-                      <span className="font-medium ink">${(v as number).toLocaleString()}</span>
+                    { k: "Cancellation loss", v: calc.cancellation, Icon: AlertOctagon },
+                    { k: "Rebooking delay", v: calc.rebooking, Icon: Calculator },
+                    { k: "Review / reputation risk", v: calc.review, Icon: TrendingUp },
+                    { k: "Coordination time", v: calc.coord, Icon: Clock },
+                  ].map(({ k, v, Icon }) => (
+                    <div key={k} className="flex justify-between items-center border-b hairline py-2.5">
+                      <span className="ink-muted inline-flex items-center gap-2.5">
+                        <Icon className="h-4 w-4 text-[hsl(var(--gold-deep))]" />
+                        {k}
+                      </span>
+                      <span className="font-medium ink">${v.toLocaleString()}</span>
                     </div>
                   ))}
                 </div>
