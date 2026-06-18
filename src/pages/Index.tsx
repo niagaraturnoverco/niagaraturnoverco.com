@@ -97,7 +97,7 @@ const PrimaryCTA = ({
     href={SCHEDULING_URL}
     {...ext}
     onClick={() => track("cta_scheduling", { source })}
-    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold transition hover:brightness-110 active:scale-[0.98] ${className}`}
+    className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.98] focus-gold ${className}`}
   >
     {children}
     <ArrowRight className="h-4 w-4" />
