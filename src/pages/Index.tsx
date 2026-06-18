@@ -431,8 +431,8 @@ const Index = () => {
       label: "NIAGARA FALLS",
     },
     {
-      src: luxuryBathSuite.url,
-      alt: "High-end bathroom detail supporting premium property-readiness standards",
+      src: luxuryKitchenBailey.url,
+      alt: "Bright modern kitchen with island, brass pendants, and dining area prepared for guests",
       label: "KITCHENS",
     },
     {
