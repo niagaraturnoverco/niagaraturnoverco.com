@@ -324,8 +324,15 @@ const Index = () => {
                   Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                  <PrimaryCTA source="hero" className="w-full sm:w-auto">Request Client Scheduling</PrimaryCTA>
-                  <SecondaryCTA source="hero" className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
+                  <PrimaryCTA source="hero" className="w-full sm:w-auto cta-attention">Book Turnover Coverage</PrimaryCTA>
+                  <SecondaryCTA source="hero" className="w-full sm:w-auto">Set Up Your Property</SecondaryCTA>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground max-w-xl">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success">
+                    <Clock className="h-3 w-3" />
+                    Response in under 24h
+                  </span>
+                  <span className="text-muted-foreground/70">· No payment before coverage is confirmed.</span>
                 </div>
                 <p className="text-xs text-muted-foreground max-w-xl">
                   No payment before coverage is confirmed. Scope, timing, price, and deposit / payment terms are confirmed before scheduling.
