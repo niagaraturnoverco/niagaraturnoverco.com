@@ -1222,7 +1222,7 @@ const Index = () => {
               <div className="rounded-[var(--radius)] overflow-hidden border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={luxuryVacantKitchen.url}
+                    src={luxuryExtra25.url}
                     alt="Listing-ready kitchen visual supporting premium emergency and pricing support"
                     loading="lazy"
                     decoding="async"
@@ -1283,7 +1283,7 @@ const Index = () => {
                 </div>
                 <div className="relative min-h-[280px] lg:col-span-5">
                   <img
-                    src={luxuryLoftStair.url}
+                    src={luxuryExtra13.url}
                     alt="Luxury loft imagery supporting recurring operator coverage"
                     loading="lazy"
                     decoding="async"
@@ -1505,7 +1505,7 @@ const Index = () => {
               </div>
               <div className="relative min-h-[320px] lg:col-span-5">
                 <img
-                  src={luxuryIndustrialLoft.url}
+                  src={luxuryExtra16.url}
                   alt="Luxury industrial loft environment supporting multi-property operator coverage"
                   loading="lazy"
                   decoding="async"
