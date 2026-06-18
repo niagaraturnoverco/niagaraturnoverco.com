@@ -248,26 +248,30 @@ const Index = () => {
     { icon: Home, label: "Homeowners" },
   ];
 
+  // NOTE: Testimonial copy below is placeholder crisis→outcome wording shaped to
+  // counter the "why not just a cheaper cleaner" objection. Replace with real
+  // verbatim or lightly paraphrased client quotes when available.
   const testimonials = [
     {
-      name: "Peter Kistemaker",
-      quote: "Very responsive, friendly, and professional. Exactly what you want from a turnover partner.",
-      meta: "Verified Google Review · Niagara Region",
+      name: "Niagara Falls Host",
+      quote: "My turnover cleaner cancelled three hours before a 4pm check-in on a long weekend. I called NTC at 1pm. Coverage was confirmed by 1:45 and the property was guest-ready by 3:30. Guest left a 5-star review. Worth every dollar.",
+      meta: "Placeholder · STR host, Niagara Falls",
       photo: property1,
     },
     {
-      name: "Gabriella Guo",
-      quote: "Friendly, professional, and flexible. The cleaning was done to a high standard — their attention to detail gave me real confidence.",
-      meta: "Verified Google Review · Airbnb Host",
+      name: "NOTL Property Manager",
+      quote: "We manage six STR units across NOTL and St. Catharines. Before NTC we lost roughly one weekend per month to coordination gaps. First quarter on recurring coverage: zero missed turnovers. The price difference paid for itself in protected bookings.",
+      meta: "Placeholder · Property manager, NOTL",
       photo: property2,
     },
     {
-      name: "Niagara Client",
-      quote: "Everything consistently guest-ready. Communication was clear and responsive.",
-      meta: "Host / property support",
+      name: "St. Catharines Host",
+      quote: "The cleaner I found on Marketplace did a 'fine' job but left issues my guest flagged in the review. NTC's first turnover came back with photo proof of every room. I stopped second-guessing.",
+      meta: "Placeholder · STR host, St. Catharines",
       photo: property3,
     },
   ];
+
 
   const faqs = [
     { q: "How fast can you confirm availability?", a: "Urgent and same-day requests are reviewed within hours during operating windows. Standard requests are reviewed within 24 hours. Coverage is confirmed before scheduling." },
