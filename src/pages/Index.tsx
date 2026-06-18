@@ -526,6 +526,19 @@ const Index = () => {
               </div>
             ))}
           </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <p className="font-serif text-xl sm:text-2xl max-w-2xl">
+              We route coverage <span className="gold-text">before any of this becomes your problem.</span>
+            </p>
+            <a
+              href="#readiness-quiz"
+              onClick={() => track("risk_to_quiz")}
+              className="inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
+            >
+              Find your path <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+
         </section>
 
         {/* INTAKE */}
