@@ -444,6 +444,11 @@ const Index = () => {
       alt: "Industrial loft interior that feels suited to premium Niagara short-term rentals",
       label: "Lofts & cottages",
     },
+    {
+      src: luxuryBathSuite.url,
+      alt: "Spa-style bathroom with marble finishes prepared to a guest-ready standard",
+      label: "Bathrooms",
+    },
   ];
 
   const REPRESENTATIVE_VISUAL_NOTE =
