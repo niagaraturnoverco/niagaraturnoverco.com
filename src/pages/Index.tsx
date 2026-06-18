@@ -378,12 +378,12 @@ const Index = () => {
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
           <a
-            href={SCHEDULING_URL}
+            href={ONBOARDING_URL}
             {...ext}
-            onClick={() => track("cta_scheduling", { source: "nav" })}
+            onClick={() => track("cta_onboarding", { source: "nav" })}
             className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
           >
-            Request Scheduling
+            Start On-Boarding
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
