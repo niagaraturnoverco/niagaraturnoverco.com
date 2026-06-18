@@ -380,7 +380,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* BEFORE / AFTER GALLERY */}
+        {/* GALLERY TEASER — links to dedicated page */}
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -391,46 +391,43 @@ const Index = () => {
                 </h2>
               </div>
               <p className="lg:col-span-5 text-sm sm:text-base ink-muted max-w-xl lg:ml-auto">
-                These real room resets show the difference between a property that feels unfinished and one that reads clean, cared for, and ready the moment a guest walks in.
+                See real room resets that show the difference between unfinished and guest-ready.
               </p>
             </div>
 
-            <div className="mt-10 grid gap-4 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
-              {beforeAfterGallery.map((item, index) => {
-                const featured = index === 0;
-
-                return (
-                  <figure
-                    key={item.title}
-                    className={featured
-                      ? "paper-card group overflow-hidden shadow-elegant lg:col-span-7 lg:row-span-2"
-                      : "paper-card group overflow-hidden shadow-elegant lg:col-span-5"
-                    }
-                  >
-                    <div className={featured ? "aspect-[4/3] overflow-hidden" : "aspect-[16/10] overflow-hidden"}>
-                      <img
-                        src={item.image}
-                        alt={item.alt}
-                        width={featured ? 1080 : 800}
-                        height={featured ? 810 : 500}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                      />
-                    </div>
-                    <figcaption className="flex items-start justify-between gap-4 p-5 sm:p-6">
-                      <div>
-                        <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">Before → After</div>
-                        <h3 className="mt-2 font-serif text-xl ink">{item.title}</h3>
-                        <p className="mt-2 text-sm leading-relaxed ink-muted max-w-[44ch]">{item.impact}</p>
-                      </div>
-                      <div className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 text-[hsl(var(--gold-deep))]">
-                        <ArrowRight className="h-4 w-4" />
-                      </div>
-                    </figcaption>
-                  </figure>
-                );
-              })}
-            </div>
+            <a
+              href="/gallery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 block paper-card group overflow-hidden shadow-elegant"
+            >
+              <div className="grid md:grid-cols-2 items-center">
+                <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden relative">
+                  <img
+                    src={beforeAfterGallery[0].image}
+                    alt={beforeAfterGallery[0].alt}
+                    width={1080}
+                    height={810}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
+                </div>
+                <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
+                  <h3 className="font-serif text-2xl ink">View the full gallery</h3>
+                  <p className="text-sm leading-relaxed ink-muted max-w-md">
+                    Bedrooms, lounges, amenity corners, and detail refreshes — each one documented before and after turnover coverage.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--gold-deep))] mt-1">
+                    Open gallery
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 transition group-hover:translate-x-0.5">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </a>
           </div>
         </section>
 
