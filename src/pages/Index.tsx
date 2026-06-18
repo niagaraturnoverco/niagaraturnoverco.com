@@ -587,7 +587,25 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="mt-6 space-y-3">
+              {/* Which form? decision card */}
+              <div className="mt-6 rounded-xl border border-border bg-secondary/30 p-4">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium">Which form should I use?</div>
+                <ul className="mt-3 space-y-2 text-xs">
+                  {[
+                    ["Turnover, reset, move-out, or same-day clean", "Client Scheduling"],
+                    ["Recurring properties or new account setup", "Client On-Boarding"],
+                    ["Realtor / investor / PM exploring support", "Client On-Boarding"],
+                    ["Urgent property issue right now", "Scheduling + Call"],
+                  ].map(([sit, form]) => (
+                    <li key={sit} className="flex justify-between gap-3 border-b border-border/60 pb-1.5 last:border-0 last:pb-0">
+                      <span className="text-muted-foreground">{sit}</span>
+                      <span className="font-medium text-foreground shrink-0">{form}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-4 space-y-3">
                 <a href={SCHEDULING_URL} {...ext} onClick={() => track("intake_scheduling")}
                   className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary relative overflow-hidden">
                   <div className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
@@ -595,7 +613,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-between gap-3 mt-5">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary</div>
+                      <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary · Need service now</div>
                       <div className="font-serif text-xl mt-1">Request Client Scheduling</div>
                       <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
                     </div>
@@ -607,13 +625,33 @@ const Index = () => {
                   className="group block rounded-xl border border-border bg-secondary/50 p-5 transition hover:border-primary/40">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary</div>
-                      <div className="font-serif text-xl mt-1">Set Up Your Property</div>
+                      <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Secondary · Managing properties</div>
+                      <div className="font-serif text-xl mt-1">Client On-Boarding</div>
                       <div className="text-sm text-muted-foreground mt-1">New clients, new properties, recurring accounts, operators, managers.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition" />
                   </div>
                 </a>
+              </div>
+
+              {/* Before you submit trust box */}
+              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/[0.05] p-4">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium flex items-center gap-1.5">
+                  <ShieldCheck className="h-3 w-3" /> Before you submit
+                </div>
+                <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
+                  {[
+                    "No payment before coverage is confirmed",
+                    "Final price depends on scope and timing",
+                    "Same-day requests are reviewed first",
+                    "We confirm next steps before scheduling",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-2">
+                      <Check className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                      <span className="text-foreground/85">{t}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
