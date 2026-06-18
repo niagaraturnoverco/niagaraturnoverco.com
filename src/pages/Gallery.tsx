@@ -112,6 +112,7 @@ export default function Gallery() {
               setApi={setApi}
               opts={{ align: "start", loop: true }}
               className="w-full"
+              aria-label="Before and after gallery carousel"
             >
               <CarouselContent className="-ml-3">
                 {beforeAfterGallery.map((item, index) => (
@@ -141,30 +142,42 @@ export default function Gallery() {
               </CarouselContent>
 
               <div className="mt-5 flex items-center justify-between gap-4">
-                <div className="flex gap-1.5" aria-hidden="true">
+                <div className="flex gap-1.5" role="tablist" aria-label="Gallery slides">
                   {beforeAfterGallery.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => api?.scrollTo(i)}
-                      className={`h-1.5 rounded-full transition-all ${
+                      className={`h-1.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--gold-deep))] focus-visible:ring-offset-2 ${
                         i === current
                           ? "w-6 bg-[hsl(var(--gold-deep))]"
                           : "w-1.5 bg-[hsl(36_25%_75%)]"
                       }`}
-                      aria-label={`Go to slide ${i + 1}`}
+                      aria-label={`Go to slide ${i + 1} of ${beforeAfterGallery.length}`}
+                      aria-current={i === current ? "true" : undefined}
+                      role="tab"
+                      aria-selected={i === current}
+                      tabIndex={i === current ? 0 : -1}
                     />
                   ))}
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs ink-muted tabular-nums">
+                  <span className="text-xs ink-muted tabular-nums" aria-live="polite" aria-atomic="true">
                     {current + 1} / {beforeAfterGallery.length}
                   </span>
-                  <CarouselPrevious className="static translate-y-0 h-9 w-9" />
-                  <CarouselNext className="static translate-y-0 h-9 w-9" />
+                  <CarouselPrevious
+                    className="static translate-y-0 min-h-11 min-w-11 h-11 w-11"
+                    aria-label="Previous before and after slide"
+                  />
+                  <CarouselNext
+                    className="static translate-y-0 min-h-11 min-w-11 h-11 w-11"
+                    aria-label="Next before and after slide"
+                  />
                 </div>
               </div>
             </Carousel>
-            <p className="mt-3 text-center text-xs ink-muted">Swipe to compare →</p>
+            <p className="mt-3 text-center text-xs ink-muted">
+              Swipe or use arrow keys to browse
+            </p>
           </div>
 
           {/* Desktop: bento grid */}
