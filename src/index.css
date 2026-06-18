@@ -202,7 +202,71 @@
     border: 1px solid hsl(40 15% 18%);
     box-shadow: var(--shadow-elegant);
     border-radius: var(--radius);
+    transition: border-color 260ms ease, box-shadow 260ms ease, transform 260ms ease;
   }
+  .premium-card:hover {
+    border-color: hsl(43 65% 58% / 0.45);
+    box-shadow: var(--shadow-elegant), 0 24px 50px -22px hsl(43 70% 55% / 0.35);
+    transform: translateY(-2px);
+  }
+
+  /* Icon badge — soft gold circle that anchors a card */
+  .icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.25rem;
+    width: 3.25rem;
+    border-radius: 9999px;
+    background: var(--gradient-gold-soft);
+    border: 1px solid hsl(43 65% 58% / 0.45);
+    color: hsl(var(--primary));
+    box-shadow: inset 0 0 0 1px hsl(0 0% 0% / 0.2), 0 8px 24px -12px hsl(43 70% 55% / 0.4);
+  }
+  .icon-badge-lg {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  /* Gold pill badge */
+  .gold-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: 1px solid hsl(43 65% 58% / 0.4);
+    background: hsl(43 65% 58% / 0.08);
+    color: hsl(var(--primary));
+  }
+
+  /* Animated gold connector line for stepper */
+  .stepper-line {
+    position: absolute;
+    top: 1.75rem;
+    left: 6%;
+    right: 6%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(43 65% 58% / 0.6) 20%, hsl(43 65% 58% / 0.6) 80%, transparent);
+    overflow: hidden;
+  }
+  .stepper-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, hsl(45 90% 75% / 0.9), transparent);
+    width: 30%;
+    animation: stepper-flow 4s ease-in-out infinite;
+  }
+  @keyframes stepper-flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+  }
+
+
 
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 
