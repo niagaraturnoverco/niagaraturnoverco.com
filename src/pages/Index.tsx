@@ -844,23 +844,38 @@ const Index = () => {
             </div>
 
             {/* Supporting cards */}
-            {services.slice(1).map((s) => (
-              <div key={s.title} className="premium-card p-6 flex flex-col">
-                <div className="icon-badge">
-                  <s.icon className="h-7 w-7" />
+            {services.slice(1).map((s, idx) => {
+              const isListing = idx === 0;
+              const cta = isListing
+                ? { label: "Request listing prep", href: `${SCHEDULING_URL}?utm_source=service_listing`, target: SCHEDULING_URL, event: "service_listing_cta" }
+                : { label: "Set up recurring coverage", href: `${ONBOARDING_URL}?utm_source=service_recurring`, target: ONBOARDING_URL, event: "service_recurring_cta" };
+              return (
+                <div key={s.title} className="premium-card p-6 flex flex-col">
+                  <div className="icon-badge">
+                    <s.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="font-serif text-xl mt-5">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
+                  <ul className="mt-4 space-y-2 text-sm flex-1">
+                    {s.points.map((p) => (
+                      <li key={p} className="flex gap-2">
+                        <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={cta.href}
+                    {...ext}
+                    onClick={() => track(cta.event)}
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+                  >
+                    {cta.label} <ArrowRight className="h-4 w-4" />
+                  </a>
                 </div>
-                <h3 className="font-serif text-xl mt-5">{s.title}</h3>
-                <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
-                <ul className="mt-4 space-y-2 text-sm flex-1">
-                  {s.points.map((p) => (
-                    <li key={p} className="flex gap-2">
-                      <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
+
           </div>
         </section>
 
