@@ -971,7 +971,7 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/15" />
               <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
               <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
-              <div className="relative p-7 flex h-full flex-col justify-between">
+              <div className="relative p-6 flex h-full flex-col justify-between">
                 <div className="icon-badge icon-badge-lg shadow-gold">
                   <AlertTriangle className="h-8 w-8" />
                 </div>
