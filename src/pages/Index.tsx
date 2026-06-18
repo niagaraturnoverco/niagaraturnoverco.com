@@ -650,10 +650,13 @@ const Index = () => {
             <div className="premium-card p-7 lg:row-span-2 relative overflow-hidden flex flex-col">
               <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative">
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
-                  <AlertTriangle className="h-3 w-3" /> Most requested
+                <div className="icon-badge icon-badge-lg shadow-gold">
+                  <AlertTriangle className="h-8 w-8" />
                 </div>
-                <h3 className="font-serif text-3xl mt-5">Emergency Turnover Coverage</h3>
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary mt-5">
+                  <Zap className="h-3 w-3" /> Most requested
+                </div>
+                <h3 className="font-serif text-3xl mt-4">Emergency Turnover Coverage</h3>
                 <p className="text-muted-foreground mt-3">Backup cleaner failed. Guest checks in tonight. We route fast and confirm coverage before you commit.</p>
                 <ul className="mt-6 space-y-3">
                   {services[0].points.map((p) => (
