@@ -440,6 +440,9 @@ const Index = () => {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-[hsl(var(--ink))]/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))] opacity-0 group-hover:opacity-100 transition duration-300">
+                    <Camera className="h-3 w-3" /> View proof
+                  </div>
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">5 real room resets</div>
