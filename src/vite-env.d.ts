@@ -3,12 +3,9 @@
 
 declare module "*&as=picture" {
   const value: {
-    sources: {
-      avif?: { src: string; w: number; h: number }[];
-      webp?: { src: string; w: number; h: number }[];
-      jpg?: { src: string; w: number; h: number }[];
-    };
+    sources: Record<string, string>;
     img: { src: string; w: number; h: number };
   };
   export default value;
 }
+
