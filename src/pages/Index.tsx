@@ -48,7 +48,7 @@ import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.js
 import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
 import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
 import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
-import luxuryBathSuite from "@/assets/luxury-bath-suite.jpg.asset.json";
+import luxuryBathSuite from "@/assets/luxury-bathroom-suite.jpg.asset.json";
 import luxuryExtra01 from "@/assets/luxury-extra-01.webp.asset.json";
 import luxuryExtra02 from "@/assets/luxury-extra-02.webp.asset.json";
 import luxuryExtra03 from "@/assets/luxury-extra-03.webp.asset.json";
