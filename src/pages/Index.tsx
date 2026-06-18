@@ -516,11 +516,14 @@ const Index = () => {
 
               <div className="mt-6 space-y-3">
                 <a href={SCHEDULING_URL} {...ext} onClick={() => track("intake_scheduling")}
-                  className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary">
-                  <div className="flex items-center justify-between gap-3">
+                  className="group block rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 transition hover:border-primary relative overflow-hidden">
+                  <div className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
+                    <Clock className="h-3 w-3" /> Same-day available
+                  </div>
+                  <div className="flex items-center justify-between gap-3 mt-5">
                     <div>
                       <div className="text-xs uppercase tracking-[0.16em] text-primary">Primary</div>
-                      <div className="font-serif text-xl mt-1">Client Scheduling</div>
+                      <div className="font-serif text-xl mt-1">Book Turnover Coverage</div>
                       <div className="text-sm text-muted-foreground mt-1">Turnovers, backup coverage, resets, listing prep, same-day requests.</div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-primary shrink-0 group-hover:translate-x-1 transition" />
