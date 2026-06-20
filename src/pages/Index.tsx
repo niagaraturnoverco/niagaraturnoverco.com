@@ -660,8 +660,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
           </div>
 
         </section>
+        )}
 
         {/* READINESS QUIZ — moved ABOVE intake so it drives the routing decision */}
+        {show("services") && (
         <section id="readiness-quiz" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
@@ -741,8 +743,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* INTAKE — two qualifying-question cards (replaces decision-table routing) */}
+        {show("contact") && (
         <section id="intake" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16">
           <div className="max-w-3xl">
             <SectionLabel>Submit Request</SectionLabel>
@@ -824,9 +828,11 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </span>
           </div>
         </section>
+        )}
 
 
         {/* CALCULATOR — paper surface */}
+        {show("pricing") && (
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="grid gap-8 lg:grid-cols-5">
@@ -923,8 +929,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* SERVICES — bento (1 large + 2 small) */}
+        {show("services") && (
         <section id="services" className="ntc-fine-grid ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>Services</SectionLabel>
@@ -1018,8 +1026,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             })}
           </div>
         </section>
+        )}
 
         {/* GALLERY TEASER — proof of work, after services */}
+        {show("home") && (
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -1101,8 +1111,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </a>
           </div>
         </section>
+        )}
 
         {/* HOW IT WORKS — horizontal stepper */}
+        {show("services") && (
         <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>How It Works</SectionLabel>
@@ -1135,8 +1147,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* PRICING — paper surface, table-forward */}
+        {show("pricing") && (
         <section id="pricing" className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="max-w-3xl">
@@ -1269,8 +1283,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* WHO THIS IS FOR — inline pill row */}
+        {show("about") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-7">
@@ -1294,8 +1310,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             ))}
           </div>
         </section>
+        )}
 
         {/* TESTIMONIALS — asymmetric, with property photos */}
+        {show("home", "about") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
@@ -1385,8 +1403,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* FAQ — two-column */}
+        {show("contact") && (
         <section id="faq" className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-4">
@@ -1426,8 +1446,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* OPERATOR MODE — for multi-property clients */}
+        {show("services") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="premium-card relative overflow-hidden">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
@@ -1490,8 +1512,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* FINAL CTA — full-bleed luxury image */}
+        {show("home", "pricing", "contact") && (
         <section className="relative overflow-hidden">
           <img
             src={luxuryTropicalKitchen.url}
@@ -1529,8 +1553,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* SHERKSTON PARTNER — paper surface with photo */}
+        {show("about") && (
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16">
             <div className="grid gap-8 md:grid-cols-2 items-center">
