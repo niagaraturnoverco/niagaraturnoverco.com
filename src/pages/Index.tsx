@@ -457,44 +457,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
 
   return (
-    <div className="min-h-screen">
-      {/* Alert bar */}
-      <div className="bg-gradient-gold text-primary-foreground text-xs sm:text-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center">
-          <ShieldCheck className="h-3.5 w-3.5 shrink-0" />
-          <span className="font-medium">
-            Coverage is confirmed before scheduling. Urgent:{" "}
-            <a href={PHONE_TEL} onClick={() => track("alert_call")} className="underline underline-offset-2 font-semibold">
-              {PHONE}
-            </a>
-          </span>
-        </div>
-      </div>
-
-      {/* Sticky nav */}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
-          <a href="#top" className="flex items-center"><Logo /></a>
-          <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
-            <a href="#intake" className="hover:text-foreground">Submit Request</a>
-            <a href="#services" className="hover:text-foreground">Services</a>
-            <a href="#pricing" className="hover:text-foreground">Pricing</a>
-            <a href="#faq" className="hover:text-foreground">FAQ</a>
-          </nav>
-          <a
-            href={ONBOARDING_URL}
-            {...ext}
-            onClick={() => track("cta_onboarding", { source: "nav" })}
-            className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-          >
-            Start On-Boarding
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
-        </div>
-      </header>
-
+    <div>
       <main id="top">
         {/* HERO — split with photo */}
+        {show("home") && (
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 ntc-grid-bg opacity-30" />
           <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,hsl(43_65%_58%/0.18),transparent_60%)]" />
