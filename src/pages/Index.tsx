@@ -1060,7 +1060,7 @@ const Index = () => {
               </div>
               <div className="lg:col-span-5 lg:ml-auto">
                 <p className="text-sm sm:text-base ink-muted max-w-xl">
-                  Modern interiors, clean bedrooms, listing-ready kitchens, vacant apartments, lofts, and polished bathrooms — selected to support conversion without pulling attention away from the CTA path.
+                  Modern interiors, clean bedrooms, listing-ready kitchens, vacant apartments, lofts, and polished bathrooms
                 </p>
                 <p className="mt-3 text-xs uppercase tracking-[0.16em] text-[hsl(var(--gold-deep))]">
                   {REPRESENTATIVE_VISUAL_NOTE}
