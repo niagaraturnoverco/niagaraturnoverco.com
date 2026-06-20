@@ -613,10 +613,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* RISK — zigzag list */}
-
-
+        {show("services") && (
         <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>The Real Risk</SectionLabel>
