@@ -577,8 +577,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* EMERGENCY — same-day priority block */}
+        {show("home", "contact") && (
         <section className="border-y border-primary/30 bg-gradient-to-b from-primary/[0.08] to-background">
           <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 grid gap-6 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
