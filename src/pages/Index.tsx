@@ -1590,9 +1590,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
 
-        {/* FOOTER */}
-        <footer className="border-t border-border/60 pb-28 md:pb-12">
+        {/* FOOTER (shared across all views) */}
+        <footer className="border-t border-border/60">
           <div className="mx-auto max-w-7xl px-4 py-12 grid gap-8 md:grid-cols-3">
             <div>
               <Logo />
@@ -1647,30 +1648,9 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
           </div>
         </footer>
       </main>
-
-      {/* STICKY MOBILE BAR */}
-      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden safe-bottom border-t border-border/80 bg-background/95 backdrop-blur">
-        <div className="grid grid-cols-5 gap-2 p-2.5">
-          <a
-            href={PHONE_TEL}
-            onClick={() => track("mobile_bar_call")}
-            className="col-span-3 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold cta-attention"
-          >
-            <Phone className="h-4 w-4" /> Call Now
-          </a>
-          <a
-            href={SCHEDULING_URL}
-            {...ext}
-            onClick={() => track("mobile_bar_quote")}
-            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
-          >
-            Get a Quote <ArrowRight className="h-3.5 w-3.5" />
-          </a>
-
-        </div>
-      </div>
     </div>
   );
 };
 
-export default Index;
+export default SitePage;
+
