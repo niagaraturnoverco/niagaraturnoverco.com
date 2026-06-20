@@ -1,13 +1,17 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import Gallery from "./pages/Gallery.tsx";
-import CityLanding from "./pages/CityLanding.tsx";
-import Trust from "./pages/Trust.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import AppLayout from "@/components/layout/AppLayout";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Pricing from "./pages/Pricing";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import CityLanding from "./pages/CityLanding";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -18,11 +22,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/service-area/:city" element={<CityLanding />} />
-          <Route path="/trust" element={<Trust />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/service-area/:city" element={<CityLanding />} />
+            <Route path="/trust" element={<Navigate to="/about" replace />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
