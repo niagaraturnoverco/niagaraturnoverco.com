@@ -236,7 +236,10 @@ const Initials = ({ name }: { name: string }) => {
 };
 
 
-const Index = () => {
+type SiteView = "home" | "services" | "pricing" | "about" | "contact";
+
+const SitePage = ({ view = "home" }: { view?: SiteView }) => {
+  const show = (...v: SiteView[]) => v.includes(view);
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
   const [bedrooms, setBedrooms] = useState<number>(2);
