@@ -1,29 +1,55 @@
-# Swap in optimized WebP/AVIF images to fix LCP
+## Goal
+Transform the single long-scroll `Index.tsx` into a menu-based multi-page site with a persistent left sidebar navigation.
 
-The four heaviest images on the site (totaling ~7.7 MB) are the bottleneck for LCP on mobile. I can't re-encode them in the sandbox (no image-tooling credentials), so the fastest path is: **you upload optimized versions, I swap the pointers**.
+## Navigation
+- Add a shadcn `Sidebar` (collapsible="icon") rendered in a new `AppLayout` shell wrapping all main routes via `<Outlet />`.
+- Sidebar contents:
+  - Logo at top (reuse existing `Logo` component).
+  - Links: Home, Services, Pricing, Gallery, About & Trust, Contact (each with a lucide icon + NavLink active state).
+  - Footer block with phone + primary CTA button (Schedule).
+- Desktop: sidebar always visible, collapsible to icon strip via `SidebarTrigger` in a slim top header.
+- Mobile: sidebar becomes offcanvas drawer; header shows logo + hamburger trigger + phone icon.
+- Active route highlight via `NavLink` + `isActive` on `SidebarMenuButton`.
 
-## What to upload
+## Page split (6 pages)
+Extract the existing sections from `src/pages/Index.tsx` into dedicated pages. Shared bits (hero CTAs, section labels, testimonials data, pricing data, etc.) move into `src/lib/site-content.ts` and small components into `src/components/site/` so pages stay lean.
 
-Please drop these into chat (drag into the composer, or use the + button). One file per slot, any of these is fine: `.webp`, `.avif`, or a much smaller `.jpg`.
+1. **Home (`/`)** — Hero with rotating image carousel, trust strip, audience row, testimonials teaser (3 cards), FAQ teaser (top 3) with link to full FAQ, final CTA band.
+2. **Services (`/services`)** — Risks section, Services cards (3), Readiness quiz, "Why NTC" section.
+3. **Pricing (`/pricing`)** — Pricing table, Add-ons grid, Recurring plans, Calculator, CTA.
+4. **Gallery (`/gallery`)** — Keep existing page; also include the readiness-standard visual grid moved over from Index.
+5. **About & Trust (`/about`)** — Merge current `/trust` content + full testimonials grid + audience + partner logos + brand story copy. Replace `/trust` route with a redirect to `/about`.
+6. **Contact (`/contact`)** — Intake/onboarding section, phone/SMS/email cards, scheduling CTA, FAQ full list.
 
-| Slot | Current file | Current size | Target |
-|---|---|---|---|
-| Hero (LCP) | `premium-spa-bath.jpg` | 2.80 MB | ≤ 150 KB, 1600w |
-| Gallery | `premium-villa-pool.jpg` | 2.39 MB | ≤ 200 KB, 1600w |
-| Gallery | `premium-lobby-stair.jpg` | 1.72 MB | ≤ 200 KB, 1600w |
-| Gallery | `premium-sunset-pool.jpg` | 0.78 MB | ≤ 120 KB, 1200w |
+## Routing changes (`src/App.tsx`)
+```text
+<Route element={<AppLayout />}>
+  <Route path="/" element={<Home />} />
+  <Route path="/services" element={<Services />} />
+  <Route path="/pricing" element={<Pricing />} />
+  <Route path="/gallery" element={<Gallery />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/service-area/:city" element={<CityLanding />} />
+  <Route path="/trust" element={<Navigate to="/about" replace />} />
+</Route>
+<Route path="*" element={<NotFound />} />
+```
 
-Recommended encoder: [Squoosh](https://squoosh.app) → WebP quality 75, or AVIF quality 50. Keep the original filenames if possible (just change the extension) so I can map them 1:1.
+## File changes
+- Create `src/components/layout/AppLayout.tsx` (SidebarProvider + AppSidebar + header + Outlet).
+- Create `src/components/layout/AppSidebar.tsx`.
+- Create `src/lib/site-content.ts` (HERO_IMAGES, testimonials, services, pricing, faqs, addons, recurring, audience, constants).
+- Create pages: `src/pages/Home.tsx`, `Services.tsx`, `Pricing.tsx`, `About.tsx`, `Contact.tsx`.
+- Update `src/pages/Gallery.tsx` to fit new layout (remove its own header/footer if duplicated).
+- Slim or delete `src/pages/Index.tsx` (replaced by `Home.tsx`).
+- Update `src/App.tsx` routes as above.
 
-## What I'll do once the files arrive
+## Preserved behaviors
+- All current copy, images, CTAs, tracking calls, Airtable links, phone numbers carry over verbatim.
+- SEO: each page gets its own `<title>` + meta description + H1 via a small `<PageMeta>` helper (document.title side-effect, no new deps).
+- Footer (existing bottom CTA + paper section) becomes a shared `SiteFooter` component rendered inside `AppLayout` below `<Outlet />`.
 
-1. Upload each optimized image to the Lovable CDN via `lovable-assets create`.
-2. Rewrite the matching `.asset.json` pointers in `src/assets/` (e.g. `luxury-bath-suite.jpg.asset.json` → new asset_id + WebP URL).
-3. Update `<link rel="preload">` in `index.html` to point at the new hero URL and add `type="image/webp"` (or AVIF).
-4. Update the hero `<img>` tag to use a `<picture>` with AVIF/WebP `<source>` + JPG fallback if you send multiple formats.
-5. Re-run the Lighthouse mobile audit and report the new LCP/Performance score.
-
-## Notes
-
-- No code changes happen until you upload. If you'd rather I generate replacement images with the built-in image generator instead of re-encoding the existing photos, say the word and I'll go that route (different visuals, but guaranteed small).
-- This change is presentation-only — no business logic touched.
+## Out of scope
+- No redesign of colors, typography, or visual style — sidebar uses existing gold/ink tokens.
+- No backend or content changes.
