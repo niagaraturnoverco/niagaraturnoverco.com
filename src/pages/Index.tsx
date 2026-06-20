@@ -236,7 +236,10 @@ const Initials = ({ name }: { name: string }) => {
 };
 
 
-const Index = () => {
+type SiteView = "home" | "services" | "pricing" | "about" | "contact";
+
+const SitePage = ({ view = "home" }: { view?: SiteView }) => {
+  const show = (...v: SiteView[]) => v.includes(view);
   const [rate, setRate] = useState<number>(220);
   const [nights, setNights] = useState<number>(2);
   const [bedrooms, setBedrooms] = useState<number>(2);
@@ -454,44 +457,10 @@ const Index = () => {
 
 
   return (
-    <div className="min-h-screen">
-      {/* Alert bar */}
-      <div className="bg-gradient-gold text-primary-foreground text-xs sm:text-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center">
-          <ShieldCheck className="h-3.5 w-3.5 shrink-0" />
-          <span className="font-medium">
-            Coverage is confirmed before scheduling. Urgent:{" "}
-            <a href={PHONE_TEL} onClick={() => track("alert_call")} className="underline underline-offset-2 font-semibold">
-              {PHONE}
-            </a>
-          </span>
-        </div>
-      </div>
-
-      {/* Sticky nav */}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
-          <a href="#top" className="flex items-center"><Logo /></a>
-          <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
-            <a href="#intake" className="hover:text-foreground">Submit Request</a>
-            <a href="#services" className="hover:text-foreground">Services</a>
-            <a href="#pricing" className="hover:text-foreground">Pricing</a>
-            <a href="#faq" className="hover:text-foreground">FAQ</a>
-          </nav>
-          <a
-            href={ONBOARDING_URL}
-            {...ext}
-            onClick={() => track("cta_onboarding", { source: "nav" })}
-            className="hidden sm:inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl bg-gradient-gold px-4 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-          >
-            Start On-Boarding
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
-        </div>
-      </header>
-
+    <div>
       <main id="top">
         {/* HERO — split with photo */}
+        {show("home") && (
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 ntc-grid-bg opacity-30" />
           <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,hsl(43_65%_58%/0.18),transparent_60%)]" />
@@ -608,8 +577,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* EMERGENCY — same-day priority block */}
+        {show("home", "contact") && (
         <section className="border-y border-primary/30 bg-gradient-to-b from-primary/[0.08] to-background">
           <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 grid gap-6 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
@@ -642,10 +613,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* RISK — zigzag list */}
-
-
+        {show("services") && (
         <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>The Real Risk</SectionLabel>
@@ -689,8 +660,10 @@ const Index = () => {
           </div>
 
         </section>
+        )}
 
         {/* READINESS QUIZ — moved ABOVE intake so it drives the routing decision */}
+        {show("services") && (
         <section id="readiness-quiz" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
@@ -770,8 +743,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* INTAKE — two qualifying-question cards (replaces decision-table routing) */}
+        {show("contact") && (
         <section id="intake" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16">
           <div className="max-w-3xl">
             <SectionLabel>Submit Request</SectionLabel>
@@ -853,9 +828,11 @@ const Index = () => {
             </span>
           </div>
         </section>
+        )}
 
 
         {/* CALCULATOR — paper surface */}
+        {show("pricing") && (
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="grid gap-8 lg:grid-cols-5">
@@ -952,8 +929,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* SERVICES — bento (1 large + 2 small) */}
+        {show("services") && (
         <section id="services" className="ntc-fine-grid ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>Services</SectionLabel>
@@ -1047,8 +1026,10 @@ const Index = () => {
             })}
           </div>
         </section>
+        )}
 
         {/* GALLERY TEASER — proof of work, after services */}
+        {show("home") && (
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -1130,8 +1111,10 @@ const Index = () => {
             </a>
           </div>
         </section>
+        )}
 
         {/* HOW IT WORKS — horizontal stepper */}
+        {show("services") && (
         <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>How It Works</SectionLabel>
@@ -1164,8 +1147,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* PRICING — paper surface, table-forward */}
+        {show("pricing") && (
         <section id="pricing" className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="max-w-3xl">
@@ -1298,8 +1283,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* WHO THIS IS FOR — inline pill row */}
+        {show("about") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-7">
@@ -1323,8 +1310,10 @@ const Index = () => {
             ))}
           </div>
         </section>
+        )}
 
         {/* TESTIMONIALS — asymmetric, with property photos */}
+        {show("home", "about") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
@@ -1414,8 +1403,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* FAQ — two-column */}
+        {show("contact") && (
         <section id="faq" className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-4">
@@ -1455,8 +1446,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* OPERATOR MODE — for multi-property clients */}
+        {show("services") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="premium-card relative overflow-hidden">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
@@ -1519,8 +1512,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* FINAL CTA — full-bleed luxury image */}
+        {show("home", "pricing", "contact") && (
         <section className="relative overflow-hidden">
           <img
             src={luxuryTropicalKitchen.url}
@@ -1558,8 +1553,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* SHERKSTON PARTNER — paper surface with photo */}
+        {show("about") && (
         <section className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16">
             <div className="grid gap-8 md:grid-cols-2 items-center">
@@ -1593,9 +1590,10 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
-        {/* FOOTER */}
-        <footer className="border-t border-border/60 pb-28 md:pb-12">
+        {/* FOOTER (shared across all views) */}
+        <footer className="border-t border-border/60">
           <div className="mx-auto max-w-7xl px-4 py-12 grid gap-8 md:grid-cols-3">
             <div>
               <Logo />
@@ -1650,30 +1648,9 @@ const Index = () => {
           </div>
         </footer>
       </main>
-
-      {/* STICKY MOBILE BAR */}
-      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden safe-bottom border-t border-border/80 bg-background/95 backdrop-blur">
-        <div className="grid grid-cols-5 gap-2 p-2.5">
-          <a
-            href={PHONE_TEL}
-            onClick={() => track("mobile_bar_call")}
-            className="col-span-3 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 focus-gold cta-attention"
-          >
-            <Phone className="h-4 w-4" /> Call Now
-          </a>
-          <a
-            href={SCHEDULING_URL}
-            {...ext}
-            onClick={() => track("mobile_bar_quote")}
-            className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold focus-gold leading-tight"
-          >
-            Get a Quote <ArrowRight className="h-3.5 w-3.5" />
-          </a>
-
-        </div>
-      </div>
     </div>
   );
 };
 
-export default Index;
+export default SitePage;
+
