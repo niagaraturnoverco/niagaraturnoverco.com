@@ -1524,10 +1524,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/55" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-background/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217_45%_12%/0.85)] via-[hsl(217_45%_12%/0.55)] to-[hsl(217_45%_12%/0.3)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217_45%_12%/0.7)] via-transparent to-[hsl(217_45%_12%/0.25)]" />
           <div className="relative mx-auto max-w-5xl px-4 py-20 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-white/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur">
               <ShieldCheck className="h-3 w-3" /> Coverage confirmed before scheduling
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-6 max-w-3xl mx-auto leading-[1.05]">
