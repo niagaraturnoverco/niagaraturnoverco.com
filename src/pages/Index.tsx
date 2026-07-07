@@ -548,16 +548,16 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                     />
                   ))}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-background/10" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-background/25 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217_45%_12%/0.6)] via-[hsl(217_45%_12%/0.15)] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217_45%_12%/0.25)] to-transparent" />
 
                   {/* Floating status chip */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-background/85 backdrop-blur border border-primary/40 px-3 py-1.5 text-xs">
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur border border-primary/40 px-3 py-1.5 text-xs">
                     <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
                     <span className="uppercase tracking-[0.16em] text-primary font-medium">Guest-Ready</span>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-primary/25 bg-background/50 p-4 backdrop-blur">
+                  <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-primary/25 bg-white/85 text-foreground p-4 backdrop-blur">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
@@ -950,8 +950,8 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/15" />
-              <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217_45%_12%/0.85)] via-[hsl(217_45%_12%/0.55)] to-[hsl(217_45%_12%/0.15)]" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217_45%_12%/0.35)] to-transparent" />
               <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative p-6 flex h-full flex-col justify-between">
                 <div className="icon-badge icon-badge-lg shadow-gold">
@@ -996,7 +996,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                       decoding="async"
                       className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217_45%_12%/0.55)] via-[hsl(217_45%_12%/0.15)] to-transparent" />
                     <div className="absolute left-4 top-4 icon-badge">
                       <s.icon className="h-7 w-7" />
                     </div>
@@ -1507,7 +1507,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217_45%_12%/0.55)] via-[hsl(217_45%_12%/0.15)] to-transparent" />
               </div>
             </div>
           </div>
