@@ -81,8 +81,8 @@
     font-weight: 400;
     letter-spacing: 0.005em;
     background-image:
-      radial-gradient(1200px 600px at 50% -10%, hsl(43 65% 58% / 0.10), transparent 60%),
-      linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 6%));
+      radial-gradient(1200px 600px at 50% -10%, hsl(217 90% 55% / 0.10), transparent 60%),
+      linear-gradient(180deg, hsl(210 40% 99%), hsl(214 35% 96%));
     background-attachment: fixed;
   }
   @media (max-width: 768px) {
