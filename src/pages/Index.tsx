@@ -1530,13 +1530,13 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-white/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur">
               <ShieldCheck className="h-3 w-3" /> Coverage confirmed before scheduling
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-6 max-w-3xl mx-auto leading-[1.05]">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-6 max-w-3xl mx-auto leading-[1.05] text-white">
               Don't wait until the property becomes the problem.
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-5 text-base sm:text-lg text-white/85 max-w-xl mx-auto">
               Submit the request. We'll route the right coverage path and confirm before anything is scheduled.
             </p>
-            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs text-foreground/85">
+            <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs text-white/90">
               <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-primary text-primary" /> ★★★★★ Verified Niagara reviews</span>
               <span className="inline-flex items-center gap-1.5"><Camera className="h-3.5 w-3.5 text-primary" /> Photo proof available</span>
               <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
@@ -1547,7 +1547,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                 Request Client Scheduling <ArrowRight className="h-4 w-4" />
               </a>
               <a href={PHONE_TEL} onClick={() => track("final_call")}
-                className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-background/40 px-7 text-sm font-semibold hover:bg-primary/10 transition">
+                className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-white/70 bg-white/10 text-white px-7 text-sm font-semibold hover:bg-white/20 transition">
                 <Phone className="h-4 w-4" /> Call {PHONE}
               </a>
             </div>
