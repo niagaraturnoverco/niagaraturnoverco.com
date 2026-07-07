@@ -1,55 +1,28 @@
-## Goal
-Transform the single long-scroll `Index.tsx` into a menu-based multi-page site with a persistent left sidebar navigation.
+## Problem
 
-## Navigation
-- Add a shadcn `Sidebar` (collapsible="icon") rendered in a new `AppLayout` shell wrapping all main routes via `<Outlet />`.
-- Sidebar contents:
-  - Logo at top (reuse existing `Logo` component).
-  - Links: Home, Services, Pricing, Gallery, About & Trust, Contact (each with a lucide icon + NavLink active state).
-  - Footer block with phone + primary CTA button (Schedule).
-- Desktop: sidebar always visible, collapsible to icon strip via `SidebarTrigger` in a slim top header.
-- Mobile: sidebar becomes offcanvas drawer; header shows logo + hamburger trigger + phone icon.
-- Active route highlight via `NavLink` + `isActive` on `SidebarMenuButton`.
+After switching to the blue/white theme, the hero image on Home looks washed out. The overlay stack on top of the carousel was written for a dark theme:
 
-## Page split (6 pages)
-Extract the existing sections from `src/pages/Index.tsx` into dedicated pages. Shared bits (hero CTAs, section labels, testimonials data, pricing data, etc.) move into `src/lib/site-content.ts` and small components into `src/components/site/` so pages stay lean.
+- `bg-gradient-to-t from-background via-background/30 to-background/10` — now fades the image into white
+- `bg-gradient-to-r from-background/25 to-transparent` — same, white wash from the left
+- The bottom caption card uses `bg-background/50` (white 50%) with light text, so it blends into the photo
 
-1. **Home (`/`)** — Hero with rotating image carousel, trust strip, audience row, testimonials teaser (3 cards), FAQ teaser (top 3) with link to full FAQ, final CTA band.
-2. **Services (`/services`)** — Risks section, Services cards (3), Readiness quiz, "Why NTC" section.
-3. **Pricing (`/pricing`)** — Pricing table, Add-ons grid, Recurring plans, Calculator, CTA.
-4. **Gallery (`/gallery`)** — Keep existing page; also include the readiness-standard visual grid moved over from Index.
-5. **About & Trust (`/about`)** — Merge current `/trust` content + full testimonials grid + audience + partner logos + brand story copy. Replace `/trust` route with a redirect to `/about`.
-6. **Contact (`/contact`)** — Intake/onboarding section, phone/SMS/email cards, scheduling CTA, FAQ full list.
+Same pattern likely appears on a few other hero/image blocks (chip pills using `bg-background/85`, glass cards).
 
-## Routing changes (`src/App.tsx`)
-```text
-<Route element={<AppLayout />}>
-  <Route path="/" element={<Home />} />
-  <Route path="/services" element={<Services />} />
-  <Route path="/pricing" element={<Pricing />} />
-  <Route path="/gallery" element={<Gallery />} />
-  <Route path="/about" element={<About />} />
-  <Route path="/contact" element={<Contact />} />
-  <Route path="/service-area/:city" element={<CityLanding />} />
-  <Route path="/trust" element={<Navigate to="/about" replace />} />
-</Route>
-<Route path="*" element={<NotFound />} />
-```
+## Fix
 
-## File changes
-- Create `src/components/layout/AppLayout.tsx` (SidebarProvider + AppSidebar + header + Outlet).
-- Create `src/components/layout/AppSidebar.tsx`.
-- Create `src/lib/site-content.ts` (HERO_IMAGES, testimonials, services, pricing, faqs, addons, recurring, audience, constants).
-- Create pages: `src/pages/Home.tsx`, `Services.tsx`, `Pricing.tsx`, `About.tsx`, `Contact.tsx`.
-- Update `src/pages/Gallery.tsx` to fit new layout (remove its own header/footer if duplicated).
-- Slim or delete `src/pages/Index.tsx` (replaced by `Home.tsx`).
-- Update `src/App.tsx` routes as above.
+Scope: presentational only in `src/pages/Index.tsx` (and `src/index.css` if needed for a helper).
 
-## Preserved behaviors
-- All current copy, images, CTAs, tracking calls, Airtable links, phone numbers carry over verbatim.
-- SEO: each page gets its own `<title>` + meta description + H1 via a small `<PageMeta>` helper (document.title side-effect, no new deps).
-- Footer (existing bottom CTA + paper section) becomes a shared `SiteFooter` component rendered inside `AppLayout` below `<Outlet />`.
+1. Replace the two image-covering gradients on the hero (lines 551–552) with a subtle dark-ink gradient so the photo stays visible:
+   - Bottom-to-top: `from-[hsl(217_45%_12%/0.55)] via-[hsl(217_45%_12%/0.15)] to-transparent`
+   - Left-to-right: reduce to `from-[hsl(217_45%_12%/0.25)] to-transparent`
+2. Update the floating "Guest-Ready" chip and the bottom caption card so they read on a photo:
+   - Chip: white pill (`bg-white/90`) with primary-blue text (already fine) instead of `bg-background/85`.
+   - Bottom caption card: `bg-white/85 backdrop-blur border-primary/30`, text switches to `text-foreground` / `text-primary` so it stays readable against the photo.
+3. Audit the file for the same pattern on any other image overlay (secondary hero, gallery teaser, CTA bands that sit over photos) and apply the same "dark tint + white glass card" fix. Everything else on plain page background stays as-is.
+4. No changes to images, copy, layout, routing, or the design tokens themselves.
 
-## Out of scope
-- No redesign of colors, typography, or visual style — sidebar uses existing gold/ink tokens.
-- No backend or content changes.
+## Technical details
+
+- Only Tailwind class edits inside `src/pages/Index.tsx`. No new components, no token changes.
+- If the same overlay recipe repeats more than 2–3 times, add a small utility class (e.g. `.photo-scrim`) in `src/index.css` under `@layer components` to keep it consistent.
+- Verify by viewing `/` in the preview after the change: hero photo visible, caption legible, chip legible.
