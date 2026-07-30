@@ -556,20 +556,21 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                     <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
                     <span className="uppercase tracking-[0.16em] text-primary font-medium">Guest-Ready</span>
                   </div>
+                </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-primary/25 bg-white/85 text-foreground p-4 backdrop-blur">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
-                        <div className="font-serif text-lg mt-1">Modern kitchens, clean bedrooms, vacant apartments, cottage-style spaces.</div>
-                      </div>
-                      <div className="hidden sm:block glass rounded-xl px-4 py-3 text-xs shrink-0">
-                        <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
-                        <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
-                      </div>
+                <div className="mt-4 rounded-xl border border-primary/25 bg-card/70 text-foreground p-4 backdrop-blur">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
+                      <div className="font-serif text-lg mt-1">Modern kitchens, clean bedrooms, vacant apartments, cottage-style spaces.</div>
+                    </div>
+                    <div className="hidden sm:block glass rounded-xl px-4 py-3 text-xs shrink-0">
+                      <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
+                      <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
                     </div>
                   </div>
                 </div>
+
 
                 <div className="hidden lg:block absolute -top-4 -left-4 h-20 w-20 rounded-full border border-primary/30" />
                 <div className="hidden lg:block absolute -bottom-4 -right-4 h-12 w-12 rounded-full bg-gradient-gold opacity-40 blur-xl" />
