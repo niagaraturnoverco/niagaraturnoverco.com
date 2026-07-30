@@ -27,7 +27,10 @@ export default function Auth() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) window.location.href = next;
+      if (!data.session) return;
+      const pending = safeNext(sessionStorage.getItem("post_auth_next"));
+      sessionStorage.removeItem("post_auth_next");
+      window.location.href = pending !== "/" ? pending : next;
     });
   }, [next]);
 
@@ -55,12 +58,19 @@ export default function Auth() {
 
   async function google() {
     setError(null);
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: { redirectTo },
+    sessionStorage.setItem("post_auth_next", next);
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: `${window.location.origin}/auth`,
     });
-    if (error) setError(error.message);
+    if (result.error) {
+      sessionStorage.removeItem("post_auth_next");
+      setError(result.error.message);
+      return;
+    }
+    if (result.redirected) return;
+    window.location.href = next;
   }
+
 
   return (
     <main className="mx-auto flex min-h-[70vh] w-full max-w-md flex-col justify-center px-5 py-12">
