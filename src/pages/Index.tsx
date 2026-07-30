@@ -462,7 +462,6 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         {/* HERO — split with photo */}
         {show("home") && (
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 ntc-grid-bg opacity-30" />
           <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,hsl(43_65%_58%/0.18),transparent_60%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-14 sm:py-20">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
@@ -556,20 +555,21 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                     <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
                     <span className="uppercase tracking-[0.16em] text-primary font-medium">Guest-Ready</span>
                   </div>
+                </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-primary/25 bg-white/85 text-foreground p-4 backdrop-blur">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
-                        <div className="font-serif text-lg mt-1">Modern kitchens, clean bedrooms, vacant apartments, cottage-style spaces.</div>
-                      </div>
-                      <div className="hidden sm:block glass rounded-xl px-4 py-3 text-xs shrink-0">
-                        <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
-                        <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
-                      </div>
+                <div className="mt-4 rounded-xl border border-primary/25 bg-card/70 text-foreground p-4 backdrop-blur">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
+                      <div className="font-serif text-lg mt-1">Modern kitchens, clean bedrooms, vacant apartments, cottage-style spaces.</div>
+                    </div>
+                    <div className="hidden sm:block glass rounded-xl px-4 py-3 text-xs shrink-0">
+                      <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
+                      <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
                     </div>
                   </div>
                 </div>
+
 
                 <div className="hidden lg:block absolute -top-4 -left-4 h-20 w-20 rounded-full border border-primary/30" />
                 <div className="hidden lg:block absolute -bottom-4 -right-4 h-12 w-12 rounded-full bg-gradient-gold opacity-40 blur-xl" />
@@ -617,7 +617,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
         {/* RISK — zigzag list */}
         {show("services") && (
-        <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>The Real Risk</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
@@ -933,7 +933,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
         {/* SERVICES — bento (1 large + 2 small) */}
         {show("services") && (
-        <section id="services" className="ntc-fine-grid ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section id="services" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>Services</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
