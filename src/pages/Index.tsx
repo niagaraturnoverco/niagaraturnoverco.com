@@ -462,7 +462,6 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         {/* HERO — split with photo */}
         {show("home") && (
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 ntc-grid-bg opacity-30" />
           <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(ellipse_at_top,hsl(43_65%_58%/0.18),transparent_60%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-14 sm:py-20">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
@@ -618,7 +617,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
         {/* RISK — zigzag list */}
         {show("services") && (
-        <section className="ntc-gold-halo ntc-fine-grid mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>The Real Risk</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
@@ -934,7 +933,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
         {/* SERVICES — bento (1 large + 2 small) */}
         {show("services") && (
-        <section id="services" className="ntc-fine-grid ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <section id="services" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>Services</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4">
