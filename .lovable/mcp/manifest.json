@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "sdk_version": "0.25.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://bjuuutvdqrupbbuckewj.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "niagara-readiness-hub",
+      "version": "0.1.0",
+      "title": "Niagara Readiness Hub"
+    },
+    "tools": [
+      {
+        "name": "list_services",
+        "title": "List services",
+        "description": "List the property readiness and turnover services Niagara Turnover Co. offers, with a short summary of each.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_service_areas",
+        "title": "List service areas",
+        "description": "List the Niagara Region cities Niagara Turnover Co. covers, with the slug and landing page path for each.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_readiness_standard",
+        "title": "Get the readiness standard",
+        "description": "Return the room-by-room readiness checklist Niagara Turnover Co. applies to every turnover, plus the reporting commitment.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "estimate_turnover",
+        "title": "Estimate a turnover",
+        "description": "Produce an indicative turnover price range for a Niagara property based on bedrooms, bathrooms, rush scheduling and linen service. Indicative only — final pricing depends on scope and condition.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "bedrooms": {
+              "type": "integer",
+              "description": "Number of bedrooms (0 for studio)."
+            },
+            "bathrooms": {
+              "type": "number",
+              "description": "Number of bathrooms, halves allowed."
+            },
+            "rush": {
+              "type": "boolean",
+              "description": "Same-day or emergency scheduling."
+            },
+            "linen": {
+              "type": "boolean",
+              "description": "Include linen supply and laundering."
+            }
+          },
+          "required": [
+            "bedrooms",
+            "bathrooms"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_booking_links",
+        "title": "Get booking and contact links",
+        "description": "Return Niagara Turnover Co.'s phone number and the Client Scheduling and Client On-Boarding form links to send a property owner or operator to.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
