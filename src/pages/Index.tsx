@@ -548,8 +548,8 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                     />
                   ))}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217_45%_12%/0.6)] via-[hsl(217_45%_12%/0.15)] to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217_45%_12%/0.25)] to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[hsl(217_45%_12%/0.45)] to-transparent" />
+
 
                   {/* Floating status chip */}
                   <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur border border-primary/40 px-3 py-1.5 text-xs">
