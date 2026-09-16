@@ -1177,7 +1177,6 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                         <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
                         {p.size}
                       </span>
-                      <span className="font-serif text-xl text-[hsl(var(--gold-deep))] ml-auto sm:ml-0">{p.price}</span>
                       <a
                         href={SCHEDULING_URL}
                         {...ext}
