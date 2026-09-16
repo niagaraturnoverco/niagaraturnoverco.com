@@ -3,10 +3,10 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.25.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.25.1";
 
 // src/lib/mcp/tools/list-services.ts
-import { defineTool } from "npm:@lovable.dev/mcp-js@0.25.0";
+import { defineTool } from "npm:@lovable.dev/mcp-js@0.25.1";
 var SERVICES = [
   {
     id: "str-turnover",
@@ -47,7 +47,7 @@ var list_services_default = defineTool({
 });
 
 // src/lib/mcp/tools/list-service-areas.ts
-import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.25.0";
+import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.25.1";
 var AREAS = [
   { slug: "niagara-falls", name: "Niagara Falls", url: "/service-area/niagara-falls" },
   { slug: "st-catharines", name: "St. Catharines", url: "/service-area/st-catharines" },
@@ -74,7 +74,7 @@ var list_service_areas_default = defineTool2({
 });
 
 // src/lib/mcp/tools/estimate-turnover.ts
-import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.25.0";
+import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.25.1";
 import { z } from "npm:zod@^3.25.76";
 var BASE = 89;
 var PER_BEDROOM = 32;
@@ -117,7 +117,7 @@ var estimate_turnover_default = defineTool3({
 });
 
 // src/lib/mcp/tools/get-booking-links.ts
-import { defineTool as defineTool4 } from "npm:@lovable.dev/mcp-js@0.25.0";
+import { defineTool as defineTool4 } from "npm:@lovable.dev/mcp-js@0.25.1";
 var CONTACT = {
   business: "Niagara Turnover Co.",
   phone: "(289) 257-7725",
@@ -140,7 +140,7 @@ var get_booking_links_default = defineTool4({
 });
 
 // src/lib/mcp/tools/get-readiness-standard.ts
-import { defineTool as defineTool5 } from "npm:@lovable.dev/mcp-js@0.25.0";
+import { defineTool as defineTool5 } from "npm:@lovable.dev/mcp-js@0.25.1";
 var CHECKLIST = [
   "Kitchen: counters, appliances inside and out, sink polished, dishware verified and put away",
   "Bathrooms: descaled fixtures, mirrors streak-free, fresh towel set staged, consumables restocked",
@@ -182,5 +182,5 @@ var mcp_default = defineMcp({
 });
 
 // lovable-mcp-supabase-entry.ts
-import { createSupabaseHandler } from "npm:@lovable.dev/mcp-js@0.25.0/stacks/supabase";
+import { createSupabaseHandler } from "npm:@lovable.dev/mcp-js@0.25.1/stacks/supabase";
 Deno.serve(createSupabaseHandler(mcp_default, { functionName: "mcp" }));

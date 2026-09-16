@@ -320,11 +320,11 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
   ];
 
   const pricing = [
-    { size: "1 Bedroom", price: "$199" },
-    { size: "2 Bedroom", price: "$269" },
-    { size: "3 Bedroom", price: "$329" },
-    { size: "4 Bedroom", price: "$399" },
-    { size: "5+ Bedroom", price: "$499+" },
+    { size: "1 Bedroom", price: "\n" },
+    { size: "2 Bedroom", price: "\n" },
+    { size: "3 Bedroom", price: "\n" },
+    { size: "4 Bedroom", price: "\n" },
+    { size: "5+ Bedroom", price: "\n" },
   ];
 
   const addons: [string, string][] = [
