@@ -37,22 +37,13 @@ import {
   Camera,
 } from "lucide-react";
 
-import partnerSherkston from "@/assets/partner-sherkston.jpg";
-import beforeAfterBedroomBlue from "@/assets/before-after-bedroom-blue.png.asset.json";
-import beforeAfterBedroomRose from "@/assets/before-after-bedroom-rose.png.asset.json";
-import beforeAfterPiano from "@/assets/before-after-piano.png.asset.json";
-import beforeAfterLounge from "@/assets/before-after-lounge.png.asset.json";
-import beforeAfterHallway from "@/assets/before-after-hallway.png.asset.json";
-import luxuryLivingBright from "@/assets/luxury-living-bright.jpg.asset.json";
 import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
 import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
 import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
 import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
-import luxuryBathSuite from "@/assets/luxury-bathroom-suite.jpg.asset.json";
-import luxuryKitchenBailey from "@/assets/luxury-kitchen-bailey.webp.asset.json";
-import luxuryExtra01 from "@/assets/luxury-extra-01.webp.asset.json";
+
 import luxuryExtra02 from "@/assets/luxury-extra-02.webp.asset.json";
-import luxuryExtra03 from "@/assets/luxury-extra-03.webp.asset.json";
+
 import luxuryExtra04 from "@/assets/luxury-extra-04.webp.asset.json";
 import luxuryExtra05 from "@/assets/luxury-extra-05.webp.asset.json";
 import luxuryExtra06 from "@/assets/luxury-extra-06.webp.asset.json";
@@ -60,12 +51,12 @@ import luxuryExtra07 from "@/assets/luxury-extra-07.webp.asset.json";
 import luxuryExtra08 from "@/assets/luxury-extra-08.webp.asset.json";
 import luxuryExtra09 from "@/assets/luxury-extra-09.webp.asset.json";
 import luxuryExtra10 from "@/assets/luxury-extra-10.webp.asset.json";
-import luxuryExtra11 from "@/assets/luxury-extra-11.webp.asset.json";
+
 import luxuryExtra12 from "@/assets/luxury-extra-12.webp.asset.json";
 import luxuryExtra13 from "@/assets/luxury-extra-13.webp.asset.json";
 import luxuryExtra14 from "@/assets/luxury-extra-14.webp.asset.json";
 import luxuryExtra15 from "@/assets/luxury-extra-15.webp.asset.json";
-import luxuryExtra16 from "@/assets/luxury-extra-16.webp.asset.json";
+
 import luxuryExtra17 from "@/assets/luxury-extra-17.webp.asset.json";
 import luxuryExtra18 from "@/assets/luxury-extra-18.webp.asset.json";
 import luxuryExtra19 from "@/assets/luxury-extra-19.webp.asset.json";
@@ -236,59 +227,10 @@ const Initials = ({ name }: { name: string }) => {
 };
 
 
-type SiteView = "home" | "services" | "pricing" | "about" | "contact";
+type SiteView = "home" | "residential" | "about" | "contact";
 
 const SitePage = ({ view = "home" }: { view?: SiteView }) => {
   const show = (...v: SiteView[]) => v.includes(view);
-  const [rate, setRate] = useState<number>(220);
-  const [nights, setNights] = useState<number>(2);
-  const [bedrooms, setBedrooms] = useState<number>(2);
-  const [quiz, setQuiz] = useState<{
-    urgent: boolean | null;
-    laundry: boolean | null;
-    vacant: boolean | null;
-    recurring: boolean | null;
-  }>({ urgent: null, laundry: null, vacant: null, recurring: null });
-
-  // Hero image rotator — cycles every 5 seconds
-  const [heroIndex, setHeroIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setHeroIndex((i) => (i + 1) % HERO_IMAGES.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // NTC starting price by bedroom count — mirrors pricing table
-  const ntcPriceByBedroom: Record<number, number> = { 1: 199, 2: 269, 3: 329, 4: 399, 5: 499 };
-
-  const calc = useMemo(() => {
-    const cancellation = rate * nights;
-    const rebooking = rate * 2 * 0.5;
-    // Scaled review/reputation risk: ~4 future nights of lost bookings, defensible math
-    const review = Math.round(rate * 4);
-    const coord = 150;
-    const total = cancellation + rebooking + review + coord;
-    const ntcPrice = ntcPriceByBedroom[Math.min(5, Math.max(1, bedrooms))] ?? 329;
-    return { cancellation, rebooking, review, coord, total, ntcPrice };
-  }, [rate, nights, bedrooms]);
-
-  const quizResult = useMemo<string | null>(() => {
-    const { urgent, laundry, vacant, recurring } = quiz;
-    if (urgent === null || laundry === null || vacant === null || recurring === null) return null;
-    if (urgent) return "Emergency Turnover Coverage";
-    if (recurring) return "Recurring Turnover Support";
-    if (!vacant) return "Heavy Reset / Deep Clean";
-    if (laundry) return "Turnover with Laundry Reset";
-    return "Property Readiness / Listing Prep";
-  }, [quiz]);
-
-
-  const risks = [
-    ["01", "Guest checks in before the unit is ready", "Refunds, one-star reviews, and listing penalties land within hours."],
-    ["02", "Listing photos or showings happen too soon", "The property sells or rents itself short — and you only see it later."],
-    ["03", "The cleaner confirms — then cancels the morning of check-in", "By the time you find out, you have hours, not days, to recover the booking."],
-  ];
 
 
   const services = [
@@ -320,11 +262,11 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
   ];
 
   const pricing = [
-    { size: "1 Bedroom", price: "\n" },
-    { size: "2 Bedroom", price: "\n" },
-    { size: "3 Bedroom", price: "\n" },
-    { size: "4 Bedroom", price: "\n" },
-    { size: "5+ Bedroom", price: "\n" },
+    { size: "1 Bedroom", price: "$199" },
+    { size: "2 Bedroom", price: "$269" },
+    { size: "3 Bedroom", price: "$329" },
+    { size: "4 Bedroom", price: "$399" },
+    { size: "5+ Bedroom", price: "$499" },
   ];
 
   const addons: [string, string][] = [
@@ -376,84 +318,14 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
   const faqs = [
     { q: "What makes NTC different from finding a cleaner myself on Facebook or Marketplace?", a: "You're not just paying for a cleaner. You're paying for dispatch, coordination, quality control, and photo confirmation. If the assigned cleaner cancels, we route a backup. If something is missed, we flag it before your guest does. A Marketplace booking gives you one person and a hope. NTC gives you a system." },
-    { q: "What happens if I'm not happy with the result?", a: "Flag it within 24 hours and we resolve it — typically by returning to fix the issue at no additional cost. Coverage means we own the outcome, not just the shift. Photo proof and a written report are available so issues are resolved on evidence, not opinion." },
+    { q: "Are you insured and WSIB covered?", a: "Yes. We carry commercial general liability insurance and WSIB coverage. A certificate of insurance and a WSIB clearance certificate are available on request before work begins." },
+    { q: "Do you use your own staff or subcontractors?", a: "Commercial accounts are serviced by our own trained, screened staff under a dedicated site supervisor. We do not hand your building to an unknown subcontractor." },
+    { q: "What products do you use?", a: "Green-certified products as the default, with Safety Data Sheets kept on site. Where a facility requires specific disinfectants or protocols — medical, dental, or food-handling areas — we follow your written requirements." },
+    { q: "How do you report on quality?", a: "Every commercial account gets a monthly inspection with a written report delivered within five business days, plus posted daily washroom logs. Issues are resolved on evidence, not opinion." },
+    { q: "What are your contract terms?", a: "Monthly service with 30 days' notice to cancel. No long lock-in. Scope and pricing are set at the walkthrough and itemized on a single monthly invoice." },
+    { q: "What happens if I'm not happy with the result?", a: "Flag it within 24 hours and we resolve it — typically by returning to fix the issue at no additional cost. Coverage means we own the outcome, not just the shift." },
     { q: "How fast can you confirm availability?", a: "Urgent and same-day requests are reviewed within hours during operating windows. Standard requests are reviewed within 24 hours. Coverage is confirmed before scheduling." },
-    { q: "Do I pay before you confirm coverage?", a: "No. Scope, timing, price, and deposit / payment terms are confirmed first. High-risk or same-day jobs may require full payment upfront once coverage is confirmed." },
-    { q: "Are you only for Airbnb hosts?", a: "No. We work with STR hosts, property managers, realtors, investors, operators, and homeowners across the Niagara Region." },
-    { q: "Are you the cheapest option?", a: "No. NTC is built for properties where timing, reliability, and presentation matter. We are a premium local operator, not a bargain cleaner." },
-    { q: "Do you offer property management or co-hosting?", a: "We focus on turnover coverage and property readiness. For recurring operator relationships we offer priority dispatch and account setup through our Client On-Boarding path." },
   ];
-
-
-  const beforeAfterGallery = [
-    {
-      title: "Bedroom reset",
-      impact: "From visibly unfinished to crisp, guest-ready presentation.",
-      image: beforeAfterBedroomBlue.url,
-      alt: "Before and after comparison of a short-term rental bedroom reset with straightened bedding and styled pillows",
-      featured: true,
-    },
-    {
-      title: "Full bed remake",
-      impact: "A cleaner visual finish that reads ready at a glance.",
-      image: beforeAfterBedroomRose.url,
-      alt: "Before and after comparison of a pink bedroom with wrinkled bedding transformed into a neatly made bed",
-    },
-    {
-      title: "Living room styling",
-      impact: "Soft furnishings and layout details make the space feel intentional.",
-      image: beforeAfterLounge.url,
-      alt: "Before and after comparison of a lounge area with added throws and cushions for a more polished guest setup",
-    },
-    {
-      title: "Amenity corner",
-      impact: "An overlooked area becomes a usable, welcoming moment.",
-      image: beforeAfterHallway.url,
-      alt: "Before and after comparison of a hallway nook transformed into a styled seating area",
-    },
-    {
-      title: "Detail refresh",
-      impact: "Even secondary rooms look maintained, not forgotten.",
-      image: beforeAfterPiano.url,
-      alt: "Before and after comparison of a piano area with added styling and decor for a finished look",
-    },
-  ];
-
-  const readinessVisuals = [
-    {
-      src: luxuryLivingBright.url,
-      alt: "Bright luxury living room with vaulted ceiling prepared for guest arrival",
-      label: "Modern living",
-    },
-    {
-      src: luxuryExtra03.url,
-      alt: "Warm bedroom suite with styled bedding prepared for short-term rental guests",
-      label: "NIAGARA FALLS",
-    },
-    {
-      src: luxuryKitchenBailey.url,
-      alt: "Bright modern kitchen with island, brass pendants, and dining area prepared for guests",
-      label: "KITCHENS",
-    },
-    {
-      src: luxuryExtra11.url,
-      alt: "Vacant apartment interior with clean lines and listing-ready presentation",
-      label: "Vacant apartments",
-    },
-    {
-      src: luxuryExtra01.url,
-      alt: "Industrial loft interior that feels suited to premium Niagara short-term rentals",
-      label: "Lofts & cottages",
-    },
-    {
-      src: luxuryBathSuite.url,
-      alt: "Spa-style bathroom with marble finishes prepared to a guest-ready standard",
-      label: "Bathrooms",
-    },
-  ];
-
-  const REPRESENTATIVE_VISUAL_NOTE =
-    "Representative readiness visuals. Actual property results depend on scope and condition.";
 
 
   return (
