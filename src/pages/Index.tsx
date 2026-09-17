@@ -487,135 +487,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         </section>
         )}
 
-        {/* RISK — zigzag list */}
-        {show("services") && (
-        <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <div className="max-w-3xl">
-            <SectionLabel>The Real Risk</SectionLabel>
-            <h2 className="font-serif text-3xl sm:text-4xl mt-4">
-              The cleaner is not the only risk. <span className="gold-text">The timeline is.</span>
-            </h2>
-            <p className="text-muted-foreground mt-3 max-w-2xl">
-              Missed readiness creates refunds, bad reviews, delayed showings, owner complaints, and last-minute coordination problems. Each one is fixable — if you catch it before guests do.
-            </p>
-          </div>
 
-          <div className="mt-10 divide-y divide-border/60 border-y border-border/60">
-            {risks.map(([n, t, d], i) => (
-              <div
-                key={n}
-                className={`grid gap-4 sm:gap-8 py-6 sm:py-7 sm:grid-cols-12 items-baseline group ${
-                  i % 2 === 1 ? "sm:pl-12" : ""
-                }`}
-              >
-                <div className="sm:col-span-1 numeral-outline text-4xl sm:text-5xl">{n}</div>
-                <div className="sm:col-span-5">
-                  <div className="font-serif text-xl sm:text-2xl group-hover:gold-text transition">{t}</div>
-                </div>
-                <div className="sm:col-span-6">
-                  <p className="text-sm sm:text-base text-muted-foreground">{d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <p className="font-serif text-xl sm:text-2xl max-w-2xl">
-              We route coverage <span className="gold-text">before any of this becomes your problem.</span>
-            </p>
-            <a
-              href="#readiness-quiz"
-              onClick={() => track("risk_to_quiz")}
-              className="inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-            >
-              Find your path <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-
-        </section>
-        )}
-
-        {/* READINESS QUIZ — moved ABOVE intake so it drives the routing decision */}
-        {show("services") && (
-        <section id="readiness-quiz" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-5">
-              <SectionLabel>Property Readiness Score</SectionLabel>
-              <h2 className="font-serif text-3xl sm:text-4xl mt-4">
-                Four questions. <span className="gold-text">One clear path.</span>
-              </h2>
-              <p className="text-muted-foreground mt-3 max-w-md">
-                Answer below and we'll point you to the right coverage path before you submit a form.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
-                <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 text-primary fill-primary" /> Verified Niagara reviews</span>
-              </div>
-            </div>
-            <div className="lg:col-span-7 premium-card p-6 sm:p-8 relative overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-              <div className="relative space-y-5">
-                {([
-                  { key: "urgent", q: "Is there a guest check-in within 24 hours?", a: "Yes — urgent", b: "No" },
-                  { key: "laundry", q: "Is laundry / linen reset needed?", a: "Yes", b: "No" },
-                  { key: "vacant", q: "Is the property between guests right now?", a: "Yes", b: "No, guests still in" },
-                  { key: "recurring", q: "How often do you need this?", a: "Monthly recurring", b: "Once" },
-                ] as const).map(({ key, q, a, b }) => (
-                  <div key={key}>
-                    <div className="text-sm font-medium">{q}</div>
-                    <div className="mt-2 grid grid-cols-2 gap-2">
-                      {[
-                        { label: a, val: true },
-                        { label: b, val: false },
-                      ].map(({ label, val }) => {
-                        const active = quiz[key] === val;
-                        return (
-                          <button
-                            key={label}
-                            type="button"
-                            onClick={() => setQuiz((p) => ({ ...p, [key]: val }))}
-                            className={`min-h-[46px] rounded-xl border px-3 text-sm font-medium transition active:scale-[0.98] focus-gold ${
-                              active
-                                ? "border-primary bg-gradient-gold text-primary-foreground shadow-gold"
-                                : "border-border bg-background/60 text-foreground hover:border-primary/40 hover:bg-primary/[0.05]"
-                            }`}
-                          >
-                            {label}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-
-                {quizResult && (
-                  <div className="rounded-xl border border-primary/40 bg-gradient-gold-soft p-5 animate-fade-in">
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary font-medium">Recommended path</div>
-                    <div className="font-serif text-xl mt-1">
-                      Your property needs: <span className="gold-text">{quizResult}</span>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-3 mt-4">
-                      <a
-                        href={quiz.recurring ? ONBOARDING_URL : SCHEDULING_URL}
-                        {...ext}
-                        onClick={() => track("quiz_to_form", { result: quizResult, recurring: quiz.recurring })}
-                        className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-                      >
-                        {quiz.recurring ? "Start Client On-Boarding" : "Request Client Scheduling"} <ArrowRight className="h-4 w-4" />
-                      </a>
-                      <a
-                        href="#intake"
-                        className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 text-sm font-semibold focus-gold"
-                      >
-                        See both paths
-                      </a>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-        )}
 
         {/* INTAKE — two qualifying-question cards (replaces decision-table routing) */}
         {show("contact") && (
@@ -703,108 +575,9 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         )}
 
 
-        {/* CALCULATOR — paper surface */}
-        {show("pricing") && (
-        <section className="section-paper">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-            <div className="grid gap-8 lg:grid-cols-5">
-              <div className="lg:col-span-2">
-                <SectionLabel onPaper>Cost of Failure</SectionLabel>
-                <h2 className="font-serif text-3xl sm:text-4xl mt-4 ink">
-                  One unready property can cost <span className="text-[hsl(var(--gold-deep))]">more than the turnover.</span>
-                </h2>
-                <p className="ink-muted mt-3">
-                  Estimate the downstream cost of a missed readiness window.
-                </p>
-                <div className="mt-6 h-px gold-rule max-w-xs" />
-                <p className="text-xs uppercase tracking-[0.18em] mt-4 ink-muted">An honest tool — not a quote.</p>
-              </div>
-
-              <div className="paper-card p-6 sm:p-8 lg:col-span-3 shadow-elegant">
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <div>
-                    <label className="text-xs uppercase tracking-wider ink-muted">Nightly rate ($)</label>
-                    <Input
-                      type="number" min={0} value={rate}
-                      onChange={(e) => setRate(Number(e.target.value) || 0)}
-                      className="h-12 mt-1.5 paper-input"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs uppercase tracking-wider ink-muted">Nights at risk</label>
-                    <Input
-                      type="number" min={0} value={nights}
-                      onChange={(e) => setNights(Number(e.target.value) || 0)}
-                      className="h-12 mt-1.5 paper-input"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs uppercase tracking-wider ink-muted">Bedrooms</label>
-                    <select
-                      value={bedrooms}
-                      onChange={(e) => setBedrooms(Number(e.target.value) || 2)}
-                      className="h-12 mt-1.5 paper-input w-full rounded-md border border-input bg-background px-3 text-sm"
-                    >
-                      <option value={1}>1 Bedroom</option>
-                      <option value={2}>2 Bedroom</option>
-                      <option value={3}>3 Bedroom</option>
-                      <option value={4}>4 Bedroom</option>
-                      <option value={5}>5+ Bedroom</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="mt-6 space-y-2 text-sm">
-                  {[
-                    { k: "Cancellation loss", v: calc.cancellation, Icon: AlertOctagon },
-                    { k: "Rebooking delay", v: calc.rebooking, Icon: Calculator },
-                    { k: "Review / reputation risk (≈4 future nights)", v: calc.review, Icon: TrendingUp },
-                    { k: "Coordination time", v: calc.coord, Icon: Clock },
-                  ].map(({ k, v, Icon }) => (
-                    <div key={k} className="flex justify-between items-center border-b hairline py-2.5">
-                      <span className="ink-muted inline-flex items-center gap-2.5">
-                        <Icon className="h-4 w-4 text-[hsl(var(--gold-deep))]" />
-                        {k}
-                      </span>
-                      <span className="font-medium ink">${v.toLocaleString()}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 rounded-xl bg-gradient-gold border border-[hsl(var(--gold-deep))] p-4 flex items-center justify-between">
-                  <span className="uppercase tracking-wider text-xs text-primary-foreground">Estimated risk</span>
-                  <span className="font-serif text-3xl text-primary-foreground">
-                    ${calc.total.toLocaleString()}
-                  </span>
-                </div>
-
-                <div className="mt-5 rounded-xl border-2 border-[hsl(var(--gold-deep))] bg-[hsl(43_65%_58%/0.10)] p-4 space-y-2">
-                  <p className="text-sm ink leading-snug">
-                    NTC turnover for a {bedrooms}{bedrooms >= 5 ? "+" : ""}-bedroom property starts at <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.ntcPrice}</span> — cheaper than the <span className="font-semibold text-[hsl(var(--gold-deep))]">${calc.total.toLocaleString()}</span> risk above.
-                  </p>
-                  <p className="text-xs ink-muted">
-                    You break even after roughly {Math.max(1, Math.ceil(calc.ntcPrice / Math.max(1, rate)))} protected night{Math.max(1, Math.ceil(calc.ntcPrice / Math.max(1, rate))) === 1 ? "" : "s"} of bookings.
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <PrimaryCTA source="calculator" className="w-full sm:w-auto">Confirm Coverage</PrimaryCTA>
-                  <SecondaryCTA source="calculator" onPaper className="w-full sm:w-auto">Client On-Boarding</SecondaryCTA>
-                </div>
-                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] ink-muted">
-                  <span className="inline-flex items-center gap-1"><Star className="h-3 w-3 text-[hsl(var(--gold-deep))] fill-[hsl(var(--gold-deep))]" /> ★★★★★ Verified Niagara reviews</span>
-                  <span className="inline-flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-[hsl(var(--gold-deep))]" /> Coverage confirmed first</span>
-                  <span className="inline-flex items-center gap-1"><Camera className="h-3 w-3 text-[hsl(var(--gold-deep))]" /> Photo proof available</span>
-                </div>
-                <p className="text-xs ink-muted mt-3">This calculator is an estimate, not a quote.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        )}
 
         {/* SERVICES — bento (1 large + 2 small) */}
-        {show("services") && (
+        {show("residential") && (
         <section id="services" className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>Services</SectionLabel>
@@ -900,93 +673,9 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         </section>
         )}
 
-        {/* GALLERY TEASER — proof of work, after services */}
-        {show("home") && (
-        <section className="section-paper">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <SectionLabel onPaper>Readiness Standard</SectionLabel>
-                <h2 className="mt-4 font-serif text-3xl sm:text-4xl ink">
-                  Trust, Readiness, and <span className="text-[hsl(var(--gold-deep))]">Booking confidence.</span>
-                </h2>
-              </div>
-              <div className="lg:col-span-5 lg:ml-auto">
-                <p className="text-sm sm:text-base ink-muted max-w-xl">
-                  Modern interiors, clean bedrooms, listing-ready kitchens, vacant apartments, lofts, and polished bathrooms
-                </p>
-                <p className="mt-3 text-xs uppercase tracking-[0.16em] text-[hsl(var(--gold-deep))]">
-                  {REPRESENTATIVE_VISUAL_NOTE}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
-              {readinessVisuals.map((visual, idx) => (
-                <div
-                  key={visual.src}
-                  className={`group relative overflow-hidden rounded-xl border hairline shadow-elegant ${idx === 0 ? "lg:col-span-5 lg:row-span-2 min-h-[420px]" : "lg:col-span-7 min-h-[200px]"}`}
-                >
-                  <img
-                    src={visual.src}
-                    alt={visual.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))]/88 via-[hsl(var(--ink))]/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--paper))]/20 bg-[hsl(var(--ink))]/40 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))]">
-                      <Camera className="h-3 w-3" /> {visual.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="/gallery"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 block paper-card group overflow-hidden shadow-elegant"
-            >
-              <div className="grid md:grid-cols-2 items-center">
-                <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden relative">
-                  <img
-                    src={beforeAfterGallery[0].image}
-                    alt={beforeAfterGallery[0].alt}
-                    width={1080}
-                    height={810}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(var(--paper))]/80 md:to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-[hsl(var(--ink))]/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-[hsl(var(--paper))] opacity-0 group-hover:opacity-100 transition duration-300">
-                    <Camera className="h-3 w-3" /> View proof
-                  </div>
-                </div>
-                <div className="p-8 sm:p-10 flex flex-col items-start gap-4">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">REAL ROOM RESETS</div>
-                  <h3 className="font-serif text-2xl ink">View the full gallery</h3>
-                  <p className="text-sm leading-relaxed ink-muted max-w-md">
-                    Bedrooms, lounges, amenity corners, and detail refreshes — each one documented before and after turnover coverage.
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--gold-deep))] mt-1">
-                    Open gallery
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[hsl(36_25%_80%)] bg-white/70 transition group-hover:translate-x-0.5">
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </section>
-        )}
 
         {/* HOW IT WORKS — horizontal stepper */}
-        {show("services") && (
+        {show("residential") && (
         <section className="ntc-gold-halo mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="max-w-3xl">
             <SectionLabel>How It Works</SectionLabel>
@@ -1022,7 +711,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         )}
 
         {/* PRICING — paper surface, table-forward */}
-        {show("pricing") && (
+        {show("residential") && (
         <section id="pricing" className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="max-w-3xl">
@@ -1319,74 +1008,9 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         </section>
         )}
 
-        {/* OPERATOR MODE — for multi-property clients */}
-        {show("services") && (
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <div className="premium-card relative overflow-hidden">
-            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-            <div className="absolute inset-x-8 bottom-6 h-px gold-rule opacity-60" />
-            <div className="relative grid gap-0 lg:grid-cols-12 lg:items-stretch">
-              <div className="p-8 sm:p-12 lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
-                  <Building2 className="h-3 w-3" /> Operator Mode
-                </div>
-                <h2 className="font-serif text-3xl sm:text-4xl mt-4">
-                  For operators managing <span className="gold-text">more than one property.</span>
-                </h2>
-                <p className="text-muted-foreground mt-4 max-w-xl">
-                  Recurring coverage is not discounted cleaning. It is priority scheduling, readiness tracking, repeatable standards, and faster dispatch across active properties.
-                </p>
-                <p className="mt-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                  {REPRESENTATIVE_VISUAL_NOTE}
-                </p>
-                <ul className="mt-5 grid sm:grid-cols-2 gap-2.5 max-w-xl text-sm">
-                  {[
-                    "Priority dispatch across portfolio",
-                    "Readiness tracking per property",
-                    "Repeatable, documented standards",
-                    "Single point of coordination",
-                  ].map((p) => (
-                    <li key={p} className="flex gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-7 flex flex-col sm:flex-row gap-3 max-w-xl">
-                  <a
-                    href={ONBOARDING_URL}
-                    {...ext}
-                    onClick={() => track("operator_onboarding")}
-                    className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 transition hover:brightness-110 active:scale-[0.98] focus-gold"
-                  >
-                    Start Client On-Boarding <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={PHONE_TEL}
-                    onClick={() => track("operator_call")}
-                    className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold focus-gold"
-                  >
-                    <Phone className="h-4 w-4" /> Talk to coverage lead
-                  </a>
-                </div>
-              </div>
-              <div className="relative min-h-[320px] lg:col-span-5">
-                <img
-                  src={luxuryExtra16.url}
-                  alt="Luxury industrial loft environment supporting multi-property operator coverage"
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217_45%_12%/0.55)] via-[hsl(217_45%_12%/0.15)] to-transparent" />
-              </div>
-            </div>
-          </div>
-        </section>
-        )}
 
         {/* FINAL CTA — full-bleed luxury image */}
-        {show("home", "pricing", "contact") && (
+        {show("home", "residential", "contact") && (
         <section className="relative overflow-hidden">
           <img
             src={luxuryTropicalKitchen.url}
@@ -1426,42 +1050,6 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         </section>
         )}
 
-        {/* SHERKSTON PARTNER — paper surface with photo */}
-        {show("about") && (
-        <section className="section-paper">
-          <div className="mx-auto max-w-7xl px-4 py-16">
-            <div className="grid gap-8 md:grid-cols-2 items-center">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border hairline shadow-elegant">
-                <img
-                  src={partnerSherkston}
-                  alt="Private cottage at Sherkston Shores resort on Lake Erie"
-                  width={1280} height={800} loading="lazy" decoding="async"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div>
-                <SectionLabel onPaper>Partner</SectionLabel>
-                <h2 className="font-serif text-3xl sm:text-4xl mt-4 ink">
-                  Private Rental Cottages at <span className="text-[hsl(var(--gold-deep))]">Sherkston Shores Resort</span>
-                </h2>
-                <p className="text-sm ink-muted mt-3 max-w-lg">
-                  For guests looking for privately owned cottage rentals at Sherkston Shores Resort, Sherkston Private Rentals offers a free cottage showcase service to help renters connect with available private rentals.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                  <a href="https://sherkstonprivaterentals.com/home-1/" {...ext} onClick={() => track("sherkston_cottages")}
-                    className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[hsl(var(--ink))] px-5 text-sm font-semibold text-[hsl(var(--paper))] hover:bg-[hsl(0_0%_15%)]">
-                    Find a Cottage <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a href="https://sherkstonprivaterentals.com/" {...ext} onClick={() => track("sherkston_home")}
-                    className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[hsl(var(--ink))] px-5 text-sm font-semibold ink hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))]">
-                    Visit Home Page
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        )}
 
         {/* FOOTER (shared across all views) */}
         <footer className="border-t border-border/60">
