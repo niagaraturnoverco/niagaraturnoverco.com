@@ -338,113 +338,61 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
           <div className="relative mx-auto max-w-7xl px-4 py-14 sm:py-20">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
               <div className="lg:col-span-7 flex flex-col items-start gap-6">
-                <SectionLabel>Niagara Region Property Readiness</SectionLabel>
-                <h1 className="font-serif text-5xl sm:text-6xl lg:text-[88px] leading-[0.98]">
-                  <span className="sr-only">Niagara Region property turnover and short-term rental cleaning. </span>
-                  Properties that are <span className="gold-text italic">ready</span> by the time guests arrive.
+                <SectionLabel>Niagara Region Cleaning</SectionLabel>
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-[72px] leading-[1.02]">
+                  Commercial and residential cleaning across Niagara — <span className="gold-text italic">on schedule, inspected, reported.</span>
                 </h1>
-                <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
-                  Niagara Turnover Co. handles emergency turnover coverage, short-term rental cleaning, listing prep, and recurring readiness across the Niagara Region — so revenue doesn't slip through coordination gaps.
-                </p>
-                <div className="grid gap-3 sm:grid-cols-5 w-full max-w-xl">
+
+                <div className="grid gap-3 sm:grid-cols-2 w-full max-w-2xl">
                   <a
-                    href={ONBOARDING_URL}
-                    {...ext}
-                    onClick={() => track("hero_path_onboarding")}
-                    className="group sm:col-span-3 relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 hover:shadow-[0_20px_60px_-20px_hsl(43_70%_55%/0.55)] active:scale-[0.99] focus-gold cta-attention min-h-[110px]"
+                    href="/commercial"
+                    onClick={() => track("hero_path_commercial")}
+                    className="group relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 active:scale-[0.99] focus-gold min-h-[130px]"
                   >
-                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Managing properties?</div>
-                    <div className="font-serif text-xl mt-1.5 leading-snug">Start Client On-Boarding</div>
-                    <div className="text-xs opacity-90 mt-1.5 max-w-[260px]">Recurring coverage, multi-property setup, priority dispatch.</div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Commercial &amp; Facilities</div>
+                    <div className="font-serif text-xl mt-1.5 leading-snug">Book a Facility Walkthrough</div>
+                    <div className="text-xs opacity-90 mt-1.5 max-w-[280px]">Offices, clinics, common areas, student housing, post-construction, floor care.</div>
                     <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
                   </a>
                   <a
                     href={SCHEDULING_URL}
                     {...ext}
-                    onClick={() => track("hero_path_scheduling")}
-                    className="group sm:col-span-2 relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[110px]"
+                    onClick={() => track("hero_path_residential")}
+                    className="group relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[130px]"
                   >
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Need service now?</div>
-                    <div className="font-serif text-lg mt-1.5 leading-snug">Request Scheduling</div>
-                    <div className="text-xs text-muted-foreground mt-1.5">Same-day, emergency, one-off turnover.</div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Residential &amp; Short-Term Rental</div>
+                    <div className="font-serif text-xl mt-1.5 leading-snug">Get a Turnover Quote</div>
+                    <div className="text-xs text-muted-foreground mt-1.5">Airbnb turnovers, move-outs, listing prep, recurring coverage.</div>
                     <ArrowUpRight className="absolute top-5 right-5 h-4 w-4 text-primary group-hover:translate-x-0.5 transition" />
                   </a>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 max-w-xl">
-                  <span className="gold-pill">
-                    <ShieldCheck className="h-3 w-3" />
-                    Coverage confirmed first
-                  </span>
-                  <span className="gold-pill">
-                    <Star className="h-3 w-3 fill-primary" />
-                    ★★★★★ Verified Niagara reviews
-                  </span>
-                  <span className="gold-pill">
-                    <Camera className="h-3 w-3" />
-                    Photo proof available
-                  </span>
-                </div>
 
                 {/* Trust strip */}
-                <div className="mt-2 grid grid-cols-3 gap-px rounded-xl border border-primary/25 bg-primary/[0.04] overflow-hidden w-full max-w-xl">
-                  {[
-                    { k: "24h", v: "Priority review" },
-                    { k: "7", v: "Service areas" },
-                    { k: "+50%", v: "Rush under 24h" },
-                  ].map((s) => (
-                    <div key={s.v} className="bg-card/60 px-4 py-3">
-                      <div className="font-serif text-2xl gold-text">{s.k}</div>
-                      <div className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground mt-1">{s.v}</div>
+                <div className="grid grid-cols-3 gap-px rounded-xl border border-primary/25 bg-primary/[0.04] overflow-hidden w-full max-w-2xl">
+                  {["Fully insured", "WSIB covered", "Monthly inspection reports"].map((t) => (
+                    <div key={t} className="bg-card/60 px-4 py-3 flex items-center gap-2">
+                      <ShieldCheck className="h-3.5 w-3.5 text-primary shrink-0" />
+                      <span className="text-[11px] sm:text-xs font-medium leading-snug">{t}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Hero photo composition */}
+              {/* Hero photo */}
               <div className="lg:col-span-5 relative">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
-                  {HERO_IMAGES.map((img, i) => (
-                    <img
-                      key={img.src}
-                      src={img.src}
-                      alt={img.alt}
-                      sizes="(min-width: 1024px) 40vw, 100vw"
-                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-                        i === heroIndex ? "opacity-100" : "opacity-0"
-                      }`}
-                      loading={i === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                      // @ts-expect-error fetchpriority is valid HTML
-                      fetchpriority={i === 0 ? "high" : "auto"}
-                    />
-                  ))}
-
+                  <img
+                    src={HERO_IMAGES[0].src}
+                    alt={HERO_IMAGES[0].alt}
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                    // @ts-expect-error fetchpriority is valid HTML
+                    fetchpriority="high"
+                  />
                   <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[hsl(217_45%_12%/0.45)] to-transparent" />
-
-
-                  {/* Floating status chip */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur border border-primary/40 px-3 py-1.5 text-xs">
-                    <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-                    <span className="uppercase tracking-[0.16em] text-primary font-medium">Guest-Ready</span>
-                  </div>
                 </div>
-
-                <div className="mt-4 rounded-xl border border-primary/25 bg-card/70 text-foreground p-4 backdrop-blur">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="text-[10px] uppercase tracking-[0.14em] text-primary">Luxury-ready interiors</div>
-                      <div className="font-serif text-lg mt-1">Modern kitchens, clean bedrooms, vacant apartments, cottage-style spaces.</div>
-                    </div>
-                    <div className="hidden sm:block glass rounded-xl px-4 py-3 text-xs shrink-0">
-                      <div className="text-muted-foreground uppercase tracking-[0.14em] text-[10px]">Turnover completed</div>
-                      <div className="font-serif text-base mt-1">11:42 AM · NOTL</div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div className="hidden lg:block absolute -top-4 -left-4 h-20 w-20 rounded-full border border-primary/30" />
-                <div className="hidden lg:block absolute -bottom-4 -right-4 h-12 w-12 rounded-full bg-gradient-gold opacity-40 blur-xl" />
               </div>
             </div>
           </div>
