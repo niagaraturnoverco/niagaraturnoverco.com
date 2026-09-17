@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import {
   Home as HomeIcon,
   Sparkles,
-  Tag,
+  Building2,
   Image as ImageIcon,
   ShieldCheck,
   Phone,
@@ -31,8 +31,8 @@ const PHONE_TEL = "tel:+12892577725";
 
 const items = [
   { title: "Home", url: "/", icon: HomeIcon },
-  { title: "Services", url: "/services", icon: Sparkles },
-  { title: "Pricing", url: "/pricing", icon: Tag },
+  { title: "Commercial", url: "/commercial", icon: Building2 },
+  { title: "Residential & STR", url: "/residential", icon: Sparkles },
   { title: "Gallery", url: "/gallery", icon: ImageIcon },
   { title: "About & Trust", url: "/about", icon: ShieldCheck },
   { title: "Contact", url: "/contact", icon: Mail },
@@ -100,7 +100,7 @@ export function AppSidebar() {
             rel="noopener noreferrer"
             className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg bg-gradient-gold px-3 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30"
           >
-            Schedule <ArrowRight className="h-3.5 w-3.5" />
+            Get a Turnover Quote <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </SidebarFooter>
       )}
