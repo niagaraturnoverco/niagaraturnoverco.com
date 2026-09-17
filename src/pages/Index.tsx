@@ -128,8 +128,6 @@ const TESTIMONIAL_IMAGES = [
 
 const SCHEDULING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagam8AZIIRd6Xqew/form";
-const ONBOARDING_URL =
-  "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
 const PHONE = "(289) 257-7725";
 const PHONE_TEL = "tel:+12892577725";
 const PHONE_SMS = "sms:+12892577725";
@@ -475,36 +473,35 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
               </div>
               <div className="relative mt-auto flex items-center justify-between gap-3">
                 <span className="inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-5 py-3 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
-                  Yes — Request Client Scheduling <ArrowRight className="h-4 w-4" />
+                  Get a Turnover Quote <ArrowRight className="h-4 w-4" />
                 </span>
               </div>
             </a>
 
             {/* Card 2 — Onboarding (recurring / multi-property) */}
             <a
-              href={ONBOARDING_URL}
-              {...ext}
-              onClick={() => track("intake_card_onboarding")}
+              href="/commercial"
+              onClick={() => track("intake_card_commercial")}
               className="group premium-card p-7 sm:p-8 relative overflow-hidden flex flex-col gap-5 hover:border-primary/60 transition"
             >
               <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
               <div className="relative flex items-center justify-between">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
-                  <Building2 className="h-3 w-3" /> Operator path
+                  <Building2 className="h-3 w-3" /> Commercial path
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Path B</span>
               </div>
               <div className="relative">
                 <h3 className="font-serif text-2xl sm:text-3xl leading-tight">
-                  Are you setting up <span className="gold-text">recurring coverage</span> for one or more properties?
+                  Do you manage a <span className="gold-text">facility or commercial property?</span>
                 </h3>
                 <p className="text-sm text-muted-foreground mt-3">
-                  New clients, property managers, realtors, investors. Priority dispatch and account setup.
+                  Offices, clinics, common areas, student housing, post-construction and floor care.
                 </p>
               </div>
               <div className="relative mt-auto flex items-center justify-between gap-3">
                 <span className="inline-flex items-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-5 py-3 text-sm font-semibold">
-                  Yes — Client On-Boarding <ArrowRight className="h-4 w-4" />
+                  Book a Facility Walkthrough <ArrowRight className="h-4 w-4" />
                 </span>
               </div>
             </a>
@@ -566,7 +563,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                 <div className="relative mt-8 flex items-end justify-between">
                   <a href={SCHEDULING_URL} {...ext} onClick={() => track("service_emergency")}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
-                    Get Emergency Coverage <ArrowRight className="h-4 w-4" />
+                    Get a Turnover Quote <ArrowRight className="h-4 w-4" />
                   </a>
                   <div className="font-serif text-5xl gold-text opacity-30 leading-none">24h</div>
                 </div>
@@ -576,8 +573,8 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             {services.slice(1).map((s, idx) => {
               const isListing = idx === 0;
               const cta = isListing
-                ? { label: "Request listing prep", href: `${SCHEDULING_URL}?utm_source=service_listing`, event: "service_listing_cta" }
-                : { label: "Set up recurring coverage", href: `${ONBOARDING_URL}?utm_source=service_recurring`, event: "service_recurring_cta" };
+                ? { label: "Get a Turnover Quote", href: `${SCHEDULING_URL}?utm_source=service_listing`, event: "service_listing_cta" }
+                : { label: "Book a Facility Walkthrough", href: "/commercial", event: "service_commercial_cta" };
               return (
                 <div key={s.title} className="premium-card overflow-hidden flex flex-col">
                   <div className="relative aspect-[16/10] overflow-hidden">
@@ -773,8 +770,8 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                     Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                    <PrimaryCTA source="pricing">Request Client Scheduling</PrimaryCTA>
-                    <SecondaryCTA source="pricing" onPaper>Set Up Your Property</SecondaryCTA>
+                    <PrimaryCTA source="pricing">Get a Turnover Quote</PrimaryCTA>
+                    <SecondaryCTA source="pricing" onPaper>Book a Facility Walkthrough</SecondaryCTA>
                   </div>
                 </div>
                 <div className="relative min-h-[280px] lg:col-span-5">
@@ -987,7 +984,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={SCHEDULING_URL} {...ext} onClick={() => track("final_scheduling")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-7 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 hover:brightness-110 transition active:scale-[0.98]">
-                Request Client Scheduling <ArrowRight className="h-4 w-4" />
+                Get a Turnover Quote <ArrowRight className="h-4 w-4" />
               </a>
               <a href={PHONE_TEL} onClick={() => track("final_call")}
                 className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl border-2 border-white/70 bg-white/10 text-white px-7 text-sm font-semibold hover:bg-white/20 transition">
