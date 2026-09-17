@@ -202,9 +202,8 @@ const SecondaryCTA = ({
   onPaper?: boolean;
 }) => (
   <a
-    href={ONBOARDING_URL}
-    {...ext}
-    onClick={() => track("cta_onboarding", { source })}
+    href="/commercial"
+    onClick={() => track("cta_commercial", { source })}
     className={`inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-semibold transition active:scale-[0.98] focus-gold ${
       onPaper
         ? "border-2 border-[hsl(var(--ink))] bg-transparent text-[hsl(var(--ink))] hover:bg-[hsl(var(--ink))] hover:text-[hsl(var(--paper))]"
