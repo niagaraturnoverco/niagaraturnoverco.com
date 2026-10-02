@@ -9,9 +9,11 @@ import "@fontsource/work-sans/500.css";
 import "@fontsource/work-sans/600.css";
 import "@fontsource/work-sans/700.css";
 import "./index.css";
+import { installTelTracking } from "./lib/leads";
 import { installTapTargetAudit } from "./lib/a11y/tapTargetAudit";
 
 installTapTargetAudit();
+installTelTracking();
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>

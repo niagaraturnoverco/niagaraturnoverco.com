@@ -28,7 +28,7 @@ const ONBOARDING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
 const PHONE = "(437) 993-4584";
 const PHONE_TEL = "tel:+14379934584";
-const SITE = "https://niagara-turnover-flow.lovable.app";
+const SITE = "https://niagaraturnoverco.com";
 
 const ext = { target: "_blank" as const, rel: "noopener noreferrer" as const };
 
@@ -259,7 +259,7 @@ const CityLanding = () => {
   if (!data) return <Navigate to="/" replace />;
 
   const url = `${SITE}/service-area/${data.slug}`;
-  const title = `${data.name} Airbnb & STR Turnover Cleaning | Niagara Turnover Co.`;
+  const title = `${data.name} Airbnb & Rental Turnover Cleaning | Niagara Turnover Co.`;
   const description = `Premium Airbnb, STR & property turnover cleaning in ${data.name}, ${data.region}. Same-day coverage, listing-ready resets, recurring readiness for operators.`;
 
   const faqLd = {

@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { scrollToQuote } from "@/components/CommercialBlocks";
 import { ShieldCheck, Phone, ArrowRight } from "lucide-react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
@@ -9,6 +10,11 @@ const PHONE = "(437) 993-4584";
 const PHONE_TEL = "tel:+14379934584";
 
 export default function AppLayout() {
+  const { pathname } = useLocation();
+  const isStr = pathname.startsWith("/residential") || pathname.startsWith("/service-area");
+  const quoteProps = isStr
+    ? { href: SCHEDULING_URL, target: "_blank", rel: "noopener noreferrer" }
+    : { href: "/walkthrough", onClick: scrollToQuote };
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
@@ -44,9 +50,7 @@ export default function AppLayout() {
                 <Phone className="h-3.5 w-3.5" /> {PHONE}
               </a>
               <a
-                href={SCHEDULING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...quoteProps}
                 className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-gradient-gold px-3 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30"
               >
                 Get a Quote <ArrowRight className="h-3.5 w-3.5" />
@@ -68,9 +72,7 @@ export default function AppLayout() {
                 <Phone className="h-4 w-4" /> Call Now
               </a>
               <a
-                href={SCHEDULING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...quoteProps}
                 className="col-span-2 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl border-2 border-primary/60 bg-primary/10 px-2 text-sm font-semibold leading-tight"
               >
                 Get a Quote <ArrowRight className="h-3.5 w-3.5" />

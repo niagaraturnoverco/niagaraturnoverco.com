@@ -14,6 +14,11 @@ import CityLanding from "./pages/CityLanding";
 import Auth from "./pages/Auth";
 import OAuthConsent from "./pages/OAuthConsent";
 import NotFound from "./pages/NotFound";
+import CommercialLanding from "./pages/CommercialLanding";
+import Walkthrough from "./pages/Walkthrough";
+import PropertyManagers from "./pages/PropertyManagers";
+import Admin from "./pages/Admin";
+import { COMMERCIAL_PAGES } from "./data/commercialPages";
 
 const queryClient = new QueryClient();
 
@@ -34,8 +39,14 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/service-area/:city" element={<CityLanding />} />
+            {COMMERCIAL_PAGES.map((p) => (
+              <Route key={p.path} path={p.path} element={<CommercialLanding />} />
+            ))}
+            <Route path="/property-managers" element={<PropertyManagers />} />
             <Route path="/trust" element={<Navigate to="/about" replace />} />
           </Route>
+          <Route path="/walkthrough" element={<Walkthrough />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           <Route path="*" element={<NotFound />} />

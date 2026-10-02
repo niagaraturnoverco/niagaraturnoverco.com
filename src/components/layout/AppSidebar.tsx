@@ -32,6 +32,8 @@ const PHONE_TEL = "tel:+14379934584";
 const items = [
   { title: "Home", url: "/", icon: HomeIcon },
   { title: "Commercial", url: "/commercial", icon: Building2 },
+  { title: "Office Cleaning", url: "/office-cleaning", icon: Building2 },
+  { title: "Property Managers", url: "/property-managers", icon: Building2 },
   { title: "Residential & STR", url: "/residential", icon: Sparkles },
   { title: "Gallery", url: "/gallery", icon: ImageIcon },
   { title: "About & Trust", url: "/about", icon: ShieldCheck },
@@ -95,12 +97,10 @@ export function AppSidebar() {
             <Phone className="h-3.5 w-3.5" /> {PHONE}
           </a>
           <a
-            href={SCHEDULING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg bg-gradient-gold px-3 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30"
+            href="/walkthrough"
+                                    className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg bg-gradient-gold px-3 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30"
           >
-            Get a Turnover Quote <ArrowRight className="h-3.5 w-3.5" />
+            Get a Walkthrough Quote <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </SidebarFooter>
       )}
