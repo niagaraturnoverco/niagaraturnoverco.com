@@ -259,7 +259,7 @@ const CityLanding = () => {
   if (!data) return <Navigate to="/" replace />;
 
   const url = `${SITE}/service-area/${data.slug}`;
-  const title = `${data.name} Airbnb & STR Turnover Cleaning | Niagara Turnover Co.`;
+  const title = `${data.name} Airbnb & Rental Turnover Cleaning | Niagara Turnover Co.`;
   const description = `Premium Airbnb, STR & property turnover cleaning in ${data.name}, ${data.region}. Same-day coverage, listing-ready resets, recurring readiness for operators.`;
 
   const faqLd = {
