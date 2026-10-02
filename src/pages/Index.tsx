@@ -826,7 +826,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         )}
 
         {/* TESTIMONIALS — asymmetric, with property photos */}
-        {show("home", "about") && (
+        {show("residential") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
