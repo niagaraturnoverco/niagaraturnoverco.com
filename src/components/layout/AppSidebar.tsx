@@ -97,7 +97,9 @@ export function AppSidebar() {
             <Phone className="h-3.5 w-3.5" /> {PHONE}
           </a>
           <a
-            href="/walkthrough"
+            href={SCHEDULING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
                                     className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg bg-gradient-gold px-3 text-xs font-semibold text-primary-foreground shadow-gold border border-primary/30"
           >
             Get a Walkthrough Quote <ArrowRight className="h-3.5 w-3.5" />
