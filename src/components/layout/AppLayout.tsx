@@ -1,5 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { scrollToQuote } from "@/components/CommercialBlocks";
+import { Outlet } from "react-router-dom";
 import { ShieldCheck, Phone, ArrowRight } from "lucide-react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
@@ -10,11 +9,7 @@ const PHONE = "(437) 993-4584";
 const PHONE_TEL = "tel:+14379934584";
 
 export default function AppLayout() {
-  const { pathname } = useLocation();
-  const isStr = pathname.startsWith("/residential") || pathname.startsWith("/service-area");
-  const quoteProps = isStr
-    ? { href: SCHEDULING_URL, target: "_blank", rel: "noopener noreferrer" }
-    : { href: "/walkthrough", onClick: scrollToQuote };
+  const quoteProps = { href: SCHEDULING_URL, target: "_blank", rel: "noopener noreferrer" };
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
