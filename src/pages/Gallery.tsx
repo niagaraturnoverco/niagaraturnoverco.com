@@ -1,3 +1,4 @@
+import Seo from "@/components/Seo";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import {
@@ -77,6 +78,7 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen">
+      <Seo title="Gallery | Niagara Turnover Co." description="Before-and-after photos of turnover and property cleaning work across the Niagara Region." path="/gallery" />
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
