@@ -37,6 +37,9 @@ import {
   Camera,
 } from "lucide-react";
 
+import heroOffice from "@/assets/hero-office.jpg";
+import QuoteForm from "@/components/QuoteForm";
+import { TrustStrip, HowWeOperate, CommercialResults, scrollToQuote } from "@/components/CommercialBlocks";
 import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
 import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
 import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
@@ -294,19 +297,16 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
     {
       name: "Gabriella Guo",
       quote: "Niagara Turnover Co. has been a great cleaning company to work with. The owner reached out to me through Airbnb, and I'm very glad I decided to give their service a try. They are friendly, professional, and flexible.",
-      meta: "8 reviews · 6 photos · 12 weeks ago",
       photo: TESTIMONIAL_IMAGES[0],
     },
     {
       name: "Pedzi Nyamb",
       quote: "Very professional company and does the job well. I am very happy with them. I recommend this company 100%.",
-      meta: "7 reviews · 9 weeks ago",
       photo: TESTIMONIAL_IMAGES[3],
     },
     {
       name: "Peter Kistemaker",
       quote: "Very responsive, friendly and professional.",
-      meta: "4 reviews · 12 weeks ago",
       photo: TESTIMONIAL_IMAGES[5],
     },
   ];
@@ -315,10 +315,10 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
   const faqs = [
     { q: "What makes NTC different from finding a cleaner myself on Facebook or Marketplace?", a: "You're not just paying for a cleaner. You're paying for dispatch, coordination, quality control, and photo confirmation. If the assigned cleaner cancels, we route a backup. If something is missed, we flag it before your guest does. A Marketplace booking gives you one person and a hope. NTC gives you a system." },
     { q: "Are you insured and WSIB covered?", a: "Yes. We carry commercial general liability insurance and WSIB coverage. A certificate of insurance and a WSIB clearance certificate are available on request before work begins." },
-    { q: "Do you use your own staff or subcontractors?", a: "Commercial accounts are serviced by our own trained, screened staff under a dedicated site supervisor. We do not hand your building to an unknown subcontractor." },
+    { q: "Do you use your own staff or subcontractors?", a: "Your building is cleaned by vetted, independently insured and WSIB-cleared cleaning professionals working under NTC's scope, checklists and quality control. NTC is your single point of contact, sends the monthly inspection report, and is accountable for the result." },
     { q: "What products do you use?", a: "Green-certified products as the default, with Safety Data Sheets kept on site. Where a facility requires specific disinfectants or protocols — medical, dental, or food-handling areas — we follow your written requirements." },
     { q: "How do you report on quality?", a: "Every commercial account gets a monthly inspection with a written report delivered within five business days, plus posted daily washroom logs. Issues are resolved on evidence, not opinion." },
-    { q: "What are your contract terms?", a: "Monthly service with 30 days' notice to cancel. No long lock-in. Scope and pricing are set at the walkthrough and itemized on a single monthly invoice." },
+    { q: "What are your contract terms?", a: "Month-to-month service with 30 days' notice to cancel. No long lock-in. Scope and pricing are set at the walkthrough and itemized on a single monthly invoice." },
     { q: "What happens if I'm not happy with the result?", a: "Flag it within 24 hours and we resolve it — typically by returning to fix the issue at no additional cost. Coverage means we own the outcome, not just the shift." },
     { q: "How fast can you confirm availability?", a: "Urgent and same-day requests are reviewed within hours during operating windows. Standard requests are reviewed within 24 hours. Coverage is confirmed before scheduling." },
   ];
@@ -334,52 +334,32 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
           <div className="relative mx-auto max-w-7xl px-4 py-14 sm:py-20">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
               <div className="lg:col-span-7 flex flex-col items-start gap-6">
-                <SectionLabel>Niagara Region Cleaning</SectionLabel>
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-[72px] leading-[1.02]">
-                  Commercial and residential cleaning across Niagara — <span className="gold-text italic">on schedule, inspected, reported.</span>
+                <SectionLabel>Niagara Region Commercial Cleaning</SectionLabel>
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-[64px] leading-[1.04]">
+                  Office &amp; commercial cleaning across Niagara — <span className="gold-text italic">inspected, reported, never missed.</span>
                 </h1>
-
-                <div className="grid gap-3 sm:grid-cols-2 w-full max-w-2xl">
-                  <a
-                    href="/commercial"
-                    onClick={() => track("hero_path_commercial")}
-                    className="group relative overflow-hidden rounded-2xl bg-gradient-gold border border-primary/40 p-5 text-primary-foreground shadow-gold transition hover:brightness-110 active:scale-[0.99] focus-gold min-h-[130px]"
-                  >
-                    <div className="text-[10px] uppercase tracking-[0.18em] opacity-90">Commercial &amp; Facilities</div>
-                    <div className="font-serif text-xl mt-1.5 leading-snug">Book a Facility Walkthrough</div>
-                    <div className="text-xs opacity-90 mt-1.5 max-w-[280px]">Offices, clinics, common areas, student housing, post-construction, floor care.</div>
-                    <ArrowRight className="absolute top-5 right-5 h-5 w-5 group-hover:translate-x-0.5 transition" />
+                <p className="text-muted-foreground max-w-xl">
+                  For office managers, clinic owners and property managers who need cleaning that shows up, follows the checklist and proves it with a monthly inspection report.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                  <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
+                    Get a Walkthrough Quote <ArrowRight className="h-4 w-4" />
                   </a>
-                  <a
-                    href={SCHEDULING_URL}
-                    {...ext}
-                    onClick={() => track("hero_path_residential")}
-                    className="group relative overflow-hidden rounded-2xl border border-primary/40 bg-card/60 p-5 transition hover:border-primary hover:bg-primary/[0.06] active:scale-[0.99] focus-gold min-h-[130px]"
-                  >
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Residential &amp; Short-Term Rental</div>
-                    <div className="font-serif text-xl mt-1.5 leading-snug">Get a Turnover Quote</div>
-                    <div className="text-xs text-muted-foreground mt-1.5">Airbnb turnovers, move-outs, listing prep, recurring coverage.</div>
-                    <ArrowUpRight className="absolute top-5 right-5 h-4 w-4 text-primary group-hover:translate-x-0.5 transition" />
+                  <a href={PHONE_TEL} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold">
+                    <Phone className="h-4 w-4" /> {PHONE}
                   </a>
                 </div>
-
-                {/* Trust strip */}
-                <div className="grid grid-cols-3 gap-px rounded-xl border border-primary/25 bg-primary/[0.04] overflow-hidden w-full max-w-2xl">
-                  {["Fully insured", "WSIB covered", "Monthly inspection reports"].map((t) => (
-                    <div key={t} className="bg-card/60 px-4 py-3 flex items-center gap-2">
-                      <ShieldCheck className="h-3.5 w-3.5 text-primary shrink-0" />
-                      <span className="text-[11px] sm:text-xs font-medium leading-snug">{t}</span>
-                    </div>
-                  ))}
-                </div>
+                <div className="w-full max-w-2xl"><TrustStrip /></div>
               </div>
 
               {/* Hero photo */}
               <div className="lg:col-span-5 relative">
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
+                <div className="relative aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden rounded-2xl border border-primary/20 shadow-elegant">
                   <img
-                    src={HERO_IMAGES[0].src}
-                    alt={HERO_IMAGES[0].alt}
+                    src={heroOffice}
+                    alt="Bright, freshly cleaned open-plan office with polished floors"
+                    width={1600}
+                    height={1008}
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="absolute inset-0 h-full w-full object-cover"
                     loading="eager"
@@ -395,8 +375,39 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         </section>
         )}
 
+        {show("home") && (
+          <section className="mx-auto max-w-7xl px-4 py-14 grid gap-8 lg:grid-cols-12 items-start">
+            <div className="lg:col-span-5">
+              <h2 className="font-serif text-3xl sm:text-4xl">Get a walkthrough quote in under a minute</h2>
+              <p className="mt-3 text-muted-foreground">Tell us about your space. We'll call within 2 business hours to book a free 20-minute walkthrough — exact pricing is confirmed on site.</p>
+              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+                <a href="/office-cleaning" className="rounded-full border border-border px-4 py-2 hover:border-primary">Office cleaning</a>
+                <a href="/medical-office-cleaning" className="rounded-full border border-border px-4 py-2 hover:border-primary">Medical &amp; dental</a>
+                <a href="/property-common-area-cleaning" className="rounded-full border border-border px-4 py-2 hover:border-primary">Common areas</a>
+                <a href="/post-construction-cleaning" className="rounded-full border border-border px-4 py-2 hover:border-primary">Post-construction</a>
+                <a href="/property-managers" className="rounded-full border border-border px-4 py-2 hover:border-primary">Property managers</a>
+              </div>
+            </div>
+            <div className="lg:col-span-7"><QuoteForm /></div>
+          </section>
+        )}
+        {show("home") && <HowWeOperate />}
+        {show("home") && <CommercialResults />}
+        {show("home") && (
+          <section className="mx-auto max-w-7xl px-4 pb-14">
+            <a href="/residential" className="premium-card p-6 flex items-center justify-between gap-4 hover:border-primary/60 transition">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.18em] text-primary">Also available</div>
+                <div className="font-serif text-xl mt-1">Airbnb &amp; short-term rental turnovers</div>
+                <div className="text-sm text-muted-foreground mt-1">Turnovers, move-outs, listing prep and recurring coverage for hosts.</div>
+              </div>
+              <ArrowRight className="h-5 w-5 text-primary shrink-0" />
+            </a>
+          </section>
+        )}
+
         {/* EMERGENCY — same-day priority block */}
-        {show("home", "contact") && (
+        {show("contact") && (
         <section className="border-y border-primary/30 bg-gradient-to-b from-primary/[0.08] to-background">
           <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 grid gap-6 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
@@ -974,7 +985,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
               Submit the request. We'll route the right coverage path and confirm before anything is scheduled.
             </p>
             <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-xs text-white/90">
-              <span className="inline-flex items-center gap-1.5"><Star className="h-3.5 w-3.5 fill-primary text-primary" /> ★★★★★ Verified Niagara reviews</span>
+              <a href="https://share.google/WBUHcz3lrMXVDrdqf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 underline underline-offset-2"><Star className="h-3.5 w-3.5 fill-primary text-primary" /> Read our Google reviews</a>
               <span className="inline-flex items-center gap-1.5"><Camera className="h-3.5 w-3.5 text-primary" /> Photo proof available</span>
               <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Coverage confirmed first</span>
             </div>
