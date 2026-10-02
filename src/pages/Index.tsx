@@ -38,8 +38,12 @@ import {
 } from "lucide-react";
 
 import heroOffice from "@/assets/hero-office.jpg";
+import heroTurnover from "@/assets/hero-turnover.jpg";
+import propertyExterior from "@/assets/property-1.jpg";
+import propertyLiving from "@/assets/property-2.jpg";
 import Seo from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { TrustStrip, HowWeOperate, CommercialResults, scrollToQuote } from "@/components/CommercialBlocks";
 import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
 import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
@@ -382,6 +386,51 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
+
+        {show("residential") && (
+          <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-7">
+                <SectionLabel>Residential &amp; Short-Term Rental</SectionLabel>
+                <h1 className="mt-5 font-serif text-4xl leading-[1.04] sm:text-5xl lg:text-[64px]">
+                  Guest-ready turnovers, <span className="gold-text italic">without the last-minute scramble.</span>
+                </h1>
+                <p className="mt-5 max-w-xl text-muted-foreground">
+                  Reliable cleaning, reset and listing preparation for Airbnb hosts, landlords and homeowners across Niagara.
+                </p>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <PrimaryCTA source="residential_hero">Get a Turnover Quote</PrimaryCTA>
+                  <a href={PHONE_TEL} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold">
+                    <Phone className="h-4 w-4" /> {PHONE}
+                  </a>
+                </div>
+              </div>
+              <div className="lg:col-span-5">
+                <SiteImage
+                  src={heroTurnover}
+                  alt="Freshly made bedroom prepared for a short-term rental guest arrival"
+                  className="aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/5]"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {show("contact") && (
+          <section className="mx-auto max-w-7xl px-4 pt-12 sm:pt-16">
+            <SiteImage
+              src={propertyLiving}
+              alt="Bright, carefully reset living room ready for its next occupants"
+              className="aspect-[16/7] rounded-xl border border-primary/20 shadow-elegant"
+              sizes="(min-width: 1280px) 1248px, 100vw"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </section>
         )}
 
         {show("home") && (
@@ -810,16 +859,22 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         {/* WHO THIS IS FOR — inline pill row */}
         {show("about") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <div className="grid lg:grid-cols-12 gap-8 items-end">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
               <SectionLabel>Who This Is For</SectionLabel>
               <h2 className="font-serif text-3xl sm:text-4xl mt-4">
                 Built for operators who treat readiness as <span className="gold-text">a system</span>, not a chore.
               </h2>
+              <p className="mt-4 text-sm text-muted-foreground">
+                We are a premium local operator — not a bargain cleaner. If “cheapest available” is the brief, NTC isn't the right fit, and we'll tell you so.
+              </p>
             </div>
-            <p className="lg:col-span-5 text-sm text-muted-foreground">
-              We are a premium local operator — not a bargain cleaner. If "cheapest available" is the brief, NTC isn't the right fit, and we'll tell you so.
-            </p>
+            <SiteImage
+              src={propertyExterior}
+              alt="Well-kept Niagara property representing the homes and buildings entrusted to NTC"
+              className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:col-span-5"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
           </div>
 
           <div className="mt-10 flex flex-wrap gap-x-2 gap-y-3 border-t border-border/60 pt-8">

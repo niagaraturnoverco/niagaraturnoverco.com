@@ -21,6 +21,15 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import SiteImage from "@/components/SiteImage";
+import heroTurnover from "@/assets/hero-turnover.jpg";
+import propertyOne from "@/assets/property-1.jpg";
+import propertyTwo from "@/assets/property-2.jpg";
+import propertyThree from "@/assets/property-3.jpg";
+import propertyFour from "@/assets/property-4.jpg";
+import propertyFive from "@/assets/property-5.jpg";
+import propertySix from "@/assets/property-6.jpg";
+import propertySeven from "@/assets/property-7.jpg";
 
 const SCHEDULING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
@@ -31,6 +40,16 @@ const PHONE_TEL = "tel:+14379934584";
 const SITE = "https://niagaraturnoverco.com";
 
 const ext = { target: "_blank" as const, rel: "noopener noreferrer" as const };
+
+const CITY_IMAGES: Record<string, string> = {
+  "niagara-falls": propertyFour,
+  "st-catharines": propertyTwo,
+  "niagara-on-the-lake": propertyOne,
+  welland: propertyThree,
+  thorold: propertyFive,
+  "port-colborne": propertySeven,
+  "fort-erie": propertySix,
+};
 
 type CityFaq = { q: string; a: string };
 type City = {
@@ -361,16 +380,16 @@ const CityLanding = () => {
               <span className="text-foreground">{data.name}</span>
             </nav>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-primary">
-              <MapPin className="h-3 w-3" /> {data.region}
-            </div>
-
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-5 leading-[1.02]">
-              <span className="gold-text italic">{data.name}</span> Airbnb & STR<br />turnover cleaning.
-            </h1>
-            <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-2xl">{data.blurb}</p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="grid items-center gap-9 lg:grid-cols-12">
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-primary">
+                  <MapPin className="h-3 w-3" /> {data.region}
+                </div>
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-5 leading-[1.02]">
+                  <span className="gold-text italic">{data.name}</span> Airbnb &amp; STR turnover cleaning.
+                </h1>
+                <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-2xl">{data.blurb}</p>
+                <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href={SCHEDULING_URL}
                 {...ext}
@@ -385,12 +404,21 @@ const CityLanding = () => {
               >
                 Client On-Boarding
               </a>
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center gap-2">
-              <span className="gold-pill"><ShieldCheck className="h-3 w-3" /> Coverage confirmed first</span>
-              <span className="gold-pill"><Star className="h-3 w-3 fill-primary" /> ★★★★★ Verified Niagara reviews</span>
-              <span className="gold-pill"><Camera className="h-3 w-3" /> Photo proof available</span>
+                </div>
+                <div className="mt-5 flex flex-wrap items-center gap-2">
+                  <span className="gold-pill"><ShieldCheck className="h-3 w-3" /> Coverage confirmed first</span>
+                  <span className="gold-pill"><Star className="h-3 w-3 fill-primary" /> ★★★★★ Verified Niagara reviews</span>
+                  <span className="gold-pill"><Camera className="h-3 w-3" /> Photo proof available</span>
+                </div>
+              </div>
+              <SiteImage
+                src={CITY_IMAGES[data.slug] ?? heroTurnover}
+                alt={`Guest-ready property served by Niagara Turnover Co. in ${data.name}`}
+                className="aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:col-span-5"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                loading="eager"
+                fetchPriority="high"
+              />
             </div>
           </div>
         </section>
