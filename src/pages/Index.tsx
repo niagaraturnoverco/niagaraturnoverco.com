@@ -869,7 +869,6 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                       {testimonials[0].name}
                       <BadgeCheck className="h-4 w-4 text-primary" />
                     </div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{testimonials[0].meta}</div>
                   </div>
                   <div className="ml-auto flex gap-0.5">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -907,7 +906,6 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                           {t.name}
                           <BadgeCheck className="h-3.5 w-3.5 text-primary" />
                         </div>
-                        <div className="text-[11px] text-muted-foreground">{t.meta}</div>
                       </div>
                     </div>
                   </div>
