@@ -2,8 +2,8 @@ import { defineTool } from "@lovable.dev/mcp-js";
 
 const CONTACT = {
   business: "Niagara Turnover Co.",
-  phone: "(289) 257-7725",
-  phoneE164: "+12892577725",
+  phone: "(437) 993-4584",
+  phoneE164: "+14379934584",
   website: "https://niagaraturnoverco.com",
   clientScheduling: "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form",
   clientOnboarding: "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form",
