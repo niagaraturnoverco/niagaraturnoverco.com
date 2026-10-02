@@ -227,12 +227,12 @@ const CITIES: City[] = [
 
 export const CITY_SLUGS = CITIES.map((c) => c.slug);
 
-const PRICING: { size: string; price: string }[] = [
-  { size: "1 Bedroom", price: "$199" },
-  { size: "2 Bedroom", price: "$269" },
-  { size: "3 Bedroom", price: "$329" },
-  { size: "4 Bedroom", price: "$399" },
-  { size: "5+ Bedroom", price: "$499+" },
+const PRICING: { size: string }[] = [
+  { size: "1 Bedroom" },
+  { size: "2 Bedroom" },
+  { size: "3 Bedroom" },
+  { size: "4 Bedroom" },
+  { size: "5+ Bedroom" },
 ];
 
 const CityLogo = () => (
@@ -422,13 +422,13 @@ const CityLanding = () => {
         <section className="section-paper">
           <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(36_55%_40%/0.35)] bg-[hsl(43_65%_58%/0.10)] px-3 py-1 text-xs uppercase tracking-[0.18em] text-[hsl(var(--gold-deep))]">
-              <Sparkles className="h-3 w-3" /> {data.shortName ?? data.name} Pricing
+              <Sparkles className="h-3 w-3" /> {data.shortName ?? data.name} Coverage
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl mt-4 ink">
-              Simple starting points. <span className="text-[hsl(var(--gold-deep))]">Final price confirmed after scope.</span>
+              Straightforward quotes. <span className="text-[hsl(var(--gold-deep))]">Confirmed after scope.</span>
             </h2>
             <p className="ink-muted mt-3 max-w-2xl">
-              Pricing depends on size, condition, laundry, access, timing, and urgency. Same starting rates apply across the Niagara Region.
+              Every quote is confirmed based on size, condition, laundry, access, timing, and urgency — before anything is scheduled.
             </p>
 
             <div className="paper-card p-7 mt-8 shadow-elegant">
@@ -439,7 +439,6 @@ const CityLanding = () => {
                       <Check className="h-4 w-4 text-[hsl(var(--gold-deep))]" strokeWidth={3} />
                       {p.size}
                     </span>
-                    <span className="font-serif text-xl text-[hsl(var(--gold-deep))] ml-auto sm:ml-0">{p.price}</span>
                     <a
                       href={`${SCHEDULING_URL}?utm_source=city_${data.slug}&size=${encodeURIComponent(p.size)}`}
                       {...ext}
@@ -451,7 +450,7 @@ const CityLanding = () => {
                 ))}
               </div>
               <p className="text-xs ink-muted mt-5">
-                Same-day under 24h: <span className="font-semibold text-[hsl(var(--gold-deep))]">+50% rush fee</span>. Heavy reset / deep clean from $299. See the main site for the full breakdown.
+                Same-day requests under 24 hours are reviewed within operating hours. Coverage is confirmed before scheduling.
               </p>
             </div>
           </div>
