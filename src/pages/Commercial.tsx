@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Building2,
   Stethoscope,
@@ -15,13 +14,10 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const PHONE = "(289) 257-7725";
 const PHONE_TEL = "tel:+12892577725";
+const BOOKING_URL = "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
 
 const services = [
   { icon: Building2, title: "Office & Janitorial", desc: "Nightly or scheduled janitorial for offices and professional suites." },
@@ -42,34 +38,6 @@ const operate = [
 ];
 
 export default function Commercial() {
-  const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({
-    company: "",
-    facility_type: "",
-    square_footage: "",
-    frequency: "",
-    locations: "",
-    contact_name: "",
-    contact_email: "",
-    contact_phone: "",
-    notes: "",
-  });
-
-  const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    const { error } = await supabase.from("walkthrough_requests").insert(form);
-    setSubmitting(false);
-    if (error) {
-      toast({ title: "Something went wrong", description: "Please call us at " + PHONE, variant: "destructive" });
-      return;
-    }
-    toast({ title: "Walkthrough request received", description: "We'll confirm a walkthrough time shortly." });
-    setForm({ company: "", facility_type: "", square_footage: "", frequency: "", locations: "", contact_name: "", contact_email: "", contact_phone: "", notes: "" });
-  };
-
   return (
     <div>
       <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
