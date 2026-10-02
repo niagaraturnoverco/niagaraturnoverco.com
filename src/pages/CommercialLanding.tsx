@@ -2,16 +2,29 @@ import { useLocation, Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Seo, { breadcrumbJsonLd, faqJsonLd } from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { CallLink, CoiCta, HowWeOperate, TrustStrip, scrollToQuote } from "@/components/CommercialBlocks";
 import { COMMERCIAL_PAGES, findCommercialPage } from "@/data/commercialPages";
 import NotFound from "./NotFound";
+import heroOffice from "@/assets/hero-office.jpg";
+import medicalImage from "@/assets/luxury-bath-suite.jpg.asset.json";
+import commonAreaImage from "@/assets/premium-lobby-stair.jpg.asset.json";
+import constructionImage from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
 
 const CITY_LINKS = COMMERCIAL_PAGES.filter((p) => p.city);
+
+const getPageImage = (path: string) => {
+  if (path === "/medical-office-cleaning") return { src: medicalImage.url, alt: "Immaculate premium washroom reflecting detailed clinic cleaning standards" };
+  if (path === "/property-common-area-cleaning") return { src: commonAreaImage.url, alt: "Polished lobby and stairwell maintained for residents and visitors" };
+  if (path === "/post-construction-cleaning") return { src: constructionImage.url, alt: "Finished modern kitchen cleaned and ready for handover" };
+  return { src: heroOffice, alt: "Bright commercial office maintained to a professional cleaning standard" };
+};
 
 export default function CommercialLanding() {
   const { pathname } = useLocation();
   const page = findCommercialPage(pathname.replace(/\/$/, "") || "/");
   if (!page) return <NotFound />;
+  const pageImage = getPageImage(page.path);
 
   const crumbs = [{ name: "Home", path: "/" }];
   if (page.city) crumbs.push({ name: "Office Cleaning", path: "/office-cleaning" });
@@ -36,7 +49,15 @@ export default function CommercialLanding() {
           </div>
           <div className="mt-6"><TrustStrip /></div>
         </div>
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 space-y-5">
+          <SiteImage
+            src={pageImage.src}
+            alt={pageImage.alt}
+            className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/3]"
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
           <QuoteForm defaultCity={page.city} defaultFacility={page.facility} />
         </div>
       </section>

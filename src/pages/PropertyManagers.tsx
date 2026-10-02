@@ -1,7 +1,9 @@
 import { Building2, Receipt, ClipboardList, Zap, ArrowRight } from "lucide-react";
 import Seo from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { CallLink, CoiCta, HowWeOperate, TrustStrip, scrollToQuote } from "@/components/CommercialBlocks";
+import propertyImage from "@/assets/premium-lobby-stair.jpg.asset.json";
 
 const points = [
   { icon: Building2, title: "Multi-site coverage", desc: "One provider across your buildings in St. Catharines, Niagara Falls, Welland, Thorold, NOTL, Fort Erie and Port Colborne." },
@@ -35,7 +37,17 @@ export default function PropertyManagers() {
           </div>
           <div className="mt-6"><CoiCta /></div>
         </div>
-        <div className="lg:col-span-5"><QuoteForm defaultFacility="Property common areas" /></div>
+        <div className="lg:col-span-5 space-y-5">
+          <SiteImage
+            src={propertyImage.url}
+            alt="Polished multi-residential lobby and staircase maintained for property managers"
+            className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/3]"
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <QuoteForm defaultFacility="Property common areas" />
+        </div>
       </section>
       <HowWeOperate />
     </div>

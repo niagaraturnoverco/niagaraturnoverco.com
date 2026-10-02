@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { Building2, Stethoscope, Warehouse, GraduationCap, HardHat, Sparkles, ArrowRight } from "lucide-react";
 import Seo from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { CallLink, CoiCta, CommercialResults, HowWeOperate, TrustStrip, scrollToQuote } from "@/components/CommercialBlocks";
+import heroOffice from "@/assets/hero-office.jpg";
 
 const services = [
   { icon: Building2, title: "Office & Janitorial", desc: "Nightly or scheduled janitorial for offices and professional suites.", to: "/office-cleaning" },
@@ -36,7 +38,17 @@ export default function Commercial() {
           </div>
           <div className="mt-6"><TrustStrip /></div>
         </div>
-        <div className="lg:col-span-5"><QuoteForm /></div>
+        <div className="lg:col-span-5 space-y-5">
+          <SiteImage
+            src={heroOffice}
+            alt="Bright, professionally maintained office ready for the workday"
+            className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/3]"
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <QuoteForm />
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
