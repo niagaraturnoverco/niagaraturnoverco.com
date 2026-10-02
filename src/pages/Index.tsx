@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 
 import heroOffice from "@/assets/hero-office.jpg";
+import Seo from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
 import { TrustStrip, HowWeOperate, CommercialResults, scrollToQuote } from "@/components/CommercialBlocks";
 import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
@@ -324,8 +325,16 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
   ];
 
 
+  const seo = {
+    home: { title: "Office & Commercial Cleaning Niagara | Niagara Turnover Co.", description: "Office, clinic and commercial cleaning across St. Catharines, Niagara Falls, Welland, Thorold, NOTL, Fort Erie and Port Colborne. Insured, WSIB-cleared, monthly inspection reports.", path: "/" },
+    residential: { title: "Airbnb & Short-Term Rental Turnover Cleaning Niagara | NTC", description: "Airbnb and STR turnover cleaning, move-outs and listing prep across the Niagara Region. Same-day coverage confirmed before scheduling.", path: "/residential" },
+    about: { title: "About Niagara Turnover Co. | Insured, WSIB-Cleared Cleaning", description: "How Niagara Turnover Co. runs commercial and residential cleaning across Niagara: checklists, inspections, insurance and WSIB clearance.", path: "/about" },
+    contact: { title: "Contact Niagara Turnover Co. | (437) 993-4584", description: "Call, text or request a walkthrough quote for commercial or residential cleaning anywhere in the Niagara Region.", path: "/contact" },
+  }[view];
+
   return (
     <div>
+      <Seo {...seo} />
       <main id="top">
         {/* HERO — split with photo */}
         {show("home") && (
@@ -961,7 +970,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
 
         {/* FINAL CTA — full-bleed luxury image */}
-        {show("home", "residential", "contact") && (
+        {show("residential", "contact") && (
         <section className="relative overflow-hidden">
           <img
             src={luxuryTropicalKitchen.url}
