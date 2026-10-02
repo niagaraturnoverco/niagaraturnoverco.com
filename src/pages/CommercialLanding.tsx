@@ -35,7 +35,7 @@ export default function CommercialLanding() {
       <Seo title={page.title} description={page.description} path={page.path} jsonLd={[faqJsonLd(page.faqs), breadcrumbJsonLd(crumbs)]} />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-7 contents lg:block">
+        <div className="lg:col-span-7">
           <div className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">{page.eyebrow}</div>
           <h1 className="font-serif text-4xl sm:text-5xl mt-5 leading-[1.05]">{page.h1}</h1>
           <div className="mt-6 space-y-4 text-muted-foreground">
@@ -44,20 +44,20 @@ export default function CommercialLanding() {
           <SiteImage
             src={pageImage.src}
             alt={pageImage.alt}
-            className="order-2 aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:hidden"
+            className="mt-7 aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:hidden"
             sizes="100vw"
             loading="eager"
             fetchPriority="high"
           />
-          <div className="order-3 mt-7 flex flex-col sm:flex-row gap-3">
+          <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
               Get a Walkthrough Quote <ArrowRight className="h-4 w-4" />
             </a>
             <CallLink />
           </div>
-          <div className="order-4 mt-6"><TrustStrip /></div>
+          <div className="mt-6"><TrustStrip /></div>
         </div>
-        <div className="order-5 space-y-5 lg:col-span-5">
+        <div className="space-y-5 lg:col-span-5">
           <SiteImage
             src={pageImage.src}
             alt={pageImage.alt}
