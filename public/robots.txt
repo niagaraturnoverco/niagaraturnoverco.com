@@ -12,5 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin
 
-Sitemap: https://niagara-turnover-flow.lovable.app/sitemap.xml
+Sitemap: https://niagaraturnoverco.com/sitemap.xml

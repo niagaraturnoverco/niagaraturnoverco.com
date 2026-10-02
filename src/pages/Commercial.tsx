@@ -1,122 +1,60 @@
-import {
-  Building2,
-  Stethoscope,
-  Warehouse,
-  GraduationCap,
-  HardHat,
-  Sparkles,
-  ShieldCheck,
-  ClipboardList,
-  Users,
-  Leaf,
-  FileText,
-  CheckCircle2,
-  ArrowRight,
-  Phone,
-} from "lucide-react";
-
-const PHONE = "(437) 993-4584";
-const PHONE_TEL = "tel:+14379934584";
-const BOOKING_URL = "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
+import { Link } from "react-router-dom";
+import { Building2, Stethoscope, Warehouse, GraduationCap, HardHat, Sparkles, ArrowRight } from "lucide-react";
+import Seo from "@/components/Seo";
+import QuoteForm from "@/components/QuoteForm";
+import { CallLink, CoiCta, CommercialResults, HowWeOperate, TrustStrip, scrollToQuote } from "@/components/CommercialBlocks";
 
 const services = [
-  { icon: Building2, title: "Office & Janitorial", desc: "Nightly or scheduled janitorial for offices and professional suites." },
-  { icon: Stethoscope, title: "Medical, Dental & Clinic", desc: "Protocol-driven cleaning for treatment rooms, waiting areas and washrooms." },
-  { icon: Warehouse, title: "Property Common Areas", desc: "Lobbies, corridors, elevators, stairwells, amenity rooms and garbage rooms." },
-  { icon: GraduationCap, title: "Student Housing Move-Out", desc: "Full unit resets on tight turnover windows between tenancies." },
-  { icon: HardHat, title: "Post-Construction", desc: "Rough, final and touch-up cleans so the space hands over ready." },
-  { icon: Sparkles, title: "Floor Care", desc: "Strip and wax, burnishing, carpet extraction and hard-surface restoration." },
-];
-
-const operate = [
-  { icon: Users, title: "Dedicated site supervisor", desc: "One named supervisor owns your building — not a rotating crew." },
-  { icon: ClipboardList, title: "Monthly inspection", desc: "A written inspection report delivered within five business days." },
-  { icon: FileText, title: "Posted daily washroom logs", desc: "Signed logs kept on site so your staff can see the last service." },
-  { icon: ShieldCheck, title: "Backup staffing", desc: "Coverage is guaranteed — call-outs are replaced, not skipped." },
-  { icon: Leaf, title: "Green-certified products", desc: "Safety Data Sheets kept on site for every product we use." },
-  { icon: CheckCircle2, title: "Itemized monthly invoicing", desc: "One clear invoice, scope-by-scope, no surprise line items." },
+  { icon: Building2, title: "Office & Janitorial", desc: "Nightly or scheduled janitorial for offices and professional suites.", to: "/office-cleaning" },
+  { icon: Stethoscope, title: "Medical, Dental & Clinic", desc: "Protocol-driven cleaning for treatment rooms, waiting areas and washrooms.", to: "/medical-office-cleaning" },
+  { icon: Warehouse, title: "Property Common Areas", desc: "Lobbies, corridors, elevators, stairwells, amenity rooms and garbage rooms.", to: "/property-common-area-cleaning" },
+  { icon: GraduationCap, title: "Student Housing Move-Out", desc: "Full unit resets on tight turnover windows between tenancies.", to: "/property-managers" },
+  { icon: HardHat, title: "Post-Construction", desc: "Rough, final and touch-up cleans so the space hands over ready.", to: "/post-construction-cleaning" },
+  { icon: Sparkles, title: "Floor Care", desc: "Strip and wax, burnishing, carpet extraction and hard-surface restoration.", to: "/office-cleaning" },
 ];
 
 export default function Commercial() {
   return (
     <div>
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
-        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
-          <Building2 className="h-3 w-3" /> Commercial &amp; Facilities
+      <Seo title="Commercial Cleaning Niagara | Offices, Clinics, Common Areas | NTC" description="Commercial, janitorial and facility cleaning across the Niagara Region. Insured, WSIB-cleared, monthly inspection reports, 30-day cancellation." path="/commercial" />
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20 grid gap-10 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+            <Building2 className="h-3 w-3" /> Commercial &amp; Facilities
+          </div>
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-5 leading-[1.05]">
+            Commercial cleaning across Niagara — <span className="gold-text italic">inspected, reported, never missed.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-muted-foreground">
+            Janitorial, facility and post-construction cleaning for offices, clinics, property common areas and student housing across Niagara Falls, St. Catharines, Welland, Thorold, NOTL, Port Colborne and Fort Erie.
+          </p>
+          <div className="mt-7 flex flex-col sm:flex-row gap-3">
+            <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
+              Get a Walkthrough Quote <ArrowRight className="h-4 w-4" />
+            </a>
+            <CallLink />
+          </div>
+          <div className="mt-6"><TrustStrip /></div>
         </div>
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-5 max-w-3xl leading-[1.05]">
-          Commercial cleaning across Niagara — <span className="gold-text italic">on schedule, inspected, reported.</span>
-        </h1>
-        <p className="mt-5 max-w-2xl text-muted-foreground">
-          Janitorial, facility and post-construction cleaning for offices, clinics, property common areas and student housing across Niagara Falls, St. Catharines, Welland, Thorold, NOTL, Port Colborne and Fort Erie.
-        </p>
-        <div className="mt-7 flex flex-col sm:flex-row gap-3">
-          <a
-            href="#walkthrough"
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 hover:brightness-110 transition"
-          >
-            Book a Facility Walkthrough <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href={PHONE_TEL}
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold"
-          >
-            <Phone className="h-4 w-4" /> {PHONE}
-          </a>
-        </div>
+        <div className="lg:col-span-5"><QuoteForm /></div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
         <h2 className="font-serif text-3xl sm:text-4xl">What we clean</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="premium-card p-6">
+            <Link key={s.title} to={s.to} className="premium-card p-6 hover:border-primary/60 transition">
               <s.icon className="h-5 w-5 text-primary" />
               <h3 className="font-serif text-xl mt-3">{s.title}</h3>
               <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="section-paper">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
-          <h2 className="font-serif text-3xl sm:text-4xl ink">How we operate</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {operate.map((o) => (
-              <div key={o.title} className="paper-card p-6">
-                <o.icon className="h-5 w-5 text-[hsl(var(--gold-deep))]" />
-                <h3 className="font-serif text-lg mt-3 ink">{o.title}</h3>
-                <p className="text-sm ink-muted mt-2">{o.desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-8 inline-flex items-center gap-2 rounded-xl border border-[hsl(var(--gold-deep))]/40 bg-[hsl(43_65%_58%/0.10)] px-4 py-3 text-sm ink">
-            <ShieldCheck className="h-4 w-4 text-[hsl(var(--gold-deep))]" />
-            Certificate of insurance and WSIB clearance available on request.
-          </p>
-        </div>
-      </section>
-
-      <section id="walkthrough" className="mx-auto max-w-3xl px-4 py-14 sm:py-20">
-        <div className="premium-card p-7 sm:p-10 text-center">
-          <h2 className="font-serif text-3xl sm:text-4xl">Book a Facility Walkthrough</h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-            Tell us about your facility — type, size, frequency and locations — and we'll confirm a walkthrough time. Scope and pricing are set on site.
-          </p>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-8 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 hover:brightness-110 transition"
-          >
-            Book a Facility Walkthrough <ArrowRight className="h-4 w-4" />
-          </a>
-          <p className="text-xs text-muted-foreground mt-4">
-            Prefer to talk? <a href={PHONE_TEL} className="underline underline-offset-2 font-semibold">{PHONE}</a>
-          </p>
-        </div>
-      </section>
+      <HowWeOperate />
+      <CommercialResults />
+      <section className="mx-auto max-w-7xl px-4 pb-16"><CoiCta /></section>
     </div>
   );
 }

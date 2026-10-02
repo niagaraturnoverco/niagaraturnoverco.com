@@ -1,57 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/</loc>
+    <loc>https://niagaraturnoverco.com/</loc>
     <lastmod>2026-06-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/gallery</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://niagaraturnoverco.com/commercial</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/niagara-falls</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://niagaraturnoverco.com/office-cleaning</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/st-catharines</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://niagaraturnoverco.com/office-cleaning/st-catharines</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/niagara-on-the-lake</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://niagaraturnoverco.com/office-cleaning/niagara-falls</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/welland</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://niagaraturnoverco.com/office-cleaning/welland</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/thorold</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://niagaraturnoverco.com/office-cleaning/thorold</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/port-colborne</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://niagaraturnoverco.com/office-cleaning/niagara-on-the-lake</loc>
   </url>
   <url>
-    <loc>https://niagara-turnover-flow.lovable.app/service-area/fort-erie</loc>
+    <loc>https://niagaraturnoverco.com/office-cleaning/fort-erie</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/office-cleaning/port-colborne</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/medical-office-cleaning</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/property-common-area-cleaning</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/post-construction-cleaning</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/property-managers</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/walkthrough</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/residential</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/gallery</loc>
     <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/about</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/contact</loc>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/niagara-falls</loc>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/st-catharines</loc>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/niagara-on-the-lake</loc>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/welland</loc>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/thorold</loc>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/port-colborne</loc>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://niagaraturnoverco.com/service-area/fort-erie</loc>
+    <lastmod>2026-06-18</lastmod>
   </url>
 </urlset>

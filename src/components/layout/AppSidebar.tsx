@@ -32,6 +32,8 @@ const PHONE_TEL = "tel:+14379934584";
 const items = [
   { title: "Home", url: "/", icon: HomeIcon },
   { title: "Commercial", url: "/commercial", icon: Building2 },
+  { title: "Office Cleaning", url: "/office-cleaning", icon: Building2 },
+  { title: "Property Managers", url: "/property-managers", icon: Building2 },
   { title: "Residential & STR", url: "/residential", icon: Sparkles },
   { title: "Gallery", url: "/gallery", icon: ImageIcon },
   { title: "About & Trust", url: "/about", icon: ShieldCheck },
