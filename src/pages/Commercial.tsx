@@ -20,7 +20,7 @@ export default function Commercial() {
     <div>
       <Seo title="Commercial Cleaning Niagara | Offices, Clinics, Common Areas | NTC" description="Commercial, janitorial and facility cleaning across the Niagara Region. Insured, WSIB-cleared, monthly inspection reports, 30-day cancellation." path="/commercial" />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 contents lg:block">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
             <Building2 className="h-3 w-3" /> Commercial &amp; Facilities
           </div>
@@ -30,19 +30,27 @@ export default function Commercial() {
           <p className="mt-5 max-w-2xl text-muted-foreground">
             Janitorial, facility and post-construction cleaning for offices, clinics, property common areas and student housing across Niagara Falls, St. Catharines, Welland, Thorold, NOTL, Port Colborne and Fort Erie.
           </p>
-          <div className="mt-7 flex flex-col sm:flex-row gap-3">
+          <SiteImage
+            src={heroOffice}
+            alt="Bright, professionally maintained office ready for the workday"
+            className="order-2 aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:hidden"
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="order-3 mt-7 flex flex-col sm:flex-row gap-3">
             <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
               Get a Walkthrough Quote <ArrowRight className="h-4 w-4" />
             </a>
             <CallLink />
           </div>
-          <div className="mt-6"><TrustStrip /></div>
+          <div className="order-4 mt-6"><TrustStrip /></div>
         </div>
-        <div className="lg:col-span-5 space-y-5">
+        <div className="order-5 space-y-5 lg:col-span-5">
           <SiteImage
             src={heroOffice}
             alt="Bright, professionally maintained office ready for the workday"
-            className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/3]"
+            className="hidden aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:block"
             sizes="(min-width: 1024px) 40vw, 100vw"
             loading="eager"
             fetchPriority="high"

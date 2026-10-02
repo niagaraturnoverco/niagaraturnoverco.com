@@ -17,16 +17,24 @@ export default function PropertyManagers() {
     <div>
       <Seo title="Cleaning for Property Managers in Niagara | Multi-Site | NTC" description="Common area and commercial cleaning for Niagara property managers: multi-site coverage, one consolidated invoice, monthly inspection reports per building." path="/property-managers" />
       <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 contents lg:block">
           <div className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">Property Managers</div>
           <h1 className="font-serif text-4xl sm:text-5xl mt-5 leading-[1.05]">One cleaning partner for every building you manage</h1>
           <p className="mt-5 text-muted-foreground">Managing several buildings means juggling cleaners, invoices and tenant complaints. We take that off your desk with one point of contact, one invoice and a written report for each property every month.</p>
-          <div className="mt-7 flex flex-col sm:flex-row gap-3">
+          <SiteImage
+            src={propertyImage}
+            alt="Premium multi-residential property maintained for owners and property managers"
+            className="order-2 aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:hidden"
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="order-3 mt-7 flex flex-col sm:flex-row gap-3">
             <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold">Get a Walkthrough Quote <ArrowRight className="h-4 w-4" /></a>
             <CallLink />
           </div>
-          <div className="mt-6"><TrustStrip /></div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="order-4 mt-6"><TrustStrip /></div>
+          <div className="order-5 mt-8 grid gap-4 sm:grid-cols-2">
             {points.map((p) => (
               <div key={p.title} className="premium-card p-6">
                 <p.icon className="h-5 w-5 text-primary" />
@@ -35,13 +43,13 @@ export default function PropertyManagers() {
               </div>
             ))}
           </div>
-          <div className="mt-6"><CoiCta /></div>
+          <div className="order-6 mt-6"><CoiCta /></div>
         </div>
-        <div className="lg:col-span-5 space-y-5">
+        <div className="order-7 space-y-5 lg:col-span-5">
           <SiteImage
             src={propertyImage}
             alt="Premium multi-residential property maintained for owners and property managers"
-            className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/3]"
+            className="hidden aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:block"
             sizes="(min-width: 1024px) 40vw, 100vw"
             loading="eager"
             fetchPriority="high"
