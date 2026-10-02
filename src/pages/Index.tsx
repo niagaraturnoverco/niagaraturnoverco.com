@@ -128,9 +128,9 @@ const TESTIMONIAL_IMAGES = [
 
 const SCHEDULING_URL =
   "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
-const PHONE = "(289) 257-7725";
-const PHONE_TEL = "tel:+12892577725";
-const PHONE_SMS = "sms:+12892577725";
+const PHONE = "(437) 993-4584";
+const PHONE_TEL = "tel:+14379934584";
+const PHONE_SMS = "sms:+14379934584";
 
 const track = (event: string, payload?: Record<string, unknown>) => {
   // @ts-expect-error dataLayer is optional
