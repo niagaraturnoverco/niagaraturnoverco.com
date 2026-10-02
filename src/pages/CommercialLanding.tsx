@@ -7,16 +7,16 @@ import { CallLink, CoiCta, HowWeOperate, TrustStrip, scrollToQuote } from "@/com
 import { COMMERCIAL_PAGES, findCommercialPage } from "@/data/commercialPages";
 import NotFound from "./NotFound";
 import heroOffice from "@/assets/hero-office.jpg";
-import medicalImage from "@/assets/luxury-bath-suite.jpg.asset.json";
-import commonAreaImage from "@/assets/premium-lobby-stair.jpg.asset.json";
-import constructionImage from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
+import medicalImage from "@/assets/property-2.jpg";
+import commonAreaImage from "@/assets/property-1.jpg";
+import constructionImage from "@/assets/property-3.jpg";
 
 const CITY_LINKS = COMMERCIAL_PAGES.filter((p) => p.city);
 
 const getPageImage = (path: string) => {
-  if (path === "/medical-office-cleaning") return { src: medicalImage.url, alt: "Immaculate premium washroom reflecting detailed clinic cleaning standards" };
-  if (path === "/property-common-area-cleaning") return { src: commonAreaImage.url, alt: "Polished lobby and stairwell maintained for residents and visitors" };
-  if (path === "/post-construction-cleaning") return { src: constructionImage.url, alt: "Finished modern kitchen cleaned and ready for handover" };
+  if (path === "/medical-office-cleaning") return { src: medicalImage, alt: "Bright, carefully maintained interior reflecting detailed clinic cleaning standards" };
+  if (path === "/property-common-area-cleaning") return { src: commonAreaImage, alt: "Well-kept residential property maintained for residents and visitors" };
+  if (path === "/post-construction-cleaning") return { src: constructionImage, alt: "Finished modern kitchen cleaned and ready for handover" };
   return { src: heroOffice, alt: "Bright commercial office maintained to a professional cleaning standard" };
 };
 
