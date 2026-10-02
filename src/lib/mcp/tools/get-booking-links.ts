@@ -5,7 +5,7 @@ const CONTACT = {
   phone: "(289) 257-7725",
   phoneE164: "+12892577725",
   website: "https://niagaraturnoverco.com",
-  clientScheduling: "https://airtable.com/app3bo82kH3gBbh7D/pagam8AZIIRd6Xqew/form",
+  clientScheduling: "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form",
   clientOnboarding: "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form",
   region: "Niagara Region, Ontario, Canada",
 };

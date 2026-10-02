@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Building2,
   Stethoscope,
@@ -15,13 +14,10 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const PHONE = "(289) 257-7725";
 const PHONE_TEL = "tel:+12892577725";
+const BOOKING_URL = "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
 
 const services = [
   { icon: Building2, title: "Office & Janitorial", desc: "Nightly or scheduled janitorial for offices and professional suites." },
@@ -42,34 +38,6 @@ const operate = [
 ];
 
 export default function Commercial() {
-  const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({
-    company: "",
-    facility_type: "",
-    square_footage: "",
-    frequency: "",
-    locations: "",
-    contact_name: "",
-    contact_email: "",
-    contact_phone: "",
-    notes: "",
-  });
-
-  const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    const { error } = await supabase.from("walkthrough_requests").insert(form);
-    setSubmitting(false);
-    if (error) {
-      toast({ title: "Something went wrong", description: "Please call us at " + PHONE, variant: "destructive" });
-      return;
-    }
-    toast({ title: "Walkthrough request received", description: "We'll confirm a walkthrough time shortly." });
-    setForm({ company: "", facility_type: "", square_footage: "", frequency: "", locations: "", contact_name: "", contact_email: "", contact_phone: "", notes: "" });
-  };
-
   return (
     <div>
       <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
@@ -131,51 +99,23 @@ export default function Commercial() {
       </section>
 
       <section id="walkthrough" className="mx-auto max-w-3xl px-4 py-14 sm:py-20">
-        <h2 className="font-serif text-3xl sm:text-4xl">Book a Facility Walkthrough</h2>
-        <p className="text-muted-foreground mt-3">
-          Tell us about the facility and we'll confirm a walkthrough time. Scope and pricing are set on site.
-        </p>
-        <form onSubmit={submit} className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="sm:col-span-2">
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Company *</label>
-            <Input required value={form.company} onChange={(e) => set("company", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Facility type *</label>
-            <Input required placeholder="Office, clinic, condo, student housing…" value={form.facility_type} onChange={(e) => set("facility_type", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Approx. square footage</label>
-            <Input value={form.square_footage} onChange={(e) => set("square_footage", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Frequency</label>
-            <Input placeholder="Nightly, 3x weekly, weekly…" value={form.frequency} onChange={(e) => set("frequency", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Number of locations</label>
-            <Input value={form.locations} onChange={(e) => set("locations", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Contact name *</label>
-            <Input required value={form.contact_name} onChange={(e) => set("contact_name", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Email *</label>
-            <Input required type="email" value={form.contact_email} onChange={(e) => set("contact_email", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div className="sm:col-span-2">
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Phone</label>
-            <Input value={form.contact_phone} onChange={(e) => set("contact_phone", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <div className="sm:col-span-2">
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">Anything else</label>
-            <Input value={form.notes} onChange={(e) => set("notes", e.target.value)} className="h-12 mt-1.5" />
-          </div>
-          <Button type="submit" disabled={submitting} className="sm:col-span-2 min-h-[52px] bg-gradient-gold text-primary-foreground border border-primary/30 shadow-gold hover:brightness-110">
-            {submitting ? "Sending…" : "Book a Facility Walkthrough"}
-          </Button>
-        </form>
+        <div className="premium-card p-7 sm:p-10 text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl">Book a Facility Walkthrough</h2>
+          <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+            Tell us about your facility — type, size, frequency and locations — and we'll confirm a walkthrough time. Scope and pricing are set on site.
+          </p>
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-8 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30 hover:brightness-110 transition"
+          >
+            Book a Facility Walkthrough <ArrowRight className="h-4 w-4" />
+          </a>
+          <p className="text-xs text-muted-foreground mt-4">
+            Prefer to talk? <a href={PHONE_TEL} className="underline underline-offset-2 font-semibold">{PHONE}</a>
+          </p>
+        </div>
       </section>
     </div>
   );
