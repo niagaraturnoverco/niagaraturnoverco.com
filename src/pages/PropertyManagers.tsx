@@ -1,7 +1,9 @@
 import { Building2, Receipt, ClipboardList, Zap, ArrowRight } from "lucide-react";
 import Seo from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { CallLink, CoiCta, HowWeOperate, TrustStrip, scrollToQuote } from "@/components/CommercialBlocks";
+import propertyImage from "@/assets/property-4.jpg";
 
 const points = [
   { icon: Building2, title: "Multi-site coverage", desc: "One provider across your buildings in St. Catharines, Niagara Falls, Welland, Thorold, NOTL, Fort Erie and Port Colborne." },
@@ -19,6 +21,14 @@ export default function PropertyManagers() {
           <div className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">Property Managers</div>
           <h1 className="font-serif text-4xl sm:text-5xl mt-5 leading-[1.05]">One cleaning partner for every building you manage</h1>
           <p className="mt-5 text-muted-foreground">Managing several buildings means juggling cleaners, invoices and tenant complaints. We take that off your desk with one point of contact, one invoice and a written report for each property every month.</p>
+          <SiteImage
+            src={propertyImage}
+            alt="Premium multi-residential property maintained for owners and property managers"
+            className="mt-7 aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:hidden"
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold">Get a Walkthrough Quote <ArrowRight className="h-4 w-4" /></a>
             <CallLink />
@@ -35,7 +45,17 @@ export default function PropertyManagers() {
           </div>
           <div className="mt-6"><CoiCta /></div>
         </div>
-        <div className="lg:col-span-5"><QuoteForm defaultFacility="Property common areas" /></div>
+        <div className="space-y-5 lg:col-span-5">
+          <SiteImage
+            src={propertyImage}
+            alt="Premium multi-residential property maintained for owners and property managers"
+            className="hidden aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:block"
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <QuoteForm defaultFacility="Property common areas" />
+        </div>
       </section>
       <HowWeOperate />
     </div>

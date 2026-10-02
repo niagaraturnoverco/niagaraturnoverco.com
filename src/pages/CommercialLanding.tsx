@@ -2,16 +2,29 @@ import { useLocation, Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Seo, { breadcrumbJsonLd, faqJsonLd } from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { CallLink, CoiCta, HowWeOperate, TrustStrip, scrollToQuote } from "@/components/CommercialBlocks";
 import { COMMERCIAL_PAGES, findCommercialPage } from "@/data/commercialPages";
 import NotFound from "./NotFound";
+import heroOffice from "@/assets/hero-office.jpg";
+import medicalImage from "@/assets/property-2.jpg";
+import commonAreaImage from "@/assets/property-1.jpg";
+import constructionImage from "@/assets/property-3.jpg";
 
 const CITY_LINKS = COMMERCIAL_PAGES.filter((p) => p.city);
+
+const getPageImage = (path: string) => {
+  if (path === "/medical-office-cleaning") return { src: medicalImage, alt: "Bright, carefully maintained interior reflecting detailed clinic cleaning standards" };
+  if (path === "/property-common-area-cleaning") return { src: commonAreaImage, alt: "Well-kept residential property maintained for residents and visitors" };
+  if (path === "/post-construction-cleaning") return { src: constructionImage, alt: "Finished modern kitchen cleaned and ready for handover" };
+  return { src: heroOffice, alt: "Bright commercial office maintained to a professional cleaning standard" };
+};
 
 export default function CommercialLanding() {
   const { pathname } = useLocation();
   const page = findCommercialPage(pathname.replace(/\/$/, "") || "/");
   if (!page) return <NotFound />;
+  const pageImage = getPageImage(page.path);
 
   const crumbs = [{ name: "Home", path: "/" }];
   if (page.city) crumbs.push({ name: "Office Cleaning", path: "/office-cleaning" });
@@ -28,6 +41,14 @@ export default function CommercialLanding() {
           <div className="mt-6 space-y-4 text-muted-foreground">
             {page.intro.map((p, i) => <p key={i}>{p}</p>)}
           </div>
+          <SiteImage
+            src={pageImage.src}
+            alt={pageImage.alt}
+            className="mt-7 aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:hidden"
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <a href="#quote" onClick={scrollToQuote} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 text-sm font-semibold text-primary-foreground shadow-gold border border-primary/30">
               Get a Walkthrough Quote <ArrowRight className="h-4 w-4" />
@@ -36,7 +57,15 @@ export default function CommercialLanding() {
           </div>
           <div className="mt-6"><TrustStrip /></div>
         </div>
-        <div className="lg:col-span-5">
+        <div className="space-y-5 lg:col-span-5">
+          <SiteImage
+            src={pageImage.src}
+            alt={pageImage.alt}
+            className="hidden aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:block"
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            loading="eager"
+            fetchPriority="high"
+          />
           <QuoteForm defaultCity={page.city} defaultFacility={page.facility} />
         </div>
       </section>

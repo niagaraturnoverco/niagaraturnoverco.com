@@ -38,92 +38,25 @@ import {
 } from "lucide-react";
 
 import heroOffice from "@/assets/hero-office.jpg";
+import heroTurnover from "@/assets/hero-turnover.jpg";
+import propertyExterior from "@/assets/property-1.jpg";
+import propertyLiving from "@/assets/property-2.jpg";
+import propertyKitchen from "@/assets/property-3.jpg";
+import propertyWaterfront from "@/assets/property-4.jpg";
+import propertyEstate from "@/assets/property-5.jpg";
+import propertyModern from "@/assets/property-6.jpg";
+import propertyVilla from "@/assets/property-7.jpg";
 import Seo from "@/components/Seo";
 import QuoteForm from "@/components/QuoteForm";
+import SiteImage from "@/components/SiteImage";
 import { TrustStrip, HowWeOperate, CommercialResults, scrollToQuote } from "@/components/CommercialBlocks";
-import luxuryVacantApartment from "@/assets/luxury-vacant-apartment.jpg.asset.json";
-import luxuryVacantKitchen from "@/assets/luxury-vacant-kitchen.jpg.asset.json";
-import luxuryTropicalKitchen from "@/assets/luxury-tropical-kitchen.jpg.asset.json";
-import luxuryLoftStair from "@/assets/luxury-loft-stair.jpg.asset.json";
-
-import luxuryExtra02 from "@/assets/luxury-extra-02.webp.asset.json";
-
-import luxuryExtra04 from "@/assets/luxury-extra-04.webp.asset.json";
-import luxuryExtra05 from "@/assets/luxury-extra-05.webp.asset.json";
-import luxuryExtra06 from "@/assets/luxury-extra-06.webp.asset.json";
-import luxuryExtra07 from "@/assets/luxury-extra-07.webp.asset.json";
-import luxuryExtra08 from "@/assets/luxury-extra-08.webp.asset.json";
-import luxuryExtra09 from "@/assets/luxury-extra-09.webp.asset.json";
-import luxuryExtra10 from "@/assets/luxury-extra-10.webp.asset.json";
-
-import luxuryExtra12 from "@/assets/luxury-extra-12.webp.asset.json";
-import luxuryExtra13 from "@/assets/luxury-extra-13.webp.asset.json";
-import luxuryExtra14 from "@/assets/luxury-extra-14.webp.asset.json";
-import luxuryExtra15 from "@/assets/luxury-extra-15.webp.asset.json";
-
-import luxuryExtra17 from "@/assets/luxury-extra-17.webp.asset.json";
-import luxuryExtra18 from "@/assets/luxury-extra-18.webp.asset.json";
-import luxuryExtra19 from "@/assets/luxury-extra-19.webp.asset.json";
-import luxuryExtra20 from "@/assets/luxury-extra-20.webp.asset.json";
-import luxuryExtra21 from "@/assets/luxury-extra-21.webp.asset.json";
-import luxuryExtra22 from "@/assets/luxury-extra-22.webp.asset.json";
-import luxuryExtra23 from "@/assets/luxury-extra-23.webp.asset.json";
-import luxuryExtra24 from "@/assets/luxury-extra-24.webp.asset.json";
-import luxuryExtra25 from "@/assets/luxury-extra-25.webp.asset.json";
-import luxuryExtra26 from "@/assets/luxury-extra-26.webp.asset.json";
-import luxuryExtra27 from "@/assets/luxury-extra-27.webp.asset.json";
-import luxuryExtra28 from "@/assets/luxury-extra-28.webp.asset.json";
-import luxuryExtra29 from "@/assets/luxury-extra-29.webp.asset.json";
-import luxuryExtra30 from "@/assets/luxury-extra-30.webp.asset.json";
-import luxuryExtra31 from "@/assets/luxury-extra-31.webp.asset.json";
-import luxuryExtra32 from "@/assets/luxury-extra-32.webp.asset.json";
-import luxuryExtra33 from "@/assets/luxury-extra-33.webp.asset.json";
-import luxuryExtra34 from "@/assets/luxury-extra-34.webp.asset.json";
-import luxuryExtra35 from "@/assets/luxury-extra-35.webp.asset.json";
-import luxuryExtra36 from "@/assets/luxury-extra-36.webp.asset.json";
-import luxuryExtra37 from "@/assets/luxury-extra-37.webp.asset.json";
-
-// Each WebP is referenced exactly once across the page.
-// Reserved for standalone slots (services, readiness grid, inline section images, final CTA):
-//   L1 loftStair, L2 livingBright, L3 vacantKitchen, L4 vacantApartment, L5 tropicalKitchen,
-//   L6 bathSuite, E01, E03, E11, E13, E16, E25 — 12 standalone images
-// HERO carousel below uses 23 unique extras; TESTIMONIAL_IMAGES below uses 8 unique extras.
-// 12 + 23 + 8 = 43 unique WebPs, no duplicates anywhere.
-const HERO_IMAGES = [
-  { src: luxuryExtra02.url, alt: "Contemporary lounge area styled for a polished short-term rental presentation" },
-  { src: luxuryExtra05.url, alt: "Bright modern interior detail presented at operator-grade readiness" },
-  { src: luxuryExtra06.url, alt: "Warm contemporary living room reset for short-term rental turnover" },
-  { src: luxuryExtra08.url, alt: "Considered furniture vignette prepared to a high-presentation standard" },
-  { src: luxuryExtra09.url, alt: "Polished interior space ready for a premium check-in moment" },
-  { src: luxuryExtra12.url, alt: "Premium bedroom and styling detail prepared for guest arrival" },
-  { src: luxuryExtra14.url, alt: "Calm, neutral living area prepared for a premium short-term rental check-in" },
-  { src: luxuryExtra17.url, alt: "Bright open living space refreshed for guest readiness" },
-  { src: luxuryExtra18.url, alt: "Curated interior space presented at hospitality-grade standards" },
-  { src: luxuryExtra19.url, alt: "Sophisticated living detail reset for a premium turnover" },
-  { src: luxuryExtra21.url, alt: "Refined home detail prepared for a guest-ready arrival" },
-  { src: luxuryExtra22.url, alt: "Warm, considered interior reset to operator-grade readiness" },
-  { src: luxuryExtra23.url, alt: "Modern interior corner styled for a polished check-in moment" },
-  { src: luxuryExtra26.url, alt: "Contemporary lounge styled for a polished guest experience" },
-  { src: luxuryExtra27.url, alt: "Elegant interior vignette presented at premium readiness" },
-  { src: luxuryExtra29.url, alt: "Tasteful living area reset to a turnover-ready finish" },
-  { src: luxuryExtra30.url, alt: "Bright modern interior detail at hospitality-grade standard" },
-  { src: luxuryExtra31.url, alt: "Considered home interior styled for a premium check-in" },
-  { src: luxuryExtra32.url, alt: "Refined property interior reset for short-term rental readiness" },
-  { src: luxuryExtra34.url, alt: "Warm, light-filled space reset to listing-ready condition" },
-  { src: luxuryExtra35.url, alt: "Contemporary interior styled to a polished hospitality standard" },
-  { src: luxuryExtra36.url, alt: "Modern home moment prepared for a premium turnover" },
-  { src: luxuryExtra37.url, alt: "Refined interior detail reset for a guest-ready presentation" },
-];
-
 const TESTIMONIAL_IMAGES = [
-  luxuryExtra04.url,
-  luxuryExtra07.url,
-  luxuryExtra10.url,
-  luxuryExtra15.url,
-  luxuryExtra20.url,
-  luxuryExtra24.url,
-  luxuryExtra28.url,
-  luxuryExtra33.url,
+  propertyLiving,
+  propertyWaterfront,
+  propertyEstate,
+  propertyModern,
+  propertyVilla,
+  propertyExterior,
 ];
 
 
@@ -241,7 +174,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
       desc: "Backup cleaner failed. Guest checks in tonight. We route fast.",
       points: ["Same-day & last-minute requests", "Backup cleaner coverage", "Rush dispatch under 24h"],
       featured: true,
-      image: luxuryVacantApartment.url,
+      image: propertyLiving,
       alt: "Vacant premium apartment interior ready for a same-day turnover response",
     },
     {
@@ -249,7 +182,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
       title: "Property Readiness / Listing Prep",
       desc: "Camera-ready, showing-ready, guest-ready.",
       points: ["Listing prep for realtors", "Move-in / move-out resets", "Heavy reset & deep clean"],
-      image: luxuryVacantKitchen.url,
+      image: propertyKitchen,
       alt: "Modern vacant kitchen prepared to a listing-ready standard",
     },
     {
@@ -257,7 +190,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
       title: "Recurring Turnover Support",
       desc: "Ongoing readiness for hosts, managers, and operators.",
       points: ["Priority scheduling", "Account & property setup", "Readiness tracking"],
-      image: luxuryLoftStair.url,
+      image: propertyModern,
       alt: "Luxury loft interior reflecting recurring multi-property readiness standards",
     },
   ];
@@ -382,6 +315,51 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
             </div>
           </div>
         </section>
+        )}
+
+        {show("residential") && (
+          <section className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-7">
+                <SectionLabel>Residential &amp; Short-Term Rental</SectionLabel>
+                <h1 className="mt-5 font-serif text-4xl leading-[1.04] sm:text-5xl lg:text-[64px]">
+                  Guest-ready turnovers, <span className="gold-text italic">without the last-minute scramble.</span>
+                </h1>
+                <p className="mt-5 max-w-xl text-muted-foreground">
+                  Reliable cleaning, reset and listing preparation for Airbnb hosts, landlords and homeowners across Niagara.
+                </p>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <PrimaryCTA source="residential_hero">Get a Turnover Quote</PrimaryCTA>
+                  <a href={PHONE_TEL} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-primary/60 bg-primary/10 px-6 text-sm font-semibold">
+                    <Phone className="h-4 w-4" /> {PHONE}
+                  </a>
+                </div>
+              </div>
+              <div className="lg:col-span-5">
+                <SiteImage
+                  src={heroTurnover}
+                  alt="Freshly made bedroom prepared for a short-term rental guest arrival"
+                  className="aspect-[4/3] rounded-xl border border-primary/20 shadow-elegant lg:aspect-[4/5]"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {show("contact") && (
+          <section className="mx-auto max-w-7xl px-4 pt-12 sm:pt-16">
+            <SiteImage
+              src={propertyLiving}
+              alt="Bright, carefully reset living room ready for its next occupants"
+              className="aspect-[16/7] rounded-xl border border-primary/20 shadow-elegant"
+              sizes="(min-width: 1280px) 1248px, 100vw"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </section>
         )}
 
         {show("home") && (
@@ -732,7 +710,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
               <div className="rounded-[var(--radius)] overflow-hidden border-2 border-[hsl(var(--gold-deep))] bg-gradient-to-b from-[hsl(43_65%_58%/0.12)] to-transparent">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={luxuryExtra25.url}
+                    src={propertyWaterfront}
                     alt="Listing-ready kitchen visual supporting premium emergency and pricing support"
                     loading="lazy"
                     decoding="async"
@@ -793,7 +771,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                 </div>
                 <div className="relative min-h-[280px] lg:col-span-5">
                   <img
-                    src={luxuryExtra13.url}
+                    src={propertyEstate}
                     alt="Luxury loft imagery supporting recurring operator coverage"
                     loading="lazy"
                     decoding="async"
@@ -810,16 +788,22 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         {/* WHO THIS IS FOR — inline pill row */}
         {show("about") && (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <div className="grid lg:grid-cols-12 gap-8 items-end">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
               <SectionLabel>Who This Is For</SectionLabel>
               <h2 className="font-serif text-3xl sm:text-4xl mt-4">
                 Built for operators who treat readiness as <span className="gold-text">a system</span>, not a chore.
               </h2>
+              <p className="mt-4 text-sm text-muted-foreground">
+                We are a premium local operator — not a bargain cleaner. If “cheapest available” is the brief, NTC isn't the right fit, and we'll tell you so.
+              </p>
             </div>
-            <p className="lg:col-span-5 text-sm text-muted-foreground">
-              We are a premium local operator — not a bargain cleaner. If "cheapest available" is the brief, NTC isn't the right fit, and we'll tell you so.
-            </p>
+            <SiteImage
+              src={propertyExterior}
+              alt="Well-kept Niagara property representing the homes and buildings entrusted to NTC"
+              className="aspect-[16/10] rounded-xl border border-primary/20 shadow-elegant lg:col-span-5"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
           </div>
 
           <div className="mt-10 flex flex-wrap gap-x-2 gap-y-3 border-t border-border/60 pt-8">
@@ -973,7 +957,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         {show("residential", "contact") && (
         <section className="relative overflow-hidden">
           <img
-            src={luxuryTropicalKitchen.url}
+            src={propertyKitchen}
             alt="Luxury kitchen and dining environment supporting final client conversion call to action"
             loading="lazy"
             decoding="async"
