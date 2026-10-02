@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const SCHEDULING_URL =
-  "https://airtable.com/app3bo82kH3gBbh7D/pagam8AZIIRd6Xqew/form";
+  "https://airtable.com/app3bo82kH3gBbh7D/pagfETpx8mh312gUE/form";
 const PHONE = "(289) 257-7725";
 const PHONE_TEL = "tel:+12892577725";
 
