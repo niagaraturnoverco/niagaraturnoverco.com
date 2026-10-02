@@ -259,28 +259,27 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
   ];
 
   const pricing = [
-    { size: "1 Bedroom", price: "$199" },
-    { size: "2 Bedroom", price: "$269" },
-    { size: "3 Bedroom", price: "$329" },
-    { size: "4 Bedroom", price: "$399" },
-    { size: "5+ Bedroom", price: "$499" },
+    { size: "1 Bedroom" },
+    { size: "2 Bedroom" },
+    { size: "3 Bedroom" },
+    { size: "4 Bedroom" },
+    { size: "5+ Bedroom" },
   ];
 
-  const addons: [string, string][] = [
-    ["Heavy Reset / Deep Clean", "+$299"],
-    ["Laundry Reset", "+$59 / load"],
-    ["Laundry Reset (up to 3 loads)", "+$180"],
-    ["Oven Interior Clean", "+$49"],
-    ["Pet Hair Reset", "+$99"],
-    ["Guest-Ready Photo Proof", "+$29"],
-    ["Full Property Report", "+$79"],
+  const addons: string[] = [
+    "Heavy Reset / Deep Clean",
+    "Laundry Reset",
+    "Oven Interior Clean",
+    "Pet Hair Reset",
+    "Guest-Ready Photo Proof",
+    "Full Property Report",
   ];
 
   const recurring = [
-    { name: "Host Essentials", price: "from $199/mo" },
-    { name: "Starter Coverage", price: "from $399/mo" },
-    { name: "Growth Coverage", price: "from $799/mo" },
-    { name: "Operator Coverage", price: "from $1,499/mo" },
+    { name: "Host Essentials", desc: "For a single listing with regular guest turnover." },
+    { name: "Starter Coverage", desc: "Priority scheduling across a small set of properties." },
+    { name: "Growth Coverage", desc: "Readiness tracking and faster dispatch as you scale." },
+    { name: "Operator Coverage", desc: "Portfolio-wide coordination with a single point of contact." },
   ];
 
   const audience = [
@@ -443,7 +442,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
               One question per path. <span className="gold-text">Pick the one that's true.</span>
             </h2>
             <p className="text-muted-foreground mt-3">
-              No payment before coverage is confirmed. Final price depends on scope and timing.
+              Coverage is confirmed before anything is scheduled.
             </p>
           </div>
 
@@ -508,7 +507,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
           <div className="mt-6 rounded-xl border border-primary/30 bg-primary/[0.05] p-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-foreground/85">
             <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> No payment before coverage is confirmed</span>
-            <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> Final price depends on scope and timing</span>
+            <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> Coverage confirmed before scheduling</span>
             <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} /> Same-day requests are reviewed first</span>
             <span className="inline-flex items-center gap-1.5 ml-auto">
               <Phone className="h-3.5 w-3.5 text-primary" />
@@ -635,7 +634,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
               {[
                 { n: "01", t: "Submit the property request", d: "Tell us the property, the deadline, and the risk.", Icon: ClipboardList },
                 { n: "02", t: "We confirm the right path", d: "Emergency, readiness, or recurring — routed in hours.", Icon: Route },
-                { n: "03", t: "Price and availability are confirmed", d: "Scope and timing locked before anything is scheduled.", Icon: ShieldCheck },
+                { n: "03", t: "Scope and availability are confirmed", d: "Scope and timing locked before anything is scheduled.", Icon: ShieldCheck },
                 { n: "04", t: "The property gets handled", d: "Turnover completed, optional photo proof on request.", Icon: BadgeCheck },
               ].map(({ n, t, d, Icon }) => (
                 <div key={n} className="relative">
@@ -659,12 +658,12 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
         <section id="pricing" className="section-paper">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
             <div className="max-w-3xl">
-              <SectionLabel onPaper>Pricing</SectionLabel>
+              <SectionLabel onPaper>Coverage</SectionLabel>
               <h2 className="font-serif text-3xl sm:text-4xl mt-4 ink">
-                Simple starting points. <span className="text-[hsl(var(--gold-deep))]">Final price confirmed after scope.</span>
+                Straightforward quotes. <span className="text-[hsl(var(--gold-deep))]">Confirmed after scope.</span>
               </h2>
               <p className="ink-muted mt-3">
-                NTC is built for properties where timing, reliability, and presentation matter. Pricing depends on size, condition, laundry, access, timing, and urgency.
+                NTC is built for properties where timing, reliability, and presentation matter. Every quote is confirmed based on size, condition, laundry, access, timing, and urgency — before anything is scheduled.
               </p>
             </div>
 
@@ -673,7 +672,7 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
               <div className="paper-card p-7 lg:col-span-2">
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-serif text-2xl ink">Standard Turnovers</h3>
-                  <span className="text-xs uppercase tracking-[0.18em] ink-muted">Starting at</span>
+                  <span className="text-xs uppercase tracking-[0.18em] ink-muted">Quote per visit</span>
                 </div>
                 <div className="mt-5 divide-y hairline">
                   {pricing.map((p) => (
@@ -698,13 +697,12 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
 
                 <h4 className="font-serif text-lg mt-6 ink">Common Add-ons</h4>
                 <div className="mt-3 grid sm:grid-cols-2 gap-x-8">
-                  {addons.map(([k, v]) => (
-                    <div key={k} className="flex justify-between items-center py-2 text-sm border-b hairline">
+                  {addons.map((k) => (
+                    <div key={k} className="flex items-center py-2 text-sm border-b hairline">
                       <span className="ink-muted inline-flex items-center gap-2">
                         <Check className="h-3.5 w-3.5 text-[hsl(var(--gold-deep))]/70" strokeWidth={3} />
                         {k}
                       </span>
-                      <span className="font-medium ink">{v}</span>
                     </div>
                   ))}
                 </div>
@@ -730,11 +728,11 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                   <ul className="mt-5 space-y-4 text-sm">
                     <li className="flex gap-3">
                       <Clock className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
-                      <span className="ink">Less than 24 hours notice: <span className="font-semibold text-[hsl(var(--gold-deep))]">+50% rush fee</span></span>
+                      <span className="ink">Less than 24 hours notice: rush scheduling applies</span>
                     </li>
                     <li className="flex gap-3">
                       <AlertTriangle className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
-                      <span className="ink">High-risk or same-day jobs may require full payment upfront</span>
+                      <span className="ink">Same-day jobs are reviewed and confirmed within operating hours</span>
                     </li>
                     <li className="flex gap-3">
                       <ShieldCheck className="h-4 w-4 text-[hsl(var(--gold-deep))] shrink-0 mt-0.5" />
@@ -761,12 +759,12 @@ const SitePage = ({ view = "home" }: { view?: SiteView }) => {
                     {recurring.map((r) => (
                       <div key={r.name} className="rounded-xl border hairline bg-white/60 p-4">
                         <div className="text-xs uppercase tracking-[0.14em] ink-muted">{r.name}</div>
-                        <div className="font-serif text-xl text-[hsl(var(--gold-deep))] mt-2">{r.price}</div>
+                        <div className="text-xs ink-muted mt-2 leading-relaxed">{r.desc}</div>
                       </div>
                     ))}
                   </div>
                   <p className="text-xs ink-muted mt-5 max-w-3xl">
-                    Monthly coverage plans are not cheap bundled turnovers. They are for recurring hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Turnover pricing is still confirmed based on property size, scope, and frequency.
+                    Recurring coverage is for hosts and property operators who want priority scheduling, account setup, readiness tracking, and faster dispatch. Every plan is scoped and quoted individually.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 mt-5">
                     <PrimaryCTA source="pricing">Get a Turnover Quote</PrimaryCTA>
